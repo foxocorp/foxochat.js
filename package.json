@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@foxocorp/foxogram-workspace",
+  "name": "@foxogram/workspace",
   "version": "0.0.0",
   "description": "A powerful library for interacting with the Foxogram API",
   "private": true,
