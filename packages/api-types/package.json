@@ -45,9 +45,6 @@
   "engines": {
     "node": ">=22"
   },
-  "dependencies": {
-    "eventemitter3": "^5.0.1"
-  },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
     "@tsconfig/strictest": "^2.0.5",
