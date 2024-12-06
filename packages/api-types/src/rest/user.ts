@@ -1,12 +1,12 @@
-import type { APIOk, APIUser } from "../payloads";
+import type { APIMFAKey, APIOk, APIUser } from "../payloads";
 
-// https://docs.foxogram.su/get-user-by-id
+// GET /users/{userKey}
 export type RESTGetAPIUserResult = APIUser;
 
-// https://docs.foxogram.su/edit-yourself-user
-export type RESTPatchAPIUserYourselfResult = APIUser;
+export type RESTPatchAPIUserResult = APIUser;
 
-export interface RESTPatchAPIUserYourselfBody {
+// PATCH /users/@me
+export interface RESTPatchAPIUserBody {
   avatar?: string;
   displayName?: string;
   email?: string;
@@ -14,12 +14,21 @@ export interface RESTPatchAPIUserYourselfBody {
   username?: string;
 }
 
-// https://docs.foxogram.su/delete
+// DELETE /users/@me
 export type RESTDeleteAPIUserResult = APIOk;
 
 export interface RESTDeleteAPIUserBody {
   password: string;
 }
 
-// https://docs.foxogram.su/confirm-delete
+// POST /users/@me/delete/confirm
 export type RESTPostAPIUserDeleteConfirmResult = APIOk;
+
+// POST /users/@me/mfa
+export type RESTPostAPIUserSetupMFAResult = APIMFAKey
+
+// DELETE /users/@me/mfa
+export type RESTDeleteAPIUserDeleteMFAResult = APIOk
+
+// POST /users/@me/mfa/setup/validate
+export type RESTPostAPIUserValidateMFAResult = APIOk

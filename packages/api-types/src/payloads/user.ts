@@ -20,3 +20,7 @@ export enum UserFlags {
   MfaEnabled = 1 << 1,
   Disabled = 1 << 2,
 }
+
+export interface APIMFAKey {
+  key: string;
+}

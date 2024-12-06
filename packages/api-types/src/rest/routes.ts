@@ -5,8 +5,8 @@ export type UserKey = Snowflake | UserMe | string;
 export type MemberKey = Snowflake | UserMe;
 
 export const Routes = {
-  authSignUp() {
-    return "/auth/signup" as const;
+  authRegister() {
+    return "/auth/register" as const;
   },
 
   authLogin() {
@@ -27,6 +27,14 @@ export const Routes = {
 
   user(userKey: UserKey = "@me") {
     return `/users/${userKey}` as const;
+  },
+
+  userMfa() {
+    return "/users/@me/mfa" as const;
+  },
+
+  userValidateMfa() {
+    return "/users/@me/mfa/setup/validate" as const;
   },
 
   channels() {

@@ -1,15 +1,15 @@
 import type { APIOk, APIToken } from "../payloads";
 
-// https://docs.foxogram.su/sign-up
-export type RESTPostAPIAuthSignUpResult = APIToken;
+// POST /auth/register
+export type RESTPostAPIAuthRegisterResult = APIToken;
 
-export interface RESTPostAPIAuthSignUpBody {
+export interface RESTPostAPIAuthRegisterBody {
   username: string;
   email: string;
   password: string;
 }
 
-// https://docs.foxogram.su/login
+// POST /auth/login
 export type RESTPostAPIAuthLoginResult = APIToken;
 
 export interface RESTPostAPIAuthLoginBody {
@@ -17,8 +17,8 @@ export interface RESTPostAPIAuthLoginBody {
   password: string;
 }
 
-// https://docs.foxogram.su/verify-email
+// POST /auth/email/verify/{code}
 export type RESTPostAPIAuthVerifyEmailResult = APIOk;
 
-// https://docs.foxogram.su/resend-email
+// POST /auth/email/resend
 export type RESTPostAPIAuthResendEmailResult = APIOk;

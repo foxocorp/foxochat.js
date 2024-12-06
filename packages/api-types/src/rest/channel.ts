@@ -1,6 +1,6 @@
 import type { APIChannel, APIMember, APIOk, ChannelType } from "../payloads";
 
-// https://docs.foxogram.su/create-channel
+// POST /channels/
 export type RESTPostAPIChannelResult = APIChannel;
 
 export interface RESTPostAPIChannelBody {
@@ -8,27 +8,27 @@ export interface RESTPostAPIChannelBody {
   type: ChannelType;
 }
 
-// https://docs.foxogram.su/get-channel-by-id
+// GET /channels/{id}
 export type RESTGetAPIChannelResult = APIChannel;
 
-// https://docs.foxogram.su/get-channel-memebers
+// GET /channels/{id}/members
 export type RESTGetAPIChannelMembersResult = APIMember[];
 
-// https://docs.foxogram.su/get-member-by-id
+// GET /channels/{id}/members/{memberId}
 export type RESTGetAPIChannelMemberResult = APIMember;
 
-// https://docs.foxogram.su/join-channel
+// PUT /channels/{id}/members/@me
 export type RESTPutAPIChannelJoinResult = APIMember;
 
-// https://docs.foxogram.su/leave-channel
+// DELETE /channels/{id}/members/@me
 export type RESTDeleteAPIChannelLeaveResult = APIOk;
 
-// https://docs.foxogram.su/edit-channel
+// PATCH /channels/{id}
 export type RESTPatchAPIChannelResult = APIChannel;
 
 export interface RESTPatchAPIChannelBody {
   name?: string;
 }
 
-// https://docs.foxogram.su/delete-channel
+// DELETE /channels/{id}
 export type RESTDeleteAPIChannelResult = APIOk;

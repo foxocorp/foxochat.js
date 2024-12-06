@@ -1,12 +1,12 @@
 import type { APIMessage, APIOk } from "../payloads";
 
-// https://docs.foxogram.su/list-messages
+// GET /messages/channel/{channelId}
 export type RESTGetAPIMessageListResult = APIMessage[];
 
-// https://docs.foxogram.su/get-message-by-id
+// GET /messages/channel/{channelId}/{id}
 export type RESTGetAPIMessageResult = APIMessage;
 
-// https://docs.foxogram.su/create-message
+// POST /messages/channel/{channelId}
 export type RESTPostAPIMessageResult = APIMessage;
 
 export interface RESTPostAPIMessageBody {
@@ -14,10 +14,10 @@ export interface RESTPostAPIMessageBody {
   attachments: string[];
 }
 
-// https://docs.foxogram.su/delete-message
+// DELETE /messages/channel/{channelId}/{id}
 export type RESTDeleteAPIMessageResult = APIOk;
 
-// https://docs.foxogram.su/edit-message
+// PATCH /messages/channel/{channelId}/{id}
 export type RESTPatchAPIMessageResult = APIMessage;
 
 export interface RESTPatchAPIMessageBody {
