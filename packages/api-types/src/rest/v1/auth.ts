@@ -22,17 +22,3 @@ export type RESTPostAPIAuthVerifyEmailResult = APIOk;
 
 // https://docs.foxogram.su/resend-email
 export type RESTPostAPIAuthResendEmailResult = APIOk;
-
-// https://docs.foxogram.su/delete
-export type RESTPostAPIAuthDeleteResult = APIOk;
-
-export interface RESTPostAPIAuthDeleteBody {
-  password: string;
-}
-
-// https://docs.foxogram.su/confirm-delete
-export type RESTPostAPIAuthDeleteConfirmResult = APIOk;
-
-export interface RESTPostAPIAuthDeleteBody {
-  code: string;
-}

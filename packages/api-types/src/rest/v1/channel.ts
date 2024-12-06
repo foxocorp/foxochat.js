@@ -1,9 +1,9 @@
 import type { APIChannel, APIMember, APIOk, ChannelType } from "../../v1";
 
 // https://docs.foxogram.su/create-channel
-export type RESTPostAPIChannelCreateResult = APIChannel;
+export type RESTPostAPIChannelResult = APIChannel;
 
-export interface RESTPostAPIChannelCreateBody {
+export interface RESTPostAPIChannelBody {
   name: string;
   type: ChannelType;
 }
@@ -18,10 +18,10 @@ export type RESTGetAPIChannelMembersResult = APIMember[];
 export type RESTGetAPIChannelMemberResult = APIMember;
 
 // https://docs.foxogram.su/join-channel
-export type RESTPostAPIChannelJoinResult = APIMember;
+export type RESTPutAPIChannelJoinResult = APIMember;
 
 // https://docs.foxogram.su/leave-channel
-export type RESTPostAPIChannelLeaveResult = APIOk;
+export type RESTDeleteAPIChannelLeaveResult = APIOk;
 
 // https://docs.foxogram.su/edit-channel
 export type RESTPatchAPIChannelResult = APIChannel;
