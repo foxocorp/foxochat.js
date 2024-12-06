@@ -1,6 +1,4 @@
-import { Snowflake } from "../../common";
-
-export const APIVersion = 1;
+import type { Snowflake } from "../common";
 
 export type UserMe = "@me";
 export type UserKey = Snowflake | UserMe | string;
@@ -57,5 +55,5 @@ export const Routes = {
 };
 
 export const RouteBases = {
-  api: `https://api.foxogram.su/v${APIVersion}`,
+  api: `https://api.foxogram.su`,
 } as const;

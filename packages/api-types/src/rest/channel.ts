@@ -1,4 +1,4 @@
-import type { APIChannel, APIMember, APIOk, ChannelType } from "../../v1";
+import type { APIChannel, APIMember, APIOk, ChannelType } from "../payloads";
 
 // https://docs.foxogram.su/create-channel
 export type RESTPostAPIChannelResult = APIChannel;

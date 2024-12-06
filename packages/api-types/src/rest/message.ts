@@ -1,4 +1,4 @@
-import type { APIMessage, APIOk } from "../../v1";
+import type { APIMessage, APIOk } from "../payloads";
 
 // https://docs.foxogram.su/list-messages
 export type RESTGetAPIMessageListResult = APIMessage[];

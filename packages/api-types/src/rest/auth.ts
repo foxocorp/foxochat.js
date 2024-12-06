@@ -1,4 +1,4 @@
-import type { APIOk, APIToken } from "../../v1";
+import type { APIOk, APIToken } from "../payloads";
 
 // https://docs.foxogram.su/sign-up
 export type RESTPostAPIAuthSignUpResult = APIToken;

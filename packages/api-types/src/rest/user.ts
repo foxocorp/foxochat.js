@@ -1,4 +1,4 @@
-import type { APIOk, APIUser } from "../../v1";
+import type { APIOk, APIUser } from "../payloads";
 
 // https://docs.foxogram.su/get-user-by-id
 export type RESTGetAPIUserResult = APIUser;
