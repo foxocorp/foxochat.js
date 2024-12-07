@@ -1,26 +1,56 @@
 import type { APIMessage, APIOk } from "../payloads";
 
-// GET /messages/channel/{channelId}
+/**
+ * The result of GET /messages/channel/{channelId}.
+ */
 export type RESTGetAPIMessageListResult = APIMessage[];
 
-// GET /messages/channel/{channelId}/{id}
+/**
+ * The result of GET /messages/channel/{channelId}/{id}.
+ */
 export type RESTGetAPIMessageResult = APIMessage;
 
-// POST /messages/channel/{channelId}
+/**
+ * The result of POST /messages/channel/{channelId}.
+ */
 export type RESTPostAPIMessageResult = APIMessage;
 
+/**
+ * The body of POST /messages/channel/{channelId}.
+ */
 export interface RESTPostAPIMessageBody {
+  /**
+   * The content of the message.
+   */
   content: string;
+
+  /**
+   * The files attached to the message.
+   */
   attachments: string[];
 }
 
-// DELETE /messages/channel/{channelId}/{id}
+/**
+ * The result of DELETE /messages/channel/{channelId}/{id}.
+ */
 export type RESTDeleteAPIMessageResult = APIOk;
 
-// PATCH /messages/channel/{channelId}/{id}
+/**
+ * The result of PATCH /messages/channel/{channelId}/{id}.
+ */
 export type RESTPatchAPIMessageResult = APIMessage;
 
+/**
+ * The body of PATCH /messages/channel/{channelId}/{id}.
+ */
 export interface RESTPatchAPIMessageBody {
+  /**
+   * The content of the message.
+   */
   content?: string;
+
+  /**
+   * The files attached to the message.
+   */
   attachments?: string[];
 }

@@ -1,34 +1,66 @@
 import type { APIChannel, APIMember, APIOk, ChannelType } from "../payloads";
 
-// POST /channels/
+/**
+ * The result of POST /channels/.
+ */
 export type RESTPostAPIChannelResult = APIChannel;
 
+/**
+ * The body of POST /channels/.
+ */
 export interface RESTPostAPIChannelBody {
+  /**
+   * The name of the channel.
+   */
   name: string;
+
+  /**
+   * The type of the channel.
+   */
   type: ChannelType;
 }
 
-// GET /channels/{id}
+/**
+ * The result of GET /channels/{id}.
+ */
 export type RESTGetAPIChannelResult = APIChannel;
 
-// GET /channels/{id}/members
+/**
+ * The result of GET /channels/{id}/members.
+ */
 export type RESTGetAPIChannelMembersResult = APIMember[];
 
-// GET /channels/{id}/members/{memberId}
+/**
+ * The result of GET /channels/{id}/members/{memberId}.
+ */
 export type RESTGetAPIChannelMemberResult = APIMember;
 
-// PUT /channels/{id}/members/@me
+/**
+ * The result of PUT /channels/{id}/members/@me.
+ */
 export type RESTPutAPIChannelJoinResult = APIMember;
 
-// DELETE /channels/{id}/members/@me
+/**
+ * The result of DELETE /channels/{id}/members/@me.
+ */
 export type RESTDeleteAPIChannelLeaveResult = APIOk;
 
-// PATCH /channels/{id}
+/**
+ * The result of PATCH /channels/{id}.
+ */
 export type RESTPatchAPIChannelResult = APIChannel;
 
+/**
+ * The body of PATCH /channels/{id}.
+ */
 export interface RESTPatchAPIChannelBody {
+  /**
+   * The name of the channel.
+   */
   name?: string;
 }
 
-// DELETE /channels/{id}
+/**
+ * The result of DELETE /channels/{id}.
+ */
 export type RESTDeleteAPIChannelResult = APIOk;

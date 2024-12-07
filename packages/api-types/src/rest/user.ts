@@ -1,34 +1,76 @@
 import type { APIMFAKey, APIOk, APIUser } from "../payloads";
 
-// GET /users/{userKey}
+/**
+ * The result of GET /users/{userKey}.
+ */
 export type RESTGetAPIUserResult = APIUser;
 
+/**
+ * The result of PATCH /users/@me.
+ */
 export type RESTPatchAPIUserResult = APIUser;
 
-// PATCH /users/@me
+/**
+ * The body of PATCH /users/@me.
+ */
 export interface RESTPatchAPIUserBody {
+  /**
+   * The avatar of the user.
+   */
   avatar?: string;
+
+  /**
+   * The display name of the user.
+   */
   displayName?: string;
-  email?: string;
-  password?: string;
+
+  /**
+   * The username of the user.
+   */
   username?: string;
+
+  /**
+   * The email of the user.
+   */
+  email?: string;
+
+  /**
+   * The password of the user.
+   */
+  password?: string;
 }
 
-// DELETE /users/@me
+/**
+ * The result of DELETE /users/@me.
+ */
 export type RESTDeleteAPIUserResult = APIOk;
 
+/**
+ * The body of DELETE /users/@me.
+ */
 export interface RESTDeleteAPIUserBody {
-  password: string;
+  /**
+   * The password of the user.
+   */
+  password?: string;
 }
 
-// POST /users/@me/delete/confirm
+/**
+ * The result of POST /users/@me/delete/confirm.
+ */
 export type RESTPostAPIUserDeleteConfirmResult = APIOk;
 
-// POST /users/@me/mfa
-export type RESTPostAPIUserSetupMFAResult = APIMFAKey
+/**
+ * The result of POST /users/@me/mfa.
+ */
+export type RESTPostAPIUserSetupMFAResult = APIMFAKey;
 
-// DELETE /users/@me/mfa
-export type RESTDeleteAPIUserDeleteMFAResult = APIOk
+/**
+ * The result of DELETE /users/@me/mfa.
+ */
+export type RESTDeleteAPIUserDeleteMFAResult = APIOk;
 
-// POST /users/@me/mfa/setup/validate
-export type RESTPostAPIUserValidateMFAResult = APIOk
+/**
+ * The result of POST /users/@me/mfa/setup/validate.
+ */
+export type RESTPostAPIUserValidateMFAResult = APIOk;
