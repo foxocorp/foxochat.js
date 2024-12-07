@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@foxogram/api-types",
+  "version": "0.1.0",
+  "description": "Foxogram API typings.",
+  "author": "FoxoCorp",
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foxocorp/foxogram.js"
+  },
+  "bugs": {
+    "url": "https://github.com/foxocorp/foxogram.js/issues"
+  },
+  "scripts": {
+    "build": "unbuild"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@tsconfig/strictest": "^2.0.5",
+    "typescript": "^5.7.2",
+    "unbuild": "^2.0.0"
+  }
+}

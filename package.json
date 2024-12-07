@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@foxogram/workspace",
+  "version": "0.0.0",
+  "description": "A powerful library for interacting with the Foxogram API",
+  "private": true,
+  "author": "FoxoCorp",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foxocorp/foxogram.js"
+  },
+  "bugs": {
+    "url": "https://github.com/foxocorp/foxogram.js/issues"
+  }
+}
