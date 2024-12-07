@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@foxogram/api-types",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Foxogram API typings.",
   "author": "FoxoCorp",
   "license": "MIT",
