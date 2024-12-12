@@ -384,6 +384,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.24.0.tgz#168ab1c7e1c318b922637fad8f339d48b01e1244"
   integrity sha512-7IAFPrjSQIJrGsK6flwg7NFmwBoSTyF3rl7If0hNUFQU4ilTsEPL6GuMuU9BfIWVVGuRnuIidkSMC+c0Otu8IA==
 
+"@foxogram/api-types@workspace:^":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@foxogram/api-types/-/api-types-0.1.0.tgz#686a11a9a10ea24411e706d5e7a45259045bc4b5"
+  integrity sha512-hhUpL4GYcng0ZHB9q3GiehJ/68IuaxlYRdWdiQHy4A6P6HWdW2K6D/6jVa6AjelTV0Ew22XCeGWXsZfLYAFPmQ==
+
 "@jridgewell/gen-mapping@^0.3.5":
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.5.tgz#dcce6aff74bdf6dad1a95802b69b04a2fcb1fb36"
