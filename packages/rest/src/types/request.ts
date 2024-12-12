@@ -5,6 +5,8 @@ export type RouteLike = `/${string}`;
 export interface RequestOptions<B = any> {
   body?: B;
   headers?: Record<string, string>;
+  useAuth?: boolean;
+  authPrefix?: string;
 }
 
 export interface InternalRequestOptions<B = any> extends RequestOptions<B> {

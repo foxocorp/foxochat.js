@@ -14,10 +14,15 @@ import { DefaultRESTOptions, RequestMethod } from "./constants";
 export class REST {
   public client: AxiosInstance;
   public options: RESTOptions;
+  private token?: string;
 
   constructor(options?: Partial<RESTOptions>) {
     this.client = axios.create();
     this.options = { ...DefaultRESTOptions, ...options } as RESTOptions;
+  }
+
+  public setToken(token: string): string {
+    return (this.token = token);
   }
 
   public async get<R = any>(
@@ -74,6 +79,14 @@ export class REST {
   public async request<B = any, R = any>(
     options: InternalRequestOptions<B>,
   ): Promise<R> {
+    const headers = new AxiosHeaders(options.headers);
+
+    if (this.token && options.useAuth !== false) {
+      headers.setAuthorization(
+        `${options.authPrefix ?? this.options.authPrefix} ${this.token}`,
+      );
+    }
+
     const response = await this.client.request<
       R,
       AxiosResponse<R>,
@@ -83,7 +96,7 @@ export class REST {
       data: options.body,
       method: options.method,
       baseURL: this.options.apiBaseURL,
-      headers: new AxiosHeaders(options.headers),
+      headers: headers,
     });
 
     return response.data;
