@@ -63,21 +63,21 @@ export enum UserFlags {
    * The user is awaiting email confirmation.
    */
 
-  AwaitingConfirmation = 1 << 0,
+  AwaitingConfirmation = 1,
   /**
    * The MFA is enabled.
    */
-  MFAEnabled = 1 << 1,
+  MFAEnabled = 2,
 
   /**
    * The user's email is verified.
    */
-  EmailVerified = 1 << 2,
+  EmailVerified = 4,
 
   /**
    * The user is disabled.
    */
-  Disabled = 1 << 3,
+  Disabled = 8,
 }
 
 export interface APIMFAKey {

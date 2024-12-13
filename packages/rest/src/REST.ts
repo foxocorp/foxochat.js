@@ -28,7 +28,7 @@ export class REST {
     return (this.token = token);
   }
 
-  public async get<R = any>(
+  public async get<R = unknown>(
     route: RouteLike,
     options?: RequestOptions<never>,
   ): Promise<R> {
@@ -39,14 +39,14 @@ export class REST {
     });
   }
 
-  public async put<B = any, R = any>(
+  public async put<B = unknown, R = unknown>(
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request({ route, method: RequestMethod.Put, ...options });
   }
 
-  public async post<B = any, R = any>(
+  public async post<B = unknown, R = unknown>(
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
@@ -57,7 +57,7 @@ export class REST {
     });
   }
 
-  public async patch<B = any, R = any>(
+  public async patch<B = unknown, R = unknown>(
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
@@ -68,7 +68,7 @@ export class REST {
     });
   }
 
-  public async delete<R = any>(
+  public async delete<R = unknown>(
     route: RouteLike,
     options?: RequestOptions<never>,
   ): Promise<R> {
@@ -79,7 +79,7 @@ export class REST {
     });
   }
 
-  public async request<B = any, R = any>(
+  public async request<B = unknown, R = unknown>(
     options: InternalRequestOptions<B>,
   ): Promise<R> {
     const headers = new AxiosHeaders(options.headers);
