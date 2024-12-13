@@ -72,35 +72,35 @@ export enum MemberPermissions {
   /**
    * Allows all permissions.
    */
-  Admin = 1 << 0,
+  Admin = 1,
 
   /**
    * Allows banning members.
    */
-  BanMembers = 1 << 1,
+  BanMembers = 2,
 
   /**
    * Allows kicking members.
    */
-  KickMembers = 1 << 2,
+  KickMembers = 4,
 
   /**
    * Allows for deletion of other users messages.
    */
-  ManageMessages = 1 << 3,
+  ManageMessages = 8,
 
   /**
    * Allows management and editing of channel.
    */
-  ManageChannel = 1 << 4,
+  ManageChannel = 16,
 
   /**
    * Allows for uploading images and files.
    */
-  AttachFiles = 1 << 5,
+  AttachFiles = 32,
 
   /**
    * Allows for sending messages.
    */
-  SendMessages = 1 << 6,
+  SendMessages = 64,
 }

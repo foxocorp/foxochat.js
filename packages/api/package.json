@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "foxogram.js",
-  "version": "0.0.0",
-  "description": "A powerful library for interacting with the Foxogram API",
+  "name": "@foxogram/api",
+  "version": "0.1.0",
+  "description": "The API client for foxogram.js",
   "author": "FoxoCorp",
   "license": "MIT",
   "main": "./dist/index.cjs",
@@ -37,7 +37,7 @@
     "node": ">=22"
   },
   "dependencies": {
-    "eventemitter3": "^5.0.1",
+    "@foxogram/api-types": "workspace:^",
     "@foxogram/rest": "workspace:^"
   },
   "devDependencies": {
