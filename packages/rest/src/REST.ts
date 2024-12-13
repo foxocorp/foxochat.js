@@ -14,9 +14,23 @@ import axios, {
 } from "axios";
 import type { APIException } from "@foxogram/api-types";
 
+/**
+ * The HTTP REST API client for foxogram.js
+ */
 export class REST {
-  public client: AxiosInstance;
-  public options: RESTOptions;
+  /**
+   * Internal client sending requests.
+   */
+  public readonly client: AxiosInstance;
+
+  /**
+   * Configuration options for this instance.
+   */
+  public readonly options: RESTOptions;
+
+  /**
+   * A token that should be used for requests.
+   */
   private token?: string;
 
   public constructor(options?: Partial<RESTOptions>) {
@@ -24,10 +38,16 @@ export class REST {
     this.options = { ...DefaultRESTOptions, ...options } as RESTOptions;
   }
 
+  /**
+   * Sets the authorization token that should be used for requests.
+   */
   public setToken(token: string): string {
     return (this.token = token);
   }
 
+  /**
+   * Sends a GET request to the API.
+   */
   public async get<R = unknown>(
     route: RouteLike,
     options?: RequestOptions<never>,
@@ -39,6 +59,9 @@ export class REST {
     });
   }
 
+  /**
+   * Sends a PUT request to the API.
+   */
   public async put<B = unknown, R = unknown>(
     route: RouteLike,
     options?: RequestOptions<B>,
@@ -46,6 +69,9 @@ export class REST {
     return this.request({ method: RequestMethod.Put, route, ...options });
   }
 
+  /**
+   * Sends a POST request to the API.
+   */
   public async post<B = unknown, R = unknown>(
     route: RouteLike,
     options?: RequestOptions<B>,
@@ -58,6 +84,9 @@ export class REST {
     });
   }
 
+  /**
+   * Sends a PATCH request to the API.
+   */
   public async patch<B = unknown, R = unknown>(
     route: RouteLike,
     options?: RequestOptions<B>,
@@ -70,6 +99,9 @@ export class REST {
     });
   }
 
+  /**
+   * Sends a DELETE request to the API.
+   */
   public async delete<B = unknown, R = unknown>(
     route: RouteLike,
     options?: RequestOptions<B>,
@@ -82,6 +114,9 @@ export class REST {
     });
   }
 
+  /**
+   * Sends a request to the API.
+   */
   public async request<B = unknown, R = unknown>(
     options: InternalRequestOptions<B>,
   ): Promise<R> {

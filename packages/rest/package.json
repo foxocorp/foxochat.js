@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@foxogram/rest",
   "version": "0.0.0",
-  "description": "The REST API for foxogram.js",
+  "description": "The HTTP REST API client for foxogram.js",
   "author": "FoxoCorp",
   "license": "MIT",
   "main": "./dist/index.cjs",
