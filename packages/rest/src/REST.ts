@@ -2,6 +2,7 @@ import axios, {
   type AxiosInstance,
   type AxiosResponse,
   AxiosHeaders,
+  HttpStatusCode,
 } from "axios";
 import type {
   InternalRequestOptions,
@@ -10,13 +11,15 @@ import type {
   RouteLike,
 } from "./types";
 import { DefaultRESTOptions, RequestMethod } from "./constants";
+import { APIError, HTTPError } from "./errors";
+import type { APIException } from "@foxogram/api-types";
 
 export class REST {
   public client: AxiosInstance;
   public options: RESTOptions;
   private token?: string;
 
-  constructor(options?: Partial<RESTOptions>) {
+  public constructor(options?: Partial<RESTOptions>) {
     this.client = axios.create();
     this.options = { ...DefaultRESTOptions, ...options } as RESTOptions;
   }
@@ -95,10 +98,25 @@ export class REST {
       url: options.route,
       data: options.body,
       method: options.method,
-      baseURL: this.options.apiBaseURL,
+      baseURL: this.options.baseURL,
       headers: headers,
+      validateStatus: () => true,
     });
 
-    return response.data;
+    const data = response.data;
+    const status = response.status;
+
+    if (status >= HttpStatusCode.InternalServerError) {
+      throw new HTTPError(status, options.method, options.route);
+    } else if (status >= HttpStatusCode.BadRequest) {
+      throw new APIError(
+        status,
+        options.method,
+        options.route,
+        data as APIException,
+      );
+    }
+
+    return data;
   }
 }

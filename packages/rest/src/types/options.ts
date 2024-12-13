@@ -1,4 +1,4 @@
 export interface RESTOptions {
-  apiBaseURL: string;
+  baseURL: string;
   authPrefix: string;
 }
