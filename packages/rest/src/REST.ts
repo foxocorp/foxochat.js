@@ -1,17 +1,17 @@
-import axios, {
-  type AxiosInstance,
-  type AxiosResponse,
-  AxiosHeaders,
-  HttpStatusCode,
-} from "axios";
+import { APIError, HTTPError } from "./errors";
+import { DefaultRESTOptions, RequestMethod } from "./constants";
 import type {
   InternalRequestOptions,
-  RequestOptions,
   RESTOptions,
+  RequestOptions,
   RouteLike,
 } from "./types";
-import { DefaultRESTOptions, RequestMethod } from "./constants";
-import { APIError, HTTPError } from "./errors";
+import axios, {
+  AxiosHeaders,
+  type AxiosInstance,
+  type AxiosResponse,
+  HttpStatusCode,
+} from "axios";
 import type { APIException } from "@foxogram/api-types";
 
 export class REST {
@@ -33,8 +33,8 @@ export class REST {
     options?: RequestOptions<never>,
   ): Promise<R> {
     return this.request<never, R>({
-      route,
       method: RequestMethod.Get,
+      route,
       ...options,
     });
   }
@@ -43,7 +43,7 @@ export class REST {
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
-    return this.request({ route, method: RequestMethod.Put, ...options });
+    return this.request({ method: RequestMethod.Put, route, ...options });
   }
 
   public async post<B = unknown, R = unknown>(
@@ -51,8 +51,9 @@ export class REST {
     options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
-      route,
       method: RequestMethod.Post,
+      route,
+
       ...options,
     });
   }
@@ -62,19 +63,21 @@ export class REST {
     options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
-      route,
       method: RequestMethod.Patch,
+      route,
+
       ...options,
     });
   }
 
-  public async delete<R = unknown>(
+  public async delete<B = unknown, R = unknown>(
     route: RouteLike,
-    options?: RequestOptions<never>,
+    options?: RequestOptions<B>,
   ): Promise<R> {
-    return this.request<never, R>({
-      route,
+    return this.request<B, R>({
       method: RequestMethod.Delete,
+      route,
+
       ...options,
     });
   }
@@ -95,11 +98,11 @@ export class REST {
       AxiosResponse<R>,
       B | undefined
     >({
-      url: options.route,
-      data: options.body,
-      method: options.method,
       baseURL: this.options.baseURL,
+      data: options.body,
       headers: headers,
+      method: options.method,
+      url: options.route,
       validateStatus: () => true,
     });
 

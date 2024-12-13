@@ -1,7 +1,7 @@
-import { RouteBases } from "@foxogram/api-types";
 import type { RESTOptions } from "../types";
+import { RouteBases } from "@foxogram/api-types";
 
 export const DefaultRESTOptions = {
-  baseURL: RouteBases.api,
   authPrefix: "Bearer",
+  baseURL: RouteBases.api,
 } as const satisfies RESTOptions;
