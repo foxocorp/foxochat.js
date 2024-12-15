@@ -1,4 +1,4 @@
-import type { APIMFAKey, APIOk, APIUser } from "../payloads";
+import type { APIOk, APIUser } from "../payloads";
 
 /**
  * The result of GET /users/{userKey}.
@@ -52,25 +52,20 @@ export interface RESTDeleteAPIUserBody {
   /**
    * The password of the user.
    */
-  password?: string;
+  password: string;
 }
 
 /**
- * The result of POST /users/@me/delete/confirm.
+ * The result of POST /users/@me/confirm.
  */
 export type RESTPostAPIUserDeleteConfirmResult = APIOk;
 
 /**
- * The result of POST /users/@me/mfa.
+ * The body of POST /users/@me/confirm.
  */
-export type RESTPostAPIUserSetupMFAResult = APIMFAKey;
-
-/**
- * The result of DELETE /users/@me/mfa.
- */
-export type RESTDeleteAPIUserDeleteMFAResult = APIOk;
-
-/**
- * The result of POST /users/@me/mfa/setup/validate.
- */
-export type RESTPostAPIUserValidateMFAResult = APIOk;
+export interface RESTPostAPIUserDeleteConfirmBody {
+  /**
+   * The deletion confirm code.
+   */
+  code: string;
+}

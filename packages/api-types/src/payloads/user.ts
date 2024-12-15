@@ -1,14 +1,7 @@
-import type { Snowflake } from "../common";
-
 /**
  * API User DTO.
  */
 export interface APIUser {
-  /**
-   * The id of the user.
-   */
-  id: Snowflake;
-
   /**
    * The avatar of the user.
    */
@@ -38,6 +31,11 @@ export interface APIUser {
    * The type of the user.
    */
   type: UserType;
+
+  /**
+   * The time when user created at.
+   */
+  createdAt: number;
 }
 
 /**
@@ -78,8 +76,4 @@ export enum UserFlags {
    * The user is disabled.
    */
   Disabled = 8,
-}
-
-export interface APIMFAKey {
-  key: string;
 }

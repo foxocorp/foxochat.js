@@ -1,23 +1,21 @@
-import type { Snowflake } from "../common";
-
 /**
  * The key of current user.
  */
-export type UserMe = "@me";
+export const UserMe = "@me";
 
 /**
  * The key of the user.
  *
- * Can be username, user id or \@me.
+ * Can be username or \@me.
  */
-export type UserKey = Snowflake | UserMe | string;
+export type UserKey = typeof UserMe | string;
 
 /**
  * The key of the member.
  *
- * Can be user id or \@me.
+ * Can be username or \@me.
  */
-export type MemberKey = Snowflake | UserMe;
+export type MemberKey = typeof UserMe | string;
 
 /**
  * The routes of API.
@@ -49,20 +47,36 @@ export const APIRoutes = {
 
   /**
    * Route for:
-   * - POST /auth/email/verify/{code}
+   * - POST /auth/reset-password
    */
-  authVerifyEmail(code: string) {
-    return `/auth/email/verify/${code}` as const;
+  authResetPassword() {
+    return `/auth/reset-password` as const;
   },
 
   /**
    * Route for:
-   - GET    /channels/{id}
-   - PATCH  /channels/{id}
-   - DELETE /channels/{id}
+   * - POST /auth/reset-password/confirm
    */
-  channel(channelId: Snowflake) {
-    return `/channels/${channelId}` as const;
+  authResetPasswordConfirm() {
+    return `/auth/reset-password/confirm` as const;
+  },
+
+  /**
+   * Route for:
+   * - POST /auth/email/verify
+   */
+  authVerifyEmail() {
+    return `/auth/email/verify` as const;
+  },
+
+  /**
+   * Route for:
+   - GET    /channels/{name}
+   - PATCH  /channels/{name}
+   - DELETE /channels/{name}
+   */
+  channel(name: string) {
+    return `/channels/${name}` as const;
   },
 
   /**
@@ -75,73 +89,56 @@ export const APIRoutes = {
 
   /**
    * Route for:
-   * - GET    /channels/{id}/members/{memberId}
-   * - PUT    /channels/{id}/members/@me
-   * - DELETE /channels/{id}/members/@me
+   * - GET    /channels/{name}/members/{memberUsername}
+   * - PUT    /channels/{name}/members/@me
+   * - DELETE /channels/{name}/members/@me
    */
-  member(channelId: Snowflake, memberKey: MemberKey) {
-    return `/channels/${channelId}/members/${memberKey}` as const;
+  member(name: string, memberKey: MemberKey) {
+    return `/channels/${name}/members/${memberKey}` as const;
   },
 
   /**
    * Route for:
-   * - GET /channels/{id}/members
+   * - GET /channels/{name}/members
    */
-  members(channelId: Snowflake) {
-    return `/channels/${channelId}/members` as const;
+  members(name: string) {
+    return `/channels/${name}/members` as const;
   },
 
   /**
    * Route for:
-   * - GET    /messages/channel/{channelId}/{id}
-   * - PATCH  /messages/channel/{channelId}/{id}
-   * - DELETE /messages/channel/{channelId}/{id}
+   * - GET    /messages/channel/{name}/{id}
+   * - PATCH  /messages/channel/{name}/{id}
+   * - DELETE /messages/channel/{name}/{id}
    */
-  message(channelId: Snowflake, messageId: Snowflake) {
-    return `/messages/channel/${channelId}/${messageId}` as const;
+  message(name: string, messageId: number) {
+    return `/messages/channel/${name}/${messageId}` as const;
   },
 
   /**
    * Route for:
-   * - GET  /messages/channel/{channelId}
-   * - POST /messages/channel/{channelId}
+   * - GET  /messages/channel/{name}
+   * - POST /messages/channel/{name}
    */
-  messages(channelId: Snowflake) {
-    return `/messages/channel/${channelId}` as const;
+  messages(name: string) {
+    return `/messages/channel/${name}` as const;
   },
 
   /**
    * Route for:
-   * - GET    /users/{userKey}
+   * - GET    /users/{username}
    * - PATCH  /users/@me
    * - DELETE /users/@me
    */
-  user(userKey: UserKey = "@me") {
+  user(userKey: UserKey = UserMe) {
     return `/users/${userKey}` as const;
   },
 
   /**
    * Route for:
-   * - POST /users/@me/delete/confirm
+   * - POST /users/@me/confirm
    */
   userConfirmDelete() {
-    return `/users/@me/delete/confirm` as const;
-  },
-
-  /**
-   * Route for:
-   * - POST   /users/@me/mfa
-   * - DELETE /users/@me/mfa
-   */
-  userMfa() {
-    return "/users/@me/mfa" as const;
-  },
-
-  /**
-   * Route for:
-   * - POST /users/@me/mfa/setup/validate
-   */
-  userValidateMfa() {
-    return "/users/@me/mfa/setup/validate" as const;
+    return `/users/@me/confirm` as const;
   },
 };

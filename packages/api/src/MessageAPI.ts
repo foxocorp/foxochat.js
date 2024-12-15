@@ -6,7 +6,6 @@ import {
   type RESTPatchAPIMessageBody,
   type RESTPatchAPIMessageResult,
   type RESTPostAPIMessageBody,
-  type Snowflake,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";
 
@@ -19,47 +18,51 @@ export class MessageAPI {
   /**
    * Fetches the messages in a channel.
    */
-  public async list(channelId: Snowflake) {
+  public async list(channelName: string) {
     return await this.rest.get<RESTGetAPIMessageListResult>(
-      APIRoutes.messages(channelId),
+      APIRoutes.messages(channelName),
     );
   }
 
   /**
    * Sends a message in a channel.
    */
-  public async create(channelId: Snowflake, body: RESTPostAPIMessageBody) {
+  public async create(channelName: string, body: RESTPostAPIMessageBody) {
     return await this.rest.post<
       RESTPostAPIMessageBody,
       RESTGetAPIMessageListResult
-    >(APIRoutes.messages(channelId), { body });
+    >(APIRoutes.messages(channelName), { body });
   }
 
   /**
    * Fetches a message.
    */
-  public async get(channelId: Snowflake, messageId: Snowflake) {
+  public async get(channelName: string, messageId: number) {
     return await this.rest.get<RESTGetAPIMessageResult>(
-      APIRoutes.message(channelId, messageId),
+      APIRoutes.message(channelName, messageId),
     );
   }
 
   /**
    * Edits a message.
    */
-  public async edit(channelId: Snowflake, messageId: Snowflake) {
+  public async edit(
+    channelName: string,
+    messageId: number,
+    body: RESTPatchAPIMessageBody,
+  ) {
     return await this.rest.patch<
       RESTPatchAPIMessageBody,
       RESTPatchAPIMessageResult
-    >(APIRoutes.message(channelId, messageId));
+    >(APIRoutes.message(channelName, messageId), { body });
   }
 
   /**
    * Deletes a message.
    */
-  public async delete(channelId: Snowflake, messageId: Snowflake) {
+  public async delete(channelName: string, messageId: number) {
     return await this.rest.delete<never, RESTDeleteAPIMessageResult>(
-      APIRoutes.message(channelId, messageId),
+      APIRoutes.message(channelName, messageId),
     );
   }
 }

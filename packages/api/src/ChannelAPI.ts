@@ -10,7 +10,7 @@ import {
   type RESTPostAPIChannelBody,
   type RESTPostAPIChannelResult,
   type RESTPutAPIChannelJoinResult,
-  type Snowflake,
+  UserMe,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";
 
@@ -23,74 +23,74 @@ export class ChannelAPI {
   /**
    * Joins the current user to the channel.
    */
-  public async join(channelId: Snowflake) {
+  public async join(channelName: string) {
     return await this.rest.put<never, RESTPutAPIChannelJoinResult>(
-      APIRoutes.member(channelId, "@me"),
+      APIRoutes.member(channelName, UserMe),
     );
   }
 
   /**
    * Leaves the current user to the channel.
    */
-  public async leave(channelId: Snowflake) {
+  public async leave(channelName: string) {
     return await this.rest.delete<never, RESTDeleteAPIChannelLeaveResult>(
-      APIRoutes.member(channelId, "@me"),
+      APIRoutes.member(channelName, UserMe),
     );
   }
 
   /**
    * Creates a new channel.
    */
-  public async create(channelId: Snowflake, body: RESTPostAPIChannelBody) {
+  public async create(channelName: string, body: RESTPostAPIChannelBody) {
     return await this.rest.post<
       RESTPostAPIChannelBody,
       RESTPostAPIChannelResult
-    >(APIRoutes.channel(channelId), { body });
+    >(APIRoutes.channel(channelName), { body });
   }
 
   /**
    * Fetches a channel.
    */
-  public async get(channelId: Snowflake) {
+  public async get(channelName: string) {
     return await this.rest.get<RESTGetAPIChannelResult>(
-      APIRoutes.channel(channelId),
+      APIRoutes.channel(channelName),
     );
   }
 
   /**
    * Deletes the channel.
    */
-  public async delete(channelId: Snowflake) {
+  public async delete(channelName: string) {
     return await this.rest.delete<never, RESTDeleteAPIChannelResult>(
-      APIRoutes.channel(channelId),
+      APIRoutes.channel(channelName),
     );
   }
 
   /**
    * Edits the channel.
    */
-  public async edit(channelId: Snowflake, body: RESTPatchAPIChannelBody) {
+  public async edit(channelName: string, body: RESTPatchAPIChannelBody) {
     return await this.rest.patch<
       RESTPatchAPIChannelBody,
       RESTPatchAPIChannelResult
-    >(APIRoutes.channel(channelId), { body });
+    >(APIRoutes.channel(channelName), { body });
   }
 
   /**
    * Gets a member from the channel.
    */
-  public async member(channelId: Snowflake, memberKey: MemberKey) {
+  public async member(channelName: string, memberKey: MemberKey) {
     return await this.rest.get<RESTGetAPIChannelMembersResult>(
-      APIRoutes.member(channelId, memberKey),
+      APIRoutes.member(channelName, memberKey),
     );
   }
 
   /**
    * Lists members in the channel.
    */
-  public async members(channelId: Snowflake) {
+  public async members(channelName: string) {
     return await this.rest.get<RESTGetAPIChannelMembersResult>(
-      APIRoutes.members(channelId),
+      APIRoutes.members(channelName),
     );
   }
 }

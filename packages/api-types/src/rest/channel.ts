@@ -10,6 +10,11 @@ export type RESTPostAPIChannelResult = APIChannel;
  */
 export interface RESTPostAPIChannelBody {
   /**
+   * The display name of the channel.
+   */
+  displayName: string;
+
+  /**
    * The name of the channel.
    */
   name: string;
@@ -21,37 +26,37 @@ export interface RESTPostAPIChannelBody {
 }
 
 /**
- * The result of GET /channels/{id}.
+ * The result of GET /channels/{name}.
  */
 export type RESTGetAPIChannelResult = APIChannel;
 
 /**
- * The result of GET /channels/{id}/members.
+ * The result of GET /channels/{name}/members.
  */
 export type RESTGetAPIChannelMembersResult = APIMember[];
 
 /**
- * The result of GET /channels/{id}/members/{memberId}.
+ * The result of GET /channels/{name}/members/{memberId}.
  */
 export type RESTGetAPIChannelMemberResult = APIMember;
 
 /**
- * The result of PUT /channels/{id}/members/@me.
+ * The result of PUT /channels/{name}/members/@me.
  */
 export type RESTPutAPIChannelJoinResult = APIMember;
 
 /**
- * The result of DELETE /channels/{id}/members/@me.
+ * The result of DELETE /channels/{name}/members/@me.
  */
 export type RESTDeleteAPIChannelLeaveResult = APIOk;
 
 /**
- * The result of PATCH /channels/{id}.
+ * The result of PATCH /channels/{name}.
  */
 export type RESTPatchAPIChannelResult = APIChannel;
 
 /**
- * The body of PATCH /channels/{id}.
+ * The body of PATCH /channels/{name}.
  */
 export interface RESTPatchAPIChannelBody {
   /**
@@ -61,6 +66,6 @@ export interface RESTPatchAPIChannelBody {
 }
 
 /**
- * The result of DELETE /channels/{id}.
+ * The result of DELETE /channels/{name}.
  */
 export type RESTDeleteAPIChannelResult = APIOk;

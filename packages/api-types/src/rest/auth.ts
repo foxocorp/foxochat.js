@@ -46,11 +46,61 @@ export interface RESTPostAPIAuthLoginBody {
 }
 
 /**
- * The result of POST /auth/email/verify/{code}.
+ * The result of POST /auth/email/verify.
  */
 export type RESTPostAPIAuthVerifyEmailResult = APIOk;
+
+/**
+ * The body of POST /auth/email/verify.
+ */
+export interface RESTPostAPIAuthVerifyEmailBody {
+  /**
+   * The email verification code.
+   */
+  code: string;
+}
 
 /**
  * The result of POST /auth/email/resend.
  */
 export type RESTPostAPIAuthResendEmailResult = APIOk;
+
+/**
+ * The result of POST /auth/reset-password.
+ */
+export type RESTPostAPIAuthResetPasswordResult = APIOk;
+
+/**
+ * The body of POST /auth/reset-password.
+ */
+export interface RESTPostAPIAuthResetPasswordBody {
+  /**
+   * The user's email.
+   */
+  email: string;
+}
+
+/**
+ * The result of POST /auth/reset-password.
+ */
+export type RESTPostAPIAuthResetPasswordConfirmResult = APIOk;
+
+/**
+ * The body of POST /auth/reset-password.
+ */
+export interface RESTPostAPIAuthResetPasswordConfirmBody {
+  /**
+   * The user's email.
+   */
+  email: string;
+
+  /**
+   * The password reset confirmation code.
+   */
+  code: string;
+
+  /**
+   * The new user's password.
+   */
+  newPassword: string;
+}
