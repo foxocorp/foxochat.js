@@ -6,6 +6,8 @@ settings:
 
 importers:
 
+  .: {}
+
   packages/api:
     dependencies:
       '@foxogram/api-types':
