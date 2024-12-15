@@ -1,22 +1,22 @@
 import type { APIMessage, APIOk } from "../payloads";
 
 /**
- * The result of GET /messages/channel/{channelId}.
+ * The result of GET /messages/channel/{name}.
  */
 export type RESTGetAPIMessageListResult = APIMessage[];
 
 /**
- * The result of GET /messages/channel/{channelId}/{id}.
+ * The result of GET /messages/channel/{name}/{id}.
  */
 export type RESTGetAPIMessageResult = APIMessage;
 
 /**
- * The result of POST /messages/channel/{channelId}.
+ * The result of POST /messages/channel/{name}.
  */
 export type RESTPostAPIMessageResult = APIMessage;
 
 /**
- * The body of POST /messages/channel/{channelId}.
+ * The body of POST /messages/channel/{name}.
  */
 export interface RESTPostAPIMessageBody {
   /**
@@ -31,17 +31,17 @@ export interface RESTPostAPIMessageBody {
 }
 
 /**
- * The result of DELETE /messages/channel/{channelId}/{id}.
+ * The result of DELETE /messages/channel/{name}/{id}.
  */
 export type RESTDeleteAPIMessageResult = APIOk;
 
 /**
- * The result of PATCH /messages/channel/{channelId}/{id}.
+ * The result of PATCH /messages/channel/{name}/{id}.
  */
 export type RESTPatchAPIMessageResult = APIMessage;
 
 /**
- * The body of PATCH /messages/channel/{channelId}/{id}.
+ * The body of PATCH /messages/channel/{name}/{id}.
  */
 export interface RESTPatchAPIMessageBody {
   /**

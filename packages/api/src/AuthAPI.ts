@@ -5,6 +5,11 @@ import {
   type RESTPostAPIAuthRegisterBody,
   type RESTPostAPIAuthRegisterResult,
   type RESTPostAPIAuthResendEmailResult,
+  type RESTPostAPIAuthResetPasswordBody,
+  type RESTPostAPIAuthResetPasswordConfirmBody,
+  type RESTPostAPIAuthResetPasswordConfirmResult,
+  type RESTPostAPIAuthResetPasswordResult,
+  type RESTPostAPIAuthVerifyEmailBody,
   type RESTPostAPIAuthVerifyEmailResult,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";
@@ -38,10 +43,11 @@ export class AuthAPI {
   /**
    * Confirms the user's email.
    */
-  public async verifyEmail(code: string) {
-    return this.rest.post<never, RESTPostAPIAuthVerifyEmailResult>(
-      APIRoutes.authVerifyEmail(code),
-    );
+  public async verifyEmail(body: RESTPostAPIAuthVerifyEmailBody) {
+    return this.rest.post<
+      RESTPostAPIAuthVerifyEmailBody,
+      RESTPostAPIAuthVerifyEmailResult
+    >(APIRoutes.authVerifyEmail(), { body });
   }
 
   /**
@@ -51,5 +57,27 @@ export class AuthAPI {
     return this.rest.post<never, RESTPostAPIAuthResendEmailResult>(
       APIRoutes.authResendEmail(),
     );
+  }
+
+  /**
+   * Resets user's password.
+   */
+  public async resetPassword(body: RESTPostAPIAuthResetPasswordBody) {
+    return this.rest.post<
+      RESTPostAPIAuthResetPasswordBody,
+      RESTPostAPIAuthResetPasswordResult
+    >(APIRoutes.authResetPassword(), { body });
+  }
+
+  /**
+   * Confirms resetting user password.
+   */
+  public async resetPasswordConfirm(
+    body: RESTPostAPIAuthResetPasswordConfirmBody,
+  ) {
+    return this.rest.post<
+      RESTPostAPIAuthResetPasswordConfirmBody,
+      RESTPostAPIAuthResetPasswordConfirmResult
+    >(APIRoutes.authResetPasswordConfirm(), { body });
   }
 }

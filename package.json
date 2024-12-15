@@ -6,9 +6,6 @@
   "private": true,
   "author": "FoxoCorp",
   "license": "MIT",
-  "workspaces": [
-    "packages/*"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/foxocorp/foxogram.js"

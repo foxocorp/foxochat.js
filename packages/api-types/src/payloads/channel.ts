@@ -1,18 +1,21 @@
-import type { Snowflake } from "../common";
-
 /**
  * API Channel DTO.
  */
 export interface APIChannel {
   /**
-   * The id of the channel.
-   */
-  id: Snowflake;
-
-  /**
    * The name of the channel.
    */
   name: string;
+
+  /**
+   * The display name of the channel.
+   */
+  displayName: string;
+
+  /**
+   * The icon of the channel.
+   */
+  icon: string;
 
   /**
    * The type of the channel.
@@ -20,9 +23,14 @@ export interface APIChannel {
   type: ChannelType;
 
   /**
-   * The id of the owner of the channel.
+   * The name of the owner of the channel.
    */
-  ownerId: Snowflake;
+  owner: string;
+
+  /**
+   * The time when channel created at.
+   */
+  createdAt: number;
 }
 
 /**
@@ -50,19 +58,24 @@ export enum ChannelType {
  */
 export interface APIMember {
   /**
-   * The user id of the member.
+   * The username of the member.
    */
-  userId: Snowflake;
+  username: string;
 
   /**
-   * The channel id of the member.
+   * The channel name of the member.
    */
-  channelId: Snowflake;
+  channel: string;
 
   /**
    * The permissions of the member.
    */
   permissions: MemberPermissions;
+
+  /**
+   * The time when member joined.
+   */
+  joinedAt: number;
 }
 
 /**

@@ -5,8 +5,10 @@ import {
   type RESTGetAPIUserResult,
   type RESTPatchAPIUserBody,
   type RESTPatchAPIUserResult,
+  RESTPostAPIUserDeleteConfirmBody,
   type RESTPostAPIUserDeleteConfirmResult,
   type UserKey,
+  UserMe,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";
 
@@ -27,7 +29,7 @@ export class UserAPI {
    * Returns the current user.
    */
   public async current() {
-    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user("@me"));
+    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(UserMe));
   }
 
   /**
@@ -35,7 +37,7 @@ export class UserAPI {
    */
   public async edit(body: RESTPatchAPIUserBody) {
     return await this.rest.patch<RESTPatchAPIUserBody, RESTPatchAPIUserResult>(
-      APIRoutes.user("@me"),
+      APIRoutes.user(UserMe),
       { body },
     );
   }
@@ -47,15 +49,16 @@ export class UserAPI {
     return await this.rest.delete<
       RESTDeleteAPIUserBody,
       RESTDeleteAPIUserResult
-    >(APIRoutes.user("@me"), { body });
+    >(APIRoutes.user(UserMe), { body });
   }
 
   /**
    * Confirms user deletion.
    */
-  public async confirmDelete() {
-    return await this.rest.post<never, RESTPostAPIUserDeleteConfirmResult>(
-      APIRoutes.userConfirmDelete(),
-    );
+  public async confirmDelete(body: RESTPostAPIUserDeleteConfirmBody) {
+    return await this.rest.post<
+      RESTPostAPIUserDeleteConfirmBody,
+      RESTPostAPIUserDeleteConfirmResult
+    >(APIRoutes.userConfirmDelete(), { body });
   }
 }

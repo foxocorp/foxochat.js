@@ -1,5 +1,3 @@
-import type { Snowflake } from "../common";
-
 /**
  * API Message DTO.
  */
@@ -7,7 +5,7 @@ export interface APIMessage {
   /**
    * The id of the message.
    */
-  id: Snowflake;
+  id: number;
 
   /**
    * The content of the message.
@@ -15,14 +13,14 @@ export interface APIMessage {
   content: string;
 
   /**
-   * The id of the author of the message.
+   * The name of the author of the message.
    */
-  authorId: Snowflake;
+  author: string;
 
   /**
-   * The id of the channel the message was sent in.
+   * The name of the channel the message was sent in.
    */
-  channelId: Snowflake;
+  channel: string;
 
   /**
    * The files attached to the message.
