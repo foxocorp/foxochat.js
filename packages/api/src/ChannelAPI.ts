@@ -3,6 +3,7 @@ import {
   type MemberKey,
   type RESTDeleteAPIChannelLeaveResult,
   type RESTDeleteAPIChannelResult,
+  type RESTGetAPIChannelMemberResult,
   type RESTGetAPIChannelMembersResult,
   type RESTGetAPIChannelResult,
   type RESTPatchAPIChannelBody,
@@ -41,11 +42,11 @@ export class ChannelAPI {
   /**
    * Creates a new channel.
    */
-  public async create(channelName: string, body: RESTPostAPIChannelBody) {
+  public async create(body: RESTPostAPIChannelBody) {
     return await this.rest.post<
       RESTPostAPIChannelBody,
       RESTPostAPIChannelResult
-    >(APIRoutes.channel(channelName), { body });
+    >(APIRoutes.channels(), { body });
   }
 
   /**
@@ -80,7 +81,7 @@ export class ChannelAPI {
    * Gets a member from the channel.
    */
   public async member(channelName: string, memberKey: MemberKey) {
-    return await this.rest.get<RESTGetAPIChannelMembersResult>(
+    return await this.rest.get<RESTGetAPIChannelMemberResult>(
       APIRoutes.member(channelName, memberKey),
     );
   }

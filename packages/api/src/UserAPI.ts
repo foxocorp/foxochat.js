@@ -2,10 +2,11 @@ import {
   APIRoutes,
   type RESTDeleteAPIUserBody,
   type RESTDeleteAPIUserResult,
+  type RESTGetAPIUserChannelsResult,
   type RESTGetAPIUserResult,
   type RESTPatchAPIUserBody,
   type RESTPatchAPIUserResult,
-  RESTPostAPIUserDeleteConfirmBody,
+  type RESTPostAPIUserDeleteConfirmBody,
   type RESTPostAPIUserDeleteConfirmResult,
   type UserKey,
   UserMe,
@@ -60,5 +61,14 @@ export class UserAPI {
       RESTPostAPIUserDeleteConfirmBody,
       RESTPostAPIUserDeleteConfirmResult
     >(APIRoutes.userConfirmDelete(), { body });
+  }
+
+  /**
+   * Gets user channels.
+   */
+  public async channels() {
+    return await this.rest.get<RESTGetAPIUserChannelsResult>(
+      APIRoutes.userChannels(),
+    );
   }
 }

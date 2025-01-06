@@ -50,7 +50,7 @@ export const APIRoutes = {
    * - POST /auth/reset-password
    */
   authResetPassword() {
-    return `/auth/reset-password` as const;
+    return "/auth/reset-password" as const;
   },
 
   /**
@@ -58,7 +58,7 @@ export const APIRoutes = {
    * - POST /auth/reset-password/confirm
    */
   authResetPasswordConfirm() {
-    return `/auth/reset-password/confirm` as const;
+    return "/auth/reset-password/confirm" as const;
   },
 
   /**
@@ -66,7 +66,7 @@ export const APIRoutes = {
    * - POST /auth/email/verify
    */
   authVerifyEmail() {
-    return `/auth/email/verify` as const;
+    return "/auth/email/verify" as const;
   },
 
   /**
@@ -136,9 +136,17 @@ export const APIRoutes = {
 
   /**
    * Route for:
-   * - POST /users/@me/confirm
+   * - GET /users/@me/channels
+   */
+  userChannels() {
+    return "/users/@me/channels" as const;
+  },
+
+  /**
+   * Route for:
+   * - POST /users/@me/delete-confirm
    */
   userConfirmDelete() {
-    return `/users/@me/confirm` as const;
+    return "/users/@me/delete-confirm" as const;
   },
 };

@@ -1,4 +1,4 @@
-import type { APIOk, APIUser } from "../payloads";
+import type { APIChannel, APIOk, APIUser } from "../payloads";
 
 /**
  * The result of GET /users/{userKey}.
@@ -69,3 +69,8 @@ export interface RESTPostAPIUserDeleteConfirmBody {
    */
   code: string;
 }
+
+/**
+ * The result of GET /users/@me/channels
+ */
+export type RESTGetAPIUserChannelsResult = APIChannel[];

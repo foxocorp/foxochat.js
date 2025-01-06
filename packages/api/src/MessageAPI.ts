@@ -6,6 +6,7 @@ import {
   type RESTPatchAPIMessageBody,
   type RESTPatchAPIMessageResult,
   type RESTPostAPIMessageBody,
+  type RESTPostAPIMessageResult,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";
 
@@ -30,7 +31,7 @@ export class MessageAPI {
   public async create(channelName: string, body: RESTPostAPIMessageBody) {
     return await this.rest.post<
       RESTPostAPIMessageBody,
-      RESTGetAPIMessageListResult
+      RESTPostAPIMessageResult
     >(APIRoutes.messages(channelName), { body });
   }
 
