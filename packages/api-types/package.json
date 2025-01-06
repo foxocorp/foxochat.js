@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "unbuild",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "doc": "typedoc"
   },
   "engines": {
     "node": ">=22"
@@ -41,6 +42,7 @@
     "@tsconfig/node22": "^22.0.0",
     "@tsconfig/strictest": "^2.0.5",
     "eslint": "^9.16.0",
+    "typedoc": "^0.27.6",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0",
     "unbuild": "^2.0.0"
