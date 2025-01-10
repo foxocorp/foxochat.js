@@ -48,9 +48,9 @@ export class REST {
   /**
    * Sends a GET request to the API.
    */
-  public async get<R = unknown>(
+  public async get<R = unknown, Q = unknown>(
     route: RouteLike,
-    options?: RequestOptions<never>,
+    options?: RequestOptions<never, Q>,
   ): Promise<R> {
     return this.request<never, R>({
       method: RequestMethod.Get,
@@ -62,19 +62,19 @@ export class REST {
   /**
    * Sends a PUT request to the API.
    */
-  public async put<B = unknown, R = unknown>(
+  public async put<B = unknown, R = unknown, Q = unknown>(
     route: RouteLike,
-    options?: RequestOptions<B>,
+    options?: RequestOptions<B, Q>,
   ): Promise<R> {
-    return this.request({ method: RequestMethod.Put, route, ...options });
+    return this.request<B, R>({ method: RequestMethod.Put, route, ...options });
   }
 
   /**
    * Sends a POST request to the API.
    */
-  public async post<B = unknown, R = unknown>(
+  public async post<B = unknown, R = unknown, Q = unknown>(
     route: RouteLike,
-    options?: RequestOptions<B>,
+    options?: RequestOptions<B, Q>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Post,
@@ -87,9 +87,9 @@ export class REST {
   /**
    * Sends a PATCH request to the API.
    */
-  public async patch<B = unknown, R = unknown>(
+  public async patch<B = unknown, R = unknown, Q = unknown>(
     route: RouteLike,
-    options?: RequestOptions<B>,
+    options?: RequestOptions<B, Q>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Patch,
@@ -102,9 +102,9 @@ export class REST {
   /**
    * Sends a DELETE request to the API.
    */
-  public async delete<B = unknown, R = unknown>(
+  public async delete<B = unknown, R = unknown, Q = unknown>(
     route: RouteLike,
-    options?: RequestOptions<B>,
+    options?: RequestOptions<B, Q>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Delete,
@@ -137,6 +137,7 @@ export class REST {
       data: options.body,
       headers: headers,
       method: options.method,
+      params: options.query,
       url: options.route,
       validateStatus: () => true,
     });

@@ -1,6 +1,7 @@
 import {
   APIRoutes,
   type RESTDeleteAPIMessageResult,
+  type RESTGetAPIMessageListQuery,
   type RESTGetAPIMessageListResult,
   type RESTGetAPIMessageResult,
   type RESTPatchAPIMessageBody,
@@ -19,10 +20,16 @@ export class MessageAPI {
   /**
    * Fetches the messages in a channel.
    */
-  public async list(channelName: string) {
-    return await this.rest.get<RESTGetAPIMessageListResult>(
-      APIRoutes.messages(channelName),
-    );
+  public async list(
+    channelName: string,
+    query: RESTGetAPIMessageListQuery = {},
+  ) {
+    return await this.rest.get<
+      RESTGetAPIMessageListResult,
+      RESTGetAPIMessageListQuery
+    >(APIRoutes.messages(channelName), {
+      query,
+    });
   }
 
   /**

@@ -6,6 +6,21 @@ import type { APIMessage, APIOk } from "../payloads";
 export type RESTGetAPIMessageListResult = APIMessage[];
 
 /**
+ * The query of GET /messages/channel/{name}.
+ */
+export interface RESTGetAPIMessageListQuery {
+  /**
+   * Get messages before this message ID.
+   */
+  before?: number;
+
+  /**
+   * Max number of messages to return.
+   */
+  limit?: number;
+}
+
+/**
  * The result of GET /messages/channel/{name}/{id}.
  */
 export type RESTGetAPIMessageResult = APIMessage;
