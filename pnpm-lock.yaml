@@ -20,9 +20,6 @@ importers:
       '@eslint/js':
         specifier: ^9.16.0
         version: 9.17.0
-      '@tsconfig/node22':
-        specifier: ^22.0.0
-        version: 22.0.0
       '@tsconfig/strictest':
         specifier: ^2.0.5
         version: 2.0.5
@@ -47,9 +44,6 @@ importers:
       '@eslint/js':
         specifier: ^9.16.0
         version: 9.17.0
-      '@tsconfig/node22':
-        specifier: ^22.0.0
-        version: 22.0.0
       '@tsconfig/strictest':
         specifier: ^2.0.5
         version: 2.0.5
@@ -81,9 +75,6 @@ importers:
       '@eslint/js':
         specifier: ^9.16.0
         version: 9.17.0
-      '@tsconfig/node22':
-        specifier: ^22.0.0
-        version: 22.0.0
       '@tsconfig/strictest':
         specifier: ^2.0.5
         version: 2.0.5
@@ -115,9 +106,6 @@ importers:
       '@eslint/js':
         specifier: ^9.16.0
         version: 9.17.0
-      '@tsconfig/node22':
-        specifier: ^22.0.0
-        version: 22.0.0
       '@tsconfig/strictest':
         specifier: ^2.0.5
         version: 2.0.5
@@ -645,9 +633,6 @@ packages:
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
-
-  '@tsconfig/node22@22.0.0':
-    resolution: {integrity: sha512-twLQ77zevtxobBOD4ToAtVmuYrpeYUh3qh+TEp+08IWhpsrIflVHqQ1F1CiPxQGL7doCdBIOOCF+1Tm833faNg==}
 
   '@tsconfig/strictest@2.0.5':
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
@@ -2116,8 +2101,6 @@ snapshots:
   '@shikijs/vscode-textmate@10.0.1': {}
 
   '@trysound/sax@0.2.0': {}
-
-  '@tsconfig/node22@22.0.0': {}
 
   '@tsconfig/strictest@2.0.5': {}
 
