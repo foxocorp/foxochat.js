@@ -94,6 +94,34 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.7.2)
 
+  packages/gateway-types:
+    dependencies:
+      '@foxogram/api-types':
+        specifier: workspace:^
+        version: link:../api-types
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.16.0
+        version: 9.17.0
+      '@tsconfig/strictest':
+        specifier: ^2.0.5
+        version: 2.0.5
+      eslint:
+        specifier: ^9.16.0
+        version: 9.17.0(jiti@2.4.1)
+      typedoc:
+        specifier: ^0.27.6
+        version: 0.27.6(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+      typescript-eslint:
+        specifier: ^8.18.0
+        version: 8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
+      unbuild:
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.7.2)
+
   packages/rest:
     dependencies:
       '@foxogram/api-types':
