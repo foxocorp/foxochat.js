@@ -111,8 +111,8 @@ export const APIRoutes = {
    * - PATCH  /messages/channel/{name}/{id}
    * - DELETE /messages/channel/{name}/{id}
    */
-  message(name: string, messageId: number) {
-    return `/messages/channel/${name}/${messageId}` as const;
+  message(name: string, id: number) {
+    return `/messages/channel/${name}/${id}` as const;
   },
 
   /**

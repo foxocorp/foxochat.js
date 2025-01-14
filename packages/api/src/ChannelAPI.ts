@@ -24,18 +24,18 @@ export class ChannelAPI {
   /**
    * Joins the current user to the channel.
    */
-  public async join(channelName: string) {
+  public async join(channel_name: string) {
     return await this.rest.put<never, RESTPutAPIChannelJoinResult>(
-      APIRoutes.member(channelName, UserMe),
+      APIRoutes.member(channel_name, UserMe),
     );
   }
 
   /**
    * Leaves the current user to the channel.
    */
-  public async leave(channelName: string) {
+  public async leave(channel_name: string) {
     return await this.rest.delete<never, RESTDeleteAPIChannelLeaveResult>(
-      APIRoutes.member(channelName, UserMe),
+      APIRoutes.member(channel_name, UserMe),
     );
   }
 
@@ -52,46 +52,46 @@ export class ChannelAPI {
   /**
    * Fetches a channel.
    */
-  public async get(channelName: string) {
+  public async get(channel_name: string) {
     return await this.rest.get<RESTGetAPIChannelResult>(
-      APIRoutes.channel(channelName),
+      APIRoutes.channel(channel_name),
     );
   }
 
   /**
    * Deletes the channel.
    */
-  public async delete(channelName: string) {
+  public async delete(channel_name: string) {
     return await this.rest.delete<never, RESTDeleteAPIChannelResult>(
-      APIRoutes.channel(channelName),
+      APIRoutes.channel(channel_name),
     );
   }
 
   /**
    * Edits the channel.
    */
-  public async edit(channelName: string, body: RESTPatchAPIChannelBody) {
+  public async edit(channel_name: string, body: RESTPatchAPIChannelBody) {
     return await this.rest.patch<
       RESTPatchAPIChannelBody,
       RESTPatchAPIChannelResult
-    >(APIRoutes.channel(channelName), { body });
+    >(APIRoutes.channel(channel_name), { body });
   }
 
   /**
    * Gets a member from the channel.
    */
-  public async member(channelName: string, memberKey: MemberKey) {
+  public async member(channel_name: string, memberKey: MemberKey) {
     return await this.rest.get<RESTGetAPIChannelMemberResult>(
-      APIRoutes.member(channelName, memberKey),
+      APIRoutes.member(channel_name, memberKey),
     );
   }
 
   /**
    * Lists members in the channel.
    */
-  public async members(channelName: string) {
+  public async members(channel_name: string) {
     return await this.rest.get<RESTGetAPIChannelMembersResult>(
-      APIRoutes.members(channelName),
+      APIRoutes.members(channel_name),
     );
   }
 }

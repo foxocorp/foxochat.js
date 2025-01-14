@@ -10,7 +10,7 @@ export interface APIChannel {
   /**
    * The display name of the channel.
    */
-  displayName: string;
+  display_name: string;
 
   /**
    * The icon of the channel.
@@ -30,7 +30,7 @@ export interface APIChannel {
   /**
    * The time when channel created at.
    */
-  createdAt: number;
+  created_at: number;
 }
 
 /**
@@ -75,7 +75,7 @@ export interface APIMember {
   /**
    * The time when member joined.
    */
-  joinedAt: number;
+  created_at: number;
 }
 
 /**

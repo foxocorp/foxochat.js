@@ -21,13 +21,13 @@ export class MessageAPI {
    * Fetches the messages in a channel.
    */
   public async list(
-    channelName: string,
+    channel_name: string,
     query: RESTGetAPIMessageListQuery = {},
   ) {
     return await this.rest.get<
       RESTGetAPIMessageListResult,
       RESTGetAPIMessageListQuery
-    >(APIRoutes.messages(channelName), {
+    >(APIRoutes.messages(channel_name), {
       query,
     });
   }
@@ -35,19 +35,19 @@ export class MessageAPI {
   /**
    * Sends a message in a channel.
    */
-  public async create(channelName: string, body: RESTPostAPIMessageBody) {
+  public async create(channel_name: string, body: RESTPostAPIMessageBody) {
     return await this.rest.post<
       RESTPostAPIMessageBody,
       RESTPostAPIMessageResult
-    >(APIRoutes.messages(channelName), { body });
+    >(APIRoutes.messages(channel_name), { body });
   }
 
   /**
    * Fetches a message.
    */
-  public async get(channelName: string, messageId: number) {
+  public async get(channel_name: string, id: number) {
     return await this.rest.get<RESTGetAPIMessageResult>(
-      APIRoutes.message(channelName, messageId),
+      APIRoutes.message(channel_name, id),
     );
   }
 
@@ -55,22 +55,22 @@ export class MessageAPI {
    * Edits a message.
    */
   public async edit(
-    channelName: string,
-    messageId: number,
+    channel_name: string,
+    id: number,
     body: RESTPatchAPIMessageBody,
   ) {
     return await this.rest.patch<
       RESTPatchAPIMessageBody,
       RESTPatchAPIMessageResult
-    >(APIRoutes.message(channelName, messageId), { body });
+    >(APIRoutes.message(channel_name, id), { body });
   }
 
   /**
    * Deletes a message.
    */
-  public async delete(channelName: string, messageId: number) {
+  public async delete(channel_name: string, id: number) {
     return await this.rest.delete<never, RESTDeleteAPIMessageResult>(
-      APIRoutes.message(channelName, messageId),
+      APIRoutes.message(channel_name, id),
     );
   }
 }

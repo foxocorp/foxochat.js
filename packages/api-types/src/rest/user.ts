@@ -22,7 +22,7 @@ export interface RESTPatchAPIUserBody {
   /**
    * The display name of the user.
    */
-  displayName?: string;
+  display_name?: string;
 
   /**
    * The username of the user.

@@ -10,7 +10,7 @@ export interface APIUser {
   /**
    * The display name of the user.
    */
-  displayName: string;
+  display_name: string;
 
   /**
    * The username of the user.
@@ -35,7 +35,7 @@ export interface APIUser {
   /**
    * The time when user created at.
    */
-  createdAt: number;
+  created_at: number;
 }
 
 /**

@@ -12,7 +12,7 @@ export interface RESTPostAPIChannelBody {
   /**
    * The display name of the channel.
    */
-  displayName: string;
+  display_name: string;
 
   /**
    * The name of the channel.

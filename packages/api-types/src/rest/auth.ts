@@ -102,5 +102,5 @@ export interface RESTPostAPIAuthResetPasswordConfirmBody {
   /**
    * The new user's password.
    */
-  newPassword: string;
+  new_password: string;
 }
