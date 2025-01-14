@@ -3,5 +3,5 @@ export interface GatewayIdentifyPayload {
 }
 
 export interface GatewayHelloPayload {
-  heartbeatInterval: number;
+  heartbeat_interval: number;
 }

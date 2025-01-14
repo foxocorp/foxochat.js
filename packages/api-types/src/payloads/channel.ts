@@ -35,7 +35,7 @@ export interface APIChannel {
   created_at: number;
 
   /**
-   * The last sent message in channel
+   * The last sent message in channel.
    */
   last_message: APIMessage;
 }
