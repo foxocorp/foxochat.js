@@ -1,0 +1,6 @@
+{
+    "entryPoints": ["packages/*"],
+    "name": "Foxogram.js Packages",
+    "entryPointStrategy": "packages",
+    "includeVersion": false
+}
