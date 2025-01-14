@@ -26,4 +26,9 @@ export interface APIMessage {
    * The files attached to the message.
    */
   attachments: string[];
+
+  /**
+   * The time when message sent at.
+   */
+  created_at: number;
 }

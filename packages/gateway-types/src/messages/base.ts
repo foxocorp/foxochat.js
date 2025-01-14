@@ -8,7 +8,7 @@ export interface GatewayMessage {
 }
 
 export interface GatewayDispatchMessage<
-  E extends GatewayDispatchEvents,
+  E extends GatewayDispatchEvents = GatewayDispatchEvents,
   D = unknown,
 > extends GatewayMessage {
   op: GatewayOpcodes.Dispatch;

@@ -1,3 +1,5 @@
+import { APIMessage } from "./message";
+
 /**
  * API Channel DTO.
  */
@@ -31,6 +33,11 @@ export interface APIChannel {
    * The time when channel created at.
    */
   created_at: number;
+
+  /**
+   * The last sent message in channel
+   */
+  last_message: APIMessage;
 }
 
 /**

@@ -1,12 +1,13 @@
 import type {
-    GatewayDispatchChannelCreatePayload,
-    GatewayDispatchChannelDeletePayload,
-    GatewayDispatchChannelUpdatePayload,
-    GatewayDispatchMemberAddPayload,
-    GatewayDispatchMemberRemovePayload, GatewayDispatchMemberUpdatePayload,
-    GatewayDispatchMessageCreatePayload,
-    GatewayDispatchMessageDeletePayload,
-    GatewayDispatchMessageUpdatePayload,
+  GatewayDispatchChannelCreatePayload,
+  GatewayDispatchChannelDeletePayload,
+  GatewayDispatchChannelUpdatePayload,
+  GatewayDispatchMemberAddPayload,
+  GatewayDispatchMemberRemovePayload,
+  GatewayDispatchMemberUpdatePayload,
+  GatewayDispatchMessageCreatePayload,
+  GatewayDispatchMessageDeletePayload,
+  GatewayDispatchMessageUpdatePayload,
 } from "../payloads";
 import type { GatewayDispatchEvents } from "../types";
 import type { GatewayDispatchMessage } from "./base";
