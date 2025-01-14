@@ -1,5 +1,8 @@
 import type { GatewayDispatchEvents, GatewayOpcodes } from "../types";
 
+/**
+ * Gateway message.
+ */
 export interface GatewayMessage {
   op: GatewayOpcodes;
   d?: unknown;
@@ -7,6 +10,9 @@ export interface GatewayMessage {
   t?: string;
 }
 
+/**
+ * Gateway dispatch message.
+ */
 export interface GatewayDispatchMessage<
   E extends GatewayDispatchEvents = GatewayDispatchEvents,
   D = unknown,
@@ -16,6 +22,9 @@ export interface GatewayDispatchMessage<
   d: D;
 }
 
+/**
+ * Simple gateway message.
+ */
 export interface GatewaySimpleMessage<O extends GatewayOpcodes, D = null>
   extends Omit<GatewayMessage, "t" | "s"> {
   op: O;
