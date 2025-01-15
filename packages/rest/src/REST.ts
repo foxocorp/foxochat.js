@@ -122,7 +122,7 @@ export class REST {
   ): Promise<R> {
     const headers = new AxiosHeaders(options.headers);
 
-    if (!this.token && (options.enforceAuth || this.options.enforceAuth)) {
+    if (!this.token && options.useAuth && (options.enforceAuth || this.options.enforceAuth)) {
       throw new AuthEnforcedError(options.method, options.route);
     }
 
