@@ -11,4 +11,9 @@ export interface RESTOptions {
    * The authorization prefix to use for requests.
    */
   authPrefix: string;
+
+  /**
+   * Enforces authorization token requirement in auth required endpoints.
+   */
+  enforceAuth: boolean;
 }

@@ -25,9 +25,14 @@ export interface RequestOptions<B = unknown, Q = unknown> {
   headers?: Record<string, string>;
 
   /**
-   * If this request needs the Authorization header
+   * If this request needs the Authorization header.
    */
   useAuth?: boolean;
+
+  /**
+   * If this request requires the Authorization token.
+   */
+  enforceAuth?: boolean;
 
   /**
    * The authorization prefix to use for this request.

@@ -1,4 +1,4 @@
-import { APIError, HTTPError } from "./errors";
+import { APIError, AuthEnforcedError, HTTPError } from "./errors";
 import { DefaultRESTOptions, RequestMethod } from "./constants";
 import type {
   InternalRequestOptions,
@@ -122,9 +122,13 @@ export class REST {
   ): Promise<R> {
     const headers = new AxiosHeaders(options.headers);
 
+    if (!this.token && (options.enforceAuth || this.options.enforceAuth)) {
+      throw new AuthEnforcedError(options.method, options.route);
+    }
+
     if (this.token && options.useAuth !== false) {
       headers.setAuthorization(
-        `${options.authPrefix ?? this.options.authPrefix} ${this.token}`,
+        `${options.authPrefix ?? this.options.authPrefix}${this.token}`,
       );
     }
 

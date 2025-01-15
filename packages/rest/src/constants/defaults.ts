@@ -5,6 +5,7 @@ import { RouteBases } from "@foxogram/api-types";
  * Default options of REST client.
  */
 export const DefaultRESTOptions = {
-  authPrefix: "Bearer",
+  authPrefix: "Bearer ",
   baseURL: RouteBases.api,
+  enforceAuth: false,
 } as const satisfies RESTOptions;
