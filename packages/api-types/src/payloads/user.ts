@@ -72,18 +72,14 @@ export enum UserFlags {
    */
 
   AwaitingConfirmation = 1,
-  /**
-   * The MFA is enabled.
-   */
-  MFAEnabled = 2,
 
   /**
    * The user's email is verified.
    */
-  EmailVerified = 4,
+  EmailVerified = 2,
 
   /**
    * The user is disabled.
    */
-  Disabled = 8,
+  Disabled = 4,
 }
