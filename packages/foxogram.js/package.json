@@ -32,7 +32,8 @@
   "scripts": {
     "build": "unbuild",
     "lint": "eslint ./src",
-    "doc": "typedoc ./src/index.ts"
+    "doc": "typedoc ./src/index.ts",
+    "prepack": "pnpm run build"
   },
   "dependencies": {
     "@foxogram/rest": "workspace:^",
