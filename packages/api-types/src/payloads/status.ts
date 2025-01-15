@@ -33,77 +33,102 @@ export interface APIException {
  */
 export enum ExceptionCodes {
   /**
-   * The message not found.
-   */
-  MessageNotFound = 101,
-
-  /**
-   * The channel not found.
-   */
-  ChannelNotFound = 201,
-
-  /**
    * The user not found.
    */
-  UserNotFound = 301,
+  UserNotFound = 100,
 
   /**
    * The user's email not verified.
    */
-  UserEmailNotVerified = 302,
+  UserEmailNotVerified = 101,
 
   /**
    * The user's credentials are duplicated by another user's credentials.
    */
-  UserCredentialsDuplicate = 303,
+  UserCredentialsDuplicate = 102,
 
   /**
    * The passed user's credentials is invalid.
    */
-  UserCredentialsIsInvalid = 304,
+  UserCredentialsIsInvalid = 103,
 
   /**
    * The user is unautorized.
    */
-  UserUnauthorized = 305,
+  UserUnauthorized = 104,
+
+  /**
+   * The channel not found.
+  */
+  ChannelNotFound = 200,
+
+  /**
+   * The channel is already exist.
+  */
+  ChannelAlreadyExist = 201,
 
   /**
    * There is no such member in channel.
    */
-  MemberInChannelNotFound = 401,
+  MemberInChannelNotFound = 300,
 
   /**
    * The member already joined the channel.
    */
-  MemberAlreadyInChannel = 402,
+  MemberAlreadyInChannel = 301,
 
   /**
    * Missing permissions.
    */
-  MissingPermissions = 403,
+  MissingPermissions = 302,
+
+  /**
+   * The message not found.
+   */
+  MessageNotFound = 400,
 
   /**
    * Code is invalid.
    */
-  CodeIsInvalid = 501,
+  CodeIsInvalid = 500,
 
   /**
    * Code is expired.
    */
-  CodeExpired = 502,
+  CodeExpired = 501,
 
   /**
    * Need to wait before email resend.
    */
-  NeedToWaitBeforeResend = 503,
+  NeedToWaitBeforeResend = 502,
 
   /**
-   * TOTP key is invalid.
+   * Upload file to remote storage failed.
    */
-  TOTPKeyIsInvalid = 601,
+  UploadFailed = 600,
 
   /**
-   * MFA is invalid.
+   * Invalid file format
    */
-  MFAIsInvalid = 602,
+  InvalidFileFormat = 601,
+
+  /**
+   * Rate limit exceeded
+   */
+  RateLimitExceeded = 700,
+
+  /**
+   * Empty request body
+   */
+  EmptyBody = 701,
+
+  /**
+   * Validation error
+   */
+  ValidationError = 702,
+
+  /**
+   * API route not found
+   */
+  RouteNotFound = 703,
 }
