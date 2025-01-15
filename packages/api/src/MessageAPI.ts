@@ -20,14 +20,11 @@ export class MessageAPI {
   /**
    * Fetches the messages in a channel.
    */
-  public async list(
-    channelName: string,
-    query: RESTGetAPIMessageListQuery = {},
-  ) {
+  public async list(channelId: number, query: RESTGetAPIMessageListQuery = {}) {
     return await this.rest.get<
       RESTGetAPIMessageListResult,
       RESTGetAPIMessageListQuery
-    >(APIRoutes.messages(channelName), {
+    >(APIRoutes.messages(channelId), {
       query,
     });
   }
@@ -35,19 +32,19 @@ export class MessageAPI {
   /**
    * Sends a message in a channel.
    */
-  public async create(channelName: string, body: RESTPostAPIMessageBody) {
+  public async create(channelId: number, body: RESTPostAPIMessageBody) {
     return await this.rest.post<
       RESTPostAPIMessageBody,
       RESTPostAPIMessageResult
-    >(APIRoutes.messages(channelName), { body });
+    >(APIRoutes.messages(channelId), { body });
   }
 
   /**
    * Fetches a message.
    */
-  public async get(channelName: string, id: number) {
+  public async get(channelId: number, messageId: number) {
     return await this.rest.get<RESTGetAPIMessageResult>(
-      APIRoutes.message(channelName, id),
+      APIRoutes.message(channelId, messageId),
     );
   }
 
@@ -55,22 +52,22 @@ export class MessageAPI {
    * Edits a message.
    */
   public async edit(
-    channelName: string,
-    id: number,
+    channelId: number,
+    messageId: number,
     body: RESTPatchAPIMessageBody,
   ) {
     return await this.rest.patch<
       RESTPatchAPIMessageBody,
       RESTPatchAPIMessageResult
-    >(APIRoutes.message(channelName, id), { body });
+    >(APIRoutes.message(channelId, messageId), { body });
   }
 
   /**
    * Deletes a message.
    */
-  public async delete(channelName: string, id: number) {
+  public async delete(channelId: number, messageId: number) {
     return await this.rest.delete<never, RESTDeleteAPIMessageResult>(
-      APIRoutes.message(channelName, id),
+      APIRoutes.message(channelId, messageId),
     );
   }
 }

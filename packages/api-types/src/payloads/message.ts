@@ -1,3 +1,5 @@
+import type { APIChannel, APIMember } from "./channel";
+
 /**
  * API Message DTO.
  */
@@ -13,14 +15,14 @@ export interface APIMessage {
   content: string;
 
   /**
-   * The name of the author of the message.
+   * The author of the message.
    */
-  author: string;
+  author: APIMember;
 
   /**
-   * The name of the channel the message was sent in.
+   * The channel the message was sent in.
    */
-  channel: string;
+  channel: APIChannel;
 
   /**
    * The files attached to the message.

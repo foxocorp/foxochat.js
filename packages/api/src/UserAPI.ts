@@ -22,8 +22,8 @@ export class UserAPI {
   /**
    * Fetches a user.
    */
-  public async get(key: UserKey) {
-    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(key));
+  public async get(userKey: UserKey) {
+    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(userKey));
   }
 
   /**

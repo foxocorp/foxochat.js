@@ -3,6 +3,16 @@
  */
 export interface APIUser {
   /**
+   * The id of the user.
+   */
+  id: number;
+
+  /**
+   * The channels of the user.
+   */
+  channels?: number[];
+
+  /**
    * The avatar of the user.
    */
   avatar: string;
@@ -20,7 +30,7 @@ export interface APIUser {
   /**
    * The email of the user.
    */
-  email: string | null;
+  email?: string;
 
   /**
    * The flags of the user.

@@ -6,16 +6,16 @@ export const UserMe = "@me";
 /**
  * The key of the user.
  *
- * Can be username or \@me.
+ * Can be id or \@me.
  */
-export type UserKey = typeof UserMe | string;
+export type UserKey = typeof UserMe | number;
 
 /**
  * The key of the member.
  *
- * Can be username or \@me.
+ * Can be id or \@me.
  */
-export type MemberKey = typeof UserMe | string;
+export type MemberKey = typeof UserMe | number;
 
 /**
  * The routes of API.
@@ -71,12 +71,12 @@ export const APIRoutes = {
 
   /**
    * Route for:
-   - GET    /channels/{name}
-   - PATCH  /channels/{name}
-   - DELETE /channels/{name}
+   - GET    /channels/{channelId}
+   - PATCH  /channels/{channelId}
+   - DELETE /channels/{channelId}
    */
-  channel(name: string) {
-    return `/channels/${name}` as const;
+  channel(channelId: number) {
+    return `/channels/${channelId}` as const;
   },
 
   /**
@@ -89,44 +89,44 @@ export const APIRoutes = {
 
   /**
    * Route for:
-   * - GET    /channels/{name}/members/{memberUsername}
-   * - PUT    /channels/{name}/members/@me
-   * - DELETE /channels/{name}/members/@me
+   * - GET    /channels/{channelId}/members/{memberId}
+   * - PUT    /channels/{channelId}/members/@me
+   * - DELETE /channels/{channelId}/members/@me
    */
-  member(name: string, memberKey: MemberKey) {
-    return `/channels/${name}/members/${memberKey}` as const;
+  member(channelId: number, memberKey: MemberKey) {
+    return `/channels/${channelId}/members/${memberKey}` as const;
   },
 
   /**
    * Route for:
-   * - GET /channels/{name}/members
+   * - GET /channels/{channelId}/members
    */
-  members(name: string) {
-    return `/channels/${name}/members` as const;
+  members(channelId: number) {
+    return `/channels/${channelId}/members` as const;
   },
 
   /**
    * Route for:
-   * - GET    /messages/channel/{name}/{id}
-   * - PATCH  /messages/channel/{name}/{id}
-   * - DELETE /messages/channel/{name}/{id}
+   * - GET    /messages/channel/{channelId}/{messageId}
+   * - PATCH  /messages/channel/{channelId}/{messageId}
+   * - DELETE /messages/channel/{channelId}/{messageId}
    */
-  message(name: string, id: number) {
-    return `/messages/channel/${name}/${id}` as const;
+  message(channelId: number, messageId: number) {
+    return `/messages/channel/${channelId}/${messageId}` as const;
   },
 
   /**
    * Route for:
-   * - GET  /messages/channel/{name}
-   * - POST /messages/channel/{name}
+   * - GET  /messages/channel/{channelId}
+   * - POST /messages/channel/{channelId}
    */
-  messages(name: string) {
-    return `/messages/channel/${name}` as const;
+  messages(channelId: number) {
+    return `/messages/channel/${channelId}` as const;
   },
 
   /**
    * Route for:
-   * - GET    /users/{username}
+   * - GET    /users/{userid}
    * - PATCH  /users/@me
    * - DELETE /users/@me
    */

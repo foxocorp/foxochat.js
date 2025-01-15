@@ -1,9 +1,15 @@
-import { APIMessage } from "./message";
+import type { APIMessage } from "./message";
+import type { APIUser } from "./user";
 
 /**
  * API Channel DTO.
  */
 export interface APIChannel {
+  /**
+   * The id of the channel.
+   */
+  id: number;
+
   /**
    * The name of the channel.
    */
@@ -25,9 +31,9 @@ export interface APIChannel {
   type: ChannelType;
 
   /**
-   * The name of the owner of the channel.
+   * The owner of the channel.
    */
-  owner: string;
+  owner: APIUser;
 
   /**
    * The time when channel created at.
@@ -37,7 +43,7 @@ export interface APIChannel {
   /**
    * The last sent message in channel.
    */
-  last_message: APIMessage;
+  last_message?: APIMessage;
 }
 
 /**
@@ -65,14 +71,19 @@ export enum ChannelType {
  */
 export interface APIMember {
   /**
-   * The username of the member.
+   * The id of the member.
    */
-  username: string;
+  id: number;
 
   /**
-   * The channel name of the member.
+   * The user of the member.
    */
-  channel: string;
+  user: APIUser;
+
+  /**
+   * The channel of the member.
+   */
+  channel: APIChannel;
 
   /**
    * The permissions of the member.
@@ -82,7 +93,7 @@ export interface APIMember {
   /**
    * The time when member joined.
    */
-  created_at: number;
+  joined_at: number;
 }
 
 /**
