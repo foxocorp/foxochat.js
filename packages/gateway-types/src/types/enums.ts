@@ -5,27 +5,27 @@ export enum GatewayOpcodes {
   /**
    * An event was dispatched.
    */
-  Dispatch = 0,
+  Dispatch,
 
   /**
    * Client requests identification.
    */
-  Identify = 1,
+  Identify,
 
   /**
    * Gateway acknowledges client identification.
    */
-  Hello = 2,
+  Hello,
 
   /**
    * Sends by client to maintain active connection.
    */
-  Heartbeat = 3,
+  Heartbeat,
 
   /**
    * Gateway acknowledges client heartbeat.
    */
-  HeartbeatAck = 4,
+  HeartbeatAck,
 }
 
 /**
@@ -40,7 +40,7 @@ export enum GatewayCloseCodes {
   /**
    * Heartbeat interval timed out.
    */
-  HeartbeatTimeout = 4001,
+  HeartbeatTimeout,
 }
 
 export enum GatewayDispatchEvents {

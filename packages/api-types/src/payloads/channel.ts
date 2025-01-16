@@ -58,12 +58,12 @@ export enum ChannelType {
   /**
    * Direct message between multiple users.
    */
-  Group = 2,
+  Group,
 
   /**
    * A channel where only administrators can post messages.
    */
-  Channel = 3,
+  Channel,
 }
 
 /**

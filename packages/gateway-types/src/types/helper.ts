@@ -19,13 +19,13 @@ export type GatewayServerboundOpcode =
 /**
  * Message sent from gateway server to client.
  */
-export type GatewayClientboundMessage = Omit<GatewayMessage, "op"> & {
+export type GatewayClientboundMessage = GatewayMessage & {
   op: GatewayClientboundOpcode;
 };
 
 /**
  * Message sent from client to gateway server.
  */
-export type GatewayServerboundMessage = Omit<GatewayMessage, "op"> & {
-  op: GatewayServerboundMessage;
+export type GatewayServerboundMessage = GatewayMessage & {
+  op: GatewayServerboundOpcode;
 };

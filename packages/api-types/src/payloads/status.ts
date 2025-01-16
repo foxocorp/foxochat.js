@@ -40,47 +40,47 @@ export enum ExceptionCodes {
   /**
    * The user's email not verified.
    */
-  UserEmailNotVerified = 101,
+  UserEmailNotVerified,
 
   /**
    * The user's credentials are duplicated by another user's credentials.
    */
-  UserCredentialsDuplicate = 102,
+  UserCredentialsDuplicate,
 
   /**
    * The passed user's credentials is invalid.
    */
-  UserCredentialsIsInvalid = 103,
+  UserCredentialsIsInvalid,
 
   /**
-   * The user is unautorized.
+   * The user is unauthorized.
    */
-  UserUnauthorized = 104,
+  UserUnauthorized,
 
   /**
    * The channel not found.
-  */
+   */
   ChannelNotFound = 200,
 
   /**
    * The channel is already exist.
-  */
-  ChannelAlreadyExist = 201,
+   */
+  ChannelAlreadyExist,
 
   /**
    * There is no such member in channel.
    */
-  MemberInChannelNotFound = 300,
+  MemberNotFound = 300,
 
   /**
    * The member already joined the channel.
    */
-  MemberAlreadyInChannel = 301,
+  MemberAlreadyExist,
 
   /**
-   * Missing permissions.
+   * Member missing permissions.
    */
-  MissingPermissions = 302,
+  MemberMissingPermissions,
 
   /**
    * The message not found.
@@ -95,40 +95,45 @@ export enum ExceptionCodes {
   /**
    * Code is expired.
    */
-  CodeExpired = 501,
+  CodeExpired,
 
   /**
-   * Need to wait before email resend.
+   * Need to wait before verification code resend.
    */
-  NeedToWaitBeforeResend = 502,
+  CodeWaitToResend,
 
   /**
    * Upload file to remote storage failed.
    */
-  UploadFailed = 600,
+  CDNUploadFailed = 700,
 
   /**
-   * Invalid file format
+   * Invalid file format.
    */
-  InvalidFileFormat = 601,
+  CDNInvalidFileFormat,
 
   /**
-   * Rate limit exceeded
+   * Rate limit exceeded.
    */
-  RateLimitExceeded = 700,
+  APIRateLimitExceeded = 800,
 
   /**
-   * Empty request body
+   * Empty request body.
    */
-  EmptyBody = 701,
+  APIEmptyBody,
 
   /**
-   * Validation error
+   * Validation error.
    */
-  ValidationError = 702,
+  APIValidationError,
 
   /**
-   * API route not found
+   * API route not found.
    */
-  RouteNotFound = 703,
+  APIRouteNotFound,
+
+  /**
+   * Unknown error.
+   */
+  UnknownError = 900,
 }
