@@ -36,7 +36,12 @@ export class MessageAPI {
     return await this.rest.post<
       RESTPostAPIMessageBody,
       RESTPostAPIMessageResult
-    >(APIRoutes.messages(channelId), { body });
+    >(APIRoutes.messages(channelId), {
+      body,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 
   /**
@@ -59,7 +64,12 @@ export class MessageAPI {
     return await this.rest.patch<
       RESTPatchAPIMessageBody,
       RESTPatchAPIMessageResult
-    >(APIRoutes.message(channelId, messageId), { body });
+    >(APIRoutes.message(channelId, messageId), {
+      body,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 
   /**
