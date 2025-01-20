@@ -31,6 +31,11 @@ export interface APIChannel {
   type: ChannelType;
 
   /**
+   * Amount of members in channel.
+   */
+  member_count: number;
+
+  /**
    * The owner of the channel.
    */
   owner: APIUser;
