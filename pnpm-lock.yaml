@@ -98,6 +98,43 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.7.2)
 
+  packages/gateway:
+    dependencies:
+      '@foxogram/api-types':
+        specifier: workspace:^
+        version: link:../api-types
+      '@foxogram/gateway-types':
+        specifier: workspace:^
+        version: link:../gateway-types
+      eventemitter3:
+        specifier: ^5.0.1
+        version: 5.0.1
+      websocket-polyfill:
+        specifier: ^1.0.0
+        version: 1.0.0
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.16.0
+        version: 9.17.0
+      '@tsconfig/strictest':
+        specifier: ^2.0.5
+        version: 2.0.5
+      eslint:
+        specifier: ^9.16.0
+        version: 9.17.0(jiti@2.4.1)
+      typedoc:
+        specifier: ^0.27.6
+        version: 0.27.6(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+      typescript-eslint:
+        specifier: ^8.18.0
+        version: 8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
+      unbuild:
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.7.2)
+
   packages/gateway-types:
     dependencies:
       '@foxogram/api-types':
@@ -1126,6 +1163,9 @@ packages:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
 
+  import2@1.0.3:
+    resolution: {integrity: sha512-X7KHNp1fovFaiah9Q+njdxXJKIV9/XippWGZwHL9ZdJYnQPBs+4wLd4PuCigbxz2IWNm5YvFycSjRA/1lgmdGw==}
+
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
@@ -1659,6 +1699,9 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
+  tstl@2.5.16:
+    resolution: {integrity: sha512-+O2ybLVLKcBwKm4HymCEwZIT0PpwS3gCYnxfSDEjJEKADvIFruaQjd3m7CAKNU1c7N3X3WjVz87re7TA2A5FUw==}
+
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -1713,6 +1756,9 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  websocket-polyfill@1.0.0:
+    resolution: {integrity: sha512-QwfEy8jcOOCVO9su9UP+msEmhZa4a9WSJfePIdCT8GxwVl2Z9toM7nCqFfDDxA/sRmxgf1KNiwL6PXvjJ9qRxw==}
+
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
     engines: {node: '>= 8'}
@@ -1724,6 +1770,18 @@ packages:
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+
+  ws@8.18.0:
+    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
@@ -2687,6 +2745,8 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
+  import2@1.0.3: {}
+
   imurmurhash@0.1.4: {}
 
   inflight@1.0.6:
@@ -3157,6 +3217,8 @@ snapshots:
     dependencies:
       typescript: 5.7.2
 
+  tstl@2.5.16: {}
+
   type-check@0.4.0:
     dependencies:
       prelude-ls: 1.2.1
@@ -3243,6 +3305,15 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
+  websocket-polyfill@1.0.0:
+    dependencies:
+      import2: 1.0.3
+      tstl: 2.5.16
+      ws: 8.18.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
@@ -3250,6 +3321,8 @@ snapshots:
   word-wrap@1.2.5: {}
 
   wrappy@1.0.2: {}
+
+  ws@8.18.0: {}
 
   yallist@3.1.1: {}
 

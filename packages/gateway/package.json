@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@foxogram/gateway",
+  "version": "0.0.0",
+  "description": "The Gateway client for foxogram.js",
+  "author": "FoxoCorp",
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foxocorp/foxogram.js"
+  },
+  "bugs": {
+    "url": "https://github.com/foxocorp/foxogram.js/issues"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint ./src",
+    "doc": "typedoc ./src/index.ts",
+    "prepack": "pnpm run build"
+  },
+  "dependencies": {
+    "@foxogram/api-types": "workspace:^",
+    "@foxogram/gateway-types": "workspace:^",
+    "eventemitter3": "^5.0.1",
+    "websocket-polyfill": "^1.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@tsconfig/strictest": "^2.0.5",
+    "eslint": "^9.16.0",
+    "typedoc": "^0.27.6",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
+    "unbuild": "^2.0.0"
+  }
+}

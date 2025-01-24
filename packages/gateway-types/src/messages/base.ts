@@ -29,6 +29,4 @@ export interface GatewaySimpleMessage<O extends GatewayOpcodes, D = null>
   extends Omit<GatewayMessage, "t" | "s"> {
   op: O;
   d: D;
-  t: null;
-  s: null;
 }

@@ -31,7 +31,7 @@ export class REST {
   /**
    * A token that should be used for requests.
    */
-  private token?: string;
+  private token: string | null = null;
 
   public constructor(options?: Partial<RESTOptions>) {
     this.client = axios.create();
@@ -41,7 +41,7 @@ export class REST {
   /**
    * Sets the authorization token that should be used for requests.
    */
-  public setToken(token: string): string {
+  public setToken(token: string | null): string | null {
     return (this.token = token);
   }
 
