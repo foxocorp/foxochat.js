@@ -69,6 +69,12 @@ importers:
 
   packages/foxogram.js:
     dependencies:
+      '@foxogram/gateway':
+        specifier: workspace:^
+        version: link:../gateway
+      '@foxogram/gateway-types':
+        specifier: workspace:^
+        version: link:../gateway-types
       '@foxogram/rest':
         specifier: workspace:^
         version: link:../rest

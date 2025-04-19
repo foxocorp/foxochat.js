@@ -2,6 +2,7 @@ import "websocket-polyfill";
 import { DefaultGatewayOptions, GatewayEvents } from "./constants";
 import {
   type GatewayClientboundMessage,
+  GatewayCloseCodes,
   type GatewayDispatchMessage,
   type GatewayHeartbeatMessage,
   type GatewayHelloPayload,
@@ -9,7 +10,11 @@ import {
   GatewayOpcodes,
   type GatewayServerboundMessage,
 } from "@foxogram/gateway-types";
-import { type GatewayEventsMap, type GatewayOptions } from "./types";
+import {
+  type GatewayDestroyOptions,
+  type GatewayEventsMap,
+  type GatewayOptions,
+} from "./types";
 import { MissingTokenError, NotConnectedError } from "./errors";
 import EventEmitter from "eventemitter3";
 
@@ -47,7 +52,7 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
     this.connection = connection;
   }
 
-  public async destroy(): Promise<void> {
+  public async destroy(options: GatewayDestroyOptions): Promise<void> {
     if (this.heartbeatInterval) {
       clearInterval(this.heartbeatInterval);
     }
@@ -56,9 +61,23 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
       this.connection.onmessage = null;
       this.connection.onclose = null;
 
-      this.connection.close();
+      if (this.connection.readyState == WebSocket.OPEN) {
+        const closePromise = new Promise<void>((resolve) => {
+          this.connection!.onclose = () => resolve();
+        });
 
-      this.emit(GatewayEvents.Closed, 1000);
+        this.connection.close(options.code);
+        await closePromise;
+
+        this.emit(GatewayEvents.Closed, options.code);
+      }
+    }
+
+    if (this.options.reconnect && options.reconnect) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, this.options.reconnectTimeout),
+      );
+      await this.connect();
     }
   }
 
@@ -116,6 +135,13 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
   private async onClose(code: number): Promise<void> {
     this.emit(GatewayEvents.Closed, code);
+
+    switch (code as GatewayCloseCodes) {
+      case GatewayCloseCodes.HeartbeatTimeout:
+        return this.destroy({ code, reconnect: true });
+      case GatewayCloseCodes.Unauthorized:
+        return this.destroy({ code, reconnect: false });
+    }
   }
 
   public async send<T extends GatewayServerboundMessage>(
