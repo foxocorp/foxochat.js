@@ -84,7 +84,7 @@ export const APIRoutes = {
    * - POST /channels/
    */
   channels() {
-    return "/channels" as const;
+    return "/channels/" as const;
   },
 
   /**
