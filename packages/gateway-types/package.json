@@ -36,12 +36,12 @@
     "prepack": "pnpm run build"
   },
   "devDependencies": {
-    "@eslint/js": "^9.16.0",
+    "@eslint/js": "^9.25.1",
     "@tsconfig/strictest": "^2.0.5",
-    "eslint": "^9.16.0",
-    "typedoc": "^0.27.6",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.0",
+    "eslint": "^9.25.1",
+    "typedoc": "^0.27.9",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0",
     "unbuild": "^2.0.0"
   },
   "dependencies": {
