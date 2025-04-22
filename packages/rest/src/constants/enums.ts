@@ -8,3 +8,12 @@ export enum RequestMethod {
   Patch = "PATCH",
   Delete = "DELETE",
 }
+
+/**
+ * Represents type of request body.
+ */
+export enum RequestBodyType {
+  json,
+  init,
+  formData,
+}

@@ -1,10 +1,10 @@
 {
   "extends": ["@tsconfig/strictest/tsconfig.json"],
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "../api/src/test.ts"],
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "lib": ["ES2015"],
+    "lib": ["ES2015", "DOM"],
     "module": "es2015",
     "moduleResolution": "bundler"
   }

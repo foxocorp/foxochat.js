@@ -37,11 +37,12 @@
   },
   "dependencies": {
     "@foxogram/api-types": "workspace:^",
-    "axios": "^1.7.9"
+    "whatwg-url": "^14.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
     "@tsconfig/strictest": "^2.0.5",
+    "@types/whatwg-url": "^13.0.0",
     "eslint": "^9.16.0",
     "typedoc": "^0.27.6",
     "typescript": "^5.7.2",

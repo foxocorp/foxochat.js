@@ -39,6 +39,7 @@
     "@foxogram/rest": "workspace:^",
     "@foxogram/gateway": "workspace:^",
     "@foxogram/gateway-types": "workspace:^",
+    "@foxogram/api": "workspace:^",
     "eventemitter3": "^5.0.1"
   },
   "devDependencies": {

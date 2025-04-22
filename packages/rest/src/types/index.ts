@@ -1,2 +1,2 @@
-export * from "./options";
-export * from "./request";
+export type * from "./options";
+export type * from "./http";

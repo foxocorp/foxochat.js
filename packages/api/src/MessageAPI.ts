@@ -9,7 +9,11 @@ import {
   type RESTPostAPIMessageBody,
   type RESTPostAPIMessageResult,
 } from "@foxogram/api-types";
-import type { REST } from "@foxogram/rest";
+import {
+  buildURLSearchParams,
+  RequestBodyType,
+  type REST,
+} from "@foxogram/rest";
 
 /**
  * A wrapper for the Foxogram message API.
@@ -21,12 +25,12 @@ export class MessageAPI {
    * Fetches the messages in a channel.
    */
   public async list(channelId: number, query: RESTGetAPIMessageListQuery = {}) {
-    return await this.rest.get<
-      RESTGetAPIMessageListResult,
-      RESTGetAPIMessageListQuery
-    >(APIRoutes.messages(channelId), {
-      query,
-    });
+    const params = buildURLSearchParams<RESTGetAPIMessageListQuery>(query);
+
+    return await this.rest.get<RESTGetAPIMessageListResult>(
+      APIRoutes.messages(channelId),
+      { params },
+    );
   }
 
   /**
@@ -38,9 +42,7 @@ export class MessageAPI {
       RESTPostAPIMessageResult
     >(APIRoutes.messages(channelId), {
       body,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      bodyType: RequestBodyType.formData,
     });
   }
 
@@ -66,9 +68,7 @@ export class MessageAPI {
       RESTPatchAPIMessageResult
     >(APIRoutes.message(channelId, messageId), {
       body,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      bodyType: RequestBodyType.formData,
     });
   }
 

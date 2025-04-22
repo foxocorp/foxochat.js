@@ -1,28 +1,23 @@
 import { APIError, AuthEnforcedError, HTTPError } from "./errors";
-import { DefaultRESTOptions, RequestMethod } from "./constants";
-import type {
-  InternalRequestOptions,
-  RESTOptions,
-  RequestOptions,
-  RouteLike,
+import {
+  DefaultRESTOptions,
+  RequestBodyType,
+  RequestMethod,
+} from "./constants";
+import {
+  type InternalRequestOptions,
+  type RESTOptions,
+  type RequestHeaders,
+  type RequestOptions,
+  type RouteLike,
 } from "./types";
-import axios, {
-  AxiosHeaders,
-  type AxiosInstance,
-  type AxiosResponse,
-  HttpStatusCode,
-} from "axios";
 import type { APIException } from "@foxogram/api-types";
+import { parseResponse } from "./utils";
 
 /**
  * The HTTP REST API client for foxogram.js
  */
 export class REST {
-  /**
-   * Internal client sending requests.
-   */
-  public readonly client: AxiosInstance;
-
   /**
    * Configuration options for this instance.
    */
@@ -34,7 +29,6 @@ export class REST {
   private token: string | null = null;
 
   public constructor(options?: Partial<RESTOptions>) {
-    this.client = axios.create();
     this.options = { ...DefaultRESTOptions, ...options } as RESTOptions;
   }
 
@@ -48,9 +42,9 @@ export class REST {
   /**
    * Sends a GET request to the API.
    */
-  public async get<R = unknown, Q = unknown>(
+  public async get<R>(
     route: RouteLike,
-    options?: RequestOptions<never, Q>,
+    options?: RequestOptions<never>,
   ): Promise<R> {
     return this.request<never, R>({
       method: RequestMethod.Get,
@@ -62,19 +56,24 @@ export class REST {
   /**
    * Sends a PUT request to the API.
    */
-  public async put<B = unknown, R = unknown, Q = unknown>(
+  public async put<B extends BodyInit, R>(
     route: RouteLike,
-    options?: RequestOptions<B, Q>,
+    options?: RequestOptions<B>,
   ): Promise<R> {
-    return this.request<B, R>({ method: RequestMethod.Put, route, ...options });
+    return this.request<B, R>({
+      method: RequestMethod.Put,
+      route,
+
+      ...options,
+    });
   }
 
   /**
    * Sends a POST request to the API.
    */
-  public async post<B = unknown, R = unknown, Q = unknown>(
+  public async post<B extends BodyInit, R>(
     route: RouteLike,
-    options?: RequestOptions<B, Q>,
+    options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Post,
@@ -87,9 +86,9 @@ export class REST {
   /**
    * Sends a PATCH request to the API.
    */
-  public async patch<B = unknown, R = unknown, Q = unknown>(
+  public async patch<B extends BodyInit, R>(
     route: RouteLike,
-    options?: RequestOptions<B, Q>,
+    options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Patch,
@@ -102,9 +101,9 @@ export class REST {
   /**
    * Sends a DELETE request to the API.
    */
-  public async delete<B = unknown, R = unknown, Q = unknown>(
+  public async delete<B extends BodyInit, R>(
     route: RouteLike,
-    options?: RequestOptions<B, Q>,
+    options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Delete,
@@ -117,45 +116,72 @@ export class REST {
   /**
    * Sends a request to the API.
    */
-  public async request<B = unknown, R = unknown>(
+  public async request<B extends BodyInit, R>(
     options: InternalRequestOptions<B>,
   ): Promise<R> {
-    const headers = new AxiosHeaders(options.headers);
+    const url = new URL(`${this.options.baseURL}${options.route}`);
 
-    if (
-      !this.token &&
-      options.useAuth &&
-      (options.enforceAuth || this.options.enforceAuth)
-    ) {
+    if (options.params) {
+      url.search = options.params.toString();
+    }
+
+    const commonHeaders: RequestHeaders = {};
+    const additionalHeaders: Record<string, string> = {};
+
+    const authRequired =
+      options.useAuth && (options.enforceAuth || this.options.enforceAuth);
+
+    if (authRequired && !this.token) {
       throw new AuthEnforcedError(options.method, options.route);
     }
 
     if (this.token && options.useAuth !== false) {
-      headers.setAuthorization(
-        `${options.authPrefix ?? this.options.authPrefix}${this.token}`,
-      );
+      commonHeaders.Authorization = `${options.authPrefix ?? this.options.authPrefix}${this.token}`;
     }
 
-    const response = await this.client.request<
-      R,
-      AxiosResponse<R>,
-      B | undefined
-    >({
-      baseURL: this.options.baseURL,
-      data: options.body,
-      headers: headers,
+    let body: RequestInit["body"];
+    if (options.body) {
+      switch (options.bodyType) {
+        case RequestBodyType.init:
+          body = options.body;
+
+          break;
+        case RequestBodyType.formData: {
+          additionalHeaders["Content-Type"] = "multipart/form-data";
+
+          body = new FormData();
+          for (const [key, value] of Object.entries(options.body)) {
+            body.append(key, value);
+          }
+
+          break;
+        }
+        case RequestBodyType.json:
+        default:
+          additionalHeaders["Content-Type"] = "application/json";
+
+          body = JSON.stringify(options.body);
+
+          break;
+      }
+    }
+
+    const response = await this.options.request(url, {
+      body: options.method == RequestMethod.Get ? null : body!,
       method: options.method,
-      params: options.query,
-      url: options.route,
-      validateStatus: () => true,
+      headers: {
+        ...commonHeaders,
+        ...additionalHeaders,
+        ...options.headers,
+      },
     });
 
-    const data = response.data;
     const status = response.status;
+    const data = await parseResponse(response);
 
-    if (status >= HttpStatusCode.InternalServerError) {
+    if (response.status >= 500) {
       throw new HTTPError(status, options.method, options.route);
-    } else if (status >= HttpStatusCode.BadRequest) {
+    } else if (status >= 400) {
       throw new APIError(
         status,
         options.method,
@@ -164,6 +190,6 @@ export class REST {
       );
     }
 
-    return data;
+    return data as R;
   }
 }

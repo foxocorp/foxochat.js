@@ -1,3 +1,5 @@
+import type { ResponseLike } from "./http";
+
 /**
  * Options to be passed when creating the REST client instance.
  */
@@ -16,4 +18,9 @@ export interface RESTOptions {
    * Enforces authorization token requirement in auth required endpoints.
    */
   enforceAuth: boolean;
+
+  /**
+   * The method called to perform the HTTP requests.
+   */
+  request(url: RequestInfo | URL, init: RequestInit): Promise<ResponseLike>;
 }
