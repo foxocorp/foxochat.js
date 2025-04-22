@@ -36,13 +36,11 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "@foxogram/api-types": "workspace:^",
-    "whatwg-url": "^14.2.0"
+    "@foxogram/api-types": "workspace:^"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",
     "@tsconfig/strictest": "^2.0.5",
-    "@types/whatwg-url": "^13.0.0",
     "eslint": "^9.25.1",
     "typedoc": "^0.27.9",
     "typescript": "^5.8.3",

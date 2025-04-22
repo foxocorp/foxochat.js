@@ -4,7 +4,7 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "lib": ["ES2015", "DOM"],
+    "lib": ["ES2017", "DOM"],
     "module": "es2015",
     "moduleResolution": "bundler"
   }

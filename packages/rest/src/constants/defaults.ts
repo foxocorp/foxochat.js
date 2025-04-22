@@ -8,5 +8,5 @@ export const DefaultRESTOptions = {
   authPrefix: "Bearer ",
   baseURL: RouteBases.api,
   enforceAuth: false,
-  request: fetch,
+  request: (url, init) => fetch(url, init),
 } as const satisfies RESTOptions;

@@ -1,5 +1,4 @@
 import type { RequestBodyType, RequestMethod } from "../constants";
-import type { URLSearchParams } from "whatwg-url";
 
 /**
  * Represents an API route.

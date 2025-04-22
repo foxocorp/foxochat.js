@@ -1,5 +1,3 @@
-import { URLSearchParams } from "whatwg-url";
-
 export function serializeURLSearchParam(value: unknown): string | null {
   switch (typeof value) {
     case "string":
