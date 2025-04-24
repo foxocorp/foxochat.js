@@ -147,8 +147,6 @@ export class REST {
 
           break;
         case RequestBodyType.formData: {
-          additionalHeaders["Content-Type"] = "multipart/form-data";
-
           body = new FormData();
           for (const [key, value] of Object.entries(options.body)) {
             body.append(key, value);
