@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@foxogram/api": "workspace:^",
+    "@foxogram/api-types": "workspace:^",
     "@foxogram/gateway": "workspace:^",
     "@foxogram/gateway-types": "workspace:^",
     "@foxogram/rest": "workspace:^",

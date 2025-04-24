@@ -72,6 +72,9 @@ importers:
       '@foxogram/api':
         specifier: workspace:^
         version: link:../api
+      '@foxogram/api-types':
+        specifier: workspace:^
+        version: link:../api-types
       '@foxogram/gateway':
         specifier: workspace:^
         version: link:../gateway

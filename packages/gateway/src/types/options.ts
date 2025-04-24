@@ -20,10 +20,10 @@ export interface GatewayDestroyOptions {
   /**
    * The code used when closing the connection.
    */
-  code: number;
+  code?: number;
 
   /**
    * Indicates whether the client should try to reconnect after destroy.
    */
-  reconnect: boolean;
+  reconnect?: boolean;
 }

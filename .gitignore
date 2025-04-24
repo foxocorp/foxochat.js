@@ -131,6 +131,7 @@ dist
 
 # IDE
 .idea/
+.vscode/
 
 # Typedoc
 docs/

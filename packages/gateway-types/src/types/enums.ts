@@ -33,6 +33,11 @@ export enum GatewayOpcodes {
  */
 export enum GatewayCloseCodes {
   /**
+   * Connection closed normally.
+   */
+  Normal = 1000,
+
+  /**
    * Client unauthenticated.
    */
   Unauthorized = 4000,

@@ -52,7 +52,9 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
     this.connection = connection;
   }
 
-  public async destroy(options: GatewayDestroyOptions): Promise<void> {
+  public async destroy(options: GatewayDestroyOptions = {}): Promise<void> {
+    options.code ??= GatewayCloseCodes.HeartbeatTimeout;
+
     if (this.heartbeatInterval) {
       clearInterval(this.heartbeatInterval);
     }

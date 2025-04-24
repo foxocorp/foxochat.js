@@ -4,18 +4,28 @@
 export const UserMe = "@me";
 
 /**
- * The key of the user.
- *
- * Can be id or \@me.
+ * The key of the public entity.
  */
-export type UserKey = typeof UserMe | number;
+export type PublicKey = `@${string}`
+
+/**
+ * The key of the public user.
+ *
+ * Can be id, \@name or \@me.
+ */
+export type PublicUserKey =  typeof UserMe | number | PublicKey;
 
 /**
  * The key of the member.
  *
- * Can be id or \@me.
+ * Can be id, \@name or \@me.
  */
 export type MemberKey = typeof UserMe | number;
+
+/**
+ * The key of the public channel.
+ */
+export type PublicChannelKey = number | PublicKey;
 
 /**
  * The routes of API.
@@ -71,12 +81,12 @@ export const APIRoutes = {
 
   /**
    * Route for:
-   - GET    /channels/{channelId}
-   - PATCH  /channels/{channelId}
-   - DELETE /channels/{channelId}
+   - GET    /channels/{channelKey}
+   - PATCH  /channels/{channelKey}
+   - DELETE /channels/{channelKey}
    */
-  channel(channelId: number) {
-    return `/channels/${channelId}` as const;
+  channel(channelKey: PublicChannelKey) {
+    return `/channels/${channelKey}` as const;
   },
 
   /**
@@ -126,11 +136,11 @@ export const APIRoutes = {
 
   /**
    * Route for:
-   * - GET    /users/{userid}
+   * - GET    /users/{userKey}
    * - PATCH  /users/@me
    * - DELETE /users/@me
    */
-  user(userKey: UserKey = UserMe) {
+  user(userKey: PublicUserKey = UserMe) {
     return `/users/${userKey}` as const;
   },
 

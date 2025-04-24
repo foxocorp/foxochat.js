@@ -5,7 +5,7 @@ import { Gateway } from "@foxogram/gateway";
 import { API } from "@foxogram/api";
 
 /**
- * The main hub for interacting with the Foxogram API.
+ * The main hub for interacting with the Foxogram.
  */
 export class Client extends EventEmitter {
   public readonly api: API;
@@ -23,16 +23,18 @@ export class Client extends EventEmitter {
 
   public async login(token: string): Promise<void> {
     this.rest.setToken(token);
-  }
-
-  public async connect(token: string): Promise<void> {
     this.gateway.setToken(token);
 
-    await this.gateway.connect();
+    try {
+      await this.gateway.connect();
+    } catch (error) {
+      await this.destroy();
+
+      throw error;
+    }
   }
 
-  public async start(token: string): Promise<void> {
-    await this.login(token);
-    await this.connect(token);
+  public async destroy(): Promise<void> {
+    await this.gateway.destroy();
   }
 }
