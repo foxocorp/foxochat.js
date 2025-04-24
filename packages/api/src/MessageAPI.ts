@@ -37,13 +37,20 @@ export class MessageAPI {
    * Sends a message in a channel.
    */
   public async create(channelId: number, body: RESTPostAPIMessageBody) {
-    return await this.rest.post<
-      RESTPostAPIMessageBody,
-      RESTPostAPIMessageResult
-    >(APIRoutes.messages(channelId), {
-      body,
-      bodyType: RequestBodyType.formData,
-    });
+    const form = new FormData();
+
+    if (body.content) form.append("content", body.content);
+    body.attachments?.forEach((attachment) =>
+      form.append("attachments", attachment),
+    );
+
+    return await this.rest.post<FormData, RESTPostAPIMessageResult>(
+      APIRoutes.messages(channelId),
+      {
+        body: form,
+        bodyType: RequestBodyType.init,
+      },
+    );
   }
 
   /**
@@ -63,13 +70,20 @@ export class MessageAPI {
     messageId: number,
     body: RESTPatchAPIMessageBody,
   ) {
-    return await this.rest.patch<
-      RESTPatchAPIMessageBody,
-      RESTPatchAPIMessageResult
-    >(APIRoutes.message(channelId, messageId), {
-      body,
-      bodyType: RequestBodyType.formData,
-    });
+    const form = new FormData();
+
+    if (body.content) form.append("content", body.content);
+    body.attachments?.forEach((attachment) =>
+      form.append("attachments", attachment),
+    );
+
+    return await this.rest.patch<FormData, RESTPatchAPIMessageResult>(
+      APIRoutes.message(channelId, messageId),
+      {
+        body: form,
+        bodyType: RequestBodyType.init,
+      },
+    );
   }
 
   /**

@@ -15,5 +15,4 @@ export enum RequestMethod {
 export enum RequestBodyType {
   json,
   init,
-  formData,
 }

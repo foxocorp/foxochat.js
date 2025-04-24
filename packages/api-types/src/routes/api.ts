@@ -6,14 +6,14 @@ export const UserMe = "@me";
 /**
  * The key of the public entity.
  */
-export type PublicKey = `@${string}`
+export type PublicKey = `@${string}`;
 
 /**
  * The key of the public user.
  *
  * Can be id, \@name or \@me.
  */
-export type PublicUserKey =  typeof UserMe | number | PublicKey;
+export type PublicUserKey = typeof UserMe | number | PublicKey;
 
 /**
  * The key of the member.

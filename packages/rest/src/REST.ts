@@ -4,12 +4,13 @@ import {
   RequestBodyType,
   RequestMethod,
 } from "./constants";
-import {
-  type InternalRequestOptions,
-  type RESTOptions,
-  type RequestHeaders,
-  type RequestOptions,
-  type RouteLike,
+import type {
+  RequestBody,
+  InternalRequestOptions,
+  RESTOptions,
+  RequestHeaders,
+  RequestOptions,
+  RouteLike,
 } from "./types";
 import type { APIException } from "@foxogram/api-types";
 import { parseResponse } from "./utils";
@@ -56,14 +57,13 @@ export class REST {
   /**
    * Sends a PUT request to the API.
    */
-  public async put<B extends BodyInit, R>(
+  public async put<B extends RequestBody, R>(
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Put,
       route,
-
       ...options,
     });
   }
@@ -71,14 +71,13 @@ export class REST {
   /**
    * Sends a POST request to the API.
    */
-  public async post<B extends BodyInit, R>(
+  public async post<B extends RequestBody, R>(
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Post,
       route,
-
       ...options,
     });
   }
@@ -86,14 +85,13 @@ export class REST {
   /**
    * Sends a PATCH request to the API.
    */
-  public async patch<B extends BodyInit, R>(
+  public async patch<B extends RequestBody, R>(
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Patch,
       route,
-
       ...options,
     });
   }
@@ -101,14 +99,13 @@ export class REST {
   /**
    * Sends a DELETE request to the API.
    */
-  public async delete<B extends BodyInit, R>(
+  public async delete<B extends RequestBody, R>(
     route: RouteLike,
     options?: RequestOptions<B>,
   ): Promise<R> {
     return this.request<B, R>({
       method: RequestMethod.Delete,
       route,
-
       ...options,
     });
   }
@@ -116,7 +113,7 @@ export class REST {
   /**
    * Sends a request to the API.
    */
-  public async request<B extends BodyInit, R>(
+  public async request<B extends RequestBody, R>(
     options: InternalRequestOptions<B>,
   ): Promise<R> {
     const url = new URL(`${this.options.baseURL}${options.route}`);
@@ -143,17 +140,9 @@ export class REST {
     if (options.body) {
       switch (options.bodyType) {
         case RequestBodyType.init:
-          body = options.body;
+          body = options.body as BodyInit;
 
           break;
-        case RequestBodyType.formData: {
-          body = new FormData();
-          for (const [key, value] of Object.entries(options.body)) {
-            body.append(key, value);
-          }
-
-          break;
-        }
         case RequestBodyType.json:
         default:
           additionalHeaders["Content-Type"] = "application/json";

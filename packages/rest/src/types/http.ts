@@ -6,9 +6,14 @@ import type { RequestBodyType, RequestMethod } from "../constants";
 export type RouteLike = `/${string}`;
 
 /**
+ * Represents type of request body.
+ */
+export type RequestBody = BodyInit | object;
+
+/**
  * Represents the data that will be sent to the endpoint.
  */
-export interface RequestOptions<B extends BodyInit> {
+export interface RequestOptions<B extends RequestBody> {
   /**
    * The body to send in this request.
    */
@@ -48,7 +53,7 @@ export interface RequestOptions<B extends BodyInit> {
 /**
  * Represents the data that will be sent to the endpoint.
  */
-export interface InternalRequestOptions<B extends BodyInit>
+export interface InternalRequestOptions<B extends RequestBody>
   extends RequestOptions<B> {
   /**
    * Route to request.

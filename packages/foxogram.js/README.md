@@ -19,5 +19,5 @@ import { Client } from "foxogram.js";
 
 const client = new Client();
 
-client.login(TOKEN)
+client.login(TOKEN);
 ```

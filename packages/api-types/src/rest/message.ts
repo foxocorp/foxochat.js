@@ -37,12 +37,12 @@ export interface RESTPostAPIMessageBody {
   /**
    * The content of the message.
    */
-  content: string;
+  content?: string;
 
   /**
    * The files attached to the message.
    */
-  attachments?: Uint8Array[];
+  attachments?: Blob[];
 }
 
 /**
@@ -67,5 +67,5 @@ export interface RESTPatchAPIMessageBody {
   /**
    * The files attached to the message.
    */
-  attachments?: Uint8Array[];
+  attachments?: Blob[];
 }
