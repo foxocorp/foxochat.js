@@ -1,5 +1,6 @@
 import {
   APIRoutes,
+  type PublicUserKey,
   type RESTDeleteAPIUserBody,
   type RESTDeleteAPIUserResult,
   type RESTGetAPIUserChannelsResult,
@@ -8,7 +9,6 @@ import {
   type RESTPatchAPIUserResult,
   type RESTPostAPIUserDeleteConfirmBody,
   type RESTPostAPIUserDeleteConfirmResult,
-  type PublicUserKey,
   UserMe,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";

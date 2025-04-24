@@ -12,4 +12,6 @@ export interface GatewayEventsMap {
   [GatewayEvents.Hello]: [];
   [GatewayEvents.Dispatch]: [message: GatewayDispatchMessage];
   [GatewayEvents.HeartbeatComplete]: [stats: HeartbeatStats];
+  [GatewayEvents.Debug]: [message: string];
+  [GatewayEvents.SocketError]: [error: Error];
 }

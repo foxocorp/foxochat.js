@@ -3,4 +3,6 @@ export enum GatewayEvents {
   Hello = "hello",
   Dispatch = "dispatch",
   HeartbeatComplete = "heartbeatComplete",
+  Debug = "debug",
+  SocketError = "socketError",
 }

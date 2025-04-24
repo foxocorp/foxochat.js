@@ -24,6 +24,7 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
   private connection: WebSocket | null = null;
   private heartbeatInterval: number | null = null;
   private lastHeartbeatAt = -1;
+  private socketErrorOccurred = false;
 
   public constructor(options: Partial<GatewayOptions> = {}) {
     super();
@@ -35,7 +36,9 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
   }
 
   public async connect(): Promise<void> {
-    const connection = new WebSocket(this.options.baseURL);
+    this.debug([`Connecting to ${this.options.url}`]);
+
+    const connection = new WebSocket(this.options.url);
 
     connection.onmessage = (event: MessageEvent<string>) => {
       void this.onMessage(event.data);
@@ -43,6 +46,10 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
     connection.onclose = (event: CloseEvent) => {
       void this.onClose(event.code);
+    };
+
+    connection.onerror = (event) => {
+      this.onError((event as ErrorEvent).error);
     };
 
     connection.onopen = () => {
@@ -55,20 +62,29 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
   public async destroy(options: GatewayDestroyOptions = {}): Promise<void> {
     options.code ??= GatewayCloseCodes.HeartbeatTimeout;
 
+    this.debug([
+      "Destroying gateway connection",
+      `Code: ${options.code}`,
+      `Reconnect: ${!!options.reconnect}`,
+    ]);
+
+    this.socketErrorOccurred = false;
     if (this.heartbeatInterval) {
       clearInterval(this.heartbeatInterval);
     }
 
     if (this.connection) {
-      this.connection.onmessage = null;
-      this.connection.onclose = null;
+      const connection = this.connection;
 
-      if (this.connection.readyState == WebSocket.OPEN) {
+      connection.onmessage = null;
+      connection.onclose = null;
+
+      if (connection.readyState == WebSocket.OPEN) {
         const closePromise = new Promise<void>((resolve) => {
-          this.connection!.onclose = () => resolve();
+          connection.onclose = () => resolve();
         });
 
-        this.connection.close(options.code);
+        connection.close(options.code);
         await closePromise;
 
         this.emit(GatewayEvents.Closed, options.code);
@@ -91,6 +107,10 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
         this.emit(GatewayEvents.Hello);
 
         const payload = message.d as GatewayHelloPayload;
+
+        this.debug([
+          `Starting to send heartbeats every ${payload.heartbeat_interval}ms`,
+        ]);
 
         this.heartbeatInterval = setInterval(
           () => void this.heartbeat(),
@@ -117,22 +137,19 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
         break;
       }
+
+      default:
+        this.debug(["Recieved unknown opcode", `Code: ${message.op}`]);
     }
   }
 
   private async onOpen(): Promise<void> {
-    if (!this.token) {
-      throw new MissingTokenError();
-    }
+    await this.identify();
+  }
 
-    const message: GatewayIdentifyMessage = {
-      d: {
-        token: this.token,
-      },
-      op: GatewayOpcodes.Identify,
-    };
-
-    await this.send(message);
+  private onError(error: Error) {
+    this.emit(GatewayEvents.SocketError, error);
+    this.socketErrorOccurred = true;
   }
 
   private async onClose(code: number): Promise<void> {
@@ -140,9 +157,14 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
     switch (code as GatewayCloseCodes) {
       case GatewayCloseCodes.HeartbeatTimeout:
+        this.debug(["The gateway server did not receive a timely heartbeat response"]);
         return this.destroy({ code, reconnect: true });
       case GatewayCloseCodes.Unauthorized:
+        this.debug(["Unauthorized operation before identify"]);
         return this.destroy({ code, reconnect: false });
+      default:
+        this.debug(["The gateway connection closed with unexpected code"]);
+        return this.destroy({ code, reconnect: this.socketErrorOccurred });
     }
   }
 
@@ -165,5 +187,24 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
     });
 
     this.lastHeartbeatAt = Date.now();
+  }
+
+  private async identify(): Promise<void> {
+    if (!this.token) {
+      throw new MissingTokenError();
+    }
+
+    const message: GatewayIdentifyMessage = {
+      d: {
+        token: this.token,
+      },
+      op: GatewayOpcodes.Identify,
+    };
+
+    await this.send(message);
+  }
+
+  private debug(messages: string[]) {
+    this.emit(GatewayEvents.Debug, messages.join("\n\t"));
   }
 }

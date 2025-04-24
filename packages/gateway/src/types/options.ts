@@ -2,7 +2,7 @@ export interface GatewayOptions {
   /**
    * The base URL used to connect to the Foxogram gateway server.
    */
-  baseURL: string;
+  url: string;
 
   /**
    * Whether the client should attempt to reconnect automatically

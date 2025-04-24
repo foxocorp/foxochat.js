@@ -5,9 +5,9 @@ import {
   RequestMethod,
 } from "./constants";
 import type {
-  RequestBody,
   InternalRequestOptions,
   RESTOptions,
+  RequestBody,
   RequestHeaders,
   RequestOptions,
   RouteLike,
@@ -154,13 +154,13 @@ export class REST {
     }
 
     const response = await this.options.request(url, {
-      body: options.method == RequestMethod.Get ? null : body!,
-      method: options.method,
+      body: options.method == RequestMethod.Get ? null : (body ?? null),
       headers: {
         ...commonHeaders,
         ...additionalHeaders,
         ...options.headers,
       },
+      method: options.method,
     });
 
     const status = response.status;

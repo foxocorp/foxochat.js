@@ -10,9 +10,9 @@ import {
   type RESTPostAPIMessageResult,
 } from "@foxogram/api-types";
 import {
-  buildURLSearchParams,
-  RequestBodyType,
   type REST,
+  RequestBodyType,
+  buildURLSearchParams,
 } from "@foxogram/rest";
 
 /**

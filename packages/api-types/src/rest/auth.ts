@@ -57,7 +57,7 @@ export interface RESTPostAPIAuthVerifyEmailBody {
   /**
    * The email verification code.
    */
-  code: string;
+  otp: string;
 }
 
 /**
