@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "foxogram.js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A powerful library for interacting with the Foxogram API",
   "author": "FoxoCorp",
   "license": "MIT",
