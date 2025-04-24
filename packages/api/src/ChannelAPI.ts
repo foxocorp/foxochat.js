@@ -1,6 +1,7 @@
 import {
   APIRoutes,
   type MemberKey,
+  type PublicChannelKey,
   type RESTDeleteAPIChannelLeaveResult,
   type RESTDeleteAPIChannelResult,
   type RESTGetAPIChannelMemberResult,
@@ -52,9 +53,9 @@ export class ChannelAPI {
   /**
    * Fetches a channel.
    */
-  public async get(channelId: number) {
+  public async get(channelKey: PublicChannelKey) {
     return await this.rest.get<RESTGetAPIChannelResult>(
-      APIRoutes.channel(channelId),
+      APIRoutes.channel(channelKey),
     );
   }
 

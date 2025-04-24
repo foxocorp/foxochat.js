@@ -8,7 +8,7 @@ import {
   type RESTPatchAPIUserResult,
   type RESTPostAPIUserDeleteConfirmBody,
   type RESTPostAPIUserDeleteConfirmResult,
-  type UserKey,
+  type PublicUserKey,
   UserMe,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";
@@ -22,7 +22,7 @@ export class UserAPI {
   /**
    * Fetches a user.
    */
-  public async get(userKey: UserKey) {
+  public async get(userKey: PublicUserKey) {
     return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(userKey));
   }
 

@@ -18,7 +18,7 @@ export type PublicUserKey =  typeof UserMe | number | PublicKey;
 /**
  * The key of the member.
  *
- * Can be id, \@name or \@me.
+ * Can be id or \@me.
  */
 export type MemberKey = typeof UserMe | number;
 
