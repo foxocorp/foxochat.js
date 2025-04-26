@@ -1,5 +1,7 @@
 import {
   APIRoutes,
+  type RESTPutAPIMessageAttachmentsBody,
+  type RESTPutAPIMessageAttachmentsResult,
   type RESTDeleteAPIMessageResult,
   type RESTGetAPIMessageListQuery,
   type RESTGetAPIMessageListResult,
@@ -9,11 +11,7 @@ import {
   type RESTPostAPIMessageBody,
   type RESTPostAPIMessageResult,
 } from "@foxogram/api-types";
-import {
-  type REST,
-  RequestBodyType,
-  buildURLSearchParams,
-} from "@foxogram/rest";
+import { type REST, buildURLSearchParams } from "@foxogram/rest";
 
 /**
  * A wrapper for the Foxogram message API.
@@ -37,20 +35,10 @@ export class MessageAPI {
    * Sends a message in a channel.
    */
   public async create(channelId: number, body: RESTPostAPIMessageBody) {
-    const form = new FormData();
-
-    if (body.content) form.append("content", body.content);
-    body.attachments?.forEach((attachment) =>
-      form.append("attachments", attachment),
-    );
-
-    return await this.rest.post<FormData, RESTPostAPIMessageResult>(
-      APIRoutes.messages(channelId),
-      {
-        body: form,
-        bodyType: RequestBodyType.init,
-      },
-    );
+    return await this.rest.post<
+      RESTPostAPIMessageBody,
+      RESTPostAPIMessageResult
+    >(APIRoutes.messages(channelId), { body });
   }
 
   /**
@@ -70,20 +58,10 @@ export class MessageAPI {
     messageId: number,
     body: RESTPatchAPIMessageBody,
   ) {
-    const form = new FormData();
-
-    if (body.content) form.append("content", body.content);
-    body.attachments?.forEach((attachment) =>
-      form.append("attachments", attachment),
-    );
-
-    return await this.rest.patch<FormData, RESTPatchAPIMessageResult>(
-      APIRoutes.message(channelId, messageId),
-      {
-        body: form,
-        bodyType: RequestBodyType.init,
-      },
-    );
+    return await this.rest.patch<
+      RESTPatchAPIMessageBody,
+      RESTPatchAPIMessageResult
+    >(APIRoutes.message(channelId, messageId), { body });
   }
 
   /**
@@ -93,5 +71,18 @@ export class MessageAPI {
     return await this.rest.delete<never, RESTDeleteAPIMessageResult>(
       APIRoutes.message(channelId, messageId),
     );
+  }
+
+  /**
+   * Creates a message attachments.
+   */
+  public async createAttachments(
+    channelId: number,
+    body: RESTPutAPIMessageAttachmentsBody,
+  ) {
+    return await this.rest.put<
+      RESTPutAPIMessageAttachmentsBody,
+      RESTPutAPIMessageAttachmentsResult
+    >(APIRoutes.messageAttachments(channelId), { body });
   }
 }

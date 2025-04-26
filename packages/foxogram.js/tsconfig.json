@@ -2,9 +2,10 @@
   "extends": ["@tsconfig/strictest/tsconfig.json"],
   "include": ["./src/**/*"],
   "compilerOptions": {
+    "skipLibCheck": false,
     "rootDir": "./src",
     "outDir": "./dist",
-    "lib": ["ES2017"],
+    "lib": ["ES2017", "DOM"],
     "module": "es2015",
     "moduleResolution": "bundler"
   }

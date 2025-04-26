@@ -9,6 +9,8 @@ import {
   type RESTPatchAPIUserResult,
   type RESTPostAPIUserDeleteConfirmBody,
   type RESTPostAPIUserDeleteConfirmResult,
+  type RESTPutAPIUserAvatarBody,
+  type RESTPutAPIUserAvatarResult,
   UserMe,
 } from "@foxogram/api-types";
 import type { REST } from "@foxogram/rest";
@@ -70,5 +72,15 @@ export class UserAPI {
     return await this.rest.get<RESTGetAPIUserChannelsResult>(
       APIRoutes.userChannels(),
     );
+  }
+
+  /**
+   * Uploads the user avatar.
+   */
+  public async uploadAvatar(body: RESTPutAPIUserAvatarBody) {
+    return await this.rest.put<
+      RESTPutAPIUserAvatarBody,
+      RESTPutAPIUserAvatarResult
+    >(APIRoutes.userAvatar(), { body });
   }
 }

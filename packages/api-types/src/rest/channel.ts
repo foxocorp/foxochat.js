@@ -1,4 +1,8 @@
 import type { APIChannel, APIMember, APIOk, ChannelType } from "../payloads";
+import type {
+  RESTAPIAttachmentUploadRequest,
+  RESTAPIAttachmentUploadResponse,
+} from "./attachment";
 
 /**
  * The result of POST /channels/.
@@ -69,3 +73,13 @@ export interface RESTPatchAPIChannelBody {
  * The result of DELETE /channels/{name}.
  */
 export type RESTDeleteAPIChannelResult = APIOk;
+
+/**
+ * The body of PUT /channels/{id}/icon.
+ */
+export type RESTPutAPIChannelIconBody = RESTAPIAttachmentUploadRequest;
+
+/**
+ * The result of PUT /channels/{id}/icon.
+ */
+export type RESTPutAPIChannelIconResult = RESTAPIAttachmentUploadResponse;

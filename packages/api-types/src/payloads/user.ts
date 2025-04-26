@@ -1,3 +1,5 @@
+import { APIAttachment } from "./attachment";
+
 /**
  * API User DTO.
  */
@@ -15,7 +17,7 @@ export interface APIUser {
   /**
    * The avatar of the user.
    */
-  avatar: string;
+  avatar: APIAttachment;
 
   /**
    * The display name of the user.

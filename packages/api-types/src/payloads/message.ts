@@ -1,3 +1,4 @@
+import type { APIAttachment } from "./attachment";
 import type { APIChannel, APIMember } from "./channel";
 
 /**
@@ -27,7 +28,7 @@ export interface APIMessage {
   /**
    * The files attached to the message.
    */
-  attachments: string[];
+  attachments: APIAttachment[];
 
   /**
    * The time when message sent at.

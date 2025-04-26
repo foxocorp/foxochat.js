@@ -7,8 +7,4 @@ export default tseslint.config({
     tseslint.configs.strict,
     tseslint.configs.stylistic,
   ],
-  rules: {
-    "sort-imports": "warn",
-    "sort-keys": "warn",
-  },
 });

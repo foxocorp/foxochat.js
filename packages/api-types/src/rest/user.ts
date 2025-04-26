@@ -1,4 +1,8 @@
 import type { APIChannel, APIOk, APIUser } from "../payloads";
+import {
+  RESTAPIAttachmentUploadRequest,
+  RESTAPIAttachmentUploadResponse,
+} from "./attachment";
 
 /**
  * The result of GET /users/{userKey}.
@@ -74,3 +78,13 @@ export interface RESTPostAPIUserDeleteConfirmBody {
  * The result of GET /users/@me/channels
  */
 export type RESTGetAPIUserChannelsResult = APIChannel[];
+
+/**
+ * The body of PUT /users/@me/avatar.
+ */
+export type RESTPutAPIUserAvatarBody = RESTAPIAttachmentUploadRequest;
+
+/**
+ * The result of PUT /users/@me/avatar.
+ */
+export type RESTPutAPIUserAvatarResult = RESTAPIAttachmentUploadResponse;

@@ -11,6 +11,8 @@ import {
   type RESTPatchAPIChannelResult,
   type RESTPostAPIChannelBody,
   type RESTPostAPIChannelResult,
+  type RESTPutAPIChannelIconBody,
+  type RESTPutAPIChannelIconResult,
   type RESTPutAPIChannelJoinResult,
   UserMe,
 } from "@foxogram/api-types";
@@ -27,7 +29,7 @@ export class ChannelAPI {
    */
   public async join(channelId: number) {
     return await this.rest.put<never, RESTPutAPIChannelJoinResult>(
-      APIRoutes.member(channelId, UserMe),
+      APIRoutes.channelMember(channelId, UserMe),
     );
   }
 
@@ -36,7 +38,7 @@ export class ChannelAPI {
    */
   public async leave(channelId: number) {
     return await this.rest.delete<never, RESTDeleteAPIChannelLeaveResult>(
-      APIRoutes.member(channelId, UserMe),
+      APIRoutes.channelMember(channelId, UserMe),
     );
   }
 
@@ -83,7 +85,7 @@ export class ChannelAPI {
    */
   public async member(channelId: number, memberKey: MemberKey) {
     return await this.rest.get<RESTGetAPIChannelMemberResult>(
-      APIRoutes.member(channelId, memberKey),
+      APIRoutes.channelMember(channelId, memberKey),
     );
   }
 
@@ -92,7 +94,17 @@ export class ChannelAPI {
    */
   public async members(channelId: number) {
     return await this.rest.get<RESTGetAPIChannelMembersResult>(
-      APIRoutes.members(channelId),
+      APIRoutes.channelMembers(channelId),
     );
+  }
+
+  /**
+   * Uploads the channel icon.
+   */
+  public async uploadIcon(channelId: number, body: RESTPutAPIChannelIconBody) {
+    return await this.rest.put<
+      RESTPutAPIChannelIconBody,
+      RESTPutAPIChannelIconResult
+    >(APIRoutes.channelIcon(channelId), { body });
   }
 }

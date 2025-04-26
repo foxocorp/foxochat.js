@@ -1,12 +1,16 @@
 import type { APIMessage, APIOk } from "../payloads";
+import type {
+  RESTAPIAttachmentUploadRequest,
+  RESTAPIAttachmentUploadResponse,
+} from "./attachment";
 
 /**
- * The result of GET /messages/channel/{name}.
+ * The result of GET /channels/{channelId}/messages.
  */
 export type RESTGetAPIMessageListResult = APIMessage[];
 
 /**
- * The query of GET /messages/channel/{name}.
+ * The query of GET /channels/{channelId}/messages.
  */
 export interface RESTGetAPIMessageListQuery {
   /**
@@ -21,17 +25,17 @@ export interface RESTGetAPIMessageListQuery {
 }
 
 /**
- * The result of GET /messages/channel/{name}/{id}.
+ * The result of GET /channels/{channelId}/messages/{id}.
  */
 export type RESTGetAPIMessageResult = APIMessage;
 
 /**
- * The result of POST /messages/channel/{name}.
+ * The result of POST /channels/{channelId}/messages.
  */
 export type RESTPostAPIMessageResult = APIMessage;
 
 /**
- * The body of POST /messages/channel/{name}.
+ * The body of POST /channels/{channelId}/messages.
  */
 export interface RESTPostAPIMessageBody {
   /**
@@ -42,21 +46,21 @@ export interface RESTPostAPIMessageBody {
   /**
    * The files attached to the message.
    */
-  attachments?: Blob[];
+  attachments?: number[];
 }
 
 /**
- * The result of DELETE /messages/channel/{name}/{id}.
+ * The result of DELETE /channels/{channelId}/messages/{id}.
  */
 export type RESTDeleteAPIMessageResult = APIOk;
 
 /**
- * The result of PATCH /messages/channel/{name}/{id}.
+ * The result of PATCH /channels/{channelId}/messages/{id}.
  */
 export type RESTPatchAPIMessageResult = APIMessage;
 
 /**
- * The body of PATCH /messages/channel/{name}/{id}.
+ * The body of PATCH /channels/{channelId}/messages/{id}.
  */
 export interface RESTPatchAPIMessageBody {
   /**
@@ -67,5 +71,16 @@ export interface RESTPatchAPIMessageBody {
   /**
    * The files attached to the message.
    */
-  attachments?: Blob[];
+  attachments?: number[];
 }
+
+/**
+ * The body of PUT /channels/{id}/attachments.
+ */
+export type RESTPutAPIMessageAttachmentsBody = RESTAPIAttachmentUploadRequest[];
+
+/**
+ * The result of PUT /channels/{id}/attachments.
+ */
+export type RESTPutAPIMessageAttachmentsResult =
+  RESTAPIAttachmentUploadResponse[];

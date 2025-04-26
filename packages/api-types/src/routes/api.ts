@@ -103,35 +103,52 @@ export const APIRoutes = {
    * - PUT    /channels/{channelId}/members/@me
    * - DELETE /channels/{channelId}/members/@me
    */
-  member(channelId: number, memberKey: MemberKey) {
+  channelMember(channelId: number, memberKey: MemberKey = UserMe) {
     return `/channels/${channelId}/members/${memberKey}` as const;
   },
 
   /**
    * Route for:
    * - GET /channels/{channelId}/members
+   * - PUT /channels/{channelId}/members
    */
-  members(channelId: number) {
+  channelMembers(channelId: number) {
     return `/channels/${channelId}/members` as const;
   },
 
   /**
    * Route for:
-   * - GET    /messages/channel/{channelId}/{messageId}
-   * - PATCH  /messages/channel/{channelId}/{messageId}
-   * - DELETE /messages/channel/{channelId}/{messageId}
+   * - PUT /channels/{channelId}/attachments
    */
-  message(channelId: number, messageId: number) {
-    return `/messages/channel/${channelId}/${messageId}` as const;
+  messageAttachments(channelId: number) {
+    return `/channels/${channelId}/attachments` as const;
   },
 
   /**
    * Route for:
-   * - GET  /messages/channel/{channelId}
-   * - POST /messages/channel/{channelId}
+   * - PUT /channels/{channelId}/icon
+   */
+  channelIcon(channelId: number) {
+    return `/channels/${channelId}/icon` as const;
+  },
+
+  /**
+   * Route for:
+   * - GET    /channels/{channelId}/messages/{messageId}
+   * - PATCH  /channels/{channelId}/messages/{messageId}
+   * - DELETE /channels/{channelId}/messages/{messageId}
+   */
+  message(channelId: number, messageId: number) {
+    return `/channels/${channelId}/messages/${messageId}` as const;
+  },
+
+  /**
+   * Route for:
+   * - GET  /channels/{channelId}/messages
+   * - POST /channels/{channelId}/messages
    */
   messages(channelId: number) {
-    return `/messages/channel/${channelId}` as const;
+    return `/channels/${channelId}/messages` as const;
   },
 
   /**
@@ -142,6 +159,14 @@ export const APIRoutes = {
    */
   user(userKey: PublicUserKey = UserMe) {
     return `/users/${userKey}` as const;
+  },
+
+  /**
+   * Route for:
+   *  - PUT /users/@me/avatar
+   */
+  userAvatar() {
+    return `/users/@me/avatar` as const;
   },
 
   /**

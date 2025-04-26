@@ -157,7 +157,9 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
     switch (code as GatewayCloseCodes) {
       case GatewayCloseCodes.HeartbeatTimeout:
-        this.debug(["The gateway server did not receive a timely heartbeat response"]);
+        this.debug([
+          "The gateway server did not receive a timely heartbeat response",
+        ]);
         return this.destroy({ code, reconnect: true });
       case GatewayCloseCodes.Unauthorized:
         this.debug(["Unauthorized operation before identify"]);
