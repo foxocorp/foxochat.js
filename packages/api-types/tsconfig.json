@@ -5,8 +5,8 @@
     "skipLibCheck": false,
     "rootDir": "./src",
     "outDir": "./dist",
-    "lib": ["ES2017", "DOM"],
-    "module": "es2015",
+    "lib": ["ES2020", "DOM"],
+    "module": "es2020",
     "moduleResolution": "bundler"
   }
 }

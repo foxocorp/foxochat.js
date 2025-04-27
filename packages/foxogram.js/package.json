@@ -5,7 +5,7 @@
   "description": "A powerful library for interacting with the Foxogram API",
   "author": "FoxoCorp",
   "license": "MIT",
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "./dist"
@@ -17,8 +17,8 @@
         "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
@@ -30,9 +30,8 @@
     "url": "https://github.com/foxocorp/foxogram.js/issues"
   },
   "scripts": {
-    "build": "unbuild",
-    "lint": "eslint ./src",
-    "doc": "typedoc ./src/index.ts",
+    "build": "rslib build",
+    "lint": "eslint",
     "prepack": "pnpm run build"
   },
   "dependencies": {
@@ -45,11 +44,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",
+    "@rslib/core": "^0.6.7",
     "@tsconfig/strictest": "^2.0.5",
     "eslint": "^9.25.1",
-    "typedoc": "^0.27.9",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0",
-    "unbuild": "^2.0.0"
+    "typescript-eslint": "^8.31.0"
   }
 }
