@@ -1,8 +1,5 @@
 import type { APIMessage, APIOk } from "../payloads";
-import type {
-  RESTAPIAttachmentUploadRequest,
-  RESTAPIAttachmentUploadResponse,
-} from "./attachment";
+import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from "./attachment";
 
 /**
  * The result of GET /channels/{channelId}/messages.
@@ -82,5 +79,4 @@ export type RESTPutAPIMessageAttachmentsBody = RESTAPIAttachmentUploadRequest[];
 /**
  * The result of PUT /channels/{id}/attachments.
  */
-export type RESTPutAPIMessageAttachmentsResult =
-  RESTAPIAttachmentUploadResponse[];
+export type RESTPutAPIMessageAttachmentsResult = RESTAPIAttachmentUploadResponse[];

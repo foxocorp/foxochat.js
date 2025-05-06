@@ -28,83 +28,64 @@ export class ChannelAPI {
    * Joins the current user to the channel.
    */
   public async join(channelId: number) {
-    return await this.rest.put<never, RESTPutAPIChannelJoinResult>(
-      APIRoutes.channelMember(channelId, UserMe),
-    );
+    return await this.rest.put<RESTPutAPIChannelJoinResult>(APIRoutes.channelMember(channelId, UserMe));
   }
 
   /**
    * Leaves the current user to the channel.
    */
   public async leave(channelId: number) {
-    return await this.rest.delete<never, RESTDeleteAPIChannelLeaveResult>(
-      APIRoutes.channelMember(channelId, UserMe),
-    );
+    return await this.rest.delete<RESTDeleteAPIChannelLeaveResult>(APIRoutes.channelMember(channelId, UserMe));
   }
 
   /**
    * Creates a new channel.
    */
   public async create(body: RESTPostAPIChannelBody) {
-    return await this.rest.post<
-      RESTPostAPIChannelBody,
-      RESTPostAPIChannelResult
-    >(APIRoutes.channels(), { body });
+    return await this.rest.post<RESTPostAPIChannelResult>(APIRoutes.channels(), { body });
   }
 
   /**
    * Fetches a channel.
    */
   public async get(channelKey: PublicChannelKey) {
-    return await this.rest.get<RESTGetAPIChannelResult>(
-      APIRoutes.channel(channelKey),
-    );
+    return await this.rest.get<RESTGetAPIChannelResult>(APIRoutes.channel(channelKey));
   }
 
   /**
    * Deletes the channel.
    */
   public async delete(channelId: number) {
-    return await this.rest.delete<never, RESTDeleteAPIChannelResult>(
-      APIRoutes.channel(channelId),
-    );
+    return await this.rest.delete<RESTDeleteAPIChannelResult>(APIRoutes.channel(channelId));
   }
 
   /**
    * Edits the channel.
    */
   public async edit(channelId: number, body: RESTPatchAPIChannelBody) {
-    return await this.rest.patch<
-      RESTPatchAPIChannelBody,
-      RESTPatchAPIChannelResult
-    >(APIRoutes.channel(channelId), { body });
+    return await this.rest.patch<RESTPatchAPIChannelResult>(APIRoutes.channel(channelId), {
+      body,
+    });
   }
 
   /**
    * Gets a member from the channel.
    */
   public async member(channelId: number, memberKey: MemberKey) {
-    return await this.rest.get<RESTGetAPIChannelMemberResult>(
-      APIRoutes.channelMember(channelId, memberKey),
-    );
+    return await this.rest.get<RESTGetAPIChannelMemberResult>(APIRoutes.channelMember(channelId, memberKey));
   }
 
   /**
    * Lists members in the channel.
    */
   public async members(channelId: number) {
-    return await this.rest.get<RESTGetAPIChannelMembersResult>(
-      APIRoutes.channelMembers(channelId),
-    );
+    return await this.rest.get<RESTGetAPIChannelMembersResult>(APIRoutes.channelMembers(channelId));
   }
 
   /**
    * Uploads the channel icon.
    */
   public async uploadIcon(channelId: number, body: RESTPutAPIChannelIconBody) {
-    return await this.rest.put<
-      RESTPutAPIChannelIconBody,
-      RESTPutAPIChannelIconResult
-    >(APIRoutes.channelIcon(channelId), { body });
+    return await this.rest.put<RESTPutAPIChannelIconResult>(APIRoutes.channelIcon(channelId), { body });
   }
 }

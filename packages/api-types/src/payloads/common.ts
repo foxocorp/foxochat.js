@@ -1,4 +1,29 @@
 /**
+ * API Info DTO.
+ */
+export interface APIInfo {
+  /**
+   * The version of API.
+   */
+  version: string;
+
+  /**
+   * The URL of CDN.
+   */
+  cdn_url: string;
+
+  /**
+   * The URL of Gateway.
+   */
+  gateway_url: string;
+
+  /**
+   * The URL of Application.
+   */
+  app_url: string;
+}
+
+/**
  * API Ok DTO.
  */
 export interface APIOk {

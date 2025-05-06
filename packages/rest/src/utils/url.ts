@@ -10,9 +10,7 @@ export function serializeURLSearchParam(value: unknown): string | null {
   }
 }
 
-export function buildURLSearchParams<T extends object>(
-  options?: Readonly<T>,
-): URLSearchParams {
+export function buildURLSearchParams<T extends object>(options?: Readonly<T>): URLSearchParams {
   const params = new URLSearchParams();
 
   if (!options) return params;

@@ -1,17 +1,6 @@
 import { APIError, AuthEnforcedError, HTTPError } from "./errors";
-import {
-  DefaultRESTOptions,
-  RequestBodyType,
-  RequestMethod,
-} from "./constants";
-import type {
-  InternalRequestOptions,
-  RESTOptions,
-  RequestBody,
-  RequestHeaders,
-  RequestOptions,
-  RouteLike,
-} from "./types";
+import { DefaultRESTOptions, RequestBodyType, RequestMethod } from "./constants";
+import type { InternalRequestOptions, RESTOptions, RequestHeaders, RequestOptions, RouteLike } from "./types";
 import type { APIException } from "@foxogram/api-types";
 import { parseResponse } from "./utils";
 
@@ -43,11 +32,8 @@ export class REST {
   /**
    * Sends a GET request to the API.
    */
-  public async get<R>(
-    route: RouteLike,
-    options?: RequestOptions<never>,
-  ): Promise<R> {
-    return this.request<never, R>({
+  public async get<R>(route: RouteLike, options?: RequestOptions): Promise<R> {
+    return this.request<R>({
       method: RequestMethod.Get,
       route,
       ...options,
@@ -57,11 +43,8 @@ export class REST {
   /**
    * Sends a PUT request to the API.
    */
-  public async put<B extends RequestBody, R>(
-    route: RouteLike,
-    options?: RequestOptions<B>,
-  ): Promise<R> {
-    return this.request<B, R>({
+  public async put<R>(route: RouteLike, options?: RequestOptions): Promise<R> {
+    return this.request<R>({
       method: RequestMethod.Put,
       route,
       ...options,
@@ -71,11 +54,8 @@ export class REST {
   /**
    * Sends a POST request to the API.
    */
-  public async post<B extends RequestBody, R>(
-    route: RouteLike,
-    options?: RequestOptions<B>,
-  ): Promise<R> {
-    return this.request<B, R>({
+  public async post<R>(route: RouteLike, options?: RequestOptions): Promise<R> {
+    return this.request<R>({
       method: RequestMethod.Post,
       route,
       ...options,
@@ -85,11 +65,8 @@ export class REST {
   /**
    * Sends a PATCH request to the API.
    */
-  public async patch<B extends RequestBody, R>(
-    route: RouteLike,
-    options?: RequestOptions<B>,
-  ): Promise<R> {
-    return this.request<B, R>({
+  public async patch<R>(route: RouteLike, options?: RequestOptions): Promise<R> {
+    return this.request<R>({
       method: RequestMethod.Patch,
       route,
       ...options,
@@ -99,11 +76,8 @@ export class REST {
   /**
    * Sends a DELETE request to the API.
    */
-  public async delete<B extends RequestBody, R>(
-    route: RouteLike,
-    options?: RequestOptions<B>,
-  ): Promise<R> {
-    return this.request<B, R>({
+  public async delete<R>(route: RouteLike, options?: RequestOptions): Promise<R> {
+    return this.request<R>({
       method: RequestMethod.Delete,
       route,
       ...options,
@@ -113,9 +87,7 @@ export class REST {
   /**
    * Sends a request to the API.
    */
-  public async request<B extends RequestBody, R>(
-    options: InternalRequestOptions<B>,
-  ): Promise<R> {
+  public async request<R>(options: InternalRequestOptions): Promise<R> {
     const url = new URL(`${this.options.baseURL}${options.route}`);
 
     if (options.params) {
@@ -125,8 +97,7 @@ export class REST {
     const commonHeaders: RequestHeaders = {};
     const additionalHeaders: Record<string, string> = {};
 
-    const authRequired =
-      options.useAuth && (options.enforceAuth || this.options.enforceAuth);
+    const authRequired = options.useAuth && (options.enforceAuth || this.options.enforceAuth);
 
     if (authRequired && !this.token) {
       throw new AuthEnforcedError(options.method, options.route);
@@ -169,12 +140,7 @@ export class REST {
     if (response.status >= 500) {
       throw new HTTPError(status, options.method, options.route);
     } else if (status >= 400) {
-      throw new APIError(
-        status,
-        options.method,
-        options.route,
-        data as APIException,
-      );
+      throw new APIError(status, options.method, options.route, data as APIException);
     }
 
     return data as R;

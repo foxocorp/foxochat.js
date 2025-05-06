@@ -13,11 +13,11 @@ export type RequestBody = BodyInit | object;
 /**
  * Represents the data that will be sent to the endpoint.
  */
-export interface RequestOptions<B extends RequestBody> {
+export interface RequestOptions {
   /**
    * The body to send in this request.
    */
-  body?: B;
+  body?: RequestBody;
 
   /**
    * The URL query parameters to be sent with the request
@@ -53,8 +53,7 @@ export interface RequestOptions<B extends RequestBody> {
 /**
  * Represents the data that will be sent to the endpoint.
  */
-export interface InternalRequestOptions<B extends RequestBody>
-  extends RequestOptions<B> {
+export interface InternalRequestOptions extends RequestOptions {
   /**
    * Route to request.
    */
@@ -70,17 +69,7 @@ export interface InternalRequestOptions<B extends RequestBody>
  * Internal HTTP-client response like structure.
  */
 export interface ResponseLike
-  extends Pick<
-    Response,
-    | "arrayBuffer"
-    | "bodyUsed"
-    | "headers"
-    | "json"
-    | "ok"
-    | "status"
-    | "statusText"
-    | "text"
-  > {
+  extends Pick<Response, "arrayBuffer" | "bodyUsed" | "headers" | "json" | "ok" | "status" | "statusText" | "text"> {
   body: ReadableStream<Uint8Array> | null;
 }
 

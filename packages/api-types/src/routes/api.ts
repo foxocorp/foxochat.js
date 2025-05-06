@@ -184,4 +184,12 @@ export const APIRoutes = {
   userConfirmDelete() {
     return "/users/@me/delete-confirm" as const;
   },
+
+  /**
+   * Route for:
+   * - GET /info
+   */
+  info() {
+    return "/info" as const;
+  },
 };

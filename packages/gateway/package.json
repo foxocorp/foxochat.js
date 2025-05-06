@@ -30,9 +30,13 @@
     "url": "https://github.com/foxocorp/foxogram.js/issues"
   },
   "scripts": {
-    "build": "rslib build",
     "lint": "eslint",
+    "build": "rslib build",
+    "format": "prettier --write .",
     "prepack": "pnpm run build"
+  },
+  "prettier": {
+    "printWidth": 120
   },
   "dependencies": {
     "@foxogram/api-types": "workspace:^",
@@ -45,6 +49,7 @@
     "@rslib/core": "^0.6.7",
     "@tsconfig/strictest": "^2.0.5",
     "eslint": "^9.25.1",
+    "prettier": "^3.5.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0"
   }

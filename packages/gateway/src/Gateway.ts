@@ -10,11 +10,7 @@ import {
   GatewayOpcodes,
   type GatewayServerboundMessage,
 } from "@foxogram/gateway-types";
-import {
-  type GatewayDestroyOptions,
-  type GatewayEventsMap,
-  type GatewayOptions,
-} from "./types";
+import { type GatewayDestroyOptions, type GatewayEventsMap, type GatewayOptions } from "./types";
 import { MissingTokenError, NotConnectedError } from "./errors";
 import EventEmitter from "eventemitter3";
 
@@ -62,11 +58,7 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
   public async destroy(options: GatewayDestroyOptions = {}): Promise<void> {
     options.code ??= GatewayCloseCodes.HeartbeatTimeout;
 
-    this.debug([
-      "Destroying gateway connection",
-      `Code: ${options.code}`,
-      `Reconnect: ${!!options.reconnect}`,
-    ]);
+    this.debug(["Destroying gateway connection", `Code: ${options.code}`, `Reconnect: ${!!options.reconnect}`]);
 
     this.socketErrorOccurred = false;
     if (this.heartbeatInterval) {
@@ -92,9 +84,7 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
     }
 
     if (this.options.reconnect && options.reconnect) {
-      await new Promise((resolve) =>
-        setTimeout(resolve, this.options.reconnectTimeout),
-      );
+      await new Promise((resolve) => setTimeout(resolve, this.options.reconnectTimeout));
       await this.connect();
     }
   }
@@ -108,14 +98,9 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
         const payload = message.d as GatewayHelloPayload;
 
-        this.debug([
-          `Starting to send heartbeats every ${payload.heartbeat_interval}ms`,
-        ]);
+        this.debug([`Starting to send heartbeats every ${payload.heartbeat_interval}ms`]);
 
-        this.heartbeatInterval = setInterval(
-          () => void this.heartbeat(),
-          payload.heartbeat_interval,
-        );
+        this.heartbeatInterval = setInterval(() => void this.heartbeat(), payload.heartbeat_interval);
 
         break;
       }
@@ -157,9 +142,7 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
     switch (code as GatewayCloseCodes) {
       case GatewayCloseCodes.HeartbeatTimeout:
-        this.debug([
-          "The gateway server did not receive a timely heartbeat response",
-        ]);
+        this.debug(["The gateway server did not receive a timely heartbeat response"]);
         return this.destroy({ code, reconnect: true });
       case GatewayCloseCodes.Unauthorized:
         this.debug(["Unauthorized operation before identify"]);
@@ -170,9 +153,7 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
     }
   }
 
-  public async send<T extends GatewayServerboundMessage>(
-    message: T,
-  ): Promise<void> {
+  public async send<T extends GatewayServerboundMessage>(message: T): Promise<void> {
     if (!this.connection) {
       throw new NotConnectedError();
     }

@@ -13,10 +13,8 @@ export interface GatewayMessage {
 /**
  * Gateway dispatch message.
  */
-export interface GatewayDispatchMessage<
-  E extends GatewayDispatchEvents = GatewayDispatchEvents,
-  D = unknown,
-> extends GatewayMessage {
+export interface GatewayDispatchMessage<E extends GatewayDispatchEvents = GatewayDispatchEvents, D = unknown>
+  extends GatewayMessage {
   op: GatewayOpcodes.Dispatch;
   t: E;
   d: D;
@@ -25,8 +23,7 @@ export interface GatewayDispatchMessage<
 /**
  * Simple gateway message.
  */
-export interface GatewaySimpleMessage<O extends GatewayOpcodes, D = null>
-  extends Omit<GatewayMessage, "t" | "s"> {
+export interface GatewaySimpleMessage<O extends GatewayOpcodes, D = null> extends Omit<GatewayMessage, "t" | "s"> {
   op: O;
   d: D;
 }

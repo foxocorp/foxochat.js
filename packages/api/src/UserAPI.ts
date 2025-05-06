@@ -39,48 +39,34 @@ export class UserAPI {
    * Edits the current user.
    */
   public async edit(body: RESTPatchAPIUserBody) {
-    return await this.rest.patch<RESTPatchAPIUserBody, RESTPatchAPIUserResult>(
-      APIRoutes.user(UserMe),
-      { body },
-    );
+    return await this.rest.patch<RESTPatchAPIUserResult>(APIRoutes.user(UserMe), { body });
   }
 
   /**
    * Requests user deletion.
    */
   public async delete(body: RESTDeleteAPIUserBody) {
-    return await this.rest.delete<
-      RESTDeleteAPIUserBody,
-      RESTDeleteAPIUserResult
-    >(APIRoutes.user(UserMe), { body });
+    return await this.rest.delete<RESTDeleteAPIUserResult>(APIRoutes.user(UserMe), { body });
   }
 
   /**
    * Confirms user deletion.
    */
   public async confirmDelete(body: RESTPostAPIUserDeleteConfirmBody) {
-    return await this.rest.post<
-      RESTPostAPIUserDeleteConfirmBody,
-      RESTPostAPIUserDeleteConfirmResult
-    >(APIRoutes.userConfirmDelete(), { body });
+    return await this.rest.post<RESTPostAPIUserDeleteConfirmResult>(APIRoutes.userConfirmDelete(), { body });
   }
 
   /**
    * Gets user channels.
    */
   public async channels() {
-    return await this.rest.get<RESTGetAPIUserChannelsResult>(
-      APIRoutes.userChannels(),
-    );
+    return await this.rest.get<RESTGetAPIUserChannelsResult>(APIRoutes.userChannels());
   }
 
   /**
    * Uploads the user avatar.
    */
   public async uploadAvatar(body: RESTPutAPIUserAvatarBody) {
-    return await this.rest.put<
-      RESTPutAPIUserAvatarBody,
-      RESTPutAPIUserAvatarResult
-    >(APIRoutes.userAvatar(), { body });
+    return await this.rest.put<RESTPutAPIUserAvatarResult>(APIRoutes.userAvatar(), { body });
   }
 }
