@@ -39,13 +39,13 @@
     "printWidth": 120
   },
   "devDependencies": {
-    "@eslint/js": "^9.25.1",
-    "@rslib/core": "^0.6.7",
+    "@eslint/js": "^9.26.0",
+    "@rslib/core": "^0.6.8",
     "@tsconfig/strictest": "^2.0.5",
-    "eslint": "^9.25.1",
+    "eslint": "^9.26.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.32.0"
   },
   "dependencies": {
     "@foxogram/api-types": "workspace:^"
