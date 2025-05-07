@@ -1,5 +1,5 @@
-import type { GatewayHelloPayload, GatewayIdentifyPayload } from "../payloads";
-import type { GatewayOpcodes } from "../types";
+import type { GatewayHelloPayload, GatewayIdentifyPayload } from "#/payloads";
+import type { GatewayOpcodes } from "#/types";
 import type { GatewaySimpleMessage } from "./base";
 
 /**

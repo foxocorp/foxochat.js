@@ -1,5 +1,5 @@
 import type { GatewayDispatchMessage } from "@foxogram/gateway-types";
-import type { GatewayEvents } from "../constants";
+import type { GatewayEvents } from "#/constants";
 
 export interface HeartbeatStats {
   ackAt: number;

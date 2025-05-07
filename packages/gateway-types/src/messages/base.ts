@@ -1,4 +1,4 @@
-import type { GatewayDispatchEvents, GatewayOpcodes } from "../types";
+import type { GatewayDispatchEvents, GatewayOpcodes } from "#/types";
 
 /**
  * Gateway message.

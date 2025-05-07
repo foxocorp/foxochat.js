@@ -1,4 +1,4 @@
-import type { RESTOptions } from "../types";
+import type { RESTOptions } from "#/types";
 import { RouteBases } from "@foxogram/api-types";
 
 /**

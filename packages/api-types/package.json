@@ -13,7 +13,7 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.mjs"
       },
       "require": {
@@ -40,7 +40,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.26.0",
-    "@microsoft/api-extractor": "^7.52.7",
     "@rslib/core": "^0.6.8",
     "@tsconfig/strictest": "^2.0.5",
     "eslint": "^9.26.0",

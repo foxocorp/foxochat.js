@@ -1,4 +1,4 @@
-import type { RequestBodyType, RequestMethod } from "../constants";
+import type { RequestBodyType, RequestMethod } from "#/constants";
 
 /**
  * Represents an API route.

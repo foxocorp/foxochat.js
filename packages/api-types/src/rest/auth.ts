@@ -1,4 +1,4 @@
-import type { APIOk, APIToken } from "../payloads";
+import type { APIOk, APIToken } from "#/payloads";
 
 /**
  * The result of POST /auth/register.

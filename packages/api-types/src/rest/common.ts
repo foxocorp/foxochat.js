@@ -1,4 +1,4 @@
-import type { APIInfo } from "../payloads";
+import type { APIInfo } from "#/payloads";
 
 /**
  * The result of GET /info.

@@ -8,8 +8,8 @@ import type {
   GatewayDispatchMessageCreatePayload,
   GatewayDispatchMessageDeletePayload,
   GatewayDispatchMessageUpdatePayload,
-} from "../payloads";
-import type { GatewayDispatchEvents } from "../types";
+} from "#/payloads";
+import type { GatewayDispatchEvents } from "#/types";
 import type { GatewayDispatchMessage } from "./base";
 
 /**

@@ -1,4 +1,4 @@
-import type { GatewayOptions } from "../types";
+import type { GatewayOptions } from "#/types";
 import { RouteBases } from "@foxogram/api-types";
 
 export const DefaultGatewayOptions = {

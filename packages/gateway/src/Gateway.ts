@@ -1,19 +1,16 @@
 import "websocket-polyfill";
 
-import {
-  type GatewayClientboundMessage,
-  GatewayCloseCodes,
-  type GatewayDispatchMessage,
-  type GatewayHeartbeatMessage,
-  type GatewayHelloPayload,
-  type GatewayIdentifyMessage,
-  GatewayOpcodes,
-  type GatewayServerboundMessage,
+import type {
+  GatewayClientboundMessage,
+  GatewayHeartbeatMessage,
+  GatewayIdentifyMessage,
+  GatewayServerboundMessage,
 } from "@foxogram/gateway-types";
+import { GatewayCloseCodes, GatewayOpcodes } from "@foxogram/gateway-types";
 import EventEmitter from "eventemitter3";
 import { DefaultGatewayOptions, GatewayEvents } from "./constants";
 import { MissingTokenError, NotConnectedError } from "./errors";
-import { type GatewayDestroyOptions, type GatewayEventsMap, type GatewayOptions } from "./types";
+import type { GatewayDestroyOptions, GatewayEventsMap, GatewayOptions } from "./types";
 
 export default class Gateway extends EventEmitter<GatewayEventsMap> {
   private token: string | null = null;
@@ -94,11 +91,13 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
   private async onMessage(data: string): Promise<void> {
     const message: GatewayClientboundMessage = JSON.parse(data);
 
-    switch (message.op) {
+    const { op } = message;
+
+    switch (op) {
       case GatewayOpcodes.Hello: {
         this.emit(GatewayEvents.Hello);
 
-        const payload = message.d as GatewayHelloPayload;
+        const payload = message.d;
 
         this.debug([`Starting to send heartbeats every ${payload.heartbeat_interval}ms`]);
 
@@ -108,7 +107,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
       }
 
       case GatewayOpcodes.Dispatch: {
-        this.emit(GatewayEvents.Dispatch, message as GatewayDispatchMessage);
+        this.emit(GatewayEvents.Dispatch, message);
 
         break;
       }
@@ -126,7 +125,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
       }
 
       default:
-        this.debug(["Recieved unknown opcode", `Code: ${message.op}`]);
+        this.debug(["Recieved unknown opcode", `Code: ${op}`]);
     }
   }
 

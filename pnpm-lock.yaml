@@ -48,9 +48,6 @@ importers:
       '@eslint/js':
         specifier: ^9.26.0
         version: 9.26.0
-      '@microsoft/api-extractor':
-        specifier: ^7.52.7
-        version: 7.52.7(@types/node@22.15.2)
       '@rslib/core':
         specifier: ^0.6.8
         version: 0.6.8(@microsoft/api-extractor@7.52.7(@types/node@22.15.2))(typescript@5.8.3)
@@ -1553,6 +1550,7 @@ snapshots:
       '@rushstack/node-core-library': 5.13.1(@types/node@22.15.2)
     transitivePeerDependencies:
       - '@types/node'
+    optional: true
 
   '@microsoft/api-extractor@7.52.7(@types/node@22.15.2)':
     dependencies:
@@ -1571,6 +1569,7 @@ snapshots:
       typescript: 5.8.2
     transitivePeerDependencies:
       - '@types/node'
+    optional: true
 
   '@microsoft/tsdoc-config@0.17.1':
     dependencies:
@@ -1578,8 +1577,10 @@ snapshots:
       ajv: 8.12.0
       jju: 1.4.0
       resolve: 1.22.10
+    optional: true
 
-  '@microsoft/tsdoc@0.15.1': {}
+  '@microsoft/tsdoc@0.15.1':
+    optional: true
 
   '@modelcontextprotocol/sdk@1.11.0':
     dependencies:
@@ -1712,11 +1713,13 @@ snapshots:
       semver: 7.5.4
     optionalDependencies:
       '@types/node': 22.15.2
+    optional: true
 
   '@rushstack/rig-package@0.5.3':
     dependencies:
       resolve: 1.22.10
       strip-json-comments: 3.1.1
+    optional: true
 
   '@rushstack/terminal@0.15.3(@types/node@22.15.2)':
     dependencies:
@@ -1724,6 +1727,7 @@ snapshots:
       supports-color: 8.1.1
     optionalDependencies:
       '@types/node': 22.15.2
+    optional: true
 
   '@rushstack/ts-command-line@5.0.1(@types/node@22.15.2)':
     dependencies:
@@ -1733,6 +1737,7 @@ snapshots:
       string-argv: 0.3.2
     transitivePeerDependencies:
       - '@types/node'
+    optional: true
 
   '@shikijs/engine-oniguruma@3.4.0':
     dependencies:
@@ -1760,7 +1765,8 @@ snapshots:
 
   '@tsconfig/strictest@2.0.5': {}
 
-  '@types/argparse@1.0.38': {}
+  '@types/argparse@1.0.38':
+    optional: true
 
   '@types/estree@1.0.7': {}
 
@@ -1868,10 +1874,12 @@ snapshots:
   ajv-draft-04@1.0.0(ajv@8.13.0):
     optionalDependencies:
       ajv: 8.13.0
+    optional: true
 
   ajv-formats@3.0.1(ajv@8.13.0):
     optionalDependencies:
       ajv: 8.13.0
+    optional: true
 
   ajv@6.12.6:
     dependencies:
@@ -1886,6 +1894,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
       uri-js: 4.4.1
+    optional: true
 
   ajv@8.13.0:
     dependencies:
@@ -1893,6 +1902,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
       uri-js: 4.4.1
+    optional: true
 
   ansi-styles@4.3.0:
     dependencies:
@@ -1901,6 +1911,7 @@ snapshots:
   argparse@1.0.10:
     dependencies:
       sprintf-js: 1.0.3
+    optional: true
 
   argparse@2.0.1: {}
 
@@ -2196,6 +2207,7 @@ snapshots:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
       universalify: 2.0.1
+    optional: true
 
   function-bind@1.1.2: {}
 
@@ -2229,7 +2241,8 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  graceful-fs@4.2.11: {}
+  graceful-fs@4.2.11:
+    optional: true
 
   graphemer@1.4.0: {}
 
@@ -2260,7 +2273,8 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
-  import-lazy@4.0.0: {}
+  import-lazy@4.0.0:
+    optional: true
 
   import2@1.0.3: {}
 
@@ -2273,6 +2287,7 @@ snapshots:
   is-core-module@2.16.1:
     dependencies:
       hasown: 2.0.2
+    optional: true
 
   is-extglob@2.1.1: {}
 
@@ -2288,7 +2303,8 @@ snapshots:
 
   jiti@2.4.2: {}
 
-  jju@1.4.0: {}
+  jju@1.4.0:
+    optional: true
 
   js-yaml@4.1.0:
     dependencies:
@@ -2298,7 +2314,8 @@ snapshots:
 
   json-schema-traverse@0.4.1: {}
 
-  json-schema-traverse@1.0.0: {}
+  json-schema-traverse@1.0.0:
+    optional: true
 
   json-stable-stringify-without-jsonify@1.0.1: {}
 
@@ -2309,6 +2326,7 @@ snapshots:
       universalify: 2.0.1
     optionalDependencies:
       graceful-fs: 4.2.11
+    optional: true
 
   keyv@4.5.4:
     dependencies:
@@ -2329,11 +2347,13 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
-  lodash@4.17.21: {}
+  lodash@4.17.21:
+    optional: true
 
   lru-cache@6.0.0:
     dependencies:
       yallist: 4.0.0
+    optional: true
 
   lunr@2.3.9: {}
 
@@ -2374,6 +2394,7 @@ snapshots:
   minimatch@3.0.8:
     dependencies:
       brace-expansion: 1.1.11
+    optional: true
 
   minimatch@3.1.2:
     dependencies:
@@ -2430,7 +2451,8 @@ snapshots:
 
   path-key@3.1.1: {}
 
-  path-parse@1.0.7: {}
+  path-parse@1.0.7:
+    optional: true
 
   path-to-regexp@8.2.0: {}
 
@@ -2470,7 +2492,8 @@ snapshots:
       iconv-lite: 0.6.3
       unpipe: 1.0.0
 
-  require-from-string@2.0.2: {}
+  require-from-string@2.0.2:
+    optional: true
 
   resolve-from@4.0.0: {}
 
@@ -2479,6 +2502,7 @@ snapshots:
       is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    optional: true
 
   reusify@1.1.0: {}
 
@@ -2515,6 +2539,7 @@ snapshots:
   semver@7.5.4:
     dependencies:
       lru-cache: 6.0.0
+    optional: true
 
   semver@7.7.1: {}
 
@@ -2579,13 +2604,16 @@ snapshots:
       side-channel-map: 1.0.1
       side-channel-weakmap: 1.0.2
 
-  source-map@0.6.1: {}
+  source-map@0.6.1:
+    optional: true
 
-  sprintf-js@1.0.3: {}
+  sprintf-js@1.0.3:
+    optional: true
 
   statuses@2.0.1: {}
 
-  string-argv@0.3.2: {}
+  string-argv@0.3.2:
+    optional: true
 
   strip-bom@3.0.0: {}
 
@@ -2598,8 +2626,10 @@ snapshots:
   supports-color@8.1.1:
     dependencies:
       has-flag: 4.0.0
+    optional: true
 
-  supports-preserve-symlinks-flag@1.0.0: {}
+  supports-preserve-symlinks-flag@1.0.0:
+    optional: true
 
   tinyglobby@0.2.13:
     dependencies:
@@ -2655,7 +2685,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  typescript@5.8.2: {}
+  typescript@5.8.2:
+    optional: true
 
   typescript@5.8.3: {}
 
@@ -2664,7 +2695,8 @@ snapshots:
   undici-types@6.21.0:
     optional: true
 
-  universalify@2.0.1: {}
+  universalify@2.0.1:
+    optional: true
 
   unpipe@1.0.0: {}
 
@@ -2693,7 +2725,8 @@ snapshots:
 
   ws@8.18.2: {}
 
-  yallist@4.0.0: {}
+  yallist@4.0.0:
+    optional: true
 
   yaml@2.7.1: {}
 
