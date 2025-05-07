@@ -7,7 +7,7 @@ import { parseResponse } from "./utils";
 /**
  * The HTTP REST API client for foxogram.js
  */
-export class REST {
+export default class REST {
   /**
    * Configuration options for this instance.
    */

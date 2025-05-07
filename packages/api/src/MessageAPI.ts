@@ -11,12 +11,13 @@ import {
   type RESTPostAPIMessageBody,
   type RESTPostAPIMessageResult,
 } from "@foxogram/api-types";
-import { type REST, buildURLSearchParams } from "@foxogram/rest";
+import type REST from "@foxogram/rest";
+import { buildURLSearchParams } from "@foxogram/rest";
 
 /**
  * A wrapper for the Foxogram message API.
  */
-export class MessageAPI {
+export default class MessageAPI {
   public constructor(private readonly rest: REST) {}
 
   /**

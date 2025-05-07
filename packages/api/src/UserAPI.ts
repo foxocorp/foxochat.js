@@ -13,12 +13,12 @@ import {
   type RESTPutAPIUserAvatarResult,
   UserMe,
 } from "@foxogram/api-types";
-import type { REST } from "@foxogram/rest";
+import type REST from "@foxogram/rest";
 
 /**
  * A wrapper for the Foxogram user API.
  */
-export class UserAPI {
+export default class UserAPI {
   public constructor(private readonly rest: REST) {}
 
   /**

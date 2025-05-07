@@ -1,13 +1,13 @@
-import { API } from "@foxogram/api";
+import API from "@foxogram/api";
+import Gateway from "@foxogram/gateway";
+import REST from "@foxogram/rest";
+import EventEmitter from "eventemitter3";
 import type { ClientOptions } from "./types";
-import { EventEmitter } from "eventemitter3";
-import { Gateway } from "@foxogram/gateway";
-import { REST } from "@foxogram/rest";
 
 /**
  * The main hub for interacting with the Foxogram.
  */
-export class Client extends EventEmitter {
+export default class Client extends EventEmitter {
   public readonly api: API;
   public readonly rest: REST;
   public readonly gateway: Gateway;

@@ -16,12 +16,12 @@ import {
   type RESTPutAPIChannelJoinResult,
   UserMe,
 } from "@foxogram/api-types";
-import type { REST } from "@foxogram/rest";
+import type REST from "@foxogram/rest";
 
 /**
  * A wrapper for the Foxogram channel API.
  */
-export class ChannelAPI {
+export default class ChannelAPI {
   public constructor(private readonly rest: REST) {}
 
   /**

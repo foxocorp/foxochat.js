@@ -12,12 +12,12 @@ import {
   type RESTPostAPIAuthVerifyEmailBody,
   type RESTPostAPIAuthVerifyEmailResult,
 } from "@foxogram/api-types";
-import type { REST } from "@foxogram/rest";
+import type REST from "@foxogram/rest";
 
 /**
  * A wrapper for the Foxogram authentication API.
  */
-export class AuthAPI {
+export default class AuthAPI {
   public constructor(private readonly rest: REST) {}
 
   /**

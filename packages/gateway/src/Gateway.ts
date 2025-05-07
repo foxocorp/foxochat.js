@@ -1,5 +1,5 @@
 import "websocket-polyfill";
-import { DefaultGatewayOptions, GatewayEvents } from "./constants";
+
 import {
   type GatewayClientboundMessage,
   GatewayCloseCodes,
@@ -10,11 +10,12 @@ import {
   GatewayOpcodes,
   type GatewayServerboundMessage,
 } from "@foxogram/gateway-types";
-import { type GatewayDestroyOptions, type GatewayEventsMap, type GatewayOptions } from "./types";
-import { MissingTokenError, NotConnectedError } from "./errors";
 import EventEmitter from "eventemitter3";
+import { DefaultGatewayOptions, GatewayEvents } from "./constants";
+import { MissingTokenError, NotConnectedError } from "./errors";
+import { type GatewayDestroyOptions, type GatewayEventsMap, type GatewayOptions } from "./types";
 
-export class Gateway extends EventEmitter<GatewayEventsMap> {
+export default class Gateway extends EventEmitter<GatewayEventsMap> {
   private token: string | null = null;
   private options: GatewayOptions;
   private connection: WebSocket | null = null;
@@ -24,6 +25,7 @@ export class Gateway extends EventEmitter<GatewayEventsMap> {
 
   public constructor(options: Partial<GatewayOptions> = {}) {
     super();
+
     this.options = { ...DefaultGatewayOptions, ...options } as GatewayOptions;
   }
 
