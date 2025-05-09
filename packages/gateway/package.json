@@ -41,8 +41,7 @@
   "dependencies": {
     "@foxogram/api-types": "workspace:^",
     "@foxogram/gateway-types": "workspace:^",
-    "eventemitter3": "^5.0.1",
-    "websocket-polyfill": "^1.0.0"
+    "eventemitter3": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.26.0",

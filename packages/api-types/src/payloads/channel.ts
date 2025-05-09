@@ -1,4 +1,4 @@
-import { APIAttachment } from "./attachment";
+import type { APIAttachment } from "./attachment";
 import type { APIMessage } from "./message";
 import type { APIUser } from "./user";
 
@@ -24,7 +24,7 @@ export interface APIChannel {
   /**
    * The icon of the channel.
    */
-  icon: APIAttachment;
+  icon?: APIAttachment;
 
   /**
    * The type of the channel.

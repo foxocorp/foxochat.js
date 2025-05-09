@@ -1,4 +1,4 @@
-import { APIAttachment } from "./attachment";
+import type { APIAttachment } from "./attachment";
 
 /**
  * API User DTO.
@@ -17,7 +17,7 @@ export interface APIUser {
   /**
    * The avatar of the user.
    */
-  avatar: APIAttachment;
+  avatar?: APIAttachment;
 
   /**
    * The display name of the user.

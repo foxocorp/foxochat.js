@@ -5,6 +5,11 @@ export interface GatewayOptions {
   url: string;
 
   /**
+   * A factory function used to create WebSocket instance.
+   */
+  websocket(...args: ConstructorParameters<typeof WebSocket>): WebSocket;
+
+  /**
    * Whether the client should attempt to reconnect automatically
    * after a disconnection.
    */

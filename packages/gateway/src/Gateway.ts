@@ -1,5 +1,3 @@
-import "websocket-polyfill";
-
 import type {
   GatewayClientboundMessage,
   GatewayHeartbeatMessage,
@@ -33,25 +31,11 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
   public async connect(): Promise<void> {
     this.debug([`Connecting to ${this.options.url}`]);
 
-    const connection = new WebSocket(this.options.url);
-
-    connection.onmessage = (event: MessageEvent<string>) => {
-      void this.onMessage(event.data);
-    };
-
-    connection.onclose = (event: CloseEvent) => {
-      void this.onClose(event.code);
-    };
-
-    connection.onerror = (event) => {
-      this.onError((event as ErrorEvent).error);
-    };
-
-    connection.onopen = () => {
-      void this.onOpen();
-    };
-
-    this.connection = connection;
+    this.connection = this.options.websocket(this.options.url);
+    this.connection.onmessage = (event: MessageEvent<string>) => void this.onMessage(event.data);
+    this.connection.onclose = (event: CloseEvent) => void this.onClose(event.code);
+    this.connection.onerror = (event) => this.onError((event as ErrorEvent).error);
+    this.connection.onopen = () => void this.onOpen();
   }
 
   public async destroy(options: GatewayDestroyOptions = {}): Promise<void> {
@@ -155,9 +139,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
   }
 
   public async send<T extends GatewayServerboundMessage>(message: T): Promise<void> {
-    if (!this.connection) {
-      throw new NotConnectedError();
-    }
+    if (!this.connection) throw new NotConnectedError();
 
     const data = JSON.stringify(message);
 
@@ -174,9 +156,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
   }
 
   private async identify(): Promise<void> {
-    if (!this.token) {
-      throw new MissingTokenError();
-    }
+    if (!this.token) throw new MissingTokenError();
 
     const message: GatewayIdentifyMessage = {
       d: {
