@@ -4,7 +4,6 @@ import type { GatewayEvents } from "#/constants";
 export interface HeartbeatStats {
   ackAt: number;
   heartbeatAt: number;
-  latency: number;
 }
 
 export interface GatewayEventsMap {
@@ -13,5 +12,5 @@ export interface GatewayEventsMap {
   [GatewayEvents.Dispatch]: [message: GatewayDispatchMessage];
   [GatewayEvents.HeartbeatComplete]: [stats: HeartbeatStats];
   [GatewayEvents.Debug]: [message: string];
-  [GatewayEvents.SocketError]: [error: Error];
+  [GatewayEvents.SocketError]: [event: Event];
 }

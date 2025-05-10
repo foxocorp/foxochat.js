@@ -41,11 +41,12 @@
   "dependencies": {
     "@foxogram/api-types": "workspace:^",
     "@foxogram/gateway-types": "workspace:^",
+    "@swc/helpers": "^0.5.17",
     "eventemitter3": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.26.0",
-    "@rslib/core": "^0.6.8",
+    "@rslib/core": "^0.6.9",
     "@tsconfig/strictest": "^2.0.5",
     "eslint": "^9.26.0",
     "prettier": "^3.5.3",

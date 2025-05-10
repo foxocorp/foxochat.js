@@ -22,8 +22,7 @@ export default class Client extends EventEmitter {
   }
 
   public async login(token: string): Promise<void> {
-    this.rest.setToken(token);
-    this.gateway.setToken(token);
+    this.gateway.token = this.rest.token = token;
 
     try {
       await this.gateway.connect();

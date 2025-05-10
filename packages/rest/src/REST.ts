@@ -16,17 +16,10 @@ export default class REST {
   /**
    * A token that should be used for requests.
    */
-  private token: string | null = null;
+  public accessor token: string | null = null;
 
   public constructor(options?: Partial<RESTOptions>) {
     this.options = { ...DefaultRESTOptions, ...options } as RESTOptions;
-  }
-
-  /**
-   * Sets the authorization token that should be used for requests.
-   */
-  public setToken(token: string | null): string | null {
-    return (this.token = token);
   }
 
   /**

@@ -8,15 +8,17 @@ import { GatewayCloseCodes, GatewayOpcodes } from "@foxogram/gateway-types";
 import EventEmitter from "eventemitter3";
 import { DefaultGatewayOptions, GatewayEvents } from "./constants";
 import { MissingTokenError, NotConnectedError } from "./errors";
-import type { GatewayDestroyOptions, GatewayEventsMap, GatewayOptions } from "./types";
+import type { GatewayDestroyOptions, GatewayEventsMap, GatewayOptions, HeartbeatStats } from "./types";
 
 export default class Gateway extends EventEmitter<GatewayEventsMap> {
-  private token: string | null = null;
   private options: GatewayOptions;
   private connection: WebSocket | null = null;
   private heartbeatInterval: number | null = null;
   private lastHeartbeatAt = -1;
+  private heartbeatStats: HeartbeatStats | null = null;
   private socketErrorOccurred = false;
+
+  public accessor token: string | null = null;
 
   public constructor(options: Partial<GatewayOptions> = {}) {
     super();
@@ -24,8 +26,8 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     this.options = { ...DefaultGatewayOptions, ...options } as GatewayOptions;
   }
 
-  public setToken(token: string | null): string | null {
-    return (this.token = token);
+  public get latency(): number | null {
+    return this.heartbeatStats ? this.heartbeatStats.ackAt - this.heartbeatStats.heartbeatAt : null;
   }
 
   public async connect(): Promise<void> {
@@ -34,7 +36,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     this.connection = this.options.websocket(this.options.url);
     this.connection.onmessage = (event: MessageEvent<string>) => void this.onMessage(event.data);
     this.connection.onclose = (event: CloseEvent) => void this.onClose(event.code);
-    this.connection.onerror = (event) => this.onError((event as ErrorEvent).error);
+    this.connection.onerror = (event) => this.onError(event);
     this.connection.onopen = () => void this.onOpen();
   }
 
@@ -99,11 +101,10 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
       case GatewayOpcodes.HeartbeatAck: {
         const ackAt = Date.now();
 
-        this.emit(GatewayEvents.HeartbeatComplete, {
-          ackAt,
-          heartbeatAt: this.lastHeartbeatAt,
-          latency: ackAt - this.lastHeartbeatAt,
-        });
+        this.emit(
+          GatewayEvents.HeartbeatComplete,
+          (this.heartbeatStats = { ackAt, heartbeatAt: this.lastHeartbeatAt }),
+        );
 
         break;
       }
@@ -117,8 +118,8 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     await this.identify();
   }
 
-  private onError(error: Error) {
-    this.emit(GatewayEvents.SocketError, error);
+  private onError(event: Event) {
+    this.emit(GatewayEvents.SocketError, event);
     this.socketErrorOccurred = true;
   }
 
