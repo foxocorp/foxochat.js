@@ -3,6 +3,6 @@ export class AuthEnforcedError extends Error {
     public method: string,
     public route: string,
   ) {
-    super();
+    super()
   }
 }

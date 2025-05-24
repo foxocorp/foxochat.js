@@ -1,46 +1,46 @@
-import type { APIChannel, APIMember, APIMessage } from "@foxogram/api-types";
+import type { APIChannel, APIMember, APIMessage } from '@foxogram/api-types'
 
 /**
  * Created message.
  */
-export type GatewayDispatchMessageCreatePayload = APIMessage;
+export type GatewayDispatchMessageCreatePayload = APIMessage
 
 /**
  * Updated message.
  */
-export type GatewayDispatchMessageUpdatePayload = APIMessage;
+export type GatewayDispatchMessageUpdatePayload = APIMessage
 
 /**
  * Deleted message.
  */
-export type GatewayDispatchMessageDeletePayload = APIMessage;
+export type GatewayDispatchMessageDeletePayload = APIMessage
 
 /**
  * Created channel.
  */
-export type GatewayDispatchChannelCreatePayload = APIChannel;
+export type GatewayDispatchChannelCreatePayload = APIChannel
 
 /**
  * Updated channel.
  */
-export type GatewayDispatchChannelUpdatePayload = APIChannel;
+export type GatewayDispatchChannelUpdatePayload = APIChannel
 
 /**
  * Deleted channel.
  */
-export type GatewayDispatchChannelDeletePayload = APIChannel;
+export type GatewayDispatchChannelDeletePayload = APIChannel
 
 /**
  * Added member.
  */
-export type GatewayDispatchMemberAddPayload = APIMember;
+export type GatewayDispatchMemberAddPayload = APIMember
 
 /**
  * Updated member.
  */
-export type GatewayDispatchMemberUpdatePayload = APIMember;
+export type GatewayDispatchMemberUpdatePayload = APIMember
 
 /**
  * Removed member.
  */
-export type GatewayDispatchMemberRemovePayload = APIMember;
+export type GatewayDispatchMemberRemovePayload = APIMember

@@ -1,31 +1,31 @@
 /**
  * The key of current user.
  */
-export const UserMe = "@me";
+export const UserMe = '@me'
 
 /**
  * The key of the public entity.
  */
-export type PublicKey = `@${string}`;
+export type PublicKey = `@${string}`
 
 /**
  * The key of the public user.
  *
  * Can be id, \@name or \@me.
  */
-export type PublicUserKey = typeof UserMe | number | PublicKey;
+export type PublicUserKey = typeof UserMe | number | PublicKey
 
 /**
  * The key of the member.
  *
  * Can be id or \@me.
  */
-export type MemberKey = typeof UserMe | number;
+export type MemberKey = typeof UserMe | number
 
 /**
  * The key of the public channel.
  */
-export type PublicChannelKey = number | PublicKey;
+export type PublicChannelKey = number | PublicKey
 
 /**
  * The routes of API.
@@ -36,7 +36,7 @@ export const APIRoutes = {
    * - POST /auth/login
    */
   authLogin() {
-    return "/auth/login" as const;
+    return '/auth/login' as const
   },
 
   /**
@@ -44,7 +44,7 @@ export const APIRoutes = {
    * - POST /auth/register
    */
   authRegister() {
-    return "/auth/register" as const;
+    return '/auth/register' as const
   },
 
   /**
@@ -52,7 +52,7 @@ export const APIRoutes = {
    * - POST /auth/email/resend
    */
   authResendEmail() {
-    return "/auth/email/resend" as const;
+    return '/auth/email/resend' as const
   },
 
   /**
@@ -60,7 +60,7 @@ export const APIRoutes = {
    * - POST /auth/reset-password
    */
   authResetPassword() {
-    return "/auth/reset-password" as const;
+    return '/auth/reset-password' as const
   },
 
   /**
@@ -68,7 +68,7 @@ export const APIRoutes = {
    * - POST /auth/reset-password/confirm
    */
   authResetPasswordConfirm() {
-    return "/auth/reset-password/confirm" as const;
+    return '/auth/reset-password/confirm' as const
   },
 
   /**
@@ -76,7 +76,7 @@ export const APIRoutes = {
    * - POST /auth/email/verify
    */
   authVerifyEmail() {
-    return "/auth/email/verify" as const;
+    return '/auth/email/verify' as const
   },
 
   /**
@@ -86,7 +86,7 @@ export const APIRoutes = {
    - DELETE /channels/{channelKey}
    */
   channel(channelKey: PublicChannelKey) {
-    return `/channels/${channelKey}` as const;
+    return `/channels/${channelKey}` as const
   },
 
   /**
@@ -94,7 +94,7 @@ export const APIRoutes = {
    * - POST /channels/
    */
   channels() {
-    return "/channels/" as const;
+    return '/channels/' as const
   },
 
   /**
@@ -104,7 +104,7 @@ export const APIRoutes = {
    * - DELETE /channels/{channelId}/members/@me
    */
   channelMember(channelId: number, memberKey: MemberKey = UserMe) {
-    return `/channels/${channelId}/members/${memberKey}` as const;
+    return `/channels/${channelId}/members/${memberKey}` as const
   },
 
   /**
@@ -113,7 +113,7 @@ export const APIRoutes = {
    * - PUT /channels/{channelId}/members
    */
   channelMembers(channelId: number) {
-    return `/channels/${channelId}/members` as const;
+    return `/channels/${channelId}/members` as const
   },
 
   /**
@@ -121,7 +121,7 @@ export const APIRoutes = {
    * - PUT /channels/{channelId}/attachments
    */
   messageAttachments(channelId: number) {
-    return `/channels/${channelId}/attachments` as const;
+    return `/channels/${channelId}/attachments` as const
   },
 
   /**
@@ -129,7 +129,7 @@ export const APIRoutes = {
    * - PUT /channels/{channelId}/icon
    */
   channelIcon(channelId: number) {
-    return `/channels/${channelId}/icon` as const;
+    return `/channels/${channelId}/icon` as const
   },
 
   /**
@@ -139,7 +139,7 @@ export const APIRoutes = {
    * - DELETE /channels/{channelId}/messages/{messageId}
    */
   message(channelId: number, messageId: number) {
-    return `/channels/${channelId}/messages/${messageId}` as const;
+    return `/channels/${channelId}/messages/${messageId}` as const
   },
 
   /**
@@ -148,7 +148,7 @@ export const APIRoutes = {
    * - POST /channels/{channelId}/messages
    */
   messages(channelId: number) {
-    return `/channels/${channelId}/messages` as const;
+    return `/channels/${channelId}/messages` as const
   },
 
   /**
@@ -158,7 +158,7 @@ export const APIRoutes = {
    * - DELETE /users/@me
    */
   user(userKey: PublicUserKey = UserMe) {
-    return `/users/${userKey}` as const;
+    return `/users/${userKey}` as const
   },
 
   /**
@@ -166,7 +166,7 @@ export const APIRoutes = {
    *  - PUT /users/@me/avatar
    */
   userAvatar() {
-    return `/users/@me/avatar` as const;
+    return `/users/@me/avatar` as const
   },
 
   /**
@@ -174,7 +174,7 @@ export const APIRoutes = {
    * - GET /users/@me/channels
    */
   userChannels() {
-    return "/users/@me/channels" as const;
+    return '/users/@me/channels' as const
   },
 
   /**
@@ -182,7 +182,7 @@ export const APIRoutes = {
    * - POST /users/@me/delete-confirm
    */
   userConfirmDelete() {
-    return "/users/@me/delete-confirm" as const;
+    return '/users/@me/delete-confirm' as const
   },
 
   /**
@@ -190,6 +190,6 @@ export const APIRoutes = {
    * - GET /info
    */
   info() {
-    return "/info" as const;
+    return '/info' as const
   },
-};
+}

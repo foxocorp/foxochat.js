@@ -1,4 +1,4 @@
-import type { APIAttachment } from "./attachment";
+import type { APIAttachment } from './attachment'
 
 /**
  * API User DTO.
@@ -7,47 +7,57 @@ export interface APIUser {
   /**
    * The id of the user.
    */
-  id: number;
+  id: number
 
   /**
    * The channels of the user.
    */
-  channels?: number[];
+  channels?: number[]
 
   /**
    * The avatar of the user.
    */
-  avatar?: APIAttachment;
+  avatar?: APIAttachment
 
   /**
    * The display name of the user.
    */
-  display_name: string;
+  display_name: string
 
   /**
    * The username of the user.
    */
-  username: string;
+  username: string
 
   /**
    * The email of the user.
    */
-  email?: string;
+  email?: string
+
+  /**
+   * The status of the user.
+   */
+  status: UserStatus
+
+  /**
+   * The timestamp when the user's status was last updated.
+   */
+  status_updated_at: number
 
   /**
    * The flags of the user.
    */
-  flags: UserFlags;
+  flags: UserFlags
 
   /**
    * The type of the user.
    */
-  type: UserType;
+  type: UserType
 
   /**
    * The time when user created at.
    */
-  created_at: number;
+  created_at: number
 }
 
 /**
@@ -72,7 +82,6 @@ export enum UserFlags {
   /**
    * The user is awaiting email confirmation.
    */
-
   AwaitingConfirmation = 1,
 
   /**
@@ -84,4 +93,19 @@ export enum UserFlags {
    * The user is disabled.
    */
   Disabled = 4,
+}
+
+/**
+ * Status of the user.
+ */
+export enum UserStatus {
+  /**
+   * The user is online.
+   */
+  Online = 1,
+
+  /**
+   * The user is offline.
+   */
+  Offline = 2,
 }

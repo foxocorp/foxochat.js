@@ -1,5 +1,5 @@
-export { default, default as Gateway } from "./Gateway";
+export { default, default as Gateway } from './Gateway'
 
-export * from "./constants";
-export * from "./errors";
-export * from "./types";
+export * from './constants'
+export * from './errors'
+export * from './types'

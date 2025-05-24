@@ -52,45 +52,45 @@ export enum GatewayDispatchEvents {
   /**
    * Message was created.
    */
-  MessageCreate = "MESSAGE_CREATE",
+  MessageCreate = 'MESSAGE_CREATE',
 
   /**
    * Message was edited.
    */
-  MessageUpdate = "MESSAGE_UPDATE",
+  MessageUpdate = 'MESSAGE_UPDATE',
 
   /**
    * Message was deleted.
    */
-  MessageDelete = "MESSAGE_DELETE",
+  MessageDelete = 'MESSAGE_DELETE',
 
   /**
    * Channel was created.
    */
-  ChannelCreate = "CHANNEL_CREATE",
+  ChannelCreate = 'CHANNEL_CREATE',
 
   /**
    * Channel was updated.
    */
-  ChannelUpdate = "CHANNEL_UPDATE",
+  ChannelUpdate = 'CHANNEL_UPDATE',
 
   /**
    * Channel was deleted.
    */
-  ChannelDelete = "CHANNEL_DELETE",
+  ChannelDelete = 'CHANNEL_DELETE',
 
   /**
    * Member was added to channel.
    */
-  MemberAdd = "MEMBER_ADD",
+  MemberAdd = 'MEMBER_ADD',
 
   /**
    * Member was removed from channel.
    */
-  MemberRemove = "MEMBER_REMOVE",
+  MemberRemove = 'MEMBER_REMOVE',
 
   /**
    * Member was updated.
    */
-  MemberUpdate = "MEMBER_UPDATE",
+  MemberUpdate = 'MEMBER_UPDATE',
 }

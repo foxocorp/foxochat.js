@@ -1,5 +1,5 @@
-import type { APIException } from "@foxogram/api-types";
-import { HTTPError } from "./HTTPError";
+import type { APIException } from '@foxogram/api-types'
+import { HTTPError } from './HTTPError'
 
 /**
  * Represents an API error returned by Foxogram.
@@ -11,6 +11,6 @@ export class APIError extends HTTPError {
     route: string,
     public exception: APIException,
   ) {
-    super(status, method, route);
+    super(status, method, route)
   }
 }

@@ -7,9 +7,7 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "./dist"
-  ],
+  "files": ["./dist"],
   "exports": {
     ".": {
       "import": {
@@ -30,21 +28,17 @@
     "url": "https://github.com/foxocorp/foxogram.js/issues"
   },
   "scripts": {
-    "lint": "eslint",
+    "lint": "biome lint --write",
     "build": "rslib build",
-    "format": "prettier --write .",
+    "format": "biome format --write",
     "prepack": "pnpm run build"
   },
-  "prettier": {
-    "printWidth": 120
-  },
+
   "devDependencies": {
-    "@eslint/js": "^9.26.0",
+    "@biomejs/biome": "1.9.4",
     "@rslib/core": "^0.6.9",
     "@tsconfig/strictest": "^2.0.5",
-    "eslint": "^9.26.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.0"
+    "typescript": "^5.8.3"
   }
 }

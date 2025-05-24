@@ -1,4 +1,4 @@
-import type { ResponseLike } from "./http";
+import type { ResponseLike } from './http'
 
 /**
  * Options to be passed when creating the REST client instance.
@@ -7,20 +7,20 @@ export interface RESTOptions {
   /**
    * The base API url.
    */
-  baseURL: string;
+  baseURL: string
 
   /**
    * The authorization prefix to use for requests.
    */
-  authPrefix: string;
+  authPrefix: string
 
   /**
    * Enforces authorization token requirement in auth required endpoints.
    */
-  enforceAuth: boolean;
+  enforceAuth: boolean
 
   /**
    * The method called to perform the HTTP requests.
    */
-  request(url: RequestInfo | URL, init: RequestInit): Promise<ResponseLike>;
+  request(url: RequestInfo | URL, init: RequestInit): Promise<ResponseLike>
 }

@@ -5,7 +5,7 @@ export interface GatewayIdentifyPayload {
   /**
    * Authentication token.
    */
-  token: string;
+  token: string
 }
 
 /**
@@ -15,5 +15,5 @@ export interface GatewayHelloPayload {
   /**
    * The interval the client should heartbeat with.
    */
-  heartbeat_interval: number;
+  heartbeat_interval: number
 }

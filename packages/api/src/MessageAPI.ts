@@ -10,9 +10,9 @@ import {
   type RESTPatchAPIMessageResult,
   type RESTPostAPIMessageBody,
   type RESTPostAPIMessageResult,
-} from "@foxogram/api-types";
-import type REST from "@foxogram/rest";
-import { buildURLSearchParams } from "@foxogram/rest";
+} from '@foxogram/api-types'
+import type REST from '@foxogram/rest'
+import { buildURLSearchParams } from '@foxogram/rest'
 
 /**
  * A wrapper for the Foxogram message API.
@@ -24,9 +24,9 @@ export default class MessageAPI {
    * Fetches the messages in a channel.
    */
   public async list(channelId: number, query: RESTGetAPIMessageListQuery = {}) {
-    const params = buildURLSearchParams<RESTGetAPIMessageListQuery>(query);
+    const params = buildURLSearchParams<RESTGetAPIMessageListQuery>(query)
 
-    return await this.rest.get<RESTGetAPIMessageListResult>(APIRoutes.messages(channelId), { params });
+    return await this.rest.get<RESTGetAPIMessageListResult>(APIRoutes.messages(channelId), { params })
   }
 
   /**
@@ -35,34 +35,34 @@ export default class MessageAPI {
   public async create(channelId: number, body: RESTPostAPIMessageBody) {
     return await this.rest.post<RESTPostAPIMessageResult>(APIRoutes.messages(channelId), {
       body,
-    });
+    })
   }
 
   /**
    * Fetches a message.
    */
   public async get(channelId: number, messageId: number) {
-    return await this.rest.get<RESTGetAPIMessageResult>(APIRoutes.message(channelId, messageId));
+    return await this.rest.get<RESTGetAPIMessageResult>(APIRoutes.message(channelId, messageId))
   }
 
   /**
    * Edits a message.
    */
   public async edit(channelId: number, messageId: number, body: RESTPatchAPIMessageBody) {
-    return await this.rest.patch<RESTPatchAPIMessageResult>(APIRoutes.message(channelId, messageId), { body });
+    return await this.rest.patch<RESTPatchAPIMessageResult>(APIRoutes.message(channelId, messageId), { body })
   }
 
   /**
    * Deletes a message.
    */
   public async delete(channelId: number, messageId: number) {
-    return await this.rest.delete<RESTDeleteAPIMessageResult>(APIRoutes.message(channelId, messageId));
+    return await this.rest.delete<RESTDeleteAPIMessageResult>(APIRoutes.message(channelId, messageId))
   }
 
   /**
    * Creates a message attachments.
    */
   public async createAttachments(channelId: number, body: RESTPutAPIMessageAttachmentsBody) {
-    return await this.rest.put<RESTPutAPIMessageAttachmentsResult>(APIRoutes.messageAttachments(channelId), { body });
+    return await this.rest.put<RESTPutAPIMessageAttachmentsResult>(APIRoutes.messageAttachments(channelId), { body })
   }
 }

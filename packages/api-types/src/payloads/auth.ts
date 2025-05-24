@@ -5,5 +5,5 @@ export interface APIToken {
   /**
    * API access token.
    */
-  access_token: string;
+  access_token: string
 }

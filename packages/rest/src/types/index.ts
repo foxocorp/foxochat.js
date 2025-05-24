@@ -1,2 +1,2 @@
-export type * from "./options";
-export type * from "./http";
+export type * from './options'
+export type * from './http'

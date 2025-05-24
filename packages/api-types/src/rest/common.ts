@@ -1,6 +1,6 @@
-import type { APIInfo } from "#/payloads";
+import type { APIInfo } from '#/payloads'
 
 /**
  * The result of GET /info.
  */
-export type RESTGetAPIInfoResult = APIInfo;
+export type RESTGetAPIInfoResult = APIInfo

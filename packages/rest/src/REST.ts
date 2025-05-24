@@ -1,8 +1,8 @@
-import { APIError, AuthEnforcedError, HTTPError } from "./errors";
-import { DefaultRESTOptions, RequestBodyType, RequestMethod } from "./constants";
-import type { InternalRequestOptions, RESTOptions, RequestHeaders, RequestOptions, RouteLike } from "./types";
-import type { APIException } from "@foxogram/api-types";
-import { parseResponse } from "./utils";
+import { APIError, AuthEnforcedError, HTTPError } from './errors'
+import { DefaultRESTOptions, RequestBodyType, RequestMethod } from './constants'
+import type { InternalRequestOptions, RESTOptions, RequestHeaders, RequestOptions, RouteLike } from './types'
+import type { APIException } from '@foxogram/api-types'
+import { parseResponse } from './utils'
 
 /**
  * The HTTP REST API client for foxogram.js
@@ -11,15 +11,15 @@ export default class REST {
   /**
    * Configuration options for this instance.
    */
-  public readonly options: RESTOptions;
+  public readonly options: RESTOptions
 
   /**
    * A token that should be used for requests.
    */
-  public accessor token: string | null = null;
+  public accessor token: string | null = null
 
   public constructor(options?: Partial<RESTOptions>) {
-    this.options = { ...DefaultRESTOptions, ...options } as RESTOptions;
+    this.options = { ...DefaultRESTOptions, ...options } as RESTOptions
   }
 
   /**
@@ -30,7 +30,7 @@ export default class REST {
       method: RequestMethod.Get,
       route,
       ...options,
-    });
+    })
   }
 
   /**
@@ -41,7 +41,7 @@ export default class REST {
       method: RequestMethod.Put,
       route,
       ...options,
-    });
+    })
   }
 
   /**
@@ -52,7 +52,7 @@ export default class REST {
       method: RequestMethod.Post,
       route,
       ...options,
-    });
+    })
   }
 
   /**
@@ -63,7 +63,7 @@ export default class REST {
       method: RequestMethod.Patch,
       route,
       ...options,
-    });
+    })
   }
 
   /**
@@ -74,46 +74,46 @@ export default class REST {
       method: RequestMethod.Delete,
       route,
       ...options,
-    });
+    })
   }
 
   /**
    * Sends a request to the API.
    */
   public async request<R>(options: InternalRequestOptions): Promise<R> {
-    const url = new URL(`${this.options.baseURL}${options.route}`);
+    const url = new URL(`${this.options.baseURL}${options.route}`)
 
     if (options.params) {
-      url.search = options.params.toString();
+      url.search = options.params.toString()
     }
 
-    const commonHeaders: RequestHeaders = {};
-    const additionalHeaders: Record<string, string> = {};
+    const commonHeaders: RequestHeaders = {}
+    const additionalHeaders: Record<string, string> = {}
 
-    const authRequired = options.useAuth && (options.enforceAuth || this.options.enforceAuth);
+    const authRequired = options.useAuth && (options.enforceAuth || this.options.enforceAuth)
 
     if (authRequired && !this.token) {
-      throw new AuthEnforcedError(options.method, options.route);
+      throw new AuthEnforcedError(options.method, options.route)
     }
 
     if (this.token && options.useAuth !== false) {
-      commonHeaders.Authorization = `${options.authPrefix ?? this.options.authPrefix}${this.token}`;
+      commonHeaders.Authorization = `${options.authPrefix ?? this.options.authPrefix}${this.token}`
     }
 
-    let body: RequestInit["body"];
+    let body: RequestInit['body']
     if (options.body) {
       switch (options.bodyType) {
         case RequestBodyType.init:
-          body = options.body as BodyInit;
+          body = options.body as BodyInit
 
-          break;
+          break
         case RequestBodyType.json:
         default:
-          additionalHeaders["Content-Type"] = "application/json";
+          additionalHeaders['Content-Type'] = 'application/json'
 
-          body = JSON.stringify(options.body);
+          body = JSON.stringify(options.body)
 
-          break;
+          break
       }
     }
 
@@ -125,17 +125,17 @@ export default class REST {
         ...options.headers,
       },
       method: options.method,
-    });
+    })
 
-    const status = response.status;
-    const data = await parseResponse(response);
+    const status = response.status
+    const data = await parseResponse(response)
 
     if (response.status >= 500) {
-      throw new HTTPError(status, options.method, options.route);
+      throw new HTTPError(status, options.method, options.route)
     } else if (status >= 400) {
-      throw new APIError(status, options.method, options.route, data as APIException);
+      throw new APIError(status, options.method, options.route, data as APIException)
     }
 
-    return data as R;
+    return data as R
   }
 }

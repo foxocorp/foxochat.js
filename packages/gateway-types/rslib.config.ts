@@ -1,13 +1,23 @@
-import { defineConfig, type LibConfig, type Format, type RslibConfig } from "@rslib/core";
+import { defineConfig, type LibConfig, type Format, type RslibConfig } from '@rslib/core'
 
-const formats: Format[] = ["esm", "cjs"];
-const libConfig: Partial<LibConfig> = { dts: true, externalHelpers: false, syntax: "es2020" };
+const formats: Format[] = ['esm', 'cjs']
+const libConfig: Partial<LibConfig> = {
+  dts: true,
+  externalHelpers: false,
+  syntax: 'es2020',
+}
 
 export default defineConfig(
   (): RslibConfig => ({
-    lib: formats.map((format, index): LibConfig => ({ ...libConfig, format, dts: libConfig?.dts && !index })),
+    lib: formats.map(
+      (format, index): LibConfig => ({
+        ...libConfig,
+        format,
+        dts: libConfig?.dts && !index,
+      }),
+    ),
     resolve: {
-      alias: { "#": "./src" },
+      alias: { '#': './src' },
     },
   }),
-);
+)

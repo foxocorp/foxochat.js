@@ -1,2 +1,2 @@
-export * from "./events";
-export * from "./options";
+export * from './events'
+export * from './options'

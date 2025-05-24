@@ -7,6 +7,6 @@ export class HTTPError extends Error {
     public method: string,
     public route: string,
   ) {
-    super();
+    super()
   }
 }

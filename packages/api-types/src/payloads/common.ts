@@ -5,22 +5,22 @@ export interface APIInfo {
   /**
    * The version of API.
    */
-  version: string;
+  version: string
 
   /**
    * The URL of CDN.
    */
-  cdn_url: string;
+  cdn_url: string
 
   /**
    * The URL of Gateway.
    */
-  gateway_url: string;
+  gateway_url: string
 
   /**
    * The URL of Application.
    */
-  app_url: string;
+  app_url: string
 }
 
 /**
@@ -30,7 +30,7 @@ export interface APIOk {
   /**
    * The status of successful completion of the request.
    */
-  ok: boolean;
+  ok: boolean
 }
 
 /**
@@ -40,17 +40,17 @@ export interface APIException {
   /**
    * The status of successful completion of the request.
    */
-  ok: boolean;
+  ok: boolean
 
   /**
    * The code of exception.
    */
-  code: ExceptionCodes;
+  code: ExceptionCodes
 
   /**
    * The message of exception.
    */
-  message: string;
+  message: string
 }
 
 /**

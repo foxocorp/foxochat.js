@@ -1,15 +1,15 @@
-import type { APIChannel, APIOk, APIUser } from "#/payloads";
-import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from "./attachment";
+import type { APIChannel, APIOk, APIUser } from '#/payloads'
+import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from './attachment'
 
 /**
  * The result of GET /users/{userKey}.
  */
-export type RESTGetAPIUserResult = APIUser;
+export type RESTGetAPIUserResult = APIUser
 
 /**
  * The result of PATCH /users/@me.
  */
-export type RESTPatchAPIUserResult = APIUser;
+export type RESTPatchAPIUserResult = APIUser
 
 /**
  * The body of PATCH /users/@me.
@@ -18,33 +18,33 @@ export interface RESTPatchAPIUserBody {
   /**
    * The avatar of the user.
    */
-  avatar?: string;
+  avatar?: string
 
   /**
    * The display name of the user.
    */
-  display_name?: string;
+  display_name?: string
 
   /**
    * The username of the user.
    */
-  username?: string;
+  username?: string
 
   /**
    * The email of the user.
    */
-  email?: string;
+  email?: string
 
   /**
    * The password of the user.
    */
-  password?: string;
+  password?: string
 }
 
 /**
  * The result of DELETE /users/@me.
  */
-export type RESTDeleteAPIUserResult = APIOk;
+export type RESTDeleteAPIUserResult = APIOk
 
 /**
  * The body of DELETE /users/@me.
@@ -53,13 +53,13 @@ export interface RESTDeleteAPIUserBody {
   /**
    * The password of the user.
    */
-  password: string;
+  password: string
 }
 
 /**
  * The result of POST /users/@me/confirm.
  */
-export type RESTPostAPIUserDeleteConfirmResult = APIOk;
+export type RESTPostAPIUserDeleteConfirmResult = APIOk
 
 /**
  * The body of POST /users/@me/confirm.
@@ -68,20 +68,20 @@ export interface RESTPostAPIUserDeleteConfirmBody {
   /**
    * The deletion confirm code.
    */
-  code: string;
+  code: string
 }
 
 /**
  * The result of GET /users/@me/channels
  */
-export type RESTGetAPIUserChannelsResult = APIChannel[];
+export type RESTGetAPIUserChannelsResult = APIChannel[]
 
 /**
  * The body of PUT /users/@me/avatar.
  */
-export type RESTPutAPIUserAvatarBody = RESTAPIAttachmentUploadRequest;
+export type RESTPutAPIUserAvatarBody = RESTAPIAttachmentUploadRequest
 
 /**
  * The result of PUT /users/@me/avatar.
  */
-export type RESTPutAPIUserAvatarResult = RESTAPIAttachmentUploadResponse;
+export type RESTPutAPIUserAvatarResult = RESTAPIAttachmentUploadResponse

@@ -1,2 +1,2 @@
-export * from "./dispatch";
-export * from "./simple";
+export * from './dispatch'
+export * from './simple'
