@@ -156,6 +156,8 @@ export const APIRoutes = {
    * - GET    /users/{userKey}
    * - PATCH  /users/@me
    * - DELETE /users/@me
+   * - POST   /users/{id}
+   * - DELETE /users/{id}
    */
   user(userKey: PublicUserKey = UserMe) {
     return `/users/${userKey}` as const

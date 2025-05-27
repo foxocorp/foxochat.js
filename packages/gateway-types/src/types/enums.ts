@@ -93,4 +93,29 @@ export enum GatewayDispatchEvents {
    * Member was updated.
    */
   MemberUpdate = 'MEMBER_UPDATE',
+
+  /**
+   * User status was updated.
+   */
+  UserStatusUpdate = 'USER_STATUS_UPDATE',
+
+  /**
+   * User profile was updated.
+   */
+  UserUpdate = 'USER_UPDATE',
+
+  /**
+   * Contact was added.
+   */
+  ContactAdd = 'CONTACT_ADD',
+
+  /**
+   * Contact was deleted.
+   */
+  ContactDelete = 'CONTACT_DELETE',
+
+  /**
+   * User started typing.
+   */
+  TypingStart = 'TYPING_START',
 }

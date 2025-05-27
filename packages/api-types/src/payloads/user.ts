@@ -15,6 +15,11 @@ export interface APIUser {
   channels?: number[]
 
   /**
+   * The contacts of the user.
+   */
+  contacts?: number[]
+
+  /**
    * The avatar of the user.
    */
   avatar?: APIAttachment

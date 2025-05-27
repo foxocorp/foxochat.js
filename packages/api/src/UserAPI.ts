@@ -2,11 +2,13 @@ import {
   APIRoutes,
   type PublicUserKey,
   type RESTDeleteAPIUserBody,
+  type RESTDeleteAPIUserContactResult,
   type RESTDeleteAPIUserResult,
   type RESTGetAPIUserChannelsResult,
   type RESTGetAPIUserResult,
   type RESTPatchAPIUserBody,
   type RESTPatchAPIUserResult,
+  type RESTPostAPIUserContactResult,
   type RESTPostAPIUserDeleteConfirmBody,
   type RESTPostAPIUserDeleteConfirmResult,
   type RESTPutAPIUserAvatarBody,
@@ -68,5 +70,19 @@ export default class UserAPI {
    */
   public async uploadAvatar(body: RESTPutAPIUserAvatarBody) {
     return await this.rest.put<RESTPutAPIUserAvatarResult>(APIRoutes.userAvatar(), { body })
+  }
+
+  /**
+   * Adds the user as contact.
+   */
+  public async addContact(userId: number) {
+    return await this.rest.post<RESTPostAPIUserContactResult>(APIRoutes.user(userId))
+  }
+
+  /**
+   * Removes the user from contacts.
+   */
+  public async deleteContact(userId: number) {
+    return await this.rest.delete<RESTDeleteAPIUserContactResult>(APIRoutes.user(userId))
   }
 }

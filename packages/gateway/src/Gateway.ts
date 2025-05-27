@@ -10,26 +10,63 @@ import { DefaultGatewayOptions, GatewayEvents } from './constants'
 import { MissingTokenError, NotConnectedError } from './errors'
 import type { GatewayDestroyOptions, GatewayEventsMap, GatewayOptions, HeartbeatStats } from './types'
 
+/**
+ * The Gateway API client for foxogram.js
+ */
 export default class Gateway extends EventEmitter<GatewayEventsMap> {
+  /**
+   * The gateway options.
+   */
   private options: GatewayOptions
+
+  /**
+   * The active WebSocket connection.
+   */
   private connection: WebSocket | null = null
+
+  /**
+   * The interval ID for heartbeats.
+   */
   private heartbeatInterval: number | null = null
+
+  /**
+   * The timestamp of the last heartbeat sent.
+   */
   private lastHeartbeatAt = -1
+
+  /**
+   * The heartbeat latency stats.
+   */
   private heartbeatStats: HeartbeatStats | null = null
+
+  /**
+   * Whether a socket error has occurred.
+   */
   private socketErrorOccurred = false
 
+  /**
+   * The authentication token.
+   */
   public accessor token: string | null = null
 
+  /**
+   * Creates a new Gateway instance.
+   */
   public constructor(options: Partial<GatewayOptions> = {}) {
     super()
-
     this.options = { ...DefaultGatewayOptions, ...options } as GatewayOptions
   }
 
+  /**
+   * The current gateway latency, or null if unknown.
+   */
   public get latency(): number | null {
     return this.heartbeatStats ? this.heartbeatStats.ackAt - this.heartbeatStats.heartbeatAt : null
   }
 
+  /**
+   * Connects to the gateway.
+   */
   public async connect(): Promise<void> {
     this.debug([`Connecting to ${this.options.url}`])
 
@@ -40,6 +77,9 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     this.connection.onopen = () => void this.onOpen()
   }
 
+  /**
+   * Destroys the gateway connection.
+   */
   public async destroy(options: GatewayDestroyOptions = {}): Promise<void> {
     options.code ??= GatewayCloseCodes.HeartbeatTimeout
 
@@ -74,9 +114,11 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     }
   }
 
+  /**
+   * Handles an incoming message from the gateway.
+   */
   private async onMessage(data: string): Promise<void> {
     const message: GatewayClientboundMessage = JSON.parse(data)
-
     const { op } = message
 
     switch (op) {
@@ -88,38 +130,43 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
         this.debug([`Starting to send heartbeats every ${payload.heartbeat_interval}ms`])
 
         this.heartbeatInterval = setInterval(() => void this.heartbeat(), payload.heartbeat_interval)
-
         break
       }
 
       case GatewayOpcodes.Dispatch: {
         this.emit(GatewayEvents.Dispatch, message)
-
         break
       }
 
       case GatewayOpcodes.HeartbeatAck: {
         const ackAt = Date.now()
-
         this.emit(GatewayEvents.HeartbeatComplete, (this.heartbeatStats = { ackAt, heartbeatAt: this.lastHeartbeatAt }))
-
         break
       }
 
       default:
-        this.debug(['Recieved unknown opcode', `Code: ${op}`])
+        this.debug(['Received unknown opcode', `Code: ${op}`])
     }
   }
 
+  /**
+   * Handles the open event for the gateway connection.
+   */
   private async onOpen(): Promise<void> {
     await this.identify()
   }
 
+  /**
+   * Handles WebSocket error events.
+   */
   private onError(event: Event) {
     this.emit(GatewayEvents.SocketError, event)
     this.socketErrorOccurred = true
   }
 
+  /**
+   * Handles the gateway close event.
+   */
   private async onClose(code: number): Promise<void> {
     this.emit(GatewayEvents.Closed, code)
 
@@ -136,6 +183,9 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     }
   }
 
+  /**
+   * Sends a message to the gateway.
+   */
   public async send<T extends GatewayServerboundMessage>(message: T): Promise<void> {
     if (!this.connection) throw new NotConnectedError()
 
@@ -144,6 +194,9 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     return this.connection.send(data)
   }
 
+  /**
+   * Sends a heartbeat to the gateway.
+   */
   private async heartbeat(): Promise<void> {
     await this.send<GatewayHeartbeatMessage>({
       d: null,
@@ -153,6 +206,9 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     this.lastHeartbeatAt = Date.now()
   }
 
+  /**
+   * Sends the identify payload to authenticate the session.
+   */
   private async identify(): Promise<void> {
     if (!this.token) throw new MissingTokenError()
 
@@ -166,6 +222,9 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
     await this.send(message)
   }
 
+  /**
+   * Emits debug messages.
+   */
   private debug(messages: string[]) {
     this.emit(GatewayEvents.Debug, messages.join('\n\t'))
   }

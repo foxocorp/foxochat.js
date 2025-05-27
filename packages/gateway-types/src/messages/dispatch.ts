@@ -2,12 +2,17 @@ import type {
   GatewayDispatchChannelCreatePayload,
   GatewayDispatchChannelDeletePayload,
   GatewayDispatchChannelUpdatePayload,
+  GatewayDispatchContactAddPayload,
+  GatewayDispatchContactDeletePayload,
   GatewayDispatchMemberAddPayload,
   GatewayDispatchMemberRemovePayload,
   GatewayDispatchMemberUpdatePayload,
   GatewayDispatchMessageCreatePayload,
   GatewayDispatchMessageDeletePayload,
   GatewayDispatchMessageUpdatePayload,
+  GatewayDispatchTypingStartPayload,
+  GatewayDispatchUserStatusUpdatePayload,
+  GatewayDispatchUserUpdatePayload,
 } from '#/payloads'
 import type { GatewayDispatchEvents } from '#/types'
 import type { GatewayDispatchMessage } from './base'
@@ -82,4 +87,44 @@ export type GatewayDispatchMemberRemoveMessage = GatewayDispatchMessage<
 export type GatewayDispatchMemberUpdateMessage = GatewayDispatchMessage<
   GatewayDispatchEvents.MemberUpdate,
   GatewayDispatchMemberUpdatePayload
+>
+
+/**
+ * User status was updated.
+ */
+export type GatewayDispatchUserStatusUpdateMessage = GatewayDispatchMessage<
+  GatewayDispatchEvents.UserStatusUpdate,
+  GatewayDispatchUserStatusUpdatePayload
+>
+
+/**
+ * User profile was updated.
+ */
+export type GatewayDispatchUserUpdateMessage = GatewayDispatchMessage<
+  GatewayDispatchEvents.UserUpdate,
+  GatewayDispatchUserUpdatePayload
+>
+
+/**
+ * Contact was added.
+ */
+export type GatewayDispatchContactAddMessage = GatewayDispatchMessage<
+  GatewayDispatchEvents.ContactAdd,
+  GatewayDispatchContactAddPayload
+>
+
+/**
+ * Contact was deleted.
+ */
+export type GatewayDispatchContactDeleteMessage = GatewayDispatchMessage<
+  GatewayDispatchEvents.ContactDelete,
+  GatewayDispatchContactDeletePayload
+>
+
+/**
+ * User started typing.
+ */
+export type GatewayDispatchTypingStartMessage<C extends boolean> = GatewayDispatchMessage<
+  GatewayDispatchEvents.TypingStart,
+  GatewayDispatchTypingStartPayload<C>
 >

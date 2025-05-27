@@ -1,8 +1,8 @@
 import type { GatewayOptions } from '#/types'
-import { RouteBases } from '@foxogram/api-types'
+import { RouteUrlsMap } from '@foxogram/api-types'
 
 export const DefaultGatewayOptions = {
-  url: RouteBases.gateway,
+  url: RouteUrlsMap.production.gateway,
   websocket: (...args) => new WebSocket(...args),
   reconnect: true,
   reconnectTimeout: 500,

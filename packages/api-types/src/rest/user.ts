@@ -85,3 +85,13 @@ export type RESTPutAPIUserAvatarBody = RESTAPIAttachmentUploadRequest
  * The result of PUT /users/@me/avatar.
  */
 export type RESTPutAPIUserAvatarResult = RESTAPIAttachmentUploadResponse
+
+/**
+ * The result of POST /users/{id}
+ */
+export type RESTPostAPIUserContactResult = APIUser
+
+/**
+ * The result of DELETE /users/{id}
+ */
+export type RESTDeleteAPIUserContactResult = APIOk
