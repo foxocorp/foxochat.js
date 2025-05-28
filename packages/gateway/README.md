@@ -15,5 +15,5 @@ pnpm add @foxogram/gateway
 ## Usage
 
 ```ts
-import { Gateway } from "@foxogram/gateway";
+import Gateway from "@foxogram/gateway";
 ```

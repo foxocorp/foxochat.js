@@ -1,7 +1,8 @@
 import type { ResponseLike } from './http'
+import type { MarkRequired } from 'ts-essentials'
 
 /**
- * Options to be passed when creating the REST client instance.
+ * All options to be passed when creating the REST client instance.
  */
 export interface RESTOptions {
   /**
@@ -24,3 +25,8 @@ export interface RESTOptions {
    */
   request(url: RequestInfo | URL, init: RequestInit): Promise<ResponseLike>
 }
+
+/**
+ * Required options to be passed when creating the REST client instance.
+ */
+export type ConstructorRESTOptions = MarkRequired<Partial<RESTOptions>, 'baseURL'>

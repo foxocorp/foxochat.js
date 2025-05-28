@@ -15,10 +15,14 @@ pnpm add @foxogram/rest
 ## Usage
 
 ```ts
-import { REST } from "@foxogram/rest";
-import { APIRoutes } from "@foxogram/api-types";
+import REST from "@foxogram/rest";
+import { APIRoutes, RouteUrlsMap } from "@foxogram/api-types";
 
-const rest = new REST().setToken(TOKEN);
+const rest = new REST({
+  baseURL: RouteUrlsMap.production.api,
+})
+
+rest.token = TOKEN;
 
 try {
   await rest.post(APIRoutes.messages(CHANNEL_ID), {

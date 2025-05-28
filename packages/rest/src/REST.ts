@@ -1,6 +1,13 @@
 import { APIError, AuthEnforcedError, HTTPError } from './errors'
-import { DefaultRESTOptions, RequestBodyType, RequestMethod } from './constants'
-import type { InternalRequestOptions, RESTOptions, RequestHeaders, RequestOptions, RouteLike } from './types'
+import { RESTDefaultOptions, RequestBodyType, RequestMethod } from './constants'
+import type {
+  InternalRequestOptions,
+  RESTOptions,
+  RequestHeaders,
+  RequestOptions,
+  RouteLike,
+  ConstructorRESTOptions,
+} from './types'
 import type { APIException } from '@foxogram/api-types'
 import { parseResponse } from './utils'
 
@@ -18,8 +25,8 @@ export default class REST {
    */
   public accessor token: string | null = null
 
-  public constructor(options?: Partial<RESTOptions>) {
-    this.options = { ...DefaultRESTOptions, ...options } as RESTOptions
+  public constructor(options: ConstructorRESTOptions) {
+    this.options = { ...RESTDefaultOptions, ...options } as RESTOptions
   }
 
   /**

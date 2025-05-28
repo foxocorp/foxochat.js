@@ -15,7 +15,7 @@ pnpm add foxogram.js
 ## Usage
 
 ```ts
-import { Client } from "foxogram.js";
+import Client from "foxogram.js";
 
 const client = new Client();
 

@@ -1,12 +1,11 @@
 import type { RESTOptions } from '#/types'
-import { RouteUrlsMap } from '@foxogram/api-types'
+import type { MarkOptional } from 'ts-essentials'
 
 /**
  * Default options of REST client.
  */
-export const DefaultRESTOptions = {
+export const RESTDefaultOptions = {
   authPrefix: 'Bearer ',
-  baseURL: RouteUrlsMap.production.api,
   enforceAuth: false,
   request: (url, init) => fetch(url, init),
-} as const satisfies RESTOptions
+} as const satisfies MarkOptional<RESTOptions, 'baseURL'>

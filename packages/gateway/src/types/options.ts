@@ -21,6 +21,8 @@ export interface GatewayOptions {
   reconnectTimeout: number
 }
 
+export type GatewayConstructorOptions = Partial<GatewayOptions>
+
 export interface GatewayDestroyOptions {
   /**
    * The code used when closing the connection.

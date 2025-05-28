@@ -6,7 +6,7 @@ import type {
 } from '@foxogram/gateway-types'
 import { GatewayCloseCodes, GatewayOpcodes } from '@foxogram/gateway-types'
 import EventEmitter from 'eventemitter3'
-import { DefaultGatewayOptions, GatewayEvents } from './constants'
+import { GatewayDefaultOptions, GatewayEvents } from './constants'
 import { MissingTokenError, NotConnectedError } from './errors'
 import type { GatewayDestroyOptions, GatewayEventsMap, GatewayOptions, HeartbeatStats } from './types'
 
@@ -54,7 +54,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
    */
   public constructor(options: Partial<GatewayOptions> = {}) {
     super()
-    this.options = { ...DefaultGatewayOptions, ...options } as GatewayOptions
+    this.options = { ...GatewayDefaultOptions, ...options } as GatewayOptions
   }
 
   /**

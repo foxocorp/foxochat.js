@@ -1,28 +1,32 @@
 import API from '@foxogram/api'
 import Gateway from '@foxogram/gateway'
-import REST from '@foxogram/rest'
 import EventEmitter from 'eventemitter3'
-import type { ClientOptions } from './types'
+import type { ClientConstructorOptions, ClientOptions } from './types'
+import { ClientDefaultOptions } from '#/constants'
 
 /**
  * The main hub for interacting with the Foxogram.
  */
 export default class Client extends EventEmitter {
+  /**
+   * Configuration options for this instance.
+   */
+  public readonly options: ClientOptions
+
   public readonly api: API
-  public readonly rest: REST
   public readonly gateway: Gateway
 
-  public constructor(options?: ClientOptions) {
+  public constructor(options?: ClientConstructorOptions) {
     super()
 
-    this.rest = new REST(options?.rest)
-    this.gateway = new Gateway(options?.gateway)
+    this.options = { ...ClientDefaultOptions, ...options } as ClientOptions
 
-    this.api = new API(this.rest)
+    this.api = new API(this.options.api)
+    this.gateway = new Gateway(this.options.gateway)
   }
 
   public async login(token: string): Promise<void> {
-    this.gateway.token = this.rest.token = token
+    this.gateway.token = this.api.rest.token = token
 
     try {
       await this.gateway.connect()

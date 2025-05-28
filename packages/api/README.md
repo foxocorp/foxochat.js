@@ -15,11 +15,11 @@ pnpm add @foxogram/api
 ## Usage
 
 ```ts
-import { API } from "@foxogram/api";
-import { REST } from "@foxogram/rest";
+import API from "@foxogram/api";
 
-const rest = new REST().setToken(TOKEN);
 const api = new API(rest);
+
+api.rest.token = TOKEN;
 
 try {
   await api.message.create(CHANNEL_ID, {
