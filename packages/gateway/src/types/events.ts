@@ -1,4 +1,4 @@
-import type { GatewayDispatchMessage } from '@foxogram/gateway-types'
+import type { GatewayClientboundMessage } from "@foxogram/gateway-types";
 import type { GatewayEvents } from '#/constants'
 
 export interface HeartbeatStats {
@@ -9,7 +9,7 @@ export interface HeartbeatStats {
 export interface GatewayEventsMap {
   [GatewayEvents.Closed]: [code: number]
   [GatewayEvents.Hello]: []
-  [GatewayEvents.Dispatch]: [message: GatewayDispatchMessage]
+  [GatewayEvents.Dispatch]: [message: GatewayClientboundMessage]
   [GatewayEvents.HeartbeatComplete]: [stats: HeartbeatStats]
   [GatewayEvents.Debug]: [message: string]
   [GatewayEvents.SocketError]: [event: Event]
