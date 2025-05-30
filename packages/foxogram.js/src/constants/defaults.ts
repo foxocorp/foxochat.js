@@ -1,4 +1,4 @@
-import type { ClientOptions } from '#/types'
+import type { ClientOptions } from '@/types'
 
 /**
  * Default options of client.

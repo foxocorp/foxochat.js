@@ -1,4 +1,4 @@
-import type { GatewayOpcodes } from '#/types'
+import type { GatewayOpcodes } from '@/types'
 
 /**
  * Gateway message.

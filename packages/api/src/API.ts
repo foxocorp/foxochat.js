@@ -4,8 +4,8 @@ import ChannelAPI from './ChannelAPI'
 import CommonAPI from './CommonAPI'
 import MessageAPI from './MessageAPI'
 import UserAPI from './UserAPI'
-import type { APIConstructorOptions, APIOptions } from '#/types'
-import { APIDefaultOptions } from '#/constants'
+import type { APIConstructorOptions, APIOptions } from '@/types'
+import { APIDefaultOptions } from '@/constants'
 
 /**
  * The main hub for interacting with the Foxogram API.

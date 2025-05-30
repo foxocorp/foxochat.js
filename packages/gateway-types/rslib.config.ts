@@ -3,8 +3,8 @@ import { defineConfig, type LibConfig, type Format, type RslibConfig } from '@rs
 const formats: Format[] = ['esm', 'cjs']
 const libConfig: Partial<LibConfig> = {
   dts: true,
-  externalHelpers: false,
   syntax: 'es2020',
+  externalHelpers: true,
 }
 
 export default defineConfig(
@@ -17,7 +17,7 @@ export default defineConfig(
       }),
     ),
     resolve: {
-      alias: { '#': './src' },
+      alias: { '@': './src' },
     },
   }),
 )

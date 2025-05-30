@@ -1,4 +1,4 @@
-import type { APIChannel, APIOk, APIUser } from '#/payloads'
+import type { APIChannel, APIOk, APIUser } from '@/payloads'
 import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from './attachment'
 
 /**

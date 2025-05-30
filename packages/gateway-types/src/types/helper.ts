@@ -4,7 +4,7 @@ import type {
   GatewayHeartbeatMessage,
   GatewayHelloMessage,
   GatewayIdentifyMessage,
-} from '#/messages'
+} from '@/messages'
 import type { GatewayDispatchEvents, GatewayOpcodes } from './enums'
 import type {
   GatewayDispatchChannelCreatePayload,
@@ -21,7 +21,7 @@ import type {
   GatewayDispatchTypingStartPayload,
   GatewayDispatchUserStatusUpdatePayload,
   GatewayDispatchUserUpdatePayload,
-} from '#/payloads'
+} from '@/payloads'
 
 /**
  * Dispatch payload mappings of messages sent from gateway server to client.

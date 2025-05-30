@@ -2,7 +2,7 @@ import API from '@foxogram/api'
 import Gateway from '@foxogram/gateway'
 import EventEmitter from 'eventemitter3'
 import type { ClientConstructorOptions, ClientOptions } from './types'
-import { ClientDefaultOptions } from '#/constants'
+import { ClientDefaultOptions } from '@/constants'
 
 /**
  * The main hub for interacting with the Foxogram.

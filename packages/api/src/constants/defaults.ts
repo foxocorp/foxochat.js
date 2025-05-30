@@ -1,4 +1,4 @@
-import type { APIOptions } from '#/types'
+import type { APIOptions } from '@/types'
 import { RouteUrlsMap } from '@foxogram/api-types'
 
 /**

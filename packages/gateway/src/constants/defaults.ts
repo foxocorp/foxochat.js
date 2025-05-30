@@ -1,4 +1,4 @@
-import type { GatewayOptions } from '#/types'
+import type { GatewayOptions } from '@/types'
 import { RouteUrlsMap } from '@foxogram/api-types'
 
 export const GatewayDefaultOptions = {

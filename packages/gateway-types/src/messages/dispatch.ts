@@ -13,8 +13,8 @@ import type {
   GatewayDispatchTypingStartPayload,
   GatewayDispatchUserStatusUpdatePayload,
   GatewayDispatchUserUpdatePayload,
-} from '#/payloads'
-import type { GatewayDispatchEvents } from '#/types'
+} from '@/payloads'
+import type { GatewayDispatchEvents } from '@/types'
 import type { GatewayDispatchMessage } from './base'
 
 /**

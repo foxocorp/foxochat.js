@@ -41,6 +41,10 @@ importers:
         version: 5.8.3
 
   packages/api-types:
+    dependencies:
+      '@swc/helpers':
+        specifier: ^0.5.17
+        version: 0.5.17
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -134,6 +138,9 @@ importers:
       '@foxogram/api-types':
         specifier: workspace:^
         version: link:../api-types
+      '@swc/helpers':
+        specifier: ^0.5.17
+        version: 0.5.17
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
