@@ -4,8 +4,8 @@ import ChannelAPI from './ChannelAPI'
 import CommonAPI from './CommonAPI'
 import MessageAPI from './MessageAPI'
 import UserAPI from './UserAPI'
-import type { APIConstructorOptions, APIOptions } from '@/types'
-import { APIDefaultOptions } from '@/constants'
+import type { ConstructorOptions, Options } from '@/types'
+import { DefaultOptions } from '@/constants'
 
 /**
  * The main hub for interacting with the Foxogram API.
@@ -14,7 +14,7 @@ export default class API {
   /**
    * Configuration options for this instance.
    */
-  public readonly options: APIOptions
+  public readonly options: Options
 
   /**
    * The REST client for the Foxogram API.
@@ -46,8 +46,8 @@ export default class API {
    */
   public readonly user: UserAPI
 
-  public constructor(options?: APIConstructorOptions) {
-    this.options = { ...APIDefaultOptions, ...options } as APIOptions
+  public constructor(options?: ConstructorOptions) {
+    this.options = { ...DefaultOptions, ...options } as Options
 
     this.rest = new REST(this.options.rest)
 

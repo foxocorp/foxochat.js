@@ -1,8 +1,8 @@
 import API from '@foxogram/api'
 import Gateway from '@foxogram/gateway'
 import EventEmitter from 'eventemitter3'
-import type { ClientConstructorOptions, ClientOptions } from './types'
-import { ClientDefaultOptions } from '@/constants'
+import type { ConstructorOptions, Options } from './types'
+import { DefaultOptions } from '@/constants'
 
 /**
  * The main hub for interacting with the Foxogram.
@@ -11,15 +11,22 @@ export default class Client extends EventEmitter {
   /**
    * Configuration options for this instance.
    */
-  public readonly options: ClientOptions
+  public readonly options: Options
 
+  /**
+   * Foxogram API client.
+   */
   public readonly api: API
+
+  /**
+   * Foxogram Gateway client.
+   */
   public readonly gateway: Gateway
 
-  public constructor(options?: ClientConstructorOptions) {
+  public constructor(options?: ConstructorOptions) {
     super()
 
-    this.options = { ...ClientDefaultOptions, ...options } as ClientOptions
+    this.options = { ...DefaultOptions, ...options } as Options
 
     this.api = new API(this.options.api)
     this.gateway = new Gateway(this.options.gateway)

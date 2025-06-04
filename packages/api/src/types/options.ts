@@ -1,11 +1,11 @@
-import type { ConstructorRESTOptions } from '@foxogram/rest'
-import { MarkOptional } from 'ts-essentials'
+import type { ConstructorOptions as RESTConstructorOptions } from '@foxogram/rest'
+import type { MarkOptional } from 'ts-essentials'
 
 /**
  * Options to be passed when creating the API client instance.
  */
-export interface APIOptions {
-  rest: ConstructorRESTOptions
+export interface Options {
+  rest: RESTConstructorOptions
 }
 
-export type APIConstructorOptions = MarkOptional<APIOptions, 'rest'>
+export type ConstructorOptions = MarkOptional<Options, 'rest'>

@@ -1,12 +1,12 @@
 import { APIError, AuthEnforcedError, HTTPError } from './errors'
-import { RESTDefaultOptions, RequestBodyType, RequestMethod } from './constants'
+import { DefaultOptions, RequestBodyType, RequestMethod } from './constants'
 import type {
   InternalRequestOptions,
-  RESTOptions,
+  Options,
   RequestHeaders,
   RequestOptions,
   RouteLike,
-  ConstructorRESTOptions,
+  ConstructorOptions,
 } from './types'
 import type { APIException } from '@foxogram/api-types'
 import { parseResponse } from './utils'
@@ -18,15 +18,15 @@ export default class REST {
   /**
    * Configuration options for this instance.
    */
-  public readonly options: RESTOptions
+  public readonly options: Options
 
   /**
    * A token that should be used for requests.
    */
   public accessor token: string | null = null
 
-  public constructor(options: ConstructorRESTOptions) {
-    this.options = { ...RESTDefaultOptions, ...options } as RESTOptions
+  public constructor(options: ConstructorOptions) {
+    this.options = { ...DefaultOptions, ...options } as Options
   }
 
   /**
@@ -87,7 +87,7 @@ export default class REST {
   /**
    * Sends a request to the API.
    */
-  public async request<R>(options: InternalRequestOptions): Promise<R> {
+  private async request<R>(options: InternalRequestOptions): Promise<R> {
     const url = new URL(`${this.options.baseURL}${options.route}`)
 
     if (options.params) {

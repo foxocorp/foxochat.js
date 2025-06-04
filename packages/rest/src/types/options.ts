@@ -4,7 +4,7 @@ import type { MarkRequired } from 'ts-essentials'
 /**
  * All options to be passed when creating the REST client instance.
  */
-export interface RESTOptions {
+export interface Options {
   /**
    * The base API url.
    */
@@ -29,4 +29,4 @@ export interface RESTOptions {
 /**
  * Required options to be passed when creating the REST client instance.
  */
-export type ConstructorRESTOptions = MarkRequired<Partial<RESTOptions>, 'baseURL'>
+export type ConstructorOptions = MarkRequired<Partial<Options>, 'baseURL'>

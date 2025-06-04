@@ -1,4 +1,4 @@
-export interface GatewayOptions {
+export interface Options {
   /**
    * The base URL used to connect to the Foxogram gateway server.
    */
@@ -21,7 +21,7 @@ export interface GatewayOptions {
   reconnectTimeout: number
 }
 
-export type GatewayConstructorOptions = Partial<GatewayOptions>
+export type ConstructorOptions = Partial<Options>
 
 export interface GatewayDestroyOptions {
   /**

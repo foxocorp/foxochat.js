@@ -6,9 +6,9 @@ import type {
 } from '@foxogram/gateway-types'
 import { GatewayCloseCodes, GatewayOpcodes } from '@foxogram/gateway-types'
 import EventEmitter from 'eventemitter3'
-import { GatewayDefaultOptions, GatewayEvents } from './constants'
+import { DefaultOptions, GatewayEvents } from './constants'
 import { MissingTokenError, NotConnectedError } from './errors'
-import type { GatewayDestroyOptions, GatewayEventsMap, GatewayOptions, HeartbeatStats } from './types'
+import type { GatewayDestroyOptions, GatewayEventsMap, Options, HeartbeatStats } from './types'
 
 /**
  * The Gateway API client for foxogram.js
@@ -17,7 +17,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
   /**
    * The gateway options.
    */
-  private options: GatewayOptions
+  public readonly options: Options
 
   /**
    * The active WebSocket connection.
@@ -52,9 +52,10 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
   /**
    * Creates a new Gateway instance.
    */
-  public constructor(options: Partial<GatewayOptions> = {}) {
+  public constructor(options: Partial<Options> = {}) {
     super()
-    this.options = { ...GatewayDefaultOptions, ...options } as GatewayOptions
+
+    this.options = { ...DefaultOptions, ...options } as Options
   }
 
   /**

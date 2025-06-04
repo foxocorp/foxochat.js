@@ -1,9 +1,9 @@
-import type { ClientOptions } from '@/types'
+import type { Options } from '@/types'
 
 /**
  * Default options of client.
  */
-export const ClientDefaultOptions = {
+export const DefaultOptions = {
   api: {},
   gateway: {},
-} as const satisfies ClientOptions
+} as const satisfies Options

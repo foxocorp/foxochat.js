@@ -1,9 +1,9 @@
-import type { APIConstructorOptions } from '@foxogram/api'
-import type { GatewayConstructorOptions } from '@foxogram/gateway'
+import type { ConstructorOptions as APIConstructorOptions } from '@foxogram/api'
+import type { ConstructorOptions as GatewayConstructorOptions } from '@foxogram/gateway'
 
-export interface ClientOptions {
+export interface Options {
   api: APIConstructorOptions
   gateway: GatewayConstructorOptions
 }
 
-export type ClientConstructorOptions = Partial<ClientOptions>
+export type ConstructorOptions = Partial<Options>
