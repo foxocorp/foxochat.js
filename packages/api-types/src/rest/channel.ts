@@ -24,6 +24,11 @@ export interface RESTPostAPIChannelBody {
    * The type of the channel.
    */
   type: ChannelType
+
+  /**
+   * Whether the channel is public or private.
+   */
+  public?: boolean
 }
 
 /**
@@ -61,9 +66,19 @@ export type RESTPatchAPIChannelResult = APIChannel
  */
 export interface RESTPatchAPIChannelBody {
   /**
+   * The display name of the channel.
+   */
+  display_name?: string
+
+  /**
    * The name of the channel.
    */
   name?: string
+
+  /**
+   * The icon of the channel.
+   */
+  icon?: number
 }
 
 /**

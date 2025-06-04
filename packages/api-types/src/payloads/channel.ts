@@ -32,6 +32,11 @@ export interface APIChannel {
   type: ChannelType
 
   /**
+   * The flags of the channel.
+   */
+  flags: ChannelFlags
+
+  /**
    * Amount of members in channel.
    */
   member_count: number
@@ -70,6 +75,21 @@ export enum ChannelType {
    * A channel where only administrators can post messages.
    */
   Channel,
+}
+
+/**
+ * Flags of the channel.
+ */
+export enum ChannelFlags {
+  /**
+   * Indicates that the channel is public.
+   */
+  Public = 1,
+
+  /**
+   * Indicates that the channel is blocked.
+   */
+  Blocked = 2,
 }
 
 /**
