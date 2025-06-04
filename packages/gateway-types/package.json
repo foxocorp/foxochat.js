@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@foxogram/gateway-types",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Foxogram Gateway typings.",
   "author": "FoxoCorp",
   "license": "MIT",
