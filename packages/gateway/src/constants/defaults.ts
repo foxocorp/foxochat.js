@@ -1,5 +1,5 @@
 import type { Options } from '@/types'
-import { RouteUrlsMap } from '@foxogram/api-types'
+import { RouteUrlsMap } from '@foxochat/api-types'
 
 export const DefaultOptions = {
   url: RouteUrlsMap.production.gateway,

@@ -1,4 +1,4 @@
-import type { GatewayClientboundMessage } from '@foxogram/gateway-types'
+import type { GatewayClientboundMessage } from '@foxochat/gateway-types'
 import type { GatewayEvents } from '@/constants'
 
 export interface HeartbeatStats {

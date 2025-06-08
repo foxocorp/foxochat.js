@@ -14,11 +14,11 @@ import {
   type RESTPutAPIUserAvatarBody,
   type RESTPutAPIUserAvatarResult,
   UserMe,
-} from '@foxogram/api-types'
-import type REST from '@foxogram/rest'
+} from '@foxochat/api-types'
+import type REST from '@foxochat/rest'
 
 /**
- * A wrapper for the Foxogram user API.
+ * A wrapper for the FoxoChat user API.
  */
 export default class UserAPI {
   public constructor(private readonly rest: REST) {}

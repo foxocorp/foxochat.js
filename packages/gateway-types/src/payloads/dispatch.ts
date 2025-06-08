@@ -1,4 +1,4 @@
-import { APIChannel, APIMember, APIMessage, APIUser, UserStatus } from '@foxogram/api-types'
+import { APIChannel, APIMember, APIMessage, APIUser, UserStatus } from '@foxochat/api-types'
 
 /**
  * Created message.

@@ -28,13 +28,13 @@ export type RouteEnvironment = 'development' | 'production'
  */
 export const RouteUrlsMap = {
   development: {
-    api: 'https://api.dev.foxogram.su',
-    cdn: 'https://cdn.foxogram.su',
-    gateway: 'wss://api.dev.foxogram.su',
+    api: 'https://api-dev.foxochat.app',
+    cdn: 'https://cdn.foxochat.app',
+    gateway: 'wss://api-dev.foxochat.app',
   },
   production: {
-    api: 'https://api.foxogram.su',
-    cdn: 'https://cdn.foxogram.su',
-    gateway: 'wss://api.foxogram.su',
+    api: 'https://api.foxochat.app',
+    cdn: 'https://cdn.foxochat.app',
+    gateway: 'wss://api.foxochat.app',
   },
 } as const satisfies Record<RouteEnvironment, RouteUrls>

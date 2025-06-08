@@ -15,11 +15,11 @@ import {
   type RESTPutAPIChannelIconResult,
   type RESTPutAPIChannelJoinResult,
   UserMe,
-} from '@foxogram/api-types'
-import type REST from '@foxogram/rest'
+} from '@foxochat/api-types'
+import type REST from '@foxochat/rest'
 
 /**
- * A wrapper for the Foxogram channel API.
+ * A wrapper for the FoxoChat channel API.
  */
 export default class ChannelAPI {
   public constructor(private readonly rest: REST) {}

@@ -10,12 +10,12 @@ import {
   type RESTPatchAPIMessageResult,
   type RESTPostAPIMessageBody,
   type RESTPostAPIMessageResult,
-} from '@foxogram/api-types'
-import type REST from '@foxogram/rest'
-import { buildURLSearchParams } from '@foxogram/rest'
+} from '@foxochat/api-types'
+import type REST from '@foxochat/rest'
+import { buildURLSearchParams } from '@foxochat/rest'
 
 /**
- * A wrapper for the Foxogram message API.
+ * A wrapper for the FoxoChat message API.
  */
 export default class MessageAPI {
   public constructor(private readonly rest: REST) {}

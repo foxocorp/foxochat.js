@@ -11,11 +11,11 @@ import {
   type RESTPostAPIAuthResetPasswordResult,
   type RESTPostAPIAuthVerifyEmailBody,
   type RESTPostAPIAuthVerifyEmailResult,
-} from '@foxogram/api-types'
-import type REST from '@foxogram/rest'
+} from '@foxochat/api-types'
+import type REST from '@foxochat/rest'
 
 /**
- * A wrapper for the Foxogram authentication API.
+ * A wrapper for the FoxoChat authentication API.
  */
 export default class AuthAPI {
   public constructor(private readonly rest: REST) {}

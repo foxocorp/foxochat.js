@@ -3,15 +3,15 @@ import type {
   GatewayHeartbeatMessage,
   GatewayIdentifyMessage,
   GatewayServerboundMessage,
-} from '@foxogram/gateway-types'
-import { GatewayCloseCodes, GatewayOpcodes } from '@foxogram/gateway-types'
+} from '@foxochat/gateway-types'
+import { GatewayCloseCodes, GatewayOpcodes } from '@foxochat/gateway-types'
 import EventEmitter from 'eventemitter3'
 import { DefaultOptions, GatewayEvents } from './constants'
 import { MissingTokenError, NotConnectedError } from './errors'
 import type { GatewayDestroyOptions, GatewayEventsMap, Options, HeartbeatStats } from './types'
 
 /**
- * The Gateway API client for foxogram.js
+ * The Gateway API client for foxochat.js
  */
 export default class Gateway extends EventEmitter<GatewayEventsMap> {
   /**

@@ -8,11 +8,11 @@ import type {
   RouteLike,
   ConstructorOptions,
 } from './types'
-import type { APIException } from '@foxogram/api-types'
+import type { APIException } from '@foxochat/api-types'
 import { parseResponse } from './utils'
 
 /**
- * The HTTP REST API client for foxogram.js
+ * The HTTP REST API client for foxochat.js
  */
 export default class REST {
   /**

@@ -25,5 +25,15 @@ export interface APIAttachment {
   /**
    * The flags of the attachment.
    */
-  flags: number
+  flags: AttachmentFlags
+}
+
+/**
+ * Flags of the attachment.
+ */
+export enum AttachmentFlags {
+  /**
+   * Indicates that the attachment is a spoiler.
+   */
+  Spoiler = 1,
 }

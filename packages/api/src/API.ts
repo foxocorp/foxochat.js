@@ -1,4 +1,4 @@
-import REST from '@foxogram/rest'
+import REST from '@foxochat/rest'
 import AuthAPI from './AuthAPI'
 import ChannelAPI from './ChannelAPI'
 import CommonAPI from './CommonAPI'
@@ -8,7 +8,7 @@ import type { ConstructorOptions, Options } from '@/types'
 import { DefaultOptions } from '@/constants'
 
 /**
- * The main hub for interacting with the Foxogram API.
+ * The main hub for interacting with the FoxoChat API.
  */
 export default class API {
   /**
@@ -17,32 +17,32 @@ export default class API {
   public readonly options: Options
 
   /**
-   * The REST client for the Foxogram API.
+   * The REST client for the FoxoChat API.
    */
   public readonly rest: REST
 
   /**
-   * A wrapper for the Foxogram authentication API.
+   * A wrapper for the FoxoChat authentication API.
    */
   public readonly auth: AuthAPI
 
   /**
-   * A wrapper for the Foxogram channel API.
+   * A wrapper for the FoxoChat channel API.
    */
   public readonly channel: ChannelAPI
 
   /**
-   * A wrapper for the Foxogram common API.
+   * A wrapper for the FoxoChat common API.
    */
   public readonly common: CommonAPI
 
   /**
-   * A wrapper for the Foxogram message API.
+   * A wrapper for the FoxoChat message API.
    */
   public readonly message: MessageAPI
 
   /**
-   * A wrapper for the Foxogram user API.
+   * A wrapper for the FoxoChat user API.
    */
   public readonly user: UserAPI
 

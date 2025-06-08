@@ -1,11 +1,11 @@
-import API from '@foxogram/api'
-import Gateway from '@foxogram/gateway'
+import API from '@foxochat/api'
+import Gateway from '@foxochat/gateway'
 import EventEmitter from 'eventemitter3'
 import type { ConstructorOptions, Options } from './types'
 import { DefaultOptions } from '@/constants'
 
 /**
- * The main hub for interacting with the Foxogram.
+ * The main hub for interacting with the FoxoChat.
  */
 export default class Client extends EventEmitter {
   /**
@@ -14,12 +14,12 @@ export default class Client extends EventEmitter {
   public readonly options: Options
 
   /**
-   * Foxogram API client.
+   * FoxoChat API client.
    */
   public readonly api: API
 
   /**
-   * Foxogram Gateway client.
+   * FoxoChat Gateway client.
    */
   public readonly gateway: Gateway
 

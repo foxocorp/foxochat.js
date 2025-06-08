@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "foxogram.js",
+  "name": "foxochat.js",
   "version": "0.1.7",
-  "description": "A powerful library for interacting with the Foxogram API",
+  "description": "A powerful library for interacting with the FoxoChat API",
   "author": "FoxoCorp",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxocorp/foxogram.js"
+    "url": "https://github.com/foxocorp/foxochat.js"
   },
   "bugs": {
-    "url": "https://github.com/foxocorp/foxogram.js/issues"
+    "url": "https://github.com/foxocorp/foxochat.js/issues"
   },
   "scripts": {
     "lint": "biome lint --write",
@@ -34,11 +34,11 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "@foxogram/api": "workspace:^",
-    "@foxogram/api-types": "workspace:^",
-    "@foxogram/gateway": "workspace:^",
-    "@foxogram/gateway-types": "workspace:^",
-    "@foxogram/rest": "workspace:^",
+    "@foxochat/api": "workspace:^",
+    "@foxochat/api-types": "workspace:^",
+    "@foxochat/gateway": "workspace:^",
+    "@foxochat/gateway-types": "workspace:^",
+    "@foxochat/rest": "workspace:^",
     "@swc/helpers": "^0.5.17",
     "eventemitter3": "^5.0.1"
   },

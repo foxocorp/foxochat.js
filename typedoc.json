@@ -1,6 +1,6 @@
 {
   "entryPoints": ["packages/*"],
-  "name": "Foxogram.js Packages",
+  "name": "FoxoChat.js Packages",
   "entryPointStrategy": "packages",
   "includeVersion": false
 }

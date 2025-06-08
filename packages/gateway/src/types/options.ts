@@ -1,6 +1,6 @@
 export interface Options {
   /**
-   * The base URL used to connect to the Foxogram gateway server.
+   * The base URL used to connect to the FoxoChat gateway server.
    */
   url: string
 

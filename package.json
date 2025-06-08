@@ -1,17 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@foxogram/workspace",
+  "name": "@foxochat/workspace",
   "version": "0.0.0",
-  "description": "A powerful library for interacting with the Foxogram API",
+  "description": "A powerful library for interacting with the FoxoChat API",
   "private": true,
   "author": "FoxoCorp",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxocorp/foxogram.js"
+    "url": "https://github.com/foxocorp/foxochat.js"
   },
   "bugs": {
-    "url": "https://github.com/foxocorp/foxogram.js/issues"
+    "url": "https://github.com/foxocorp/foxochat.js/issues"
   },
   "scripts": {
     "docs": "typedoc"

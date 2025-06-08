@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@foxogram/gateway-types",
+  "name": "@foxochat/gateway-types",
   "version": "0.1.8",
-  "description": "Foxogram Gateway typings.",
+  "description": "FoxoChat Gateway typings.",
   "author": "FoxoCorp",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxocorp/foxogram.js"
+    "url": "https://github.com/foxocorp/foxochat.js"
   },
   "bugs": {
-    "url": "https://github.com/foxocorp/foxogram.js/issues"
+    "url": "https://github.com/foxocorp/foxochat.js/issues"
   },
   "scripts": {
     "lint": "biome lint --write",
@@ -34,7 +34,7 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "@foxogram/api-types": "workspace:^",
+    "@foxochat/api-types": "workspace:^",
     "@swc/helpers": "^0.5.17"
   },
   "devDependencies": {

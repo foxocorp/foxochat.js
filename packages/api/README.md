@@ -1,21 +1,21 @@
-# Foxogram API
+# FoxoChat API
 
-The API client for foxogram.js
+The API client for foxochat.js
 
 ## Installation
 
 Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
 
 ```sh
-npm install @foxogram/api
-yarn add @foxogram/api
-pnpm add @foxogram/api
+npm install @foxochat/api
+yarn add @foxochat/api
+pnpm add @foxochat/api
 ```
 
 ## Usage
 
 ```ts
-import API from "@foxogram/api";
+import API from "@foxochat/api";
 
 const api = new API(rest);
 

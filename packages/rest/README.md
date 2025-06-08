@@ -1,22 +1,22 @@
-# Foxogram REST
+# FoxoChat REST
 
-The HTTP REST API client for foxogram.js
+The HTTP REST API client for foxochat.js
 
 ## Installation
 
 Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
 
 ```sh
-npm install @foxogram/rest
-yarn add @foxogram/rest
-pnpm add @foxogram/rest
+npm install @foxochat/rest
+yarn add @foxochat/rest
+pnpm add @foxochat/rest
 ```
 
 ## Usage
 
 ```ts
-import REST from "@foxogram/rest";
-import { APIRoutes, RouteUrlsMap } from "@foxogram/api-types";
+import REST from "@foxochat/rest";
+import { APIRoutes, RouteUrlsMap } from "@foxochat/api-types";
 
 const rest = new REST({
   baseURL: RouteUrlsMap.production.api,
