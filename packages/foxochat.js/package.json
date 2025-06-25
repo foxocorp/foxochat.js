@@ -34,6 +34,7 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
+    "@discordjs/collection": "^2.1.1",
     "@foxochat/api": "workspace:^",
     "@foxochat/api-types": "workspace:^",
     "@foxochat/gateway": "workspace:^",
@@ -47,6 +48,7 @@
     "@rslib/core": "^0.6.9",
     "@tsconfig/strictest": "^2.0.5",
     "prettier": "^3.5.3",
+    "ts-essentials": "^10.0.4",
     "typescript": "^5.8.3"
   }
 }

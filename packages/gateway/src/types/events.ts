@@ -1,4 +1,9 @@
-import type { GatewayClientboundMessage } from '@foxochat/gateway-types'
+import type {
+  GatewayClientboundDispatchPayloadsMap,
+  GatewayDispatchMessageUnion,
+  GatewayHeartbeatAckMessage,
+  GatewayHelloMessage,
+} from '@foxochat/gateway-types'
 import type { GatewayEvents } from '@/constants'
 
 export interface HeartbeatStats {
@@ -8,9 +13,9 @@ export interface HeartbeatStats {
 
 export interface GatewayEventsMap {
   [GatewayEvents.Closed]: [code: number]
-  [GatewayEvents.Hello]: []
-  [GatewayEvents.Dispatch]: [message: GatewayClientboundMessage]
-  [GatewayEvents.HeartbeatComplete]: [stats: HeartbeatStats]
+  [GatewayEvents.Hello]: [message: GatewayHelloMessage]
+  [GatewayEvents.Dispatch]: [message: GatewayDispatchMessageUnion<GatewayClientboundDispatchPayloadsMap>]
+  [GatewayEvents.HeartbeatComplete]: [message: GatewayHeartbeatAckMessage, stats: HeartbeatStats]
   [GatewayEvents.Debug]: [message: string]
   [GatewayEvents.SocketError]: [event: Event]
 }

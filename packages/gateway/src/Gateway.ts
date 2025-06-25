@@ -124,7 +124,7 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
 
     switch (op) {
       case GatewayOpcodes.Hello: {
-        this.emit(GatewayEvents.Hello)
+        this.emit(GatewayEvents.Hello, message)
 
         const payload = message.d
 
@@ -141,7 +141,11 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
 
       case GatewayOpcodes.HeartbeatAck: {
         const ackAt = Date.now()
-        this.emit(GatewayEvents.HeartbeatComplete, (this.heartbeatStats = { ackAt, heartbeatAt: this.lastHeartbeatAt }))
+        this.emit(
+          GatewayEvents.HeartbeatComplete,
+          message,
+          (this.heartbeatStats = { ackAt, heartbeatAt: this.lastHeartbeatAt }),
+        )
         break
       }
 

@@ -24,7 +24,7 @@ export interface APIChannel {
   /**
    * The icon of the channel.
    */
-  icon?: APIAttachment
+  icon: APIAttachment | null
 
   /**
    * The type of the channel.
@@ -54,7 +54,7 @@ export interface APIChannel {
   /**
    * The last sent message in channel.
    */
-  last_message?: APIMessage
+  last_message: APIMessage | null
 }
 
 /**

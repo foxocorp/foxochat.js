@@ -64,6 +64,9 @@ importers:
 
   packages/foxochat.js:
     dependencies:
+      '@discordjs/collection':
+        specifier: ^2.1.1
+        version: 2.1.1
       '@foxochat/api':
         specifier: workspace:^
         version: link:../api
@@ -98,6 +101,9 @@ importers:
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
+      ts-essentials:
+        specifier: ^10.0.4
+        version: 10.0.4(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -182,6 +188,34 @@ importers:
       ts-essentials:
         specifier: ^10.0.4
         version: 10.0.4(typescript@5.8.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  packages/test:
+    dependencies:
+      '@swc/helpers':
+        specifier: ^0.5.17
+        version: 0.5.17
+      eventemitter3:
+        specifier: ^5.0.1
+        version: 5.0.1
+      foxochat.js:
+        specifier: workspace:^
+        version: link:../foxochat.js
+    devDependencies:
+      '@biomejs/biome':
+        specifier: 1.9.4
+        version: 1.9.4
+      '@rslib/core':
+        specifier: ^0.6.9
+        version: 0.6.9(@microsoft/api-extractor@7.52.7(@types/node@22.15.2))(typescript@5.8.3)
+      '@tsconfig/strictest':
+        specifier: ^2.0.5
+        version: 2.0.5
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -298,6 +332,10 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
+
+  '@discordjs/collection@2.1.1':
+    resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
+    engines: {node: '>=18'}
 
   '@gerrit0/mini-shiki@3.4.2':
     resolution: {integrity: sha512-3jXo5bNjvvimvdbIhKGfFxSnKCX+MA8wzHv55ptzk/cx8wOzT+BRcYgj8aFN3yTiTs+zvQQiaZFr7Jce1ZG3fw==}
@@ -820,6 +858,8 @@ snapshots:
 
   '@biomejs/cli-win32-x64@1.9.4':
     optional: true
+
+  '@discordjs/collection@2.1.1': {}
 
   '@gerrit0/mini-shiki@3.4.2':
     dependencies:

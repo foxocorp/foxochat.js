@@ -1,7 +1,10 @@
 export { default as Client, default } from './Client'
+export * from './DispatchHandlers'
 
-export * from './types'
 export * from './constants'
+export * from './managers'
+export * from './models'
+export * from './types'
 
 export * from '@foxochat/api-types'
 export * from '@foxochat/gateway-types'
@@ -21,6 +24,7 @@ export {
 
 export {
   Gateway,
+  GatewayEvents,
   NotConnectedError as GatewayNotConnectedError,
   MissingTokenError as GatewayMissingTokenError,
   type ConstructorOptions as GatewayConstructorOptions,

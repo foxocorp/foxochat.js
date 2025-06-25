@@ -12,17 +12,17 @@ export interface APIUser {
   /**
    * The channels of the user.
    */
-  channels?: number[]
+  channels: number[]
 
   /**
    * The contacts of the user.
    */
-  contacts?: number[]
+  contacts: number[]
 
   /**
    * The avatar of the user.
    */
-  avatar?: APIAttachment
+  avatar: APIAttachment | null
 
   /**
    * The display name of the user.
@@ -37,7 +37,7 @@ export interface APIUser {
   /**
    * The email of the user.
    */
-  email?: string
+  email: string | null
 
   /**
    * The status of the user.
