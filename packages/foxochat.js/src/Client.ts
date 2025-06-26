@@ -3,7 +3,7 @@ import Gateway, { GatewayEvents } from '@foxochat/gateway'
 import EventEmitter from 'eventemitter3'
 import { ClientEvents, type ClientEventsMap, type ConstructorOptions, type Options } from './types'
 import { DefaultOptions } from '@/constants'
-import { UserManager } from '@/managers'
+import { ChannelManager, UserManager } from '@/managers'
 import { DispatchHandlers } from '@/DispatchHandlers'
 import type { GatewayClientboundDispatchPayloadsMap, GatewayDispatchMessage } from '@foxochat/gateway-types'
 
@@ -27,9 +27,14 @@ export default class Client extends EventEmitter<ClientEventsMap> {
   public readonly gateway: Gateway
 
   /**
+   * The channel manager of this client.
+   */
+  public readonly channels = new ChannelManager(this)
+
+  /**
    * The user manager of this client.
    */
-  public readonly users: UserManager = new UserManager(this)
+  public readonly users = new UserManager(this)
 
   public constructor(options?: ConstructorOptions) {
     super()

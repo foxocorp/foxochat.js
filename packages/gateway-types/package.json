@@ -41,7 +41,6 @@
     "@biomejs/biome": "1.9.4",
     "@rslib/core": "^0.6.9",
     "@tsconfig/strictest": "^2.0.5",
-    "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
 }

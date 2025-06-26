@@ -1,6 +1,7 @@
 import { Base } from './Base'
-import type { APIAttachment, APIUser, UserFlags, UserStatus, UserType } from '@foxochat/api-types'
+import type { APIUser, UserFlags, UserStatus, UserType } from '@foxochat/api-types'
 import type Client from '@/Client'
+import { Attachment } from './Attachment'
 
 /**
  * API User model.
@@ -24,7 +25,7 @@ export class User extends Base<APIUser> {
   /**
    * The avatar of the user.
    */
-  public avatar!: APIAttachment | null
+  public avatar!: Attachment | null
 
   /**
    * The display name of the user.
@@ -76,7 +77,7 @@ export class User extends Base<APIUser> {
   public override patch(data: Partial<APIUser>): void {
     if ('channels' in data) this.channels = data.channels
     if ('contacts' in data) this.contacts = data.contacts
-    if ('avatar' in data) this.avatar = data.avatar
+    if ('avatar' in data) this.avatar = data.avatar ? new Attachment(this.client, data.avatar) : null
     if ('display_name' in data) this.displayName = data.display_name
     if ('username' in data) this.username = data.username
     if ('email' in data) this.email = data.email
@@ -92,7 +93,7 @@ export class User extends Base<APIUser> {
       id: this.id,
       channels: this.channels,
       contacts: this.contacts,
-      avatar: this.avatar,
+      avatar: this.avatar?.toJson() ?? null,
       display_name: this.displayName,
       username: this.username,
       email: this.email,

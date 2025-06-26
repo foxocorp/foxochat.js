@@ -1,2 +1,6 @@
+export * from './Attachment'
 export * from './Base'
+export * from './Channel'
+export * from './Member'
+export * from './Message'
 export * from './User'

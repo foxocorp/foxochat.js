@@ -23,7 +23,7 @@ export interface APIMessage {
   /**
    * The channel the message was sent in.
    */
-  channel: APIChannel
+  channel: APIChannel | null
 
   /**
    * The files attached to the message.

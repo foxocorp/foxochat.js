@@ -1,3 +1,6 @@
 export * from './BaseManager'
 export * from './CachedManager'
+export * from './ChannelManager'
+export * from './MemberManager'
+export * from './MessageManager'
 export * from './UserManager'

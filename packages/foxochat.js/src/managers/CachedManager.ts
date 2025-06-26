@@ -23,6 +23,10 @@ export abstract class CachedManager<K, D, H extends Base<D>> extends BaseManager
     super(client)
   }
 
+  protected createHeld(data: D): H {
+    return new this.holds(this.client, data)
+  }
+
   /**
    * Adds an entry to the cache or updates an existing one.
    */
@@ -34,7 +38,7 @@ export abstract class CachedManager<K, D, H extends Base<D>> extends BaseManager
       return existing
     }
 
-    const entry = new this.holds(this.client, data)
+    const entry = this.createHeld(data)
     this.cache.set(key, entry)
 
     return entry
