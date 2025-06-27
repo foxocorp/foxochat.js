@@ -1,17 +1,16 @@
-import { BaseManager } from './BaseManager'
 import type Client from '@/Client'
-import { Collection } from '@discordjs/collection'
 import type { Newable } from 'ts-essentials'
 import type { Base } from '@/models'
+import BaseManager from '@/managers/BaseManager'
 
 /**
  * Manages the API methods of a data model with a mutable cache of instances.
  */
-export abstract class CachedManager<K, D, H extends Base<D>> extends BaseManager {
+export default abstract class CachedManager<K, D, H extends Base<D>> extends BaseManager {
   /**
    * The cache of items for this manager.
    */
-  public readonly cache = new Collection<K, H>()
+  public readonly cache = new Map<K, H>()
 
   protected constructor(
     client: Client,
@@ -21,10 +20,6 @@ export abstract class CachedManager<K, D, H extends Base<D>> extends BaseManager
     protected readonly holds: Newable<H>,
   ) {
     super(client)
-  }
-
-  protected createHeld(data: D): H {
-    return new this.holds(this.client, data)
   }
 
   /**
@@ -42,5 +37,9 @@ export abstract class CachedManager<K, D, H extends Base<D>> extends BaseManager
     this.cache.set(key, entry)
 
     return entry
+  }
+
+  protected createHeld(data: D): H {
+    return new this.holds(this.client, data)
   }
 }

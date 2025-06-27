@@ -1,4 +1,4 @@
-import type { APIAttachment } from './attachment'
+import type { APIAttachment } from '@/payloads/attachment'
 
 /**
  * API User DTO.

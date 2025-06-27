@@ -1,5 +1,5 @@
 import type { APIChannel, APIOk, APIUser } from '@/payloads'
-import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from './attachment'
+import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/attachment'
 
 /**
  * The result of GET /users/{userKey}.

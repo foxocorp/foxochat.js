@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       typedoc:
-        specifier: ^0.28.5
-        version: 0.28.5(typescript@5.8.3)
+        specifier: ^0.28.6
+        version: 0.28.6(typescript@5.8.3)
 
   packages/api:
     dependencies:
@@ -61,9 +61,6 @@ importers:
 
   packages/foxochat.js:
     dependencies:
-      '@discordjs/collection':
-        specifier: ^2.1.1
-        version: 2.1.1
       '@foxochat/api':
         specifier: workspace:^
         version: link:../api
@@ -314,10 +311,6 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
-
-  '@discordjs/collection@2.1.1':
-    resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
-    engines: {node: '>=18'}
 
   '@gerrit0/mini-shiki@3.7.0':
     resolution: {integrity: sha512-7iY9wg4FWXmeoFJpUL2u+tsmh0d0jcEJHAIzVxl3TG4KL493JNnisdLAILZ77zcD+z3J0keEXZ+lFzUgzQzPDg==}
@@ -722,8 +715,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  typedoc@0.28.5:
-    resolution: {integrity: sha512-5PzUddaA9FbaarUzIsEc4wNXCiO4Ot3bJNeMF2qKpYlTmM9TTaSHQ7162w756ERCkXER/+o2purRG6YOAv6EMA==}
+  typedoc@0.28.6:
+    resolution: {integrity: sha512-2VvfK6z3yupcu75qZB00LGICg4qa0lw4yPBrFcnZgqIMwpLjLWopTqNeJ4SSS/s92myvWBECY5zcOSMqpvW3CA==}
     engines: {node: '>= 18', pnpm: '>= 10'}
     hasBin: true
     peerDependencies:
@@ -835,8 +828,6 @@ snapshots:
 
   '@biomejs/cli-win32-x64@1.9.4':
     optional: true
-
-  '@discordjs/collection@2.1.1': {}
 
   '@gerrit0/mini-shiki@3.7.0':
     dependencies:
@@ -1284,7 +1275,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  typedoc@0.28.5(typescript@5.8.3):
+  typedoc@0.28.6(typescript@5.8.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.7.0
       lunr: 2.3.9

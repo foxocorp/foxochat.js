@@ -1,11 +1,11 @@
-import { Base } from './Base'
-import { APIAttachment, AttachmentFlags } from '@foxochat/api-types'
+import { APIAttachment, AttachmentFlags, MediaRoutes } from '@foxochat/api-types'
 import type Client from '@/Client'
+import Base from '@/models/Base'
 
 /**
  * API User model.
  */
-export class Attachment extends Base<APIAttachment> {
+export default class Attachment extends Base<APIAttachment> {
   /**
    * The id of the attachment.
    */
@@ -36,6 +36,13 @@ export class Attachment extends Base<APIAttachment> {
 
     this.id = data.id
     this.patch(data)
+  }
+
+  /**
+   * The URL to this attachment.
+   */
+  public get url(): URL {
+    return new URL(`${this.client.options.mediaBaseUrl}${MediaRoutes.attachment(this.uuid)}`)
   }
 
   public override patch(data: Partial<APIAttachment>): void {

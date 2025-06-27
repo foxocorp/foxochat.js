@@ -3,7 +3,7 @@ import type Client from '@/Client'
 /**
  * Manages the API methods of a data model.
  */
-export abstract class BaseManager {
+export default abstract class BaseManager {
   protected constructor(
     /**
      * The client that instantiated this Manager

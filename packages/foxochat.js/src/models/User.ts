@@ -1,12 +1,12 @@
-import { Base } from './Base'
 import type { APIUser, UserFlags, UserStatus, UserType } from '@foxochat/api-types'
 import type Client from '@/Client'
-import { Attachment } from './Attachment'
+import Base from '@/models/Base'
+import Attachment from '@/models/Attachment'
 
 /**
  * API User model.
  */
-export class User extends Base<APIUser> {
+export default class User extends Base<APIUser> {
   /**
    * The id of the user.
    */

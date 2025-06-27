@@ -1,18 +1,13 @@
-import { CachedManager } from './CachedManager'
 import { Channel, Message } from '@/models'
 import type { APIMessage } from '@foxochat/api-types'
-import { Collection } from '@discordjs/collection'
+import CachedManager from '@/managers/CachedManager'
 
 /**
  * Manages API methods for messages and stores their cache.
  */
-export class MessageManager extends CachedManager<number, APIMessage, Message> {
+export default class MessageManager extends CachedManager<number, APIMessage, Message> {
   public constructor(private readonly channel: Channel) {
     super(channel.client, Message)
-  }
-
-  protected override createHeld(data: APIMessage): Message {
-    return new Message(this.client, data, this.channel)
   }
 
   /**
@@ -31,12 +26,16 @@ export class MessageManager extends CachedManager<number, APIMessage, Message> {
   /**
    * Obtains a messages from API.
    */
-  public async fetchMany(): Promise<Collection<number, Message>> {
+  public async fetchMany(): Promise<Map<number, Message>> {
     const data = await this.client.api.message.list(this.channel.id)
 
     return data.reduce(
       (collection, message) => collection.set(message.id, this.add(message.id, message)),
-      new Collection<number, Message>(),
+      new Map<number, Message>(),
     )
+  }
+
+  protected override createHeld(data: APIMessage): Message {
+    return new Message(this.client, data, this.channel)
   }
 }

@@ -1,5 +1,6 @@
-import { GatewayClientboundDispatchPayloadsMap } from '@foxochat/gateway-types'
+import type { GatewayClientboundDispatchPayloadsMap } from '@foxochat/gateway-types'
 import Client from '@/Client'
+import { ClientEvents } from '@/types'
 
 /**
  * A map of gateway dispatch event handlers.
@@ -23,7 +24,8 @@ export const DispatchHandlers: {
   MESSAGE_UPDATE(_client: Client, _data: GatewayClientboundDispatchPayloadsMap['MESSAGE_UPDATE']): void {},
   TYPING_START(_client: Client, _data: GatewayClientboundDispatchPayloadsMap['TYPING_START']): void {},
   USER_STATUS_UPDATE(_client: Client, _data: GatewayClientboundDispatchPayloadsMap['USER_STATUS_UPDATE']): void {},
-  USER_UPDATE(client: Client, data: GatewayClientboundDispatchPayloadsMap['USER_UPDATE']): void {
-    client.users.add(data.id, data)
-  },
+  USER_UPDATE: (client: Client, data: GatewayClientboundDispatchPayloadsMap['USER_UPDATE']) =>
+    client.emit(ClientEvents.UserUpdate, client.users.add(data.id, data)),
 }
+
+export default DispatchHandlers

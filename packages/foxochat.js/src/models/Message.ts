@@ -1,15 +1,14 @@
-import { Base } from './Base'
 import type { APIMessage } from '@foxochat/api-types'
 import type Client from '@/Client'
-import { Attachment } from '@/models/Attachment'
-import { Collection } from '@discordjs/collection'
-import { Channel } from '@/models/Channel'
-import { Member } from '@/models/Member'
+import Attachment from '@/models/Attachment'
+import Channel from '@/models/Channel'
+import Member from '@/models/Member'
+import Base from '@/models/Base'
 
 /**
  * API Message model.
  */
-export class Message extends Base<APIMessage> {
+export default class Message extends Base<APIMessage> {
   /**
    * The id of the message.
    */
@@ -28,7 +27,7 @@ export class Message extends Base<APIMessage> {
   /**
    * The files attached to the message.
    */
-  public attachments!: Collection<number, Attachment>
+  public attachments!: Map<number, Attachment>
 
   /**
    * The time when message sent at.
@@ -59,7 +58,7 @@ export class Message extends Base<APIMessage> {
     if ('attachments' in data)
       this.attachments = data.attachments.reduce(
         (collection, attachment) => collection.set(attachment.id, new Attachment(this.client, attachment)),
-        new Collection<number, Attachment>(),
+        new Map<number, Attachment>(),
       )
   }
 
@@ -69,7 +68,7 @@ export class Message extends Base<APIMessage> {
       content: this.content,
       author: this.author.toJson(),
       channel: this.channel?.toJson() ?? null,
-      attachments: this.attachments.map((attachment) => attachment.toJson()),
+      attachments: Array.from(this.attachments.values()).map((attachment) => attachment.toJson()),
       created_at: this.createdAt.getTime(),
     }
   }

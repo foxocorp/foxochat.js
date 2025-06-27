@@ -6,9 +6,9 @@ import type {
 } from '@foxochat/gateway-types'
 import { GatewayCloseCodes, GatewayOpcodes } from '@foxochat/gateway-types'
 import EventEmitter from 'eventemitter3'
-import { DefaultOptions, GatewayEvents } from './constants'
-import { MissingTokenError, NotConnectedError } from './errors'
-import type { GatewayDestroyOptions, GatewayEventsMap, Options, HeartbeatStats } from './types'
+import type { GatewayDestroyOptions, GatewayEventsMap, HeartbeatStats, Options } from '@/types'
+import { DefaultOptions, GatewayEvents } from '@/constants'
+import { MissingTokenError, NotConnectedError } from '@/errors'
 
 /**
  * The Gateway API client for foxochat.js
@@ -18,36 +18,30 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
    * The gateway options.
    */
   public readonly options: Options
-
-  /**
-   * The active WebSocket connection.
-   */
-  private connection: WebSocket | null = null
-
-  /**
-   * The interval ID for heartbeats.
-   */
-  private heartbeatInterval: number | null = null
-
-  /**
-   * The timestamp of the last heartbeat sent.
-   */
-  private lastHeartbeatAt = -1
-
-  /**
-   * The heartbeat latency stats.
-   */
-  private heartbeatStats: HeartbeatStats | null = null
-
-  /**
-   * Whether a socket error has occurred.
-   */
-  private socketErrorOccurred = false
-
   /**
    * The authentication token.
    */
   public accessor token: string | null = null
+  /**
+   * The active WebSocket connection.
+   */
+  private connection: WebSocket | null = null
+  /**
+   * The interval ID for heartbeats.
+   */
+  private heartbeatInterval: number | null = null
+  /**
+   * The timestamp of the last heartbeat sent.
+   */
+  private lastHeartbeatAt = -1
+  /**
+   * The heartbeat latency stats.
+   */
+  private heartbeatStats: HeartbeatStats | null = null
+  /**
+   * Whether a socket error has occurred.
+   */
+  private socketErrorOccurred = false
 
   /**
    * Creates a new Gateway instance.
@@ -113,6 +107,17 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
       await new Promise((resolve) => setTimeout(resolve, this.options.reconnectTimeout))
       await this.connect()
     }
+  }
+
+  /**
+   * Sends a message to the gateway.
+   */
+  public async send<T extends GatewayServerboundMessage>(message: T): Promise<void> {
+    if (!this.connection) throw new NotConnectedError()
+
+    const data = JSON.stringify(message)
+
+    return this.connection.send(data)
   }
 
   /**
@@ -186,17 +191,6 @@ export default class Gateway extends EventEmitter<GatewayEventsMap> {
         this.debug(['The gateway connection closed with unexpected code'])
         return this.destroy({ code, reconnect: this.socketErrorOccurred })
     }
-  }
-
-  /**
-   * Sends a message to the gateway.
-   */
-  public async send<T extends GatewayServerboundMessage>(message: T): Promise<void> {
-    if (!this.connection) throw new NotConnectedError()
-
-    const data = JSON.stringify(message)
-
-    return this.connection.send(data)
   }
 
   /**

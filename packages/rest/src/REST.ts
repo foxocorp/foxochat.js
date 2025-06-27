@@ -1,15 +1,15 @@
-import { APIError, AuthEnforcedError, HTTPError } from './errors'
-import { DefaultOptions, RequestBodyType, RequestMethod } from './constants'
 import type {
+  ConstructorOptions,
   InternalRequestOptions,
   Options,
   RequestHeaders,
   RequestOptions,
   RouteLike,
-  ConstructorOptions,
-} from './types'
+} from '@/types'
 import type { APIException } from '@foxochat/api-types'
-import { parseResponse } from './utils'
+import { DefaultOptions, RequestBodyType, RequestMethod } from '@/constants'
+import { APIError, AuthEnforcedError, HTTPError } from '@/errors'
+import { parseResponse } from '@/utils'
 
 /**
  * The HTTP REST API client for foxochat.js

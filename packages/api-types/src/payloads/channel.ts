@@ -1,6 +1,6 @@
-import type { APIAttachment } from './attachment'
-import type { APIMessage } from './message'
-import type { APIUser } from './user'
+import type { APIUser } from '@/payloads/user'
+import type { APIMessage } from '@/payloads/message'
+import type { APIAttachment } from '@/payloads/attachment'
 
 /**
  * API Channel DTO.

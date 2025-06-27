@@ -1,4 +1,4 @@
-import { defineConfig, type LibConfig, type Format, type RslibConfig } from '@rslib/core'
+import { defineConfig, type Format, type LibConfig, type RslibConfig } from '@rslib/core'
 
 const formats: Format[] = ['esm', 'cjs']
 const libConfig: Partial<LibConfig> = {

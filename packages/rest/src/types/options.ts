@@ -1,5 +1,5 @@
-import type { ResponseLike } from './http'
 import type { MarkRequired } from 'ts-essentials'
+import type { ResponseLike } from '@/types/http'
 
 /**
  * All options to be passed when creating the REST client instance.

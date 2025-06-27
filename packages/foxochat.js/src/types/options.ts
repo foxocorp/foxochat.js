@@ -4,6 +4,7 @@ import type { ConstructorOptions as GatewayConstructorOptions } from '@foxochat/
 export interface Options {
   api: APIConstructorOptions
   gateway: GatewayConstructorOptions
+  mediaBaseUrl: string
 }
 
 export type ConstructorOptions = Partial<Options>

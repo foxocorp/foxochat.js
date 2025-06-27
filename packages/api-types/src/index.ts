@@ -1,3 +1,3 @@
-export * from './payloads'
-export * from './rest'
-export * from './routes'
+export * from '@/payloads'
+export * from '@/rest'
+export * from '@/routes'

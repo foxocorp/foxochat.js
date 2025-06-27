@@ -1,6 +1,6 @@
 import type Client from '@/Client'
 
-export abstract class Base<T> {
+export default abstract class Base<T> {
   protected constructor(
     public readonly client: Client,
     _data: T,

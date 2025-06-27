@@ -15,7 +15,7 @@ import type {
   GatewayDispatchUserUpdatePayload,
 } from '@/payloads'
 import type { GatewayDispatchEvents } from '@/types'
-import type { GatewayDispatchMessage } from './base'
+import type { GatewayDispatchMessage } from '@/messages/base'
 
 /**
  * Message was created.

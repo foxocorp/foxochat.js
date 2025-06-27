@@ -1,7 +1,5 @@
 import {
   APIRoutes,
-  type RESTPutAPIMessageAttachmentsBody,
-  type RESTPutAPIMessageAttachmentsResult,
   type RESTDeleteAPIMessageResult,
   type RESTGetAPIMessageListQuery,
   type RESTGetAPIMessageListResult,
@@ -10,6 +8,8 @@ import {
   type RESTPatchAPIMessageResult,
   type RESTPostAPIMessageBody,
   type RESTPostAPIMessageResult,
+  type RESTPutAPIMessageAttachmentsBody,
+  type RESTPutAPIMessageAttachmentsResult,
 } from '@foxochat/api-types'
 import type REST from '@foxochat/rest'
 import { buildURLSearchParams } from '@foxochat/rest'

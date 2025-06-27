@@ -8,9 +8,9 @@ export interface RouteUrls {
   api: string
 
   /**
-   * The CDN base URL.
+   * The media storage base URL.
    */
-  cdn: string
+  media: string
 
   /**
    * The gateway base URL.
@@ -29,12 +29,12 @@ export type RouteEnvironment = 'development' | 'production'
 export const RouteUrlsMap = {
   development: {
     api: 'https://api-dev.foxochat.app',
-    cdn: 'https://cdn.foxochat.app',
+    media: 'https://media.foxochat.app',
     gateway: 'wss://api-dev.foxochat.app',
   },
   production: {
     api: 'https://api.foxochat.app',
-    cdn: 'https://cdn.foxochat.app',
+    media: 'https://media.foxochat.app',
     gateway: 'wss://api.foxochat.app',
   },
 } as const satisfies Record<RouteEnvironment, RouteUrls>

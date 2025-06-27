@@ -34,7 +34,6 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "@discordjs/collection": "^2.1.1",
     "@foxochat/api": "workspace:^",
     "@foxochat/api-types": "workspace:^",
     "@foxochat/gateway": "workspace:^",

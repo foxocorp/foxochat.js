@@ -1,5 +1,5 @@
 import type { APIChannel, APIMember, APIOk, ChannelType } from '@/payloads'
-import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from './attachment'
+import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/attachment'
 
 /**
  * The result of POST /channels/.

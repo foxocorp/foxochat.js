@@ -1,7 +1,7 @@
 /**
  * Represents a HTTP error.
  */
-export class HTTPError extends Error {
+export default class HTTPError extends Error {
   public constructor(
     public status: number,
     public method: string,

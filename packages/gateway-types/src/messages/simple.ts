@@ -1,6 +1,6 @@
 import type { GatewayHelloPayload, GatewayIdentifyPayload } from '@/payloads'
 import type { GatewayOpcodes } from '@/types'
-import type { GatewaySimpleMessage } from './base'
+import type { GatewaySimpleMessage } from '@/messages/base'
 
 /**
  * Used to trigger the hello from the gateway.

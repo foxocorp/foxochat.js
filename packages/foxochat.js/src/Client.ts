@@ -1,11 +1,11 @@
 import API from '@foxochat/api'
 import Gateway, { GatewayEvents } from '@foxochat/gateway'
 import EventEmitter from 'eventemitter3'
-import { ClientEvents, type ClientEventsMap, type ConstructorOptions, type Options } from './types'
 import { DefaultOptions } from '@/constants'
 import { ChannelManager, UserManager } from '@/managers'
-import { DispatchHandlers } from '@/DispatchHandlers'
+import DispatchHandlers from '@/DispatchHandlers'
 import type { GatewayClientboundDispatchPayloadsMap, GatewayDispatchMessage } from '@foxochat/gateway-types'
+import { ClientEvents, ClientEventsMap, ConstructorOptions, Options } from '@/types'
 
 /**
  * The main hub for interacting with the FoxoChat.

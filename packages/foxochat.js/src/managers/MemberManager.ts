@@ -1,12 +1,11 @@
-import { CachedManager } from './CachedManager'
 import { Channel, Member } from '@/models'
 import type { APIMember } from '@foxochat/api-types'
-import { Collection } from '@discordjs/collection'
+import CachedManager from '@/managers/CachedManager'
 
 /**
  * Manages API methods for members and stores their cache.
  */
-export class MemberManager extends CachedManager<number, APIMember, Member> {
+export default class MemberManager extends CachedManager<number, APIMember, Member> {
   public constructor(private readonly channel: Channel) {
     super(channel.client, Member)
   }
@@ -27,12 +26,12 @@ export class MemberManager extends CachedManager<number, APIMember, Member> {
   /**
    * Obtains a members from API.
    */
-  public async fetchMany(): Promise<Collection<number, Member>> {
+  public async fetchMany(): Promise<Map<number, Member>> {
     const data = await this.client.api.channel.members(this.channel.id)
 
     return data.reduce(
       (collection, message) => collection.set(message.id, this.add(message.id, message)),
-      new Collection<number, Member>(),
+      new Map<number, Member>(),
     )
   }
 }

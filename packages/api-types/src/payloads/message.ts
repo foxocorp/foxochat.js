@@ -1,5 +1,5 @@
-import type { APIAttachment } from './attachment'
-import type { APIChannel, APIMember } from './channel'
+import type { APIAttachment } from '@/payloads/attachment'
+import type { APIChannel, APIMember } from '@/payloads/channel'
 
 /**
  * API Message DTO.

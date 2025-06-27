@@ -1,10 +1,10 @@
 import type { APIException } from '@foxochat/api-types'
-import { HTTPError } from './HTTPError'
+import HTTPError from '@/errors/HTTPError'
 
 /**
  * Represents an API error returned by FoxoChat.
  */
-export class APIError extends HTTPError {
+export default class APIError extends HTTPError {
   public constructor(
     status: number,
     method: string,
