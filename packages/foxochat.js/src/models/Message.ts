@@ -45,11 +45,11 @@ export default class Message extends Base<APIMessage> {
     super(client, data)
 
     this.id = data.id
-    this.patch(data)
+    this._patch(data)
   }
 
-  public override patch(data: Partial<APIMessage>): void {
-    if (data.channel) this.channel.patch(data.channel)
+  public override _patch(data: Partial<APIMessage>): void {
+    if (data.channel) this.channel._patch(data.channel)
 
     if ('content' in data) this.content = data.content
     if ('author' in data) this.author = this.channel.members.add(data.author.id, data.author)

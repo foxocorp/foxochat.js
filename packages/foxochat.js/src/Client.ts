@@ -3,9 +3,8 @@ import Gateway, { GatewayEvents } from '@foxochat/gateway'
 import EventEmitter from 'eventemitter3'
 import { DefaultOptions } from '@/constants'
 import { ChannelManager, UserManager } from '@/managers'
-import DispatchHandlers from '@/DispatchHandlers'
-import type { GatewayClientboundDispatchPayloadsMap, GatewayDispatchMessage } from '@foxochat/gateway-types'
 import { ClientEvents, ClientEventsMap, ConstructorOptions, Options } from '@/types'
+import ActionManager from '@/managers/ActionManager'
 
 /**
  * The main hub for interacting with the FoxoChat.
@@ -25,6 +24,11 @@ export default class Client extends EventEmitter<ClientEventsMap> {
    * Gateway client.
    */
   public readonly gateway: Gateway
+
+  /**
+   * The action manager of this client.
+   */
+  public readonly actions = new ActionManager(this)
 
   /**
    * The channel manager of this client.
@@ -70,19 +74,12 @@ export default class Client extends EventEmitter<ClientEventsMap> {
   }
 
   /**
-   * Handles incoming dispatch events from the gateway.
-   */
-  private handleDispatch<K extends keyof GatewayClientboundDispatchPayloadsMap>(
-    event: GatewayDispatchMessage<K, GatewayClientboundDispatchPayloadsMap[K]>,
-  ): void {
-    DispatchHandlers[event.t](this, event.d)
-  }
-
-  /**
    * Subscribes to gateway events and sets up internal listeners.
    */
   private attachEvents(): void {
     this.gateway.on(GatewayEvents.Debug, (message) => this.emit(ClientEvents.Debug, `[WS] ${message}`))
-    this.gateway.on(GatewayEvents.Dispatch, this.handleDispatch.bind(this))
+    this.gateway.on(GatewayEvents.Dispatch, (dispatchEvent) =>
+      this.actions.items.get(dispatchEvent.t)?.handle(dispatchEvent.d),
+    )
   }
 }

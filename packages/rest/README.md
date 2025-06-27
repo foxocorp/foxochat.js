@@ -20,7 +20,7 @@ import { APIRoutes, RouteUrlsMap } from "@foxochat/api-types";
 
 const rest = new REST({
   baseURL: RouteUrlsMap.production.api,
-})
+});
 
 rest.token = TOKEN;
 

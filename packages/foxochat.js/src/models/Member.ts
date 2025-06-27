@@ -37,10 +37,10 @@ export default class Member extends Base<APIMember> {
     super(client, data)
 
     this.id = data.id
-    this.patch(data)
+    this._patch(data)
   }
 
-  public override patch(data: Partial<APIMember>): void {
+  public override _patch(data: Partial<APIMember>): void {
     if ('permissions' in data) this.permissions = data.permissions
     if ('joined_at' in data) this.joinedAt = new Date(data.joined_at)
 

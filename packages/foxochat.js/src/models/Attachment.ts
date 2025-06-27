@@ -35,7 +35,7 @@ export default class Attachment extends Base<APIAttachment> {
     super(client, data)
 
     this.id = data.id
-    this.patch(data)
+    this._patch(data)
   }
 
   /**
@@ -45,7 +45,7 @@ export default class Attachment extends Base<APIAttachment> {
     return new URL(`${this.client.options.mediaBaseUrl}${MediaRoutes.attachment(this.uuid)}`)
   }
 
-  public override patch(data: Partial<APIAttachment>): void {
+  public override _patch(data: Partial<APIAttachment>): void {
     if ('uuid' in data) this.uuid = data.uuid
     if ('filename' in data) this.filename = data.filename
     if ('content_type' in data) this.contentType = data.content_type

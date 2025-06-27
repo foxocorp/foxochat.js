@@ -71,10 +71,10 @@ export default class User extends Base<APIUser> {
     super(client, data)
 
     this.id = data.id
-    this.patch(data)
+    this._patch(data)
   }
 
-  public override patch(data: Partial<APIUser>): void {
+  public override _patch(data: Partial<APIUser>): void {
     if ('channels' in data) this.channels = data.channels
     if ('contacts' in data) this.contacts = data.contacts
     if ('avatar' in data) this.avatar = data.avatar ? new Attachment(this.client, data.avatar) : null

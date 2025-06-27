@@ -8,5 +8,15 @@ export default abstract class Base<T> {
 
   public abstract toJson(): T
 
-  public abstract patch(data: Partial<T>): void
+  public abstract _patch(data: Partial<T>): void
+
+  public _clone(): typeof this {
+    return Object.assign(Object.create(this), this)
+  }
+
+  public _update(data: Partial<T>): typeof this {
+    const clone = this._clone()
+    this._patch(data)
+    return clone
+  }
 }

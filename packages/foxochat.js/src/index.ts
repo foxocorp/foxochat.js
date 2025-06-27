@@ -1,5 +1,4 @@
 export { default as Client, default } from './Client'
-export * from './DispatchHandlers'
 
 export * from './constants'
 export * from './managers'
@@ -9,7 +8,11 @@ export * from './types'
 export * from '@foxochat/api-types'
 export * from '@foxochat/gateway-types'
 
-export { API, type ConstructorOptions as APIConstructorOptions, type Options as APIOptions } from '@foxochat/api'
+export {
+  API,
+  type ConstructorOptions as APIConstructorOptions,
+  type Options as APIOptions,
+} from '@foxochat/api'
 
 export {
   REST,

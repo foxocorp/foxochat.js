@@ -28,8 +28,8 @@ export default abstract class CachedManager<K, D, H extends Base<D>> extends Bas
   public add(key: K, data: D): H {
     const existing = this.cache.get(key)
 
-    if (!!existing) {
-      existing.patch(data)
+    if (existing) {
+      existing._patch(data)
       return existing
     }
 

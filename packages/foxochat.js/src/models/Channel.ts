@@ -75,10 +75,10 @@ export default class Channel extends Base<APIChannel> {
     super(client, data)
 
     this.id = data.id
-    this.patch(data)
+    this._patch(data)
   }
 
-  public override patch(data: Partial<APIChannel>): void {
+  public override _patch(data: Partial<APIChannel>): void {
     if ('name' in data) this.name = data.name
     if ('display_name' in data) this.displayName = data.display_name
     if ('type' in data) this.type = data.type
