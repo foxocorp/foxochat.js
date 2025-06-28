@@ -20,7 +20,7 @@ export default class MessageManager extends CachedManager<number, APIMessage, Me
     }
 
     const data = await this.client.api.message.get(this.channel.id, id)
-    return this.add(data.id, data)
+    return this._add(data.id, data)
   }
 
   /**
@@ -30,7 +30,7 @@ export default class MessageManager extends CachedManager<number, APIMessage, Me
     const data = await this.client.api.message.list(this.channel.id)
 
     return data.reduce(
-      (collection, message) => collection.set(message.id, this.add(message.id, message)),
+      (collection, message) => collection.set(message.id, this._add(message.id, message)),
       new Map<number, Message>(),
     )
   }

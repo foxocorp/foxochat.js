@@ -8,11 +8,6 @@ import Attachment from '@/models/Attachment'
  */
 export default class User extends Base<APIUser> {
   /**
-   * The id of the user.
-   */
-  public readonly id: number
-
-  /**
    * The channels of the user.
    */
   public channels!: number[]
@@ -68,9 +63,8 @@ export default class User extends Base<APIUser> {
   public createdAt!: Date
 
   public constructor(client: Client, data: APIUser) {
-    super(client, data)
+    super(client, data.id, data)
 
-    this.id = data.id
     this._patch(data)
   }
 

@@ -9,9 +9,9 @@ export default class UserUpdateAction extends BaseAction<GatewayDispatchEvents.U
     super(client, GatewayDispatchEvents.UserUpdate)
   }
 
-  public override handle(user: APIUser): void {
-    const newUser = this.client.users.cache.get(user.id) ?? this.client.users.add(user.id, user)
-    const oldUser = newUser._update(user)
+  public override handle(data: APIUser): void {
+    const newUser = this.client.users.cache.get(data.id) ?? this.client.users._add(data.id, data)
+    const oldUser = newUser._update(data)
 
     this.client.emit(ClientEvents.UserUpdate, oldUser, newUser)
   }

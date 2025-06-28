@@ -21,6 +21,6 @@ export default class UserManager extends CachedManager<number, APIUser, User> {
     }
 
     const data = await this.client.api.user.get(id)
-    return this.add(data.id, data)
+    return this._add(data.id, data)
   }
 }

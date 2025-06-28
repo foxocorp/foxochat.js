@@ -7,11 +7,6 @@ import Base from '@/models/Base'
  */
 export default class Attachment extends Base<APIAttachment> {
   /**
-   * The id of the attachment.
-   */
-  public readonly id: number
-
-  /**
    * The object id of the attachment.
    */
   public uuid!: string
@@ -32,9 +27,8 @@ export default class Attachment extends Base<APIAttachment> {
   public flags!: AttachmentFlags
 
   public constructor(client: Client, data: APIAttachment) {
-    super(client, data)
+    super(client, data.id, data)
 
-    this.id = data.id
     this._patch(data)
   }
 

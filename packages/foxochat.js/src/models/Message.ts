@@ -10,11 +10,6 @@ import Base from '@/models/Base'
  */
 export default class Message extends Base<APIMessage> {
   /**
-   * The id of the message.
-   */
-  public readonly id!: number
-
-  /**
    * The content of the message.
    */
   public content!: string
@@ -42,9 +37,8 @@ export default class Message extends Base<APIMessage> {
      */
     public readonly channel: Channel,
   ) {
-    super(client, data)
+    super(client, data.id, data)
 
-    this.id = data.id
     this._patch(data)
   }
 
@@ -52,7 +46,7 @@ export default class Message extends Base<APIMessage> {
     if (data.channel) this.channel._patch(data.channel)
 
     if ('content' in data) this.content = data.content
-    if ('author' in data) this.author = this.channel.members.add(data.author.id, data.author)
+    if ('author' in data) this.author = this.channel.members._add(data.author.id, data.author)
     if ('created_at' in data) this.createdAt = new Date(data.created_at)
 
     if ('attachments' in data)

@@ -9,8 +9,10 @@ export default class MessageCreateAction extends BaseAction<GatewayDispatchEvent
     super(client, GatewayDispatchEvents.MessageCreate)
   }
 
-  public override handle(message: APIMessage): void {
-    const channel = this.client.channels.add(message.channel!.id, message.channel!)
-    this.client.emit(ClientEvents.MessageCreate, channel.messages.add(message.id, message))
+  public override handle(data: APIMessage): void {
+    this.client.emit(
+      ClientEvents.MessageCreate,
+      this.client.channels._add(data.channel!.id, data.channel!).messages._add(data.id, data),
+    )
   }
 }

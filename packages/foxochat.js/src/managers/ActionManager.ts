@@ -1,6 +1,13 @@
 import BaseManager from '@/managers/BaseManager'
 import type Client from '@/Client'
-import { BaseAction, MessageCreateAction, UserUpdateAction } from '@/actions'
+import {
+  BaseAction,
+  ChannelCreateAction,
+  ChannelDeleteAction,
+  ChannelUpdateAction,
+  MessageCreateAction,
+  UserUpdateAction,
+} from '@/actions'
 import { GatewayDispatchEvents } from '@foxochat/gateway-types'
 
 export default class ActionManager extends BaseManager {
@@ -9,7 +16,13 @@ export default class ActionManager extends BaseManager {
   public constructor(client: Client) {
     super(client)
 
-    this.registerActions(new UserUpdateAction(client), new MessageCreateAction(client))
+    this.registerActions(
+      new ChannelCreateAction(client),
+      new ChannelDeleteAction(client),
+      new ChannelUpdateAction(client),
+      new MessageCreateAction(client),
+      new UserUpdateAction(client),
+    )
   }
 
   private registerActions(...actions: BaseAction[]) {

@@ -1,3 +1,6 @@
 export { default as BaseAction } from './BaseAction'
+export { default as ChannelCreateAction } from './ChannelCreateAction'
+export { default as ChannelDeleteAction } from './ChannelDeleteAction'
+export { default as ChannelUpdateAction } from './ChannelUpdateAction'
 export { default as MessageCreateAction } from './MessageCreateAction'
 export { default as UserUpdateAction } from './UserUpdateAction'

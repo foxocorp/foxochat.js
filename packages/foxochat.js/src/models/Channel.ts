@@ -12,11 +12,6 @@ import MessageManager from '@/managers/MessageManager'
  */
 export default class Channel extends Base<APIChannel> {
   /**
-   * The id of the channel.
-   */
-  public readonly id: number
-
-  /**
    * The name of the channel.
    */
   public name!: string
@@ -72,9 +67,8 @@ export default class Channel extends Base<APIChannel> {
   public messages = new MessageManager(this)
 
   public constructor(client: Client, data: APIChannel) {
-    super(client, data)
+    super(client, data.id, data)
 
-    this.id = data.id
     this._patch(data)
   }
 
@@ -87,9 +81,9 @@ export default class Channel extends Base<APIChannel> {
     if ('created_at' in data) this.createdAt = new Date(data.created_at)
 
     if ('icon' in data) this.icon = data.icon ? new Attachment(this.client, data.icon) : null
-    if ('owner' in data) this.owner = this.client.users.add(data.owner.id, data.owner)
+    if ('owner' in data) this.owner = this.client.users._add(data.owner.id, data.owner)
     if ('last_message' in data)
-      this.lastMessage = data.last_message ? this.messages.add(data.last_message.id, data.last_message) : null
+      this.lastMessage = data.last_message ? this.messages._add(data.last_message.id, data.last_message) : null
   }
 
   public override toJson(): APIChannel {

@@ -21,6 +21,23 @@ export default class ChannelManager extends CachedManager<number, APIChannel, Ch
     }
 
     const data = await this.client.api.channel.get(id)
-    return this.add(data.id, data)
+    return this._add(data.id, data)
+  }
+
+  public override _remove(key: number): boolean {
+    const channel = this.cache.get(key)
+    if (!channel) {
+      return false
+    }
+
+    for (const member of channel.members.cache.values()) {
+      channel.members.cache.delete(member.id)
+    }
+
+    for (const message of channel.messages.cache.values()) {
+      channel.messages.cache.delete(message.id)
+    }
+
+    return super._remove(key)
   }
 }

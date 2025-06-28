@@ -1,8 +1,17 @@
 import type Client from '@/Client'
 
-export default abstract class Base<T> {
+export default abstract class Base<T, K = number> {
   protected constructor(
+    /**
+     * The client that instantiated this Model.
+     */
     public readonly client: Client,
+
+    /**
+     * The id of the model.
+     */
+    public readonly id: K,
+
     _data: T,
   ) {}
 

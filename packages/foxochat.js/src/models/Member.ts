@@ -9,11 +9,6 @@ import Base from '@/models/Base'
  */
 export default class Member extends Base<APIMember> {
   /**
-   * The id of the member.
-   */
-  public readonly id: number
-
-  /**
    * The user of the member.
    */
   public user!: User
@@ -34,9 +29,8 @@ export default class Member extends Base<APIMember> {
   public joinedAt!: Date
 
   public constructor(client: Client, data: APIMember) {
-    super(client, data)
+    super(client, data.id, data)
 
-    this.id = data.id
     this._patch(data)
   }
 
@@ -44,8 +38,8 @@ export default class Member extends Base<APIMember> {
     if ('permissions' in data) this.permissions = data.permissions
     if ('joined_at' in data) this.joinedAt = new Date(data.joined_at)
 
-    if ('user' in data) this.user = this.client.users.add(data.user.id, data.user)
-    if ('channel' in data) this.channel = this.client.channels.add(data.channel.id, data.channel)
+    if ('user' in data) this.user = this.client.users._add(data.user.id, data.user)
+    if ('channel' in data) this.channel = this.client.channels._add(data.channel.id, data.channel)
   }
 
   public override toJson(): APIMember {

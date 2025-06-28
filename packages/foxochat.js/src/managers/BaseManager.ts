@@ -6,7 +6,7 @@ import type Client from '@/Client'
 export default abstract class BaseManager {
   protected constructor(
     /**
-     * The client that instantiated this Manager
+     * The client that instantiated this Manager.
      */
     public readonly client: Client,
   ) {}

@@ -1,0 +1,21 @@
+import BaseAction from '@/actions/BaseAction'
+import { GatewayDispatchEvents } from '@foxochat/gateway-types'
+import type Client from '@/Client'
+import { ClientEvents } from '@/types'
+import type { APIChannel } from '@foxochat/api-types'
+
+export default class ChannelDeleteAction extends BaseAction<GatewayDispatchEvents.ChannelDelete> {
+  public constructor(client: Client) {
+    super(client, GatewayDispatchEvents.ChannelDelete)
+  }
+
+  public override handle(data: APIChannel): void {
+    const channel = this.client.channels.cache.get(data.id)
+
+    if (channel) {
+      this.client.channels._remove(data.id)
+
+      this.client.emit(ClientEvents.ChannelDelete, channel)
+    }
+  }
+}
