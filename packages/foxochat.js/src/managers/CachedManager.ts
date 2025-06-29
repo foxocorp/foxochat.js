@@ -1,12 +1,12 @@
 import type Client from '@/Client'
 import type { Newable } from 'ts-essentials'
-import type { Base } from '@/models'
 import BaseManager from '@/managers/BaseManager'
+import Data from '@/models/Data'
 
 /**
  * Manages the API methods of a data model with a mutable cache of instances.
  */
-export default abstract class CachedManager<K, D, H extends Base<D, K>> extends BaseManager {
+export default abstract class CachedManager<K, D, H extends Data<D, K>> extends BaseManager {
   /**
    * The cache of items for this manager.
    */

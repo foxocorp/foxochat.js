@@ -3,12 +3,12 @@ import type Client from '@/Client'
 import Attachment from '@/models/Attachment'
 import Channel from '@/models/Channel'
 import Member from '@/models/Member'
-import Base from '@/models/Base'
+import Data from '@/models/Data'
 
 /**
  * API Message model.
  */
-export default class Message extends Base<APIMessage> {
+export default class Message extends Data<APIMessage> {
   /**
    * The content of the message.
    */

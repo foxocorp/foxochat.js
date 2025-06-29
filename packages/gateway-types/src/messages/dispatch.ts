@@ -6,7 +6,6 @@ import type {
   GatewayDispatchContactDeletePayload,
   GatewayDispatchMemberAddPayload,
   GatewayDispatchMemberRemovePayload,
-  GatewayDispatchMemberUpdatePayload,
   GatewayDispatchMessageCreatePayload,
   GatewayDispatchMessageDeletePayload,
   GatewayDispatchMessageUpdatePayload,
@@ -79,14 +78,6 @@ export type GatewayDispatchMemberAddMessage = GatewayDispatchMessage<
 export type GatewayDispatchMemberRemoveMessage = GatewayDispatchMessage<
   GatewayDispatchEvents.MemberRemove,
   GatewayDispatchMemberRemovePayload
->
-
-/**
- * Member was updated.
- */
-export type GatewayDispatchMemberUpdateMessage = GatewayDispatchMessage<
-  GatewayDispatchEvents.MemberUpdate,
-  GatewayDispatchMemberUpdatePayload
 >
 
 /**

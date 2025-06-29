@@ -1,15 +1,14 @@
 import BaseAction from '@/actions/BaseAction'
-import { GatewayDispatchEvents } from '@foxochat/gateway-types'
+import { type GatewayDispatchChannelDeletePayload, GatewayDispatchEvents } from '@foxochat/gateway-types'
 import type Client from '@/Client'
 import { ClientEvents } from '@/types'
-import type { APIChannel } from '@foxochat/api-types'
 
 export default class ChannelDeleteAction extends BaseAction<GatewayDispatchEvents.ChannelDelete> {
   public constructor(client: Client) {
     super(client, GatewayDispatchEvents.ChannelDelete)
   }
 
-  public override handle(data: APIChannel): void {
+  public override handle(data: GatewayDispatchChannelDeletePayload): void {
     const channel = this.client.channels.cache.get(data.id)
 
     if (channel) {

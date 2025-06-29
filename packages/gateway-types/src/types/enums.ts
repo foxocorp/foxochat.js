@@ -90,11 +90,6 @@ export enum GatewayDispatchEvents {
   MemberRemove = 'MEMBER_REMOVE',
 
   /**
-   * Member was updated.
-   */
-  MemberUpdate = 'MEMBER_UPDATE',
-
-  /**
    * User status was updated.
    */
   UserStatusUpdate = 'USER_STATUS_UPDATE',

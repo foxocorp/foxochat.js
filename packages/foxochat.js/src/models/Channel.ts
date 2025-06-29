@@ -1,16 +1,16 @@
 import { APIChannel, ChannelFlags, ChannelType } from '@foxochat/api-types'
 import type Client from '@/Client'
-import Base from '@/models/Base'
 import Attachment from '@/models/Attachment'
 import User from '@/models/User'
 import Message from '@/models/Message'
 import MemberManager from '@/managers/MemberManager'
 import MessageManager from '@/managers/MessageManager'
+import Data from '@/models/Data'
 
 /**
  * API Channel model.
  */
-export default class Channel extends Base<APIChannel> {
+export default class Channel extends Data<APIChannel> {
   /**
    * The name of the channel.
    */

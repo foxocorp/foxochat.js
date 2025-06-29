@@ -5,7 +5,6 @@ import type {
   GatewayHelloMessage,
   GatewayIdentifyMessage,
 } from '@/messages'
-
 import type {
   GatewayDispatchChannelCreatePayload,
   GatewayDispatchChannelDeletePayload,
@@ -14,7 +13,6 @@ import type {
   GatewayDispatchContactDeletePayload,
   GatewayDispatchMemberAddPayload,
   GatewayDispatchMemberRemovePayload,
-  GatewayDispatchMemberUpdatePayload,
   GatewayDispatchMessageCreatePayload,
   GatewayDispatchMessageDeletePayload,
   GatewayDispatchMessageUpdatePayload,
@@ -36,7 +34,6 @@ export interface GatewayClientboundDispatchPayloadsMap {
   [GatewayDispatchEvents.ChannelDelete]: GatewayDispatchChannelDeletePayload
   [GatewayDispatchEvents.MemberAdd]: GatewayDispatchMemberAddPayload
   [GatewayDispatchEvents.MemberRemove]: GatewayDispatchMemberRemovePayload
-  [GatewayDispatchEvents.MemberUpdate]: GatewayDispatchMemberUpdatePayload
   [GatewayDispatchEvents.UserStatusUpdate]: GatewayDispatchUserStatusUpdatePayload
   [GatewayDispatchEvents.UserUpdate]: GatewayDispatchUserUpdatePayload
   [GatewayDispatchEvents.ContactAdd]: GatewayDispatchContactAddPayload

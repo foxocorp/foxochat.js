@@ -5,7 +5,14 @@ import {
   ChannelCreateAction,
   ChannelDeleteAction,
   ChannelUpdateAction,
+  ContactAddAction,
+  ContactDeleteAction,
+  MemberAddAction,
+  MemberRemoveAction,
   MessageCreateAction,
+  MessageDeleteAction,
+  MessageUpdateAction,
+  UserStatusUpdateAction,
   UserUpdateAction,
 } from '@/actions'
 import { GatewayDispatchEvents } from '@foxochat/gateway-types'
@@ -20,7 +27,14 @@ export default class ActionManager extends BaseManager {
       new ChannelCreateAction(client),
       new ChannelDeleteAction(client),
       new ChannelUpdateAction(client),
+      new ContactAddAction(client),
+      new ContactDeleteAction(client),
+      new MemberAddAction(client),
+      new MemberRemoveAction(client),
       new MessageCreateAction(client),
+      new MessageDeleteAction(client),
+      new MessageUpdateAction(client),
+      new UserStatusUpdateAction(client),
       new UserUpdateAction(client),
     )
   }

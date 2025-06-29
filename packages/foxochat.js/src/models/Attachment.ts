@@ -1,11 +1,11 @@
 import { APIAttachment, AttachmentFlags, MediaRoutes } from '@foxochat/api-types'
 import type Client from '@/Client'
-import Base from '@/models/Base'
+import Data from '@/models/Data'
 
 /**
  * API User model.
  */
-export default class Attachment extends Base<APIAttachment> {
+export default class Attachment extends Data<APIAttachment> {
   /**
    * The object id of the attachment.
    */

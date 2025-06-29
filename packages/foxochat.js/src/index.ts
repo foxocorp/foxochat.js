@@ -1,5 +1,6 @@
 export { default as Client, default } from './Client'
 
+export * from './actions'
 export * from './constants'
 export * from './managers'
 export * from './models'

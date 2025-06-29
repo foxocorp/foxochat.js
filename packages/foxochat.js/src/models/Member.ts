@@ -2,12 +2,12 @@ import { APIMember, MemberPermissions } from '@foxochat/api-types'
 import type Client from '@/Client'
 import User from '@/models/User'
 import Channel from '@/models/Channel'
-import Base from '@/models/Base'
+import Data from '@/models/Data'
 
 /**
  * API Member model.
  */
-export default class Member extends Base<APIMember> {
+export default class Member extends Data<APIMember> {
   /**
    * The user of the member.
    */

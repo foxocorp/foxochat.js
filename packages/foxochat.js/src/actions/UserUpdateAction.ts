@@ -1,7 +1,6 @@
 import BaseAction from '@/actions/BaseAction'
-import { GatewayDispatchEvents } from '@foxochat/gateway-types'
+import { GatewayDispatchEvents, type GatewayDispatchUserUpdatePayload } from '@foxochat/gateway-types'
 import type Client from '@/Client'
-import type { APIUser } from '@foxochat/api-types'
 import { ClientEvents } from '@/types'
 
 export default class UserUpdateAction extends BaseAction<GatewayDispatchEvents.UserUpdate> {
@@ -9,7 +8,7 @@ export default class UserUpdateAction extends BaseAction<GatewayDispatchEvents.U
     super(client, GatewayDispatchEvents.UserUpdate)
   }
 
-  public override handle(data: APIUser): void {
+  public override handle(data: GatewayDispatchUserUpdatePayload): void {
     const newUser = this.client.users.cache.get(data.id) ?? this.client.users._add(data.id, data)
     const oldUser = newUser._update(data)
 

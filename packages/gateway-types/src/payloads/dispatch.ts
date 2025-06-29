@@ -13,7 +13,12 @@ export type GatewayDispatchMessageUpdatePayload = APIMessage
 /**
  * Deleted message.
  */
-export type GatewayDispatchMessageDeletePayload = APIMessage
+export interface GatewayDispatchMessageDeletePayload {
+  /**
+   * The id of the message.
+   */
+  id: number
+}
 
 /**
  * Created channel.
@@ -28,17 +33,17 @@ export type GatewayDispatchChannelUpdatePayload = APIChannel
 /**
  * Deleted channel.
  */
-export type GatewayDispatchChannelDeletePayload = APIChannel
+export interface GatewayDispatchChannelDeletePayload {
+  /**
+   * The id of the channel.
+   */
+  id: number
+}
 
 /**
  * Added member.
  */
 export type GatewayDispatchMemberAddPayload = APIMember
-
-/**
- * Updated member.
- */
-export type GatewayDispatchMemberUpdatePayload = APIMember
 
 /**
  * Removed member.
