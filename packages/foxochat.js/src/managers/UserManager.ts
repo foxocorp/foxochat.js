@@ -1,5 +1,5 @@
-import { User } from '@/models'
-import type { APIUser } from '@foxochat/api-types'
+import { ClientUser, User } from '@/models'
+import { type APIUser, UserMe } from '@foxochat/api-types'
 import type Client from '@/Client'
 import CachedManager from '@/managers/CachedManager'
 
@@ -22,5 +22,22 @@ export default class UserManager extends CachedManager<number, APIUser, User> {
 
     const data = await this.client.api.user.get(id)
     return this._add(data.id, data)
+  }
+
+  /**
+   * Obtains a client user from API, or the user cache if it's already available.
+   */
+  public async fetchMe(force: boolean = false): Promise<ClientUser> {
+    if (!force) {
+      const existing = this.client.user
+      if (existing) return existing
+    }
+
+    const data = await this.client.api.user.get(UserMe)
+    const user = new ClientUser(this.client, data)
+
+    this.cache.set(user.id, user)
+
+    return user
   }
 }

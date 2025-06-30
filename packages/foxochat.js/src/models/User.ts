@@ -8,16 +8,6 @@ import Data from '@/models/Data'
  */
 export default class User extends Data<APIUser> {
   /**
-   * The channels of the user.
-   */
-  public channels!: number[]
-
-  /**
-   * The contacts of the user.
-   */
-  public contacts!: number[]
-
-  /**
    * The avatar of the user.
    */
   public avatar!: Attachment | null
@@ -31,11 +21,6 @@ export default class User extends Data<APIUser> {
    * The username of the user.
    */
   public username!: string
-
-  /**
-   * The email of the user.
-   */
-  public email!: string | null
 
   /**
    * The status of the user.
@@ -69,12 +54,9 @@ export default class User extends Data<APIUser> {
   }
 
   public override _patch(data: Partial<APIUser>): void {
-    if ('channels' in data) this.channels = data.channels
-    if ('contacts' in data) this.contacts = data.contacts
     if ('avatar' in data) this.avatar = data.avatar ? new Attachment(this.client, data.avatar) : null
     if ('display_name' in data) this.displayName = data.display_name
     if ('username' in data) this.username = data.username
-    if ('email' in data) this.email = data.email
     if ('status' in data) this.status = data.status
     if ('status_updated_at' in data) this.statusUpdatedAt = new Date(data.status_updated_at)
     if ('flags' in data) this.flags = data.flags
@@ -85,17 +67,17 @@ export default class User extends Data<APIUser> {
   public override toJson(): APIUser {
     return {
       id: this.id,
-      channels: this.channels,
-      contacts: this.contacts,
       avatar: this.avatar?.toJson() ?? null,
       display_name: this.displayName,
       username: this.username,
-      email: this.email,
       status: this.status,
       status_updated_at: this.statusUpdatedAt.getTime(),
       flags: this.flags,
       type: this.type,
       created_at: this.createdAt.getTime(),
+      channels: [],
+      contacts: [],
+      email: null,
     }
   }
 }

@@ -2,9 +2,9 @@ import API from '@foxochat/api'
 import Gateway, { GatewayEvents } from '@foxochat/gateway'
 import EventEmitter from 'eventemitter3'
 import { DefaultOptions } from '@/constants'
-import { ChannelManager, UserManager } from '@/managers'
+import { ActionManager, ChannelManager, UserManager } from '@/managers'
 import { ClientEvents, ClientEventsMap, ConstructorOptions, Options } from '@/types'
-import ActionManager from '@/managers/ActionManager'
+import type { ClientUser } from '@/models'
 
 /**
  * The main hub for interacting with the FoxoChat.
@@ -26,9 +26,14 @@ export default class Client extends EventEmitter<ClientEventsMap> {
   public readonly gateway: Gateway
 
   /**
+   * User that the client is logged in as.
+   */
+  public user: ClientUser | null = null
+
+  /**
    * The action manager of this client.
    */
-  public readonly actions = new ActionManager(this)
+  private readonly actions = new ActionManager(this)
 
   /**
    * The channel manager of this client.
@@ -58,6 +63,8 @@ export default class Client extends EventEmitter<ClientEventsMap> {
     this.gateway.token = this.api.rest.token = token
 
     try {
+      this.user = await this.users.fetchMe(true)
+
       await this.gateway.connect()
     } catch (error) {
       await this.destroy()

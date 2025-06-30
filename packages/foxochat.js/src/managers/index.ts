@@ -1,3 +1,4 @@
+export { default as ActionManager } from './ActionManager'
 export { default as BaseManager } from './BaseManager'
 export { default as CachedManager } from './CachedManager'
 export { default as ChannelManager } from './ChannelManager'

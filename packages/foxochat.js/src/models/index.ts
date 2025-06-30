@@ -1,6 +1,7 @@
 export { default as Attachment } from './Attachment'
 export { default as Base } from './Base'
 export { default as Channel } from './Channel'
+export { default as ClientUser } from './ClientUser'
 export { default as Member } from './Member'
 export { default as Message } from './Message'
 export { default as Typing } from './Typing'
