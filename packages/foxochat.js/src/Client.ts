@@ -5,6 +5,7 @@ import { DefaultOptions } from '@/constants'
 import { ActionManager, ChannelManager, UserManager } from '@/managers'
 import { ClientEvents, ClientEventsMap, ConstructorOptions, Options } from '@/types'
 import type { ClientUser } from '@/models'
+import { UserMe } from '@foxochat/api-types'
 
 /**
  * The main hub for interacting with the FoxoChat.
@@ -63,8 +64,7 @@ export default class Client extends EventEmitter<ClientEventsMap> {
     this.gateway.token = this.api.rest.token = token
 
     try {
-      this.user = await this.users.fetchMe(true)
-
+      await this.users.fetch(UserMe)
       await this.gateway.connect()
     } catch (error) {
       await this.destroy()

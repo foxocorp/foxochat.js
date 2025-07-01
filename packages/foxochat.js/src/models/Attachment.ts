@@ -1,4 +1,4 @@
-import { APIAttachment, AttachmentFlags, MediaRoutes } from '@foxochat/api-types'
+import { type APIAttachment, type AttachmentFlags, MediaRoutes } from '@foxochat/api-types'
 import type Client from '@/Client'
 import Data from '@/models/Data'
 
@@ -40,10 +40,10 @@ export default class Attachment extends Data<APIAttachment> {
   }
 
   public override _patch(data: Partial<APIAttachment>): void {
-    if ('uuid' in data) this.uuid = data.uuid
-    if ('filename' in data) this.filename = data.filename
-    if ('content_type' in data) this.contentType = data.content_type
-    if ('flags' in data) this.flags = data.flags
+    if ('uuid' in data) this.uuid = data.uuid!
+    if ('filename' in data) this.filename = data.filename!
+    if ('content_type' in data) this.contentType = data.content_type!
+    if ('flags' in data) this.flags = data.flags!
   }
 
   public override toJson(): APIAttachment {

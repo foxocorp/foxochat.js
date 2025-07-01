@@ -1,4 +1,4 @@
-import { APIChannel, ChannelFlags, ChannelType } from '@foxochat/api-types'
+import type { APIChannel, ChannelFlags, ChannelType } from '@foxochat/api-types'
 import type Client from '@/Client'
 import Attachment from '@/models/Attachment'
 import User from '@/models/User'
@@ -73,15 +73,15 @@ export default class Channel extends Data<APIChannel> {
   }
 
   public override _patch(data: Partial<APIChannel>): void {
-    if ('name' in data) this.name = data.name
-    if ('display_name' in data) this.displayName = data.display_name
-    if ('type' in data) this.type = data.type
-    if ('flags' in data) this.flags = data.flags
-    if ('member_count' in data) this.memberCount = data.member_count
-    if ('created_at' in data) this.createdAt = new Date(data.created_at)
+    if ('name' in data) this.name = data.name!
+    if ('display_name' in data) this.displayName = data.display_name!
+    if ('type' in data) this.type = data.type!
+    if ('flags' in data) this.flags = data.flags!
+    if ('member_count' in data) this.memberCount = data.member_count!
+    if ('created_at' in data) this.createdAt = new Date(data.created_at!)
 
     if ('icon' in data) this.icon = data.icon ? new Attachment(this.client, data.icon) : null
-    if ('owner' in data) this.owner = this.client.users._add(data.owner.id, data.owner)
+    if ('owner' in data) this.owner = this.client.users._add(data.owner!.id, data.owner!)
     if ('last_message' in data)
       this.lastMessage = data.last_message ? this.messages._add(data.last_message.id, data.last_message) : null
   }

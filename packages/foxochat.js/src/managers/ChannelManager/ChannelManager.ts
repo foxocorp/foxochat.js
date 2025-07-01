@@ -1,7 +1,8 @@
 import { Channel } from '@/models'
-import type { APIChannel } from '@foxochat/api-types'
+import type { APIChannel, PublicChannelKey } from '@foxochat/api-types'
 import type Client from '@/Client'
 import CachedManager from '@/managers/CachedManager'
+import type { FetchChannelOptions } from '@/managers/ChannelManager/types'
 
 /**
  * Manages API methods for channels and stores their cache.
@@ -14,13 +15,18 @@ export default class ChannelManager extends CachedManager<number, APIChannel, Ch
   /**
    * Obtains a channel from API, or the channel cache if it's already available.
    */
-  public async fetch(id: number, force: boolean = false): Promise<Channel> {
-    if (!force) {
-      const existing = this.cache.get(id)
+  public fetch(key: PublicChannelKey): Promise<Channel>
+  public fetch(options: FetchChannelOptions): Promise<Channel>
+  public async fetch(options: FetchChannelOptions | PublicChannelKey): Promise<Channel> {
+    if (typeof options !== 'object') options = { key: options, force: true }
+
+    if (!options.force && typeof options.key == 'number') {
+      const existing = this.cache.get(options.key)
       if (existing) return existing
     }
 
-    const data = await this.client.api.channel.get(id)
+    const data = await this.client.api.channel.get(options.key)
+
     return this._add(data.id, data)
   }
 

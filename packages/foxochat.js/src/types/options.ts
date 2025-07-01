@@ -8,3 +8,7 @@ export interface Options {
 }
 
 export type ConstructorOptions = Partial<Options>
+
+export interface FetchOptions {
+  force?: boolean
+}

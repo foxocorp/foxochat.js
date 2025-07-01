@@ -1,5 +1,5 @@
 import User from '@/models/User'
-import type { APIUser } from '@foxochat/api-types'
+import { type APIUser, UserMe } from '@foxochat/api-types'
 import type Client from '@/Client'
 
 /**
@@ -27,11 +27,18 @@ export default class ClientUser extends User {
    */
   public email!: string
 
+  /**
+   * Fetch this user.
+   */
+  public override async fetch(): Promise<ClientUser> {
+    return await this.client.users.fetch(UserMe)
+  }
+
   public override _patch(data: Partial<APIUser>) {
     super._patch(data)
 
-    if ('channels' in data) this.channelIds = data.channels
-    if ('contacts' in data) this.contactIds = data.contacts
+    if ('channels' in data) this.channelIds = data.channels!
+    if ('contacts' in data) this.contactIds = data.contacts!
     if ('email' in data) this.email = data.email!
   }
 

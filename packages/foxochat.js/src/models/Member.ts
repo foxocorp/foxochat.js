@@ -1,4 +1,4 @@
-import { APIMember, MemberPermissions } from '@foxochat/api-types'
+import type { APIMember, MemberPermissions } from '@foxochat/api-types'
 import type Client from '@/Client'
 import User from '@/models/User'
 import Channel from '@/models/Channel'
@@ -35,11 +35,18 @@ export default class Member extends Data<APIMember> {
   }
 
   public override _patch(data: Partial<APIMember>): void {
-    if ('permissions' in data) this.permissions = data.permissions
-    if ('joined_at' in data) this.joinedAt = new Date(data.joined_at)
+    if ('permissions' in data) this.permissions = data.permissions!
+    if ('joined_at' in data) this.joinedAt = new Date(data.joined_at!)
 
-    if ('user' in data) this.user = this.client.users._add(data.user.id, data.user)
-    if ('channel' in data) this.channel = this.client.channels._add(data.channel.id, data.channel)
+    if ('user' in data) this.user = this.client.users._add(data.user!.id, data.user!)
+    if ('channel' in data) this.channel = this.client.channels._add(data.channel!.id, data.channel!)
+  }
+
+  /**
+   * Fetch this member.
+   */
+  public async fetch(force: boolean = true): Promise<Member> {
+    return await this.channel.members.fetch({ id: this.id, force })
   }
 
   public override toJson(): APIMember {

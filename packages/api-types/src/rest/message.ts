@@ -11,7 +11,7 @@ export type RESTGetAPIMessageListResult = APIMessage[]
  */
 export interface RESTGetAPIMessageListQuery {
   /**
-   * Get messages before this message ID.
+   * Get messages before this timestamp.
    */
   before?: number
 

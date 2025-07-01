@@ -53,15 +53,22 @@ export default class User extends Data<APIUser> {
     this._patch(data)
   }
 
+  /**
+   * Fetch this user.
+   */
+  public async fetch(force: boolean = true): Promise<User> {
+    return await this.client.users.fetch({ key: this.id, force })
+  }
+
   public override _patch(data: Partial<APIUser>): void {
     if ('avatar' in data) this.avatar = data.avatar ? new Attachment(this.client, data.avatar) : null
-    if ('display_name' in data) this.displayName = data.display_name
-    if ('username' in data) this.username = data.username
-    if ('status' in data) this.status = data.status
-    if ('status_updated_at' in data) this.statusUpdatedAt = new Date(data.status_updated_at)
-    if ('flags' in data) this.flags = data.flags
-    if ('type' in data) this.type = data.type
-    if ('created_at' in data) this.createdAt = new Date(data.created_at)
+    if ('display_name' in data) this.displayName = data.display_name!
+    if ('username' in data) this.username = data.username!
+    if ('status' in data) this.status = data.status!
+    if ('status_updated_at' in data) this.statusUpdatedAt = new Date(data.status_updated_at!)
+    if ('flags' in data) this.flags = data.flags!
+    if ('type' in data) this.type = data.type!
+    if ('created_at' in data) this.createdAt = new Date(data.created_at!)
   }
 
   public override toJson(): APIUser {

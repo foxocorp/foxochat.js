@@ -45,15 +45,30 @@ export default class Message extends Data<APIMessage> {
   public override _patch(data: Partial<APIMessage>): void {
     if (data.channel) this.channel._patch(data.channel)
 
-    if ('content' in data) this.content = data.content
-    if ('author' in data) this.author = this.channel.members._add(data.author.id, data.author)
-    if ('created_at' in data) this.createdAt = new Date(data.created_at)
+    if ('content' in data) this.content = data.content!
+    if ('author' in data) this.author = this.channel.members._add(data.author!.id, data.author!)
+    if ('created_at' in data) this.createdAt = new Date(data.created_at!)
 
     if ('attachments' in data)
-      this.attachments = data.attachments.reduce(
+      this.attachments = data.attachments!.reduce(
         (collection, attachment) => collection.set(attachment.id, new Attachment(this.client, attachment)),
         new Map<number, Attachment>(),
       )
+  }
+
+  /**
+   * Fetch this message.
+   */
+  public async fetch(force: boolean = true): Promise<Message> {
+    return await this.channel.messages.fetch({ id: this.id, force })
+  }
+
+  /**
+   * Deletes the message.
+   */
+  public async delete(): Promise<Message> {
+    await this.channel.messages.delete(this.id)
+    return this
   }
 
   public override toJson(): APIMessage {
