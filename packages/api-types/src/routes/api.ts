@@ -1,3 +1,5 @@
+import type { Id } from '@/payloads'
+
 /**
  * The key of current user.
  */
@@ -13,19 +15,19 @@ export type PublicKey = `@${string}`
  *
  * Can be id, \@name or \@me.
  */
-export type PublicUserKey = typeof UserMe | number | PublicKey
+export type PublicUserKey = typeof UserMe | Id | PublicKey
 
 /**
  * The key of the member.
  *
  * Can be id or \@me.
  */
-export type MemberKey = typeof UserMe | number
+export type MemberKey = typeof UserMe | Id
 
 /**
  * The key of the public channel.
  */
-export type PublicChannelKey = number | PublicKey
+export type PublicChannelKey = Id | PublicKey
 
 /**
  * The routes of API.
@@ -103,7 +105,7 @@ export const APIRoutes = {
    * - PUT    /channels/{channelId}/members/@me
    * - DELETE /channels/{channelId}/members/@me
    */
-  channelMember(channelId: number, memberKey: MemberKey = UserMe) {
+  channelMember(channelId: Id, memberKey: MemberKey = UserMe) {
     return `/channels/${channelId}/members/${memberKey}` as const
   },
 
@@ -112,7 +114,7 @@ export const APIRoutes = {
    * - GET /channels/{channelId}/members
    * - PUT /channels/{channelId}/members
    */
-  channelMembers(channelId: number) {
+  channelMembers(channelId: Id) {
     return `/channels/${channelId}/members` as const
   },
 
@@ -120,7 +122,7 @@ export const APIRoutes = {
    * Route for:
    * - PUT /channels/{channelId}/attachments
    */
-  messageAttachments(channelId: number) {
+  messageAttachments(channelId: Id) {
     return `/channels/${channelId}/attachments` as const
   },
 
@@ -128,7 +130,7 @@ export const APIRoutes = {
    * Route for:
    * - PUT /channels/{channelId}/icon
    */
-  channelIcon(channelId: number) {
+  channelIcon(channelId: Id) {
     return `/channels/${channelId}/icon` as const
   },
 
@@ -138,7 +140,7 @@ export const APIRoutes = {
    * - PATCH  /channels/{channelId}/messages/{messageId}
    * - DELETE /channels/{channelId}/messages/{messageId}
    */
-  message(channelId: number, messageId: number) {
+  message(channelId: Id, messageId: Id) {
     return `/channels/${channelId}/messages/${messageId}` as const
   },
 
@@ -147,7 +149,7 @@ export const APIRoutes = {
    * - GET  /channels/{channelId}/messages
    * - POST /channels/{channelId}/messages
    */
-  messages(channelId: number) {
+  messages(channelId: Id) {
     return `/channels/${channelId}/messages` as const
   },
 
@@ -173,10 +175,26 @@ export const APIRoutes = {
 
   /**
    * Route for:
+   *  - PUT /users/@me/banner
+   */
+  userBanner() {
+    return `/users/@me/banner` as const
+  },
+
+  /**
+   * Route for:
    * - GET /users/@me/channels
    */
   userChannels() {
     return '/users/@me/channels' as const
+  },
+
+  /**
+   * Route for:
+   * - GET /users/@me/contacts
+   */
+  userContacts() {
+    return '/users/@me/contacts' as const
   },
 
   /**

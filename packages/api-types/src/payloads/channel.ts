@@ -1,20 +1,14 @@
-import type { APIUser } from '@/payloads/user'
-import type { APIMessage } from '@/payloads/message'
-import type { APIAttachment } from '@/payloads/attachment'
+import type { APIAvatar } from '@/payloads/attachment'
+import type { Id, Timestamp } from '@/payloads/common'
 
 /**
  * API Channel DTO.
  */
-export interface APIChannel {
+export interface APIChannel<Short extends boolean = false> {
   /**
    * The id of the channel.
    */
-  id: number
-
-  /**
-   * The name of the channel.
-   */
-  name: string
+  id: Id
 
   /**
    * The display name of the channel.
@@ -22,9 +16,19 @@ export interface APIChannel {
   display_name: string
 
   /**
-   * The icon of the channel.
+   * The name of the channel.
    */
-  icon: APIAttachment | null
+  name: string
+
+  /**
+   * The avatar of the channel.
+   */
+  avatar: APIAvatar | null
+
+  /**
+   * The banner of the channel.
+   */
+  banner: APIAvatar | null
 
   /**
    * The type of the channel.
@@ -42,19 +46,19 @@ export interface APIChannel {
   member_count: number
 
   /**
-   * The owner of the channel.
+   * The user id of the owner of the channel.
    */
-  owner: APIUser
+  owner_id: Id
 
   /**
    * The time when channel created at.
    */
-  created_at: number
+  created_at: Short extends false ? Timestamp : never
 
   /**
-   * The last sent message in channel.
+   * The id of the last sent message in channel.
    */
-  last_message: APIMessage | null
+  last_message?: Short extends false ? Id : never
 }
 
 /**
@@ -99,17 +103,17 @@ export interface APIMember {
   /**
    * The id of the member.
    */
-  id: number
+  id: Id
 
   /**
    * The user of the member.
    */
-  user: APIUser
+  user_id: Id
 
   /**
    * The channel of the member.
    */
-  channel: APIChannel
+  channel_id: Id
 
   /**
    * The permissions of the member.
@@ -119,7 +123,7 @@ export interface APIMember {
   /**
    * The time when member joined.
    */
-  joined_at: number
+  joined_at: Timestamp
 }
 
 /**

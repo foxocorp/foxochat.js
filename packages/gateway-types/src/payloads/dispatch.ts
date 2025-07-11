@@ -1,4 +1,4 @@
-import { APIChannel, APIMember, APIMessage, APIUser, UserStatus } from '@foxochat/api-types'
+import type { APIChannel, APIMember, APIMessage, APIUser, Id, Timestamp, UserStatus } from '@foxochat/api-types'
 
 /**
  * Created message.
@@ -17,7 +17,7 @@ export interface GatewayDispatchMessageDeletePayload {
   /**
    * The id of the message.
    */
-  id: number
+  id: Id
 }
 
 /**
@@ -37,7 +37,7 @@ export interface GatewayDispatchChannelDeletePayload {
   /**
    * The id of the channel.
    */
-  id: number
+  id: Id
 }
 
 /**
@@ -53,21 +53,21 @@ export type GatewayDispatchMemberRemovePayload = APIMember
 /**
  * Typing started.
  */
-export interface GatewayDispatchTypingStartPayload<C extends boolean> {
+export interface GatewayDispatchTypingStartPayload<Clientbound extends boolean> {
   /**
    * The ID of the user.
    */
-  user_id: C extends true ? number : never
+  user_id: Clientbound extends true ? Id : never
 
   /**
    * The ID of the channel.
    */
-  channel_id: number
+  channel_id: Id
 
   /**
    * The timestamp of when typing started.
    */
-  timestamp: C extends true ? number : never
+  timestamp: Clientbound extends true ? Timestamp : never
 }
 
 /**
@@ -92,7 +92,7 @@ export interface GatewayDispatchUserStatusUpdatePayload {
   /**
    * The ID of the user.
    */
-  user_id: number
+  user_id: Id
 
   /**
    * The updated status.
