@@ -1,7 +1,7 @@
+import type { APIAvatar } from '@/payloads/media'
+import type { Id, Timestamp } from '@/payloads/common'
 import type { APIUser } from '@/payloads/user'
 import type { APIMessage } from '@/payloads/message'
-import type { APIAttachment } from '@/payloads/attachment'
-import type { Id, Timestamp } from '@/payloads/common'
 
 /**
  * API Channel DTO.
@@ -13,19 +13,24 @@ export interface APIChannel {
   id: Id
 
   /**
-   * The name of the channel.
-   */
-  name: string
-
-  /**
    * The display name of the channel.
    */
   display_name: string
 
   /**
-   * The icon of the channel.
+   * The name of the channel.
    */
-  icon: APIAttachment | null
+  name: string
+
+  /**
+   * The avatar of the channel.
+   */
+  avatar: APIAvatar | null
+
+  /**
+   * The banner of the channel.
+   */
+  banner: APIAvatar | null
 
   /**
    * The type of the channel.

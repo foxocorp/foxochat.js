@@ -1,4 +1,4 @@
-import type { APIAttachment } from '@/payloads/attachment'
+import type { APIAttachment } from '@/payloads/media'
 import type { APIChannel, APIMember } from '@/payloads/channel'
 import type { Id, Timestamp } from '@/payloads/common'
 

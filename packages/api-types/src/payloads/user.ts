@@ -1,29 +1,24 @@
-import type { APIAttachment } from '@/payloads/attachment'
+import type { APIAvatar } from '@/payloads/media'
 import type { Id, Timestamp } from '@/payloads/common'
 
 /**
  * API User DTO.
  */
-export interface APIUser {
+export interface APIUser<Short extends boolean = false> {
   /**
    * The id of the user.
    */
   id: Id
 
   /**
-   * The channels of the user.
-   */
-  channels: Id[]
-
-  /**
-   * The contacts of the user.
-   */
-  contacts: Id[]
-
-  /**
    * The avatar of the user.
    */
-  avatar: APIAttachment | null
+  avatar: APIAvatar | null
+
+  /**
+   * The banner of the user.
+   */
+  banner: Short extends false ? APIAvatar | null : never
 
   /**
    * The display name of the user.
@@ -36,9 +31,19 @@ export interface APIUser {
   username: string
 
   /**
+   * The bio of the user.
+   */
+  bio: Short extends false ? string : never
+
+  /**
    * The email of the user.
    */
-  email: string | null
+  email?: Short extends false ? string : never
+
+  /**
+   * The channels of the user.
+   */
+  channels: Short extends false ? Id[] : never
 
   /**
    * The status of the user.
@@ -51,19 +56,24 @@ export interface APIUser {
   status_updated_at: Timestamp
 
   /**
+   * The contacts of the user.
+   */
+  contacts: Short extends false ? Id[] : never
+
+  /**
    * The flags of the user.
    */
-  flags: UserFlags
+  flags: Short extends false ? UserFlags : never
 
   /**
    * The type of the user.
    */
-  type: UserType
+  type: Short extends false ? UserType : never
 
   /**
    * The time when user created at.
    */
-  created_at: Timestamp
+  created_at: Short extends false ? Timestamp : never
 }
 
 /**

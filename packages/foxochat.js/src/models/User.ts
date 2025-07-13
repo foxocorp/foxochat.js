@@ -1,7 +1,7 @@
 import type { APIUser, UserFlags, UserStatus, UserType } from '@foxochat/api-types'
 import type Client from '@/Client'
-import Attachment from '@/models/Attachment'
 import Data from '@/models/Data'
+import Avatar from '@/models/Avatar'
 
 /**
  * API User model.
@@ -10,7 +10,12 @@ export default class User extends Data<APIUser> {
   /**
    * The avatar of the user.
    */
-  public avatar!: Attachment | null
+  public avatar!: Avatar | null
+
+  /**
+   * The banner of the user.
+   */
+  public banner!: Avatar | null
 
   /**
    * The display name of the user.
@@ -21,6 +26,11 @@ export default class User extends Data<APIUser> {
    * The username of the user.
    */
   public username!: string
+
+  /**
+   * The bio of the user.
+   */
+  public bio!: string
 
   /**
    * The status of the user.
@@ -61,9 +71,11 @@ export default class User extends Data<APIUser> {
   }
 
   public override _patch(data: Partial<APIUser>): void {
-    if ('avatar' in data) this.avatar = data.avatar ? new Attachment(this.client, data.avatar) : null
+    if ('avatar' in data) this.avatar = data.avatar ? new Avatar(this.client, data.avatar) : null
+    if ('banner' in data) this.banner = data.banner ? new Avatar(this.client, data.banner) : null
     if ('display_name' in data) this.displayName = data.display_name!
     if ('username' in data) this.username = data.username!
+    if ('bio' in data) this.bio = data.bio!
     if ('status' in data) this.status = data.status!
     if ('status_updated_at' in data) this.statusUpdatedAt = new Date(data.status_updated_at!)
     if ('flags' in data) this.flags = data.flags!
@@ -75,6 +87,8 @@ export default class User extends Data<APIUser> {
     return {
       id: this.id,
       avatar: this.avatar?.toJson() ?? null,
+      banner: this.avatar?.toJson() ?? null,
+      bio: this.bio,
       display_name: this.displayName,
       username: this.username,
       status: this.status,
@@ -84,7 +98,7 @@ export default class User extends Data<APIUser> {
       created_at: this.createdAt.getTime(),
       channels: [],
       contacts: [],
-      email: null,
+      email: undefined,
     }
   }
 }

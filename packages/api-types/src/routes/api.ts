@@ -158,8 +158,8 @@ export const APIRoutes = {
    * - GET    /users/{userKey}
    * - PATCH  /users/@me
    * - DELETE /users/@me
-   * - POST   /users/{Id}
-   * - DELETE /users/{Id}
+   * - POST   /users/{id}
+   * - DELETE /users/{id}
    */
   user(userKey: PublicUserKey = UserMe) {
     return `/users/${userKey}` as const
@@ -175,10 +175,26 @@ export const APIRoutes = {
 
   /**
    * Route for:
+   *  - PUT /users/@me/banner
+   */
+  userBanner() {
+    return `/users/@me/banner` as const
+  },
+
+  /**
+   * Route for:
    * - GET /users/@me/channels
    */
   userChannels() {
     return '/users/@me/channels' as const
+  },
+
+  /**
+   * Route for:
+   * - GET /users/@me/contacts
+   */
+  userContacts() {
+    return '/users/@me/contacts' as const
   },
 
   /**

@@ -1,11 +1,11 @@
 import type { APIChannel, ChannelFlags, ChannelType } from '@foxochat/api-types'
 import type Client from '@/Client'
-import Attachment from '@/models/Attachment'
 import User from '@/models/User'
 import Message from '@/models/Message'
 import MemberManager from '@/managers/MemberManager'
 import MessageManager from '@/managers/MessageManager'
 import Data from '@/models/Data'
+import Avatar from '@/models/Avatar'
 
 /**
  * API Channel model.
@@ -22,9 +22,14 @@ export default class Channel extends Data<APIChannel> {
   public displayName!: string
 
   /**
-   * The icon of the channel.
+   * The avatar of the channel.
    */
-  public icon!: Attachment | null
+  public avatar!: Avatar | null
+
+  /**
+   * The banner of the channel.
+   */
+  public banner!: Avatar | null
 
   /**
    * The type of the channel.
@@ -80,7 +85,8 @@ export default class Channel extends Data<APIChannel> {
     if ('member_count' in data) this.memberCount = data.member_count!
     if ('created_at' in data) this.createdAt = new Date(data.created_at!)
 
-    if ('icon' in data) this.icon = data.icon ? new Attachment(this.client, data.icon) : null
+    if ('avatar' in data) this.avatar = data.avatar ? new Avatar(this.client, data.avatar) : null
+    if ('banner' in data) this.banner = data.banner ? new Avatar(this.client, data.banner) : null
     if ('owner' in data) this.owner = this.client.users._add(data.owner!.id, data.owner!)
     if ('last_message' in data)
       this.lastMessage = data.last_message ? this.messages._add(data.last_message.id, data.last_message) : null
@@ -91,7 +97,8 @@ export default class Channel extends Data<APIChannel> {
       id: this.id,
       name: this.name,
       display_name: this.displayName,
-      icon: this.icon?.toJson() ?? null,
+      avatar: this.avatar?.toJson() ?? null,
+      banner: this.banner?.toJson() ?? null,
       type: this.type,
       flags: this.flags,
       member_count: this.memberCount,

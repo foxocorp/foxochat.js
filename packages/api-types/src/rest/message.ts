@@ -1,5 +1,5 @@
 import type { APIMessage, APIOk, Id, Timestamp } from '@/payloads'
-import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/attachment'
+import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/media'
 
 /**
  * The result of GET /channels/{channelId}/messages.

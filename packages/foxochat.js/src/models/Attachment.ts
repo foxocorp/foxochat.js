@@ -3,7 +3,7 @@ import type Client from '@/Client'
 import Data from '@/models/Data'
 
 /**
- * API User model.
+ * API Attachment model.
  */
 export default class Attachment extends Data<APIAttachment> {
   /**
@@ -26,6 +26,11 @@ export default class Attachment extends Data<APIAttachment> {
    */
   public flags!: AttachmentFlags
 
+  /**
+   * The ThumbHash of the attachment.
+   */
+  public thumbhash!: string
+
   public constructor(client: Client, data: APIAttachment) {
     super(client, data.id, data)
 
@@ -44,6 +49,7 @@ export default class Attachment extends Data<APIAttachment> {
     if ('filename' in data) this.filename = data.filename!
     if ('content_type' in data) this.contentType = data.content_type!
     if ('flags' in data) this.flags = data.flags!
+    if ('thumbhash' in data) this.thumbhash = data.thumbhash!
   }
 
   public override toJson(): APIAttachment {
@@ -53,6 +59,7 @@ export default class Attachment extends Data<APIAttachment> {
       filename: this.filename,
       content_type: this.contentType,
       flags: this.flags,
+      thumbhash: this.thumbhash,
     }
   }
 }
