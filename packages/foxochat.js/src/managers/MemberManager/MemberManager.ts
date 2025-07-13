@@ -1,12 +1,12 @@
 import { Channel, Member } from '@/models'
-import type { APIMember } from '@foxochat/api-types'
+import type { APIMember, Id } from '@foxochat/api-types'
 import CachedManager from '@/managers/CachedManager'
 import type { FetchMemberOptions, FetchMembersOptions } from '@/managers/MemberManager/types'
 
 /**
  * Manages API methods for members and stores their cache.
  */
-export default class MemberManager extends CachedManager<number, APIMember, Member> {
+export default class MemberManager extends CachedManager<Id, APIMember, Member> {
   public constructor(private readonly channel: Channel) {
     super(channel.client, Member)
   }
@@ -14,7 +14,7 @@ export default class MemberManager extends CachedManager<number, APIMember, Memb
   /**
    * Obtains a member from API, or the member cache if it's already available.
    */
-  public fetch(id: number): Promise<Member>
+  public fetch(id: Id): Promise<Member>
   public fetch(options: FetchMemberOptions): Promise<Member>
   public fetch(options?: FetchMembersOptions): Promise<Map<number, Member>>
   public async fetch(

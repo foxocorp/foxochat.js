@@ -1,6 +1,7 @@
 import type { APIUser } from '@/payloads/user'
 import type { APIMessage } from '@/payloads/message'
 import type { APIAttachment } from '@/payloads/attachment'
+import type { Id, Timestamp } from '@/payloads/common'
 
 /**
  * API Channel DTO.
@@ -9,7 +10,7 @@ export interface APIChannel {
   /**
    * The id of the channel.
    */
-  id: number
+  id: Id
 
   /**
    * The name of the channel.
@@ -49,7 +50,7 @@ export interface APIChannel {
   /**
    * The time when channel created at.
    */
-  created_at: number
+  created_at: Timestamp
 
   /**
    * The last sent message in channel.
@@ -99,7 +100,7 @@ export interface APIMember {
   /**
    * The id of the member.
    */
-  id: number
+  id: Id
 
   /**
    * The user of the member.
@@ -119,7 +120,7 @@ export interface APIMember {
   /**
    * The time when member joined.
    */
-  joined_at: number
+  joined_at: Timestamp
 }
 
 /**

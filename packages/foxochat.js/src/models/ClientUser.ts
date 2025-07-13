@@ -1,5 +1,5 @@
 import User from '@/models/User'
-import { type APIUser, UserMe } from '@foxochat/api-types'
+import { type Id, type APIUser, UserMe } from '@foxochat/api-types'
 import type Client from '@/Client'
 
 /**
@@ -15,12 +15,12 @@ export default class ClientUser extends User {
   /**
    * The channel ids of the user.
    */
-  public channelIds!: number[]
+  public channelIds!: Id[]
 
   /**
    * The contact ids of the user.
    */
-  public contactIds!: number[]
+  public contactIds!: Id[]
 
   /**
    * The email of the user.

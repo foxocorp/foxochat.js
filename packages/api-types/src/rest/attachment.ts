@@ -1,8 +1,10 @@
+import type { Id } from '@/payloads'
+
 export interface RESTAPIAttachmentUploadResponse {
   /**
    * The id of the attachment.
    */
-  id: number
+  id: Id
 
   /**
    * The upload url of the attachment.

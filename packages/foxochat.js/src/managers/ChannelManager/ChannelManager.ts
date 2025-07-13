@@ -1,5 +1,5 @@
 import { Channel } from '@/models'
-import type { APIChannel, PublicChannelKey } from '@foxochat/api-types'
+import type { APIChannel, PublicChannelKey, Id } from '@foxochat/api-types'
 import type Client from '@/Client'
 import CachedManager from '@/managers/CachedManager'
 import type { FetchChannelOptions } from '@/managers/ChannelManager/types'
@@ -7,7 +7,7 @@ import type { FetchChannelOptions } from '@/managers/ChannelManager/types'
 /**
  * Manages API methods for channels and stores their cache.
  */
-export default class ChannelManager extends CachedManager<number, APIChannel, Channel> {
+export default class ChannelManager extends CachedManager<Id, APIChannel, Channel> {
   public constructor(client: Client) {
     super(client, Channel)
   }

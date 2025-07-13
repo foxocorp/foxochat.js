@@ -1,3 +1,5 @@
+import type { Id } from '@/payloads/common'
+
 /**
  * API Attachment DTO.
  */
@@ -5,7 +7,7 @@ export interface APIAttachment {
   /**
    * The id of the attachment.
    */
-  id: number
+  id: Id
 
   /**
    * The object id of the attachment.

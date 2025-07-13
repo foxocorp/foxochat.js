@@ -1,4 +1,5 @@
 import type { APIAttachment } from '@/payloads/attachment'
+import type { Id, Timestamp } from '@/payloads/common'
 
 /**
  * API User DTO.
@@ -7,17 +8,17 @@ export interface APIUser {
   /**
    * The id of the user.
    */
-  id: number
+  id: Id
 
   /**
    * The channels of the user.
    */
-  channels: number[]
+  channels: Id[]
 
   /**
    * The contacts of the user.
    */
-  contacts: number[]
+  contacts: Id[]
 
   /**
    * The avatar of the user.
@@ -47,7 +48,7 @@ export interface APIUser {
   /**
    * The timestamp when the user's status was last updated.
    */
-  status_updated_at: number
+  status_updated_at: Timestamp
 
   /**
    * The flags of the user.
@@ -62,7 +63,7 @@ export interface APIUser {
   /**
    * The time when user created at.
    */
-  created_at: number
+  created_at: Timestamp
 }
 
 /**

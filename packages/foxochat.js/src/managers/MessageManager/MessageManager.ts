@@ -1,12 +1,12 @@
 import { Channel, Message } from '@/models'
-import type { APIMessage } from '@foxochat/api-types'
+import type { APIMessage, Id } from '@foxochat/api-types'
 import CachedManager from '@/managers/CachedManager'
 import type { FetchMessageOptions, FetchMessagesOptions } from '@/managers/MessageManager/types'
 
 /**
  * Manages API methods for messages and stores their cache.
  */
-export default class MessageManager extends CachedManager<number, APIMessage, Message> {
+export default class MessageManager extends CachedManager<Id, APIMessage, Message> {
   public constructor(private readonly channel: Channel) {
     super(channel.client, Message)
   }
@@ -14,14 +14,14 @@ export default class MessageManager extends CachedManager<number, APIMessage, Me
   /**
    * Deletes the message.
    */
-  public async delete(id: number): Promise<void> {
+  public async delete(id: Id): Promise<void> {
     await this.client.api.message.delete(this.channel.id, id)
   }
 
   /**
    * Obtains a message from API, or the message cache if it's already available.
    */
-  public fetch(id: number): Promise<Message>
+  public fetch(id: Id): Promise<Message>
   public fetch(options: FetchMessageOptions): Promise<Message>
   public fetch(options?: FetchMessagesOptions): Promise<Map<number, Message>>
   public async fetch(
