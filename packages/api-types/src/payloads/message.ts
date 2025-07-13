@@ -1,5 +1,5 @@
 import type { APIAttachment } from '@/payloads/attachment'
-import type { Id, Timestamp } from '@/payloads/common'
+import type { APIChannel, APIMember } from '@/payloads/channel'
 
 /**
  * API Message DTO.
@@ -8,7 +8,7 @@ export interface APIMessage {
   /**
    * The id of the message.
    */
-  id: Id
+  id: number
 
   /**
    * The content of the message.
@@ -18,12 +18,12 @@ export interface APIMessage {
   /**
    * The author of the message.
    */
-  author_id: Id
+  author: APIMember
 
   /**
    * The channel the message was sent in.
    */
-  channel_id?: Id
+  channel: APIChannel | null
 
   /**
    * The files attached to the message.
@@ -33,5 +33,5 @@ export interface APIMessage {
   /**
    * The time when message sent at.
    */
-  created_at: Timestamp
+  created_at: number
 }

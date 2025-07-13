@@ -1,6 +1,5 @@
 import {
   APIRoutes,
-  Id,
   type RESTDeleteAPIMessageResult,
   type RESTGetAPIMessageListQuery,
   type RESTGetAPIMessageListResult,
@@ -24,7 +23,7 @@ export default class MessageAPI {
   /**
    * Fetches the messages in a channel.
    */
-  public async list(channelId: Id, query: RESTGetAPIMessageListQuery = {}) {
+  public async list(channelId: number, query: RESTGetAPIMessageListQuery = {}) {
     const params = buildURLSearchParams<RESTGetAPIMessageListQuery>(query)
 
     return await this.rest.get<RESTGetAPIMessageListResult>(APIRoutes.messages(channelId), { params })
@@ -33,7 +32,7 @@ export default class MessageAPI {
   /**
    * Sends a message in a channel.
    */
-  public async create(channelId: Id, body: RESTPostAPIMessageBody) {
+  public async create(channelId: number, body: RESTPostAPIMessageBody) {
     return await this.rest.post<RESTPostAPIMessageResult>(APIRoutes.messages(channelId), {
       body,
     })
@@ -42,28 +41,28 @@ export default class MessageAPI {
   /**
    * Fetches a message.
    */
-  public async get(channelId: Id, messageId: Id) {
+  public async get(channelId: number, messageId: number) {
     return await this.rest.get<RESTGetAPIMessageResult>(APIRoutes.message(channelId, messageId))
   }
 
   /**
    * Edits a message.
    */
-  public async edit(channelId: Id, messageId: Id, body: RESTPatchAPIMessageBody) {
+  public async edit(channelId: number, messageId: number, body: RESTPatchAPIMessageBody) {
     return await this.rest.patch<RESTPatchAPIMessageResult>(APIRoutes.message(channelId, messageId), { body })
   }
 
   /**
    * Deletes a message.
    */
-  public async delete(channelId: Id, messageId: Id) {
+  public async delete(channelId: number, messageId: number) {
     return await this.rest.delete<RESTDeleteAPIMessageResult>(APIRoutes.message(channelId, messageId))
   }
 
   /**
    * Creates a message attachments.
    */
-  public async createAttachments(channelId: Id, body: RESTPutAPIMessageAttachmentsBody) {
+  public async createAttachments(channelId: number, body: RESTPutAPIMessageAttachmentsBody) {
     return await this.rest.put<RESTPutAPIMessageAttachmentsResult>(APIRoutes.messageAttachments(channelId), { body })
   }
 }

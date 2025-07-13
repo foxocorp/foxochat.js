@@ -1,19 +1,15 @@
-import type { APIAvatar } from '@/payloads/attachment'
-import type { Id, Timestamp } from '@/payloads/common'
+import type { APIUser } from '@/payloads/user'
+import type { APIMessage } from '@/payloads/message'
+import type { APIAttachment } from '@/payloads/attachment'
 
 /**
  * API Channel DTO.
  */
-export interface APIChannel<Short extends boolean = false> {
+export interface APIChannel {
   /**
    * The id of the channel.
    */
-  id: Id
-
-  /**
-   * The display name of the channel.
-   */
-  display_name: string
+  id: number
 
   /**
    * The name of the channel.
@@ -21,14 +17,14 @@ export interface APIChannel<Short extends boolean = false> {
   name: string
 
   /**
-   * The avatar of the channel.
+   * The display name of the channel.
    */
-  avatar: APIAvatar | null
+  display_name: string
 
   /**
-   * The banner of the channel.
+   * The icon of the channel.
    */
-  banner: APIAvatar | null
+  icon: APIAttachment | null
 
   /**
    * The type of the channel.
@@ -46,19 +42,19 @@ export interface APIChannel<Short extends boolean = false> {
   member_count: number
 
   /**
-   * The user id of the owner of the channel.
+   * The owner of the channel.
    */
-  owner_id: Id
+  owner: APIUser
 
   /**
    * The time when channel created at.
    */
-  created_at: Short extends false ? Timestamp : never
+  created_at: number
 
   /**
-   * The id of the last sent message in channel.
+   * The last sent message in channel.
    */
-  last_message?: Short extends false ? Id : never
+  last_message: APIMessage | null
 }
 
 /**
@@ -103,17 +99,17 @@ export interface APIMember {
   /**
    * The id of the member.
    */
-  id: Id
+  id: number
 
   /**
    * The user of the member.
    */
-  user_id: Id
+  user: APIUser
 
   /**
    * The channel of the member.
    */
-  channel_id: Id
+  channel: APIChannel
 
   /**
    * The permissions of the member.
@@ -123,7 +119,7 @@ export interface APIMember {
   /**
    * The time when member joined.
    */
-  joined_at: Timestamp
+  joined_at: number
 }
 
 /**

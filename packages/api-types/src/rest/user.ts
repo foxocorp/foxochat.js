@@ -1,4 +1,4 @@
-import type { APIChannel, APIOk, APIUser, Id } from '@/payloads'
+import type { APIChannel, APIOk, APIUser } from '@/payloads'
 import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/attachment'
 
 /**
@@ -9,21 +9,16 @@ export type RESTGetAPIUserResult = APIUser
 /**
  * The result of PATCH /users/@me.
  */
-export type RESTPatchAPIUserResult = APIUser<true>
+export type RESTPatchAPIUserResult = APIUser
 
 /**
  * The body of PATCH /users/@me.
  */
 export interface RESTPatchAPIUserBody {
   /**
-   * The id of the avatar of the user.
+   * The avatar of the user.
    */
-  avatar?: Id
-
-  /**
-   * The id of the banner of the user.
-   */
-  banner?: Id
+  avatar?: string
 
   /**
    * The display name of the user.
@@ -34,11 +29,6 @@ export interface RESTPatchAPIUserBody {
    * The username of the user.
    */
   username?: string
-
-  /**
-   * The bio of the user.
-   */
-  bio?: string
 
   /**
    * The email of the user.
@@ -99,7 +89,7 @@ export type RESTPutAPIUserAvatarResult = RESTAPIAttachmentUploadResponse
 /**
  * The result of POST /users/{id}
  */
-export type RESTPostAPIUserContactResult = APIUser<true>
+export type RESTPostAPIUserContactResult = APIUser
 
 /**
  * The result of DELETE /users/{id}

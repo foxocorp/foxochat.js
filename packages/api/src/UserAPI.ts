@@ -1,6 +1,5 @@
 import {
   APIRoutes,
-  type Id,
   type PublicUserKey,
   type RESTDeleteAPIUserBody,
   type RESTDeleteAPIUserContactResult,
@@ -76,14 +75,14 @@ export default class UserAPI {
   /**
    * Adds the user as contact.
    */
-  public async addContact(userId: Id) {
+  public async addContact(userId: number) {
     return await this.rest.post<RESTPostAPIUserContactResult>(APIRoutes.user(userId))
   }
 
   /**
    * Removes the user from contacts.
    */
-  public async deleteContact(userId: Id) {
+  public async deleteContact(userId: number) {
     return await this.rest.delete<RESTDeleteAPIUserContactResult>(APIRoutes.user(userId))
   }
 }

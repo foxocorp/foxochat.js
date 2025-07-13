@@ -1,4 +1,4 @@
-import type { APIMessage, APIOk, Id, Timestamp } from '@/payloads'
+import type { APIMessage, APIOk } from '@/payloads'
 import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/attachment'
 
 /**
@@ -13,7 +13,7 @@ export interface RESTGetAPIMessageListQuery {
   /**
    * Get messages before this timestamp.
    */
-  before?: Timestamp
+  before?: number
 
   /**
    * Max number of messages to return.
@@ -43,7 +43,7 @@ export interface RESTPostAPIMessageBody {
   /**
    * The files attached to the message.
    */
-  attachments?: Id[]
+  attachments?: number[]
 }
 
 /**
@@ -68,7 +68,7 @@ export interface RESTPatchAPIMessageBody {
   /**
    * The files attached to the message.
    */
-  attachments?: Id[]
+  attachments?: number[]
 }
 
 /**

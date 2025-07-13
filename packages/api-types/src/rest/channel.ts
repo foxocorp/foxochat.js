@@ -1,4 +1,4 @@
-import type { APIChannel, APIMember, APIOk, ChannelType, Id } from '@/payloads'
+import type { APIChannel, APIMember, APIOk, ChannelType } from '@/payloads'
 import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/attachment'
 
 /**
@@ -28,7 +28,7 @@ export interface RESTPostAPIChannelBody {
   /**
    * Whether the channel is public or private.
    */
-  public: boolean
+  public?: boolean
 }
 
 /**
@@ -76,14 +76,9 @@ export interface RESTPatchAPIChannelBody {
   name?: string
 
   /**
-   * The id of the avatar of the channel.
+   * The icon of the channel.
    */
-  avatar?: Id
-
-  /**
-   * The id of the banner of the channel.
-   */
-  banner?: Id
+  icon?: number
 }
 
 /**

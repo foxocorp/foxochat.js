@@ -1,14 +1,4 @@
 /**
- * The type of identifiers.
- */
-export type Id = number
-
-/**
- * The type of timestamps.
- */
-export type Timestamp = number
-
-/**
  * API Info DTO.
  */
 export interface APIInfo {

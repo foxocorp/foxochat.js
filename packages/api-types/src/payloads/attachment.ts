@@ -1,5 +1,3 @@
-import type { Id } from '@/payloads/common'
-
 /**
  * API Attachment DTO.
  */
@@ -7,7 +5,7 @@ export interface APIAttachment {
   /**
    * The id of the attachment.
    */
-  id: Id
+  id: number
 
   /**
    * The object id of the attachment.
@@ -28,40 +26,6 @@ export interface APIAttachment {
    * The flags of the attachment.
    */
   flags: AttachmentFlags
-}
-
-export interface APIAvatar {
-  /**
-   * The id of the avatar.
-   */
-  id: Id
-
-  /**
-   * The object id of the avatar.
-   */
-  uuid: string
-
-  /**
-   * The file name of the avatar.
-   */
-  filename: string
-
-  /**
-   * The ThumbHash of the avatar.
-   */
-  thumbhash: string
-}
-
-export interface APIMediaUpload {
-  /**
-   * The id of the attachment.
-   */
-  id: Id
-
-  /**
-   * The upload url of the attachment.
-   */
-  url: string
 }
 
 /**
