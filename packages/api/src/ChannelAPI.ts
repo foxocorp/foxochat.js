@@ -11,6 +11,8 @@ import {
   type RESTPatchAPIChannelBody,
   type RESTPatchAPIChannelResult,
   type RESTPostAPIChannelBody,
+  type RESTPostAPIChannelCreateDMBody,
+  type RESTPostAPIChannelCreateDMResult,
   type RESTPostAPIChannelResult,
   type RESTPutAPIChannelIconBody,
   type RESTPutAPIChannelIconResult,
@@ -44,6 +46,13 @@ export default class ChannelAPI {
    */
   public async create(body: RESTPostAPIChannelBody) {
     return await this.rest.post<RESTPostAPIChannelResult>(APIRoutes.channels(), { body })
+  }
+
+  /**
+   * Creates a new DM channel.
+   */
+  public async createDM(partnerId: Id, body: RESTPostAPIChannelCreateDMBody) {
+    return await this.rest.post<RESTPostAPIChannelCreateDMResult>(APIRoutes.channel(partnerId), { body })
   }
 
   /**

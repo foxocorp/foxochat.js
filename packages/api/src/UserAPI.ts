@@ -6,6 +6,7 @@ import {
   type RESTDeleteAPIUserContactResult,
   type RESTDeleteAPIUserResult,
   type RESTGetAPIUserChannelsResult,
+  type RESTGetAPIUserContactsResult,
   type RESTGetAPIUserResult,
   type RESTPatchAPIUserBody,
   type RESTPatchAPIUserResult,
@@ -14,6 +15,8 @@ import {
   type RESTPostAPIUserDeleteConfirmResult,
   type RESTPutAPIUserAvatarBody,
   type RESTPutAPIUserAvatarResult,
+  type RESTPutAPIUserBannerBody,
+  type RESTPutAPIUserBannerResult,
   UserMe,
 } from '@foxochat/api-types'
 import type REST from '@foxochat/rest'
@@ -67,10 +70,24 @@ export default class UserAPI {
   }
 
   /**
+   * Gets user contacts.
+   */
+  public async contacts() {
+    return await this.rest.get<RESTGetAPIUserContactsResult>(APIRoutes.userContacts())
+  }
+
+  /**
    * Uploads the user avatar.
    */
   public async uploadAvatar(body: RESTPutAPIUserAvatarBody) {
     return await this.rest.put<RESTPutAPIUserAvatarResult>(APIRoutes.userAvatar(), { body })
+  }
+
+  /**
+   * Uploads the user banner.
+   */
+  public async uploadBanner(body: RESTPutAPIUserBannerBody) {
+    return await this.rest.put<RESTPutAPIUserBannerResult>(APIRoutes.userBanner(), { body })
   }
 
   /**

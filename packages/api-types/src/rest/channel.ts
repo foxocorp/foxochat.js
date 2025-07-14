@@ -1,5 +1,5 @@
 import type { APIChannel, APIMember, APIOk, ChannelType, Id } from '@/payloads'
-import type { RESTAPIAttachmentUploadRequest, RESTAPIAttachmentUploadResponse } from '@/rest/media'
+import type { RESTAPIAvatarUploadRequest, RESTAPIAvatarUploadResponse } from '@/rest/media'
 
 /**
  * The result of POST /channels/.
@@ -30,6 +30,16 @@ export interface RESTPostAPIChannelBody {
    */
   public: boolean
 }
+
+/**
+ * The result of POST /channels/{partnerId}.
+ */
+export type RESTPostAPIChannelCreateDMResult = APIChannel
+
+/**
+ * The body of POST /channels/{partnerId}.
+ */
+export type RESTPostAPIChannelCreateDMBody = RESTPostAPIChannelBody
 
 /**
  * The result of GET /channels/{name}.
@@ -94,9 +104,9 @@ export type RESTDeleteAPIChannelResult = APIOk
 /**
  * The body of PUT /channels/{id}/icon.
  */
-export type RESTPutAPIChannelIconBody = RESTAPIAttachmentUploadRequest
+export type RESTPutAPIChannelIconBody = RESTAPIAvatarUploadRequest
 
 /**
  * The result of PUT /channels/{id}/icon.
  */
-export type RESTPutAPIChannelIconResult = RESTAPIAttachmentUploadResponse
+export type RESTPutAPIChannelIconResult = RESTAPIAvatarUploadResponse
