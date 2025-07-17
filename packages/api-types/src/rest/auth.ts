@@ -35,9 +35,9 @@ export type RESTPostAPIAuthLoginResult = APIToken
  */
 export interface RESTPostAPIAuthLoginBody {
   /**
-   * The user's email.
+   * The user's identity.
    */
-  email: string
+  identity: string
 
   /**
    * The user's password.
