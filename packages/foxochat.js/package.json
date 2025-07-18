@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "foxochat.js",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "A powerful library for interacting with the FoxoChat API",
-  "author": "FoxoCorp",
+  "author": "Kasefuchs",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxocorp/foxochat.js"
+    "url": "https://github.com/kasefuchs/foxochat.js"
   },
   "bugs": {
-    "url": "https://github.com/foxocorp/foxochat.js/issues"
+    "url": "https://github.com/kasefuchs/foxochat.js/issues"
   },
   "scripts": {
     "lint": "biome lint --write",

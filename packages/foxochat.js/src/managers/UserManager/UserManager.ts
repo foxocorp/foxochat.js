@@ -29,7 +29,7 @@ export default class UserManager extends CachedManager<Id, APIUser, User> {
 
     const data = await this.client.api.user.get(options.key, {
       withAvatar: options.withAvatar,
-      withBanner: options.withBanner
+      withBanner: options.withBanner,
     })
 
     return this._add(data.id, data)

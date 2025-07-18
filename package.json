@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "description": "A powerful library for interacting with the FoxoChat API",
   "private": true,
-  "author": "FoxoCorp",
+  "author": "Kasefuchs",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxocorp/foxochat.js"
+    "url": "https://github.com/kasefuchs/foxochat.js"
   },
   "bugs": {
-    "url": "https://github.com/foxocorp/foxochat.js/issues"
+    "url": "https://github.com/kasefuchs/foxochat.js/issues"
   },
   "scripts": {
     "docs": "typedoc"
