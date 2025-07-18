@@ -11,6 +11,10 @@ export interface FetchMessagesOptions {
    * Max number of messages to return.
    */
   limit?: number
+
+  withChannel?: boolean
+  withAttachments?: boolean
+  withAuthor?: boolean
 }
 
 export interface FetchMessageOptions extends FetchOptions {
@@ -18,4 +22,8 @@ export interface FetchMessageOptions extends FetchOptions {
    * The id of the message to fetch.
    */
   id: Id
+
+  withChannel?: boolean
+  withAttachments?: boolean
+  withAuthor?: boolean
 }

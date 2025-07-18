@@ -4,6 +4,7 @@ import {
   type RESTDeleteAPIMessageResult,
   type RESTGetAPIMessageListQuery,
   type RESTGetAPIMessageListResult,
+  type RESTGetAPIMessageQuery,
   type RESTGetAPIMessageResult,
   type RESTPatchAPIMessageBody,
   type RESTPatchAPIMessageResult,
@@ -25,7 +26,7 @@ export default class MessageAPI {
    * Fetches the messages in a channel.
    */
   public async list(channelId: Id, query: RESTGetAPIMessageListQuery = {}) {
-    const params = buildURLSearchParams<RESTGetAPIMessageListQuery>(query)
+    const params = buildURLSearchParams(query)
 
     return await this.rest.get<RESTGetAPIMessageListResult>(APIRoutes.messages(channelId), { params })
   }
@@ -42,8 +43,10 @@ export default class MessageAPI {
   /**
    * Fetches a message.
    */
-  public async get(channelId: Id, messageId: Id) {
-    return await this.rest.get<RESTGetAPIMessageResult>(APIRoutes.message(channelId, messageId))
+  public async get(channelId: Id, messageId: Id, query: RESTGetAPIMessageQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIMessageResult>(APIRoutes.message(channelId, messageId), { params })
   }
 
   /**

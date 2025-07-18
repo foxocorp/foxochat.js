@@ -5,8 +5,11 @@ import {
   type PublicChannelKey,
   type RESTDeleteAPIChannelLeaveResult,
   type RESTDeleteAPIChannelResult,
+  type RESTGetAPIChannelMemberQuery,
   type RESTGetAPIChannelMemberResult,
+  type RESTGetAPIChannelMembersQuery,
   type RESTGetAPIChannelMembersResult,
+  type RESTGetAPIChannelQuery,
   type RESTGetAPIChannelResult,
   type RESTPatchAPIChannelBody,
   type RESTPatchAPIChannelResult,
@@ -19,7 +22,7 @@ import {
   type RESTPutAPIChannelJoinResult,
   UserMe,
 } from '@foxochat/api-types'
-import type REST from '@foxochat/rest'
+import REST, { buildURLSearchParams } from '@foxochat/rest'
 
 /**
  * A wrapper for the FoxoChat channel API.
@@ -58,8 +61,10 @@ export default class ChannelAPI {
   /**
    * Fetches a channel.
    */
-  public async get(channelKey: PublicChannelKey) {
-    return await this.rest.get<RESTGetAPIChannelResult>(APIRoutes.channel(channelKey))
+  public async get(channelKey: PublicChannelKey, query: RESTGetAPIChannelQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIChannelResult>(APIRoutes.channel(channelKey), { params })
   }
 
   /**
@@ -81,15 +86,19 @@ export default class ChannelAPI {
   /**
    * Gets a member from the channel.
    */
-  public async member(channelId: Id, memberKey: MemberKey) {
-    return await this.rest.get<RESTGetAPIChannelMemberResult>(APIRoutes.channelMember(channelId, memberKey))
+  public async member(channelId: Id, memberKey: MemberKey, query: RESTGetAPIChannelMemberQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIChannelMemberResult>(APIRoutes.channelMember(channelId, memberKey), { params })
   }
 
   /**
    * Lists members in the channel.
    */
-  public async members(channelId: Id) {
-    return await this.rest.get<RESTGetAPIChannelMembersResult>(APIRoutes.channelMembers(channelId))
+  public async members(channelId: Id, query: RESTGetAPIChannelMembersQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIChannelMembersResult>(APIRoutes.channelMembers(channelId), { params })
   }
 
   /**

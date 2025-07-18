@@ -5,8 +5,11 @@ import {
   type RESTDeleteAPIUserBody,
   type RESTDeleteAPIUserContactResult,
   type RESTDeleteAPIUserResult,
+  type RESTGetAPIUserChannelsQuery,
   type RESTGetAPIUserChannelsResult,
+  type RESTGetAPIUserContactsQuery,
   type RESTGetAPIUserContactsResult,
+  type RESTGetAPIUserQuery,
   type RESTGetAPIUserResult,
   type RESTPatchAPIUserBody,
   type RESTPatchAPIUserResult,
@@ -19,7 +22,7 @@ import {
   type RESTPutAPIUserBannerResult,
   UserMe,
 } from '@foxochat/api-types'
-import type REST from '@foxochat/rest'
+import REST, { buildURLSearchParams } from '@foxochat/rest'
 
 /**
  * A wrapper for the FoxoChat user API.
@@ -30,15 +33,19 @@ export default class UserAPI {
   /**
    * Fetches a user.
    */
-  public async get(userKey: PublicUserKey) {
-    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(userKey))
+  public async get(userKey: PublicUserKey, query: RESTGetAPIUserQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(userKey), { params })
   }
 
   /**
    * Returns the current user.
    */
-  public async current() {
-    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(UserMe))
+  public async current(query: RESTGetAPIUserQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIUserResult>(APIRoutes.user(UserMe), { params })
   }
 
   /**
@@ -65,15 +72,19 @@ export default class UserAPI {
   /**
    * Gets user channels.
    */
-  public async channels() {
-    return await this.rest.get<RESTGetAPIUserChannelsResult>(APIRoutes.userChannels())
+  public async channels(query: RESTGetAPIUserChannelsQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIUserChannelsResult>(APIRoutes.userChannels(), { params })
   }
 
   /**
    * Gets user contacts.
    */
-  public async contacts() {
-    return await this.rest.get<RESTGetAPIUserContactsResult>(APIRoutes.userContacts())
+  public async contacts(query: RESTGetAPIUserContactsQuery = {}) {
+    const params = buildURLSearchParams(query)
+
+    return await this.rest.get<RESTGetAPIUserContactsResult>(APIRoutes.userContacts(), { params })
   }
 
   /**

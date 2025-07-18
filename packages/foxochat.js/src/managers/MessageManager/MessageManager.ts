@@ -39,7 +39,11 @@ export default class MessageManager extends CachedManager<Id, APIMessage, Messag
       if (existing) return existing
     }
 
-    const data = await this.client.api.message.get(this.channel.id, options.id)
+    const data = await this.client.api.message.get(this.channel.id, options.id, {
+      withAuthor: options.withAuthor,
+      withChannel: options.withChannel,
+      withAttachments: options.withAttachments,
+    })
 
     return this._add(data.id, data)
   }
@@ -48,6 +52,9 @@ export default class MessageManager extends CachedManager<Id, APIMessage, Messag
     const data = await this.client.api.message.list(this.channel.id, {
       limit: options.limit,
       before: options.before instanceof Date ? options.before.getTime() : options.before,
+      withAuthor: options.withAuthor,
+      withChannel: options.withChannel,
+      withAttachments: options.withAttachments,
     })
 
     return data.reduce(

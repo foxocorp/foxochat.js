@@ -47,6 +47,23 @@ export type RESTPostAPIChannelCreateDMBody = RESTPostAPIChannelBody
 export type RESTGetAPIChannelResult = APIChannel
 
 /**
+ * The query of GET /channels/{name}.
+ */
+export interface RESTGetAPIChannelQuery {
+  withAvatar?: boolean
+  withBanner?: boolean
+  withOwner?: boolean
+}
+
+/**
+ * The query of GET /channels/{name}/members.
+ */
+export interface RESTGetAPIChannelMembersQuery {
+  withChannel?: boolean
+  withUser?: boolean
+}
+
+/**
  * The result of GET /channels/{name}/members.
  */
 export type RESTGetAPIChannelMembersResult = APIMember[]
@@ -55,6 +72,14 @@ export type RESTGetAPIChannelMembersResult = APIMember[]
  * The result of GET /channels/{name}/members/{memberId}.
  */
 export type RESTGetAPIChannelMemberResult = APIMember
+
+/**
+ * The query of GET /channels/{name}/members/{memberId}.
+ */
+export interface RESTGetAPIChannelMemberQuery {
+  withChannel?: boolean
+  withUser?: boolean
+}
 
 /**
  * The result of PUT /channels/{name}/members/@me.

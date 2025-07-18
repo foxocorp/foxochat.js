@@ -7,6 +7,16 @@ import type { RESTAPIAvatarUploadRequest, RESTAPIAvatarUploadResponse } from '@/
 export type RESTGetAPIUserResult = APIUser
 
 /**
+ * The query of GET /users/{userKey}.
+ */
+export interface RESTGetAPIUserQuery {
+  withChannels?: boolean
+  withContacts?: boolean
+  withAvatar?: boolean
+  withBanner?: boolean
+}
+
+/**
  * The result of PATCH /users/@me.
  */
 export type RESTPatchAPIUserResult = APIUser<true>
@@ -87,9 +97,26 @@ export interface RESTPostAPIUserDeleteConfirmBody {
 export type RESTGetAPIUserChannelsResult = APIChannel[]
 
 /**
+ * The query of GET /users/@me/channels
+ */
+export interface RESTGetAPIUserChannelsQuery {
+  withAvatar?: boolean
+  withBanner?: boolean
+  withOwner?: boolean
+}
+
+/**
  * The result of GET /users/@me/contacts
  */
 export type RESTGetAPIUserContactsResult = APIUser<true>[]
+
+/**
+ * The query of GET /users/@me/contacts
+ */
+export interface RESTGetAPIUserContactsQuery {
+  withAvatar?: boolean
+  withBanner?: boolean
+}
 
 /**
  * The body of PUT /users/@me/avatar.

@@ -25,7 +25,11 @@ export default class ChannelManager extends CachedManager<Id, APIChannel, Channe
       if (existing) return existing
     }
 
-    const data = await this.client.api.channel.get(options.key)
+    const data = await this.client.api.channel.get(options.key, {
+      withAvatar: options.withAvatar,
+      withBanner: options.withBanner,
+      withOwner: options.withOwner,
+    })
 
     return this._add(data.id, data)
   }

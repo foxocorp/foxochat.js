@@ -19,12 +19,25 @@ export interface RESTGetAPIMessageListQuery {
    * Max number of messages to return.
    */
   limit?: number
+
+  withChannel?: boolean
+  withAttachments?: boolean
+  withAuthor?: boolean
 }
 
 /**
  * The result of GET /channels/{channelId}/messages/{id}.
  */
 export type RESTGetAPIMessageResult = APIMessage
+
+/**
+ * The query of GET /channels/{channelId}/messages/{id}.
+ */
+export interface RESTGetAPIMessageQuery {
+  withChannel?: boolean
+  withAttachments?: boolean
+  withAuthor?: boolean
+}
 
 /**
  * The result of POST /channels/{channelId}/messages.

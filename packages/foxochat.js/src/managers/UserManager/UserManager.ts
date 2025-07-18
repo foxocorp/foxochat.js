@@ -27,7 +27,10 @@ export default class UserManager extends CachedManager<Id, APIUser, User> {
       if (existing) return existing
     }
 
-    const data = await this.client.api.user.get(options.key)
+    const data = await this.client.api.user.get(options.key, {
+      withAvatar: options.withAvatar,
+      withBanner: options.withBanner
+    })
 
     return this._add(data.id, data)
   }
@@ -38,7 +41,12 @@ export default class UserManager extends CachedManager<Id, APIUser, User> {
       if (existing) return existing
     }
 
-    const data = await this.client.api.user.get(UserMe)
+    const data = await this.client.api.user.get(UserMe, {
+      withAvatar: true,
+      withBanner: true,
+      withChannels: true,
+      withContacts: true,
+    })
     this.client.user = new ClientUser(this.client, data)
 
     this.cache.set(this.client.user.id, this.client.user)
