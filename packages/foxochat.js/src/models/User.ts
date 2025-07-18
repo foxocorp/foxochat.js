@@ -1,4 +1,4 @@
-import type { APIUser, UserFlags, UserStatus, UserType } from '@foxochat/api-types'
+import type { APIUser, UserFlags, UserStatus, UserType } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import Data from '@/models/Data'
 import Avatar from '@/models/Avatar'

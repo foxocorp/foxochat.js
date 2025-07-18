@@ -1,5 +1,5 @@
 import type { FetchOptions } from '@/types'
-import type { Id, Timestamp } from '@foxochat/api-types'
+import type { Id, Timestamp } from '@foxochatjs/api-types'
 
 export interface FetchMessagesOptions {
   /**

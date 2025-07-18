@@ -21,8 +21,8 @@ import {
   type RESTPutAPIChannelIconResult,
   type RESTPutAPIChannelJoinResult,
   UserMe,
-} from '@foxochat/api-types'
-import REST, { buildURLSearchParams } from '@foxochat/rest'
+} from '@foxochatjs/api-types'
+import REST, { buildURLSearchParams } from '@foxochatjs/rest'
 
 /**
  * A wrapper for the FoxoChat channel API.

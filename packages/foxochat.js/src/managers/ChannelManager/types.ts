@@ -1,5 +1,5 @@
 import type { FetchOptions } from '@/types'
-import type { PublicChannelKey } from '@foxochat/api-types'
+import type { PublicChannelKey } from '@foxochatjs/api-types'
 
 export interface FetchChannelOptions extends FetchOptions {
   /**

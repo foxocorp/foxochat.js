@@ -1,5 +1,5 @@
 import { ClientUser, User } from '@/models'
-import { type APIUser, type PublicUserKey, UserMe, type Id } from '@foxochat/api-types'
+import { type APIUser, type PublicUserKey, UserMe, type Id } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import CachedManager from '@/managers/CachedManager'
 import type { FetchUserOptions } from '@/managers/UserManager/types'

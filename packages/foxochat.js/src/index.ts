@@ -5,14 +5,14 @@ export * from './managers'
 export * from './models'
 export * from './types'
 
-export * from '@foxochat/api-types'
-export * from '@foxochat/gateway-types'
+export * from '@foxochatjs/api-types'
+export * from '@foxochatjs/gateway-types'
 
 export {
   API,
   type ConstructorOptions as APIConstructorOptions,
   type Options as APIOptions,
-} from '@foxochat/api'
+} from '@foxochatjs/api'
 
 export {
   REST,
@@ -23,7 +23,7 @@ export {
   type Options as RESTOptions,
   type RouteLike,
   type RequestOptions,
-} from '@foxochat/rest'
+} from '@foxochatjs/rest'
 
 export {
   Gateway,
@@ -34,4 +34,4 @@ export {
   type Options as GatewayOptions,
   type GatewayDestroyOptions,
   type GatewayEventsMap,
-} from '@foxochat/gateway'
+} from '@foxochatjs/gateway'

@@ -1,5 +1,5 @@
 import { Channel } from '@/models'
-import type { APIChannel, PublicChannelKey, Id } from '@foxochat/api-types'
+import type { APIChannel, PublicChannelKey, Id } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import CachedManager from '@/managers/CachedManager'
 import type { FetchChannelOptions } from '@/managers/ChannelManager/types'

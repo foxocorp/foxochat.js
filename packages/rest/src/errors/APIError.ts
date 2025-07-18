@@ -1,4 +1,4 @@
-import type { APIException } from '@foxochat/api-types'
+import type { APIException } from '@foxochatjs/api-types'
 import HTTPError from '@/errors/HTTPError'
 
 /**

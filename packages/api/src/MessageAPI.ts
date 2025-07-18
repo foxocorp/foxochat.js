@@ -12,9 +12,9 @@ import {
   type RESTPostAPIMessageResult,
   type RESTPutAPIMessageAttachmentsBody,
   type RESTPutAPIMessageAttachmentsResult,
-} from '@foxochat/api-types'
-import type REST from '@foxochat/rest'
-import { buildURLSearchParams } from '@foxochat/rest'
+} from '@foxochatjs/api-types'
+import type REST from '@foxochatjs/rest'
+import { buildURLSearchParams } from '@foxochatjs/rest'
 
 /**
  * A wrapper for the FoxoChat message API.

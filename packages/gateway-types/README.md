@@ -7,13 +7,13 @@ Simple type definitions for the FoxoChat Gateway.
 Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
 
 ```sh
-npm install @foxochat/gateway-types
-yarn add @foxochat/gateway-types
-pnpm add @foxochat/gateway-types
+npm install @foxochatjs/gateway-types
+yarn add @foxochatjs/gateway-types
+pnpm add @foxochatjs/gateway-types
 ```
 
 ## Usage
 
 ```ts
-import { GatewayHelloMessage } from "@foxochat/gateway-types";
+import { GatewayHelloMessage } from "@foxochatjs/gateway-types";
 ```

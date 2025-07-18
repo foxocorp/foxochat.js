@@ -7,13 +7,13 @@ The Gateway client for foxochat.js
 Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
 
 ```sh
-npm install @foxochat/gateway
-yarn add @foxochat/gateway
-pnpm add @foxochat/gateway
+npm install @foxochatjs/gateway
+yarn add @foxochatjs/gateway
+pnpm add @foxochatjs/gateway
 ```
 
 ## Usage
 
 ```ts
-import Gateway from "@foxochat/gateway";
+import Gateway from "@foxochatjs/gateway";
 ```

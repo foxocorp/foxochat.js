@@ -1,4 +1,4 @@
-import type { APIChannel, ChannelFlags, ChannelType } from '@foxochat/api-types'
+import type { APIChannel, ChannelFlags, ChannelType } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import User from '@/models/User'
 import Message from '@/models/Message'

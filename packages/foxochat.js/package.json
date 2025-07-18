@@ -34,11 +34,11 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "@foxochat/api": "workspace:^",
-    "@foxochat/api-types": "workspace:^",
-    "@foxochat/gateway": "workspace:^",
-    "@foxochat/gateway-types": "workspace:^",
-    "@foxochat/rest": "workspace:^",
+    "@foxochatjs/api": "workspace:^",
+    "@foxochatjs/api-types": "workspace:^",
+    "@foxochatjs/gateway": "workspace:^",
+    "@foxochatjs/gateway-types": "workspace:^",
+    "@foxochatjs/rest": "workspace:^",
     "@swc/helpers": "^0.5.17",
     "eventemitter3": "^5.0.1"
   },

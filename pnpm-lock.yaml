@@ -14,10 +14,10 @@ importers:
 
   packages/api:
     dependencies:
-      '@foxochat/api-types':
+      '@foxochatjs/api-types':
         specifier: workspace:^
         version: link:../api-types
-      '@foxochat/rest':
+      '@foxochatjs/rest':
         specifier: workspace:^
         version: link:../rest
       '@swc/helpers':
@@ -61,19 +61,19 @@ importers:
 
   packages/foxochat.js:
     dependencies:
-      '@foxochat/api':
+      '@foxochatjs/api':
         specifier: workspace:^
         version: link:../api
-      '@foxochat/api-types':
+      '@foxochatjs/api-types':
         specifier: workspace:^
         version: link:../api-types
-      '@foxochat/gateway':
+      '@foxochatjs/gateway':
         specifier: workspace:^
         version: link:../gateway
-      '@foxochat/gateway-types':
+      '@foxochatjs/gateway-types':
         specifier: workspace:^
         version: link:../gateway-types
-      '@foxochat/rest':
+      '@foxochatjs/rest':
         specifier: workspace:^
         version: link:../rest
       '@swc/helpers':
@@ -101,10 +101,10 @@ importers:
 
   packages/gateway:
     dependencies:
-      '@foxochat/api-types':
+      '@foxochatjs/api-types':
         specifier: workspace:^
         version: link:../api-types
-      '@foxochat/gateway-types':
+      '@foxochatjs/gateway-types':
         specifier: workspace:^
         version: link:../gateway-types
       '@swc/helpers':
@@ -129,7 +129,7 @@ importers:
 
   packages/gateway-types:
     dependencies:
-      '@foxochat/api-types':
+      '@foxochatjs/api-types':
         specifier: workspace:^
         version: link:../api-types
       '@swc/helpers':
@@ -151,7 +151,7 @@ importers:
 
   packages/rest:
     dependencies:
-      '@foxochat/api-types':
+      '@foxochatjs/api-types':
         specifier: workspace:^
         version: link:../api-types
       '@swc/helpers':

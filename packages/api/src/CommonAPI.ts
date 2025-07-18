@@ -1,5 +1,5 @@
-import { APIRoutes, type RESTGetAPIInfoResult } from '@foxochat/api-types'
-import type REST from '@foxochat/rest'
+import { APIRoutes, type RESTGetAPIInfoResult } from '@foxochatjs/api-types'
+import type REST from '@foxochatjs/rest'
 
 /**
  * A wrapper for the FoxoChat common API.

@@ -1,5 +1,5 @@
 import BaseAction from '@/actions/BaseAction'
-import { type GatewayDispatchContactAddPayload, GatewayDispatchEvents } from '@foxochat/gateway-types'
+import { type GatewayDispatchContactAddPayload, GatewayDispatchEvents } from '@foxochatjs/gateway-types'
 import type Client from '@/Client'
 import { ClientEvents } from '@/types'
 

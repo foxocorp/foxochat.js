@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@foxochat/api-types",
+  "name": "@foxochatjs/api-types",
   "version": "0.1.24",
   "description": "FoxoChat API typings.",
   "author": "FoxoCorp",

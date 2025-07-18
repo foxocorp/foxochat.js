@@ -1,4 +1,4 @@
-import type { APIMessage } from '@foxochat/api-types'
+import type { APIMessage } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import Attachment from '@/models/Attachment'
 import Channel from '@/models/Channel'

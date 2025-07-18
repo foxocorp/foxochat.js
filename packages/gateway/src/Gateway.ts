@@ -3,8 +3,8 @@ import type {
   GatewayHeartbeatMessage,
   GatewayIdentifyMessage,
   GatewayServerboundMessage,
-} from '@foxochat/gateway-types'
-import { GatewayCloseCodes, GatewayOpcodes } from '@foxochat/gateway-types'
+} from '@foxochatjs/gateway-types'
+import { GatewayCloseCodes, GatewayOpcodes } from '@foxochatjs/gateway-types'
 import EventEmitter from 'eventemitter3'
 import type { GatewayDestroyOptions, GatewayEventsMap, HeartbeatStats, Options } from '@/types'
 import { DefaultOptions, GatewayEvents } from '@/constants'

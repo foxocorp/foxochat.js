@@ -7,15 +7,15 @@ The API client for foxochat.js
 Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
 
 ```sh
-npm install @foxochat/api
-yarn add @foxochat/api
-pnpm add @foxochat/api
+npm install @foxochatjs/api
+yarn add @foxochatjs/api
+pnpm add @foxochatjs/api
 ```
 
 ## Usage
 
 ```ts
-import API from "@foxochat/api";
+import API from "@foxochatjs/api";
 
 const api = new API(rest);
 

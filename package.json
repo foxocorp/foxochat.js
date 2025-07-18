@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@foxochat/workspace",
+  "name": "@foxochatjs/workspace",
   "version": "0.0.0",
   "description": "A powerful library for interacting with the FoxoChat API",
   "private": true,

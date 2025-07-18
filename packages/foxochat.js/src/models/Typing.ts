@@ -1,6 +1,6 @@
 import Base from '@/models/Base'
 import type Client from '@/Client'
-import type { GatewayDispatchTypingStartPayload } from '@foxochat/gateway-types'
+import type { GatewayDispatchTypingStartPayload } from '@foxochatjs/gateway-types'
 import User from '@/models/User'
 import Channel from '@/models/Channel'
 import Member from '@/models/Member'

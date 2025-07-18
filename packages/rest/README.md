@@ -7,16 +7,16 @@ The HTTP REST API client for foxochat.js
 Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
 
 ```sh
-npm install @foxochat/rest
-yarn add @foxochat/rest
-pnpm add @foxochat/rest
+npm install @foxochatjs/rest
+yarn add @foxochatjs/rest
+pnpm add @foxochatjs/rest
 ```
 
 ## Usage
 
 ```ts
-import REST from "@foxochat/rest";
-import { APIRoutes, RouteUrlsMap } from "@foxochat/api-types";
+import REST from "@foxochatjs/rest";
+import { APIRoutes, RouteUrlsMap } from "@foxochatjs/api-types";
 
 const rest = new REST({
   baseURL: RouteUrlsMap.production.api,

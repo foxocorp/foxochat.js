@@ -1,4 +1,4 @@
-import { type APIAttachment, type AttachmentFlags, MediaRoutes } from '@foxochat/api-types'
+import { type APIAttachment, type AttachmentFlags, MediaRoutes } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import Data from '@/models/Data'
 

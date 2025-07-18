@@ -11,8 +11,8 @@ import {
   type RESTPostAPIAuthResetPasswordResult,
   type RESTPostAPIAuthVerifyEmailBody,
   type RESTPostAPIAuthVerifyEmailResult,
-} from '@foxochat/api-types'
-import type REST from '@foxochat/rest'
+} from '@foxochatjs/api-types'
+import type REST from '@foxochatjs/rest'
 
 /**
  * A wrapper for the FoxoChat authentication API.

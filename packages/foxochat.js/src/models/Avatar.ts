@@ -1,4 +1,4 @@
-import { type APIAvatar, MediaRoutes } from '@foxochat/api-types'
+import { type APIAvatar, MediaRoutes } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import Data from '@/models/Data'
 

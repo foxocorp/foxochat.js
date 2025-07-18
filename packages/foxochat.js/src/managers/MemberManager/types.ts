@@ -1,5 +1,5 @@
 import type { FetchOptions } from '@/types'
-import type { Id } from '@foxochat/api-types'
+import type { Id } from '@foxochatjs/api-types'
 
 export interface FetchMemberOptions extends FetchOptions {
   /**

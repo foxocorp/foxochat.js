@@ -1,4 +1,4 @@
-import type { ConstructorOptions as RESTConstructorOptions } from '@foxochat/rest'
+import type { ConstructorOptions as RESTConstructorOptions } from '@foxochatjs/rest'
 import type { MarkOptional } from 'ts-essentials'
 
 /**

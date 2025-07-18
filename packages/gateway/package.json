@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@foxochat/gateway",
+  "name": "@foxochatjs/gateway",
   "version": "0.1.11",
   "description": "The Gateway client for foxochat.js",
   "author": "FoxoCorp",
@@ -34,8 +34,8 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "@foxochat/api-types": "workspace:^",
-    "@foxochat/gateway-types": "workspace:^",
+    "@foxochatjs/api-types": "workspace:^",
+    "@foxochatjs/gateway-types": "workspace:^",
     "@swc/helpers": "^0.5.17",
     "eventemitter3": "^5.0.1"
   },

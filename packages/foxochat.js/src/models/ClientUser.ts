@@ -1,5 +1,5 @@
 import User from '@/models/User'
-import { type Id, type APIUser, UserMe } from '@foxochat/api-types'
+import { type Id, type APIUser, UserMe } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 
 /**

@@ -1,4 +1,4 @@
-import REST from '@foxochat/rest'
+import REST from '@foxochatjs/rest'
 import AuthAPI from '@/AuthAPI'
 import ChannelAPI from '@/ChannelAPI'
 import CommonAPI from '@/CommonAPI'

@@ -7,13 +7,13 @@ Simple type definitions for the FoxoChat API.
 Install with [npm](https://www.npmjs.com/) / [yarn](https://yarnpkg.com) / [pnpm](https://pnpm.js.org/):
 
 ```sh
-npm install @foxochat/api-types
-yarn add @foxochat/api-types
-pnpm add @foxochat/api-types
+npm install @foxochatjs/api-types
+yarn add @foxochatjs/api-types
+pnpm add @foxochatjs/api-types
 ```
 
 ## Usage
 
 ```ts
-import { APIChannel } from "@foxochat/api-types";
+import { APIChannel } from "@foxochatjs/api-types";
 ```

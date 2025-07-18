@@ -3,7 +3,7 @@ import type {
   GatewayDispatchMessageUnion,
   GatewayHeartbeatAckMessage,
   GatewayHelloMessage,
-} from '@foxochat/gateway-types'
+} from '@foxochatjs/gateway-types'
 import type { GatewayEvents } from '@/constants'
 
 export interface HeartbeatStats {

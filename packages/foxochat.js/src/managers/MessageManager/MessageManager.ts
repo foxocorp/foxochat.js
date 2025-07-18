@@ -1,5 +1,5 @@
 import { Channel, Message } from '@/models'
-import type { APIMessage, Id } from '@foxochat/api-types'
+import type { APIMessage, Id } from '@foxochatjs/api-types'
 import CachedManager from '@/managers/CachedManager'
 import type { FetchMessageOptions, FetchMessagesOptions } from '@/managers/MessageManager/types'
 

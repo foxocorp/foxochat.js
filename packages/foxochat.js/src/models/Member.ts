@@ -1,4 +1,4 @@
-import type { APIMember, MemberPermissions } from '@foxochat/api-types'
+import type { APIMember, MemberPermissions } from '@foxochatjs/api-types'
 import type Client from '@/Client'
 import User from '@/models/User'
 import Channel from '@/models/Channel'

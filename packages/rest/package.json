@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@foxochat/rest",
+  "name": "@foxochatjs/rest",
   "version": "0.1.15",
   "description": "The HTTP REST API client for foxochat.js",
   "author": "FoxoCorp",
@@ -34,7 +34,7 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "@foxochat/api-types": "workspace:^",
+    "@foxochatjs/api-types": "workspace:^",
     "@swc/helpers": "^0.5.17"
   },
   "devDependencies": {

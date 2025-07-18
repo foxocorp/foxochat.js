@@ -15,7 +15,7 @@ import {
   UserStatusUpdateAction,
   UserUpdateAction,
 } from '@/actions'
-import { GatewayDispatchEvents } from '@foxochat/gateway-types'
+import { GatewayDispatchEvents } from '@foxochatjs/gateway-types'
 
 export default class ActionManager extends BaseManager {
   public readonly items = new Map<GatewayDispatchEvents, BaseAction>()

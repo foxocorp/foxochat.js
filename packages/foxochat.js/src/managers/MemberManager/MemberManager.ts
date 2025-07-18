@@ -1,5 +1,5 @@
 import { Channel, Member } from '@/models'
-import type { APIMember, Id } from '@foxochat/api-types'
+import type { APIMember, Id } from '@foxochatjs/api-types'
 import CachedManager from '@/managers/CachedManager'
 import type { FetchMemberOptions, FetchMembersOptions } from '@/managers/MemberManager/types'
 

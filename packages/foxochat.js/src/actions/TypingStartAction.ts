@@ -1,5 +1,5 @@
 import BaseAction from '@/actions/BaseAction'
-import { GatewayDispatchEvents, type GatewayDispatchTypingStartPayload } from '@foxochat/gateway-types'
+import { GatewayDispatchEvents, type GatewayDispatchTypingStartPayload } from '@foxochatjs/gateway-types'
 import type Client from '@/Client'
 import { ClientEvents } from '@/types'
 import { Typing } from '@/models'

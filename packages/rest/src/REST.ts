@@ -6,7 +6,7 @@ import type {
   RequestOptions,
   RouteLike,
 } from '@/types'
-import type { APIException } from '@foxochat/api-types'
+import type { APIException } from '@foxochatjs/api-types'
 import { DefaultOptions, RequestBodyType, RequestMethod } from '@/constants'
 import { APIError, AuthEnforcedError, HTTPError } from '@/errors'
 import { parseResponse } from '@/utils'

@@ -1,4 +1,4 @@
-import type { Id, APIChannel, APIMember, APIMessage, APIUser, UserStatus } from '@foxochat/api-types'
+import type { Id, APIChannel, APIMember, APIMessage, APIUser, UserStatus } from '@foxochatjs/api-types'
 
 /**
  * Created message.

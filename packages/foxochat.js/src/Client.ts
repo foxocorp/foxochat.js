@@ -1,11 +1,11 @@
-import API from '@foxochat/api'
-import Gateway, { GatewayEvents } from '@foxochat/gateway'
+import API from '@foxochatjs/api'
+import Gateway, { GatewayEvents } from '@foxochatjs/gateway'
 import EventEmitter from 'eventemitter3'
 import { DefaultOptions } from '@/constants'
 import { ActionManager, ChannelManager, UserManager } from '@/managers'
 import { ClientEvents, ClientEventsMap, ConstructorOptions, Options } from '@/types'
 import type { ClientUser } from '@/models'
-import { UserMe } from '@foxochat/api-types'
+import { UserMe } from '@foxochatjs/api-types'
 
 /**
  * The main hub for interacting with the FoxoChat.
